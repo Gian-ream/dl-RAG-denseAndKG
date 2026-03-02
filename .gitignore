@@ -1,0 +1,13 @@
+# Data files (too large for git)
+data/
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# IDE
+.idea/
+
+# Jupyter
+.ipynb_checkpoints/
