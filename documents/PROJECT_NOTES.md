@@ -41,15 +41,15 @@
 ## 2. Pipeline Completa
 
 ### Step 1 — Corpus Preparation
-- **Input**: `psgs_w100.tsv` — corpus DPR standard (Dense Passage Retrieval, Karpukhin et al. 2020)
-  - Wikipedia dump **Dec 20, 2018**, pulito e segmentato in **~21M passaggi di 100 parole** (taglio meccanico, no sentence-alignment)
-  - Formato TSV: colonne `id`, `text`, `title` (~13 GB)
-  - Questo file è il **benchmark de facto** per open-domain QA: usato da Contriever, FiD, ATLAS, RAG, Silvestri et al.
-  - Dec 2018 perché NQ-open è stato annotato su quella versione — le risposte gold provengono da lì
-- **Fonte**: Repository del paper di Silvestri
-- **Processing**: Caricamento passaggi → indicizzazione con Contriever embeddings
-- **Output**: Indice FAISS con embeddings Contriever
-- **Nota**: Inizialmente era stato caricato per errore il dataset Kaggle `jjinho/wikipedia-20230701` (Wikipedia 2023). Sostituito con il corpus DPR Dec 2018 per allineamento con NQ-open.
+- **Input**: `florin-hf/wiki_dump2018_nq_open` (HuggingFace) — corpus Wikipedia Dec 2018 aumentato con gold documents NQ
+  - Basato sul dump Wikipedia **Dec 20, 2018** (stesso di DPR, Karpukhin et al. 2020)
+  - Integra gold documents dal dataset NQ con deduplicazione, ~21M documenti
+  - Colonne: `text`, `title` (articoli interi, non pre-segmentati)
+  - Usato da Silvestri et al. in "The Power of Noise"
+- **Fonte**: HuggingFace dataset `florin-hf/wiki_dump2018_nq_open`
+- **Processing**: Download da HF → cache locale come TSV → segmentazione sentence-aligned → indicizzazione con Contriever embeddings
+- **Output**: `psgs_w100_sentence.tsv` (passaggi sentence-aligned da 100 parole) + indice FAISS
+- **Storico**: inizialmente si usava `psgs_w100.tsv` (corpus DPR pre-segmentato da repo Silvestri), ricostruendo articoli con Polars e rimuovendo padding DPR. Ora si parte direttamente da articoli interi via HF.
 
 ### Step 2 — Query Filtering
 - **Input**: NQ-open dataset completo
@@ -133,19 +133,16 @@
 
 ## 4. Osservazioni sull'Implementazione
 
-### 4.1 Corpus: da Kaggle 2023 a Silvestri Dec 2018
-- **Vecchio notebook** (`base/preprocessing.ipynb`): era su Google Colab, usava dataset Kaggle `jjinho/wikipedia-20230701` (~442K articoli) e HuggingFace `HuggingFaceFW/clean-wikipedia`. Conteneva analisi separatori `==...==`, classe Logger custom, funzioni batch processing. Rimane come **riferimento storico**, non più eseguito.
-- **Cambio corpus (2026-02-24)**: il dataset Kaggle 2023 è stato **scartato** perché non allineato con NQ-open (le cui risposte provengono da Wikipedia Dec 2018). Sostituito con il corpus pre-split dal repository del paper di Silvestri.
-- **Dual-corpus strategy (2026-02-24)**: il taglio meccanico DPR causa "semantic bleeding" (frasi spezzate tra chunk adiacenti), penalizzando entity linking e qualità del contesto per il LLM. Decisione: mantenere **entrambi** i corpus:
-  - `psgs_w100.tsv` — DPR standard (baseline confrontabile con la letteratura)
-  - `psgs_w100_sentence.tsv` — ri-segmentazione sentence-aligned (variante sperimentale)
-  - Questo abilita un'ablation study: quanto miglioramento viene dalla segmentazione vs. dal KG reranking?
-- **Perché Polars per la ricostruzione**: il corpus DPR è un TSV da ~13 GB / ~21M righe. Polars (scritto in Rust) offre lazy evaluation, parallelismo automatico su tutti i core, e streaming — processa il file senza caricarlo interamente in RAM. Alternativa pandas scartata: single-thread, richiederebbe ~26 GB di RAM per il DataFrame completo.
+### 4.1 Corpus: evoluzione delle scelte
+- **Vecchio notebook** (`base/preprocessing.ipynb`): era su Google Colab, usava dataset Kaggle `jjinho/wikipedia-20230701` (~442K articoli) e HuggingFace `HuggingFaceFW/clean-wikipedia`. Rimane come **riferimento storico**, non più eseguito.
+- **Cambio corpus (2026-02-24)**: il dataset Kaggle 2023 è stato **scartato** perché non allineato con NQ-open (le cui risposte provengono da Wikipedia Dec 2018). Inizialmente sostituito con `psgs_w100.tsv` (corpus DPR pre-segmentato dal repo Silvestri).
+- **Passaggio a HuggingFace (2026-03-10)**: scoperto che Silvestri et al. ([repo GitHub](https://github.com/florin-git/The-Power-of-Noise)) pubblicano il corpus come dataset HF `florin-hf/wiki_dump2018_nq_open` — articoli interi con gold documents NQ integrati e deduplicati. Questo elimina la necessità di ricostruire articoli da passaggi DPR e rimuovere padding. Il notebook è stato semplificato di conseguenza.
+- **Dual-corpus strategy abbandonata (2026-03-10)**: inizialmente si pensava di mantenere sia il corpus DPR meccanico sia quello sentence-aligned per un'ablation study. Con il passaggio a HF (articoli interi), ricreare il taglio meccanico DPR richiederebbe un secondo splitter ad hoc — lavoro extra non previsto dal proposal. Si procede solo con segmentazione sentence-aligned.
 
 ### 4.2 Sentence-aligned segmentation (decisione 2026-02-25)
 - **Problema riscontrato**: il taglio meccanico DPR a 100 parole causa chunk senza soggetto esplicito (es. l'articolo PAEEK ha un chunk che inizia con "he Cyprus Basketball Federation..." — il soggetto è nel chunk precedente). Questo penalizza entity linking (ReFiNed) e comprensione LLM.
-- **Artefatto padding DPR**: l'ultimo chunk di ogni articolo viene imbottito con parole dall'inizio dell'articolo (titolo + prime frasi) per raggiungere esattamente 100 parole. Questo padding va rimosso prima della ri-segmentazione.
-- **Strategia di ri-segmentazione scelta**: applicare la stessa filosofia DPR a ogni segmento, non solo all'ultimo:
+- **Nota storica**: nel flusso precedente (partendo da `psgs_w100.tsv`) era necessario rimuovere il padding DPR dall'ultimo chunk di ogni articolo prima della segmentazione. Con il passaggio al dataset HF (articoli interi) questo step non è più necessario.
+- **Strategia di segmentazione scelta**: applicare la stessa filosofia DPR a ogni segmento:
   1. Selezionare frasi complete finché `total_words < 100`
   2. Paddare lo spazio rimanente (`100 - total_words` parole) con le prime parole del primo segmento dell'articolo
   3. Risultato: esattamente 100 parole per segmento, frasi intere, padding contestuale
@@ -211,7 +208,7 @@
 
 | Step | Stato | Note |
 |------|-------|------|
-| Corpus Preparation | In corso | Ricostruzione articoli da DPR completata (Polars group_by, 3,232,908 articoli). Padding DPR rimosso con `multiprocessing.Pool.imap` (~87s su 16 core): 3,193,309 articoli con padding, 169M parole rimosse (8.1%). Articoli puliti salvati in `data/wikipedia_2018_clean/articles_clean.tsv` (11.2 GB). Ri-segmentazione sentence-aligned implementata con approccio file-based shared-nothing (zero IPC sui dati: 100 frammenti su disco, worker leggono/scrivono file). **Da eseguire** nel notebook. Output atteso: `data/wikipedia_2018_sentence_aligned/psgs_w100_sentence.tsv`. |
+| Corpus Preparation | Completato | Corpus da HF `florin-hf/wiki_dump2018_nq_open` (~21M articoli con gold NQ). Segmentazione sentence-aligned completata: 23,910,209 passaggi da 100 parole in `data/wikipedia_2018_sentence_aligned/psgs_w100_sentence.tsv` (14.5 GB). Approccio file-based shared-nothing (100 frammenti, ~22s su 24 core). |
 | Query Filtering | Da fare | |
 | KG Subgraph Construction | Da fare | Notebook `wikidata_preparation.ipynb` da popolare |
 | Baseline Contriever-only | Da fare | |
@@ -232,12 +229,10 @@ dl-RAG-denseAndKG/
 │   └── preprocessing.ipynb             # Vecchio notebook Colab (riferimento)
 ├── utils/
 │   ├── __init__.py
-│   └── text_processing.py             # strip_dpr_padding, segment_article, file_segment_worker
+│   └── text_processing.py             # segment_article, _init_file_worker, file_segment_worker
 ├── data/
-│   ├── wikipedia_2018/
-│   │   └── psgs_w100.tsv              # Corpus DPR originale (12.8 GB, ~21M passaggi)
 │   ├── wikipedia_2018_clean/
-│   │   ├── articles_clean.tsv          # Articoli puliti (11.2 GB, ~3.2M articoli)
+│   │   ├── articles_clean.tsv          # Articoli interi da HF (cache locale, ~3.2M articoli)
 │   │   └── ordered_fragments/          # 100 frammenti input per parallelizzazione
 │   │       └── frag_{0..99}.tsv        # ~32K articoli ciascuno (title, text)
 │   └── wikipedia_2018_sentence_aligned/
@@ -251,4 +246,4 @@ dl-RAG-denseAndKG/
 
 ---
 
-*Ultimo aggiornamento: 2026-03-02*
+*Ultimo aggiornamento: 2026-03-10*

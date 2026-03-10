@@ -12,55 +12,8 @@ _SENTENCE_SPLIT = re.compile(r'(?<=[.!?])\s+')
 _worker_input_dir: Path | None = None
 _worker_output_dir: Path | None = None
 
-def strip_dpr_padding(text: str) -> tuple[str, int, int]:
-    """Remove DPR trailing padding from a reconstructed article.
-
-    The DPR corpus pads the last chunk of each article by copying words
-    from the beginning of the article to fill the last passage to exactly
-    100 words. This function detects the longest prefix of the text that
-    also appears as a suffix, and strips it.
-
-    Also computes word counts so the caller doesn't need to re-split
-    the text (which is expensive at scale on 3.2M articles).
-
-    Args:
-        text: full article text (concatenation of all DPR passages).
-
-    Returns:
-        Tuple of (clean_text, original_word_count, clean_word_count).
-    """
-    words = text.split(" ")
-    original_words = len(words)
-
-    # Single-passage articles (<=100 words) cannot have padding:
-    # the entire text IS the article content.
-    if original_words <= 100:
-        return text, original_words, original_words
-
-    # The padding is at most 99 words (one 100-word chunk minus at least 1
-    # original word). We check each possible prefix length and keep the
-    # maximum that matches the suffix — that's the true padding length.
-    padding_len = 0
-    for n in range(1, 100):
-        head_str = " ".join(words[:n])
-        # Prepend space to enforce word boundary:
-        # without it, prefix "art" could match suffix "...restart"
-        if text.endswith(" " + head_str):
-            padding_len = n
-
-    if padding_len == 0:
-        return text, original_words, original_words
-
-    # Slice off the padding and the space before it
-    padding_str = " ".join(words[:padding_len])
-    clean_text = text[:-(len(padding_str) + 1)]
-    clean_words = original_words - padding_len
-
-    return clean_text, original_words, clean_words
-
-
 def segment_article(text: str) -> list[str]:
-    """Re-segment article text into 100-word passages with sentence alignment.
+    """Segment article text into 100-word passages with sentence alignment.
 
     Algorithm:
       1. Split text into sentences (regex on .!? followed by whitespace)
@@ -72,7 +25,7 @@ def segment_article(text: str) -> list[str]:
          from the article's first segment (mirrors DPR padding strategy)
 
     Args:
-        text: Clean article text (DPR padding already removed).
+        text: Full article text.
 
     Returns:
         List of passage strings, each exactly 100 words.
