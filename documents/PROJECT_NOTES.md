@@ -166,7 +166,15 @@
   - Macro-batch `Pool.map` (1 chunk/core): meno IPC calls ma stessa quantità di dati serializzati
   - Shared memory (`multiprocessing.shared_memory`): richiede serializzazione manuale di stringhe in buffer raw, complessità alta senza guadagno proporzionale
 
-### 4.5 Rate limiting SPARQL
+### 4.5 ReFiNed V1 — problemi di compatibilità e workaround
+- **Installazione**: ReFiNed non è su PyPI. Si installa da GitHub: `pip install https://github.com/amazon-science/ReFinED/archive/refs/tags/V1.zip`
+- **Bug 1 — `strftime("%s")` su Windows**: il downloader S3 (`refined/resource_management/aws.py`) usa `strftime("%s")` che è un'estensione Unix-only. Su Windows causa `ValueError: Invalid format string`. **Fix**: monkey-patch a runtime che sovrascrive `S3Manager.download_file_if_needed` usando `.timestamp()` (cross-platform).
+- **Bug 2 — `add_special_tokens` con transformers recenti**: ReFiNed passa `add_special_tokens=False` come kwarg a `AutoTokenizer.from_pretrained()` in più punti (`general_utils.py:127`, `data_lookups.py:80`). Nelle versioni recenti di `transformers` (≥4.x), `add_special_tokens` è un metodo del tokenizer e passarlo come kwarg causa `AttributeError`. **Fix**: monkey-patch a runtime che wrappa `AutoTokenizer.from_pretrained` per rimuovere il kwarg prima che raggiunga il costruttore.
+- **Entity set `wikidata` vs `wikipedia`**: `entity_set="wikidata"` scarica ~20 GB di embeddings pre-calcolati per 33M entità. `entity_set="wikipedia"` (~6M entità) è molto più leggero (~9 GB totali) e sufficiente per NQ-open (tutte le risposte provengono da Wikipedia). Restituisce comunque QID Wikidata.
+- **Cache locale**: i dati del modello vengono salvati in `data/refined_cache/` (gitignored) per evitare re-download.
+- **Tutti i patch sono nel notebook** `nq_filtering.ipynb` — nessun file installato viene modificato su disco, funziona su qualsiasi macchina.
+
+### 4.6 Rate limiting SPARQL
 - L'endpoint Wikidata ha limiti di rate. Sara necessario:
   - Caching aggressivo delle query gia fatte
   - Batch delle richieste dove possibile

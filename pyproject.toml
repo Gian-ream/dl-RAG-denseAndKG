@@ -2,5 +2,28 @@
 name = "dl-rag-denseandkg"
 version = "0.1.0"
 description = "Add your description here"
-requires-python = ">=3.8"
-dependencies = []
+requires-python = ">=3.10"
+dependencies = [
+    "datasets>=3.1.0",
+    "huggingface>=0.0.1",
+    "ipykernel>=6.29.5",
+    "jupyter>=1.1.1",
+    "pandas>=2.0.3",
+    "pandas-stubs~=2.0.3",
+    "polars>=1.8.2",
+    "refined @ https://github.com/amazon-science/ReFinED/archive/refs/tags/V1.zip",
+    "torch>=2.10.0",
+    "torchaudio>=2.10.0",
+    "torchvision>=0.22.0",
+    "transformers==4.48.0",
+]
+
+[[tool.uv.index]]
+name = "pytorch-cu128"
+url = "https://download.pytorch.org/whl/cu128"
+explicit = true
+
+[tool.uv.sources]
+torch = { index = "pytorch-cu128" }
+torchaudio = { index = "pytorch-cu128" }
+torchvision = { index = "pytorch-cu128" }
