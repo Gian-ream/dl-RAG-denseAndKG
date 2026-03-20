@@ -52,11 +52,12 @@
 - **Storico**: inizialmente si usava `psgs_w100.tsv` (corpus DPR pre-segmentato da repo Silvestri), ricostruendo articoli con Polars e rimuovendo padding DPR. Ora si parte direttamente da articoli interi via HF.
 
 ### Step 2 — Query Filtering
-- **Input**: NQ-open dataset completo
-- **Filtering**:
-  - Risposte con <= 5 token
-  - Sia domanda che risposta contengono entita Wikidata riconosciute da ReFiNed
-- **Output**: Subset filtrato di query valide
+- **Input**: `florin-hf/nq_open_gold` — NQ-open arricchito con gold documents da `wiki_dump2018_nq_open` (Silvestri et al.). 83,104 query totali (train 72,209 + validation 8,006 + test 2,889), split uniti.
+- **Filtering** (pipeline a 2 stadi):
+  1. **Token count ≤ 5** (tokenizer Contriever/BERT wordpiece, `add_special_tokens=False`): criterio ALL (tutte le varianti risposta devono passare). Risultato: 76,406 query (91.9%). Split answers (1.4%) sacrificate per coerenza.
+  2. **Entity linking ReFiNed**: modello `questions_model` (fine-tuned WebQSP), entity_set `wikipedia` (~6M entità). Criterio: domanda ha ≥1 entità AND tutte le varianti risposta hanno ≥1 entità. Risultato: 31,372 query (41.1% delle 76,406).
+- **Output**: `data/NQ_question/qa_all_entities.jsonl` (31,372 query filtrate con QID) + `data/NQ_question/qa_entities_general.jsonl` (76,406 query con entity info completa)
+- **Notebook**: `nq_filtering.ipynb`
 
 ### Step 3 — KG Subgraph Construction (Wikidata Preparation)
 - **Input**: Entita estratte dalle query filtrate + entita nei top-100 documenti recuperati
@@ -169,10 +170,11 @@
 ### 4.5 ReFiNed V1 — problemi di compatibilità e workaround
 - **Installazione**: ReFiNed non è su PyPI. Si installa da GitHub: `pip install https://github.com/amazon-science/ReFinED/archive/refs/tags/V1.zip`
 - **Bug 1 — `strftime("%s")` su Windows**: il downloader S3 (`refined/resource_management/aws.py`) usa `strftime("%s")` che è un'estensione Unix-only. Su Windows causa `ValueError: Invalid format string`. **Fix**: monkey-patch a runtime che sovrascrive `S3Manager.download_file_if_needed` usando `.timestamp()` (cross-platform).
-- **Bug 2 — `add_special_tokens` con transformers recenti**: ReFiNed passa `add_special_tokens=False` come kwarg a `AutoTokenizer.from_pretrained()` in più punti (`general_utils.py:127`, `data_lookups.py:80`). Nelle versioni recenti di `transformers` (≥4.x), `add_special_tokens` è un metodo del tokenizer e passarlo come kwarg causa `AttributeError`. **Fix**: monkey-patch a runtime che wrappa `AutoTokenizer.from_pretrained` per rimuovere il kwarg prima che raggiunga il costruttore.
+- **Bug 2 — `add_special_tokens` con transformers recenti**: ReFiNed passa `add_special_tokens=False` come kwarg a `AutoTokenizer.from_pretrained()` in più punti (`general_utils.py:127`, `data_lookups.py:80`). Nelle versioni recenti di `transformers` (≥4.x), `add_special_tokens` è un metodo del tokenizer e passarlo come kwarg causa `AttributeError`. **Fix**: patch sorgente che rimuove il kwarg.
+- **Bug 3 — `re.compile()` senza raw string**: `loaders.py` usa escape sequences in pattern regex senza `r"..."`, causando `SyntaxWarning` in Python 3.12+. **Fix**: patch sorgente che aggiunge il prefisso `r`.
 - **Entity set `wikidata` vs `wikipedia`**: `entity_set="wikidata"` scarica ~20 GB di embeddings pre-calcolati per 33M entità. `entity_set="wikipedia"` (~6M entità) è molto più leggero (~9 GB totali) e sufficiente per NQ-open (tutte le risposte provengono da Wikipedia). Restituisce comunque QID Wikidata.
 - **Cache locale**: i dati del modello vengono salvati in `data/refined_cache/` (gitignored) per evitare re-download.
-- **Tutti i patch sono nel notebook** `nq_filtering.ipynb` — nessun file installato viene modificato su disco, funziona su qualsiasi macchina.
+- **Patch applicati a livello sorgente** tramite `scripts/patch_refined.py` — lo script modifica direttamente i file installati nella venv. Va ri-eseguito dopo `uv sync` o reinstallazione del pacchetto. Il notebook `nq_filtering.ipynb` invoca lo script automaticamente prima del caricamento del modello.
 
 ### 4.6 Rate limiting SPARQL
 - L'endpoint Wikidata ha limiti di rate. Sara necessario:
@@ -217,7 +219,7 @@
 | Step | Stato | Note |
 |------|-------|------|
 | Corpus Preparation | Completato | Corpus da HF `florin-hf/wiki_dump2018_nq_open` (~21M articoli con gold NQ). Segmentazione sentence-aligned completata: 23,910,209 passaggi da 100 parole in `data/wikipedia_2018_sentence_aligned/psgs_w100_sentence.tsv` (14.5 GB). Approccio file-based shared-nothing (100 frammenti, ~22s su 24 core). |
-| Query Filtering | Da fare | |
+| Query Filtering | **Completato** | Notebook `nq_filtering.ipynb`. Dataset `florin-hf/nq_open_gold` (83,104 query, 3 split uniti). Token filter ≤5 (Contriever tokenizer, ALL variants): 76,406 query. Entity linking ReFiNed (`questions_model`, entity_set `wikipedia`): 31,372 query con entità sia in domanda che in TUTTE le varianti risposta (41.1%). Output: `data/NQ_question/qa_all_entities.jsonl` (filtrate) + `qa_entities_general.jsonl` (tutte con entity info). |
 | KG Subgraph Construction | Da fare | Notebook `wikidata_preparation.ipynb` da popolare |
 | Baseline Contriever-only | Da fare | |
 | KG-Enhanced Reranking | Da fare | |
@@ -238,20 +240,27 @@ dl-RAG-denseAndKG/
 ├── utils/
 │   ├── __init__.py
 │   └── text_processing.py             # segment_article, _init_file_worker, file_segment_worker
+├── scripts/
+│   └── patch_refined.py               # Patch sorgente per ReFiNed V1 (Windows + Python 3.12+ + transformers 4.x)
 ├── data/
 │   ├── wikipedia_2018_clean/
 │   │   ├── articles_clean.tsv          # Articoli interi da HF (cache locale, ~3.2M articoli)
 │   │   └── ordered_fragments/          # 100 frammenti input per parallelizzazione
 │   │       └── frag_{0..99}.tsv        # ~32K articoli ciascuno (title, text)
-│   └── wikipedia_2018_sentence_aligned/
-│       ├── ordered_fragments/          # 100 frammenti output dei worker
-│       │   └── frag_{0..99}.tsv        # passaggi flat (text, title)
-│       └── psgs_w100_sentence.tsv      # Corpus sentence-aligned finale (id, text, title)
-├── wikidata_preparation.ipynb          # Notebook principale
+│   ├── wikipedia_2018_sentence_aligned/
+│   │   ├── ordered_fragments/          # 100 frammenti output dei worker
+│   │   │   └── frag_{0..99}.tsv        # passaggi flat (text, title)
+│   │   └── psgs_w100_sentence.tsv      # Corpus sentence-aligned finale (id, text, title)
+│   ├── NQ_question/
+│   │   ├── qa_all_entities.jsonl       # 31,372 query filtrate (Q+A hanno entità)
+│   │   └── qa_entities_general.jsonl   # 76,406 query post token filter (con entity info)
+│   └── refined_cache/                  # Cache locale modello ReFiNed (~9 GB)
+├── nq_filtering.ipynb                  # Step 2 — Query Filtering (token + entity linking)
+├── wikidata_preparation.ipynb          # Notebook principale (Step 3+)
 ├── main.py                             # Entry point (da definire)
 └── .venv/                              # Virtual environment locale
 ```
 
 ---
 
-*Ultimo aggiornamento: 2026-03-10*
+*Ultimo aggiornamento: 2026-03-20*

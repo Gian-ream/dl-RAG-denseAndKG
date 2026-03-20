@@ -36,6 +36,9 @@ Rappresentazione vettoriale densa di un testo (parola, frase, passaggio) in uno 
 ### Entity Linking
 Task NLP che consiste nel riconoscere menzioni di entita nel testo e collegarle alla voce corrispondente in una knowledge base (nel nostro caso, Wikidata QID).
 
+### Entity Set (ReFiNed)
+Insieme di entita candidate per il linking. ReFiNed offre due opzioni: `wikipedia` (~6M entita con pagina Wikipedia, ~9 GB) e `wikidata` (~33M entita, ~20 GB). Per NQ-open usiamo `wikipedia` perche tutte le risposte provengono da Wikipedia. Entrambi restituiscono QID Wikidata.
+
 ## F
 
 ### FAISS (Facebook AI Similarity Search)
@@ -45,6 +48,11 @@ Libreria di Meta per ricerca efficiente di nearest-neighbor su vettori densi. Pe
 
 ### Hop (nel grafo)
 Un "salto" lungo un arco del grafo. Se A e collegato a B e B a C, allora C e a 2-hop da A. Nel progetto usiamo 3-hop come soglia di prossimita.
+
+## J
+
+### JSONL (JSON Lines)
+Formato di file dove ogni riga e un oggetto JSON indipendente. Usato nel progetto per salvare i risultati dell'entity linking (`qa_all_entities.jsonl`, `qa_entities_general.jsonl`). Vantaggi: append-friendly, leggibile riga per riga senza caricare tutto in memoria.
 
 ## K
 
@@ -63,6 +71,9 @@ Modalità in cui le operazioni non vengono eseguite immediatamente, ma accumulat
 
 ### NQ-open (Natural Questions Open)
 Dataset di domande reali poste a Google, con risposte estratte da Wikipedia. Nella variante "open", il sistema deve trovare la risposta nell'intero corpus (non in un singolo documento dato).
+
+### nq_open_gold (florin-hf/nq_open_gold)
+Dataset HuggingFace di Silvestri et al. che arricchisce NQ-open con gold documents estratti dal corpus `wiki_dump2018_nq_open`. 83,104 query totali (train 72,209 + validation 8,006 + test 2,889). Colonne: `question`, `answers` (lista), `text` (gold document), `example_id`, `idx_gold_in_corpus`.
 
 ## P
 
@@ -93,10 +104,21 @@ Processo di riordinamento dei documenti recuperati. Nel nostro caso: si recupera
 ### SPARQL
 Linguaggio di query per grafi RDF/knowledge graph. Usato per interrogare l'endpoint Wikidata ed estrarre vicinati di entita.
 
+## T
+
+### Token Threshold (≤ 5)
+Criterio di filtraggio per le query NQ-open: si tengono solo query le cui risposte hanno al massimo 5 token (misurati con il tokenizer Contriever/BERT wordpiece). Scopo: garantire che le risposte siano entita brevi e fattoriali, adatte al confronto con entita Wikidata.
+
 ## W
+
+### WebQSP (WebQuestions Semantic Parses)
+Dataset di entity linking su domande in linguaggio naturale. Usato per il fine-tuning del modello `questions_model` di ReFiNed, che risulta piu adatto a testo in stile domanda (lowercase, senza punteggiatura) rispetto al `wikipedia_model` addestrato su prosa Wikipedia.
 
 ### Wikidata
 Knowledge graph aperto e collaborativo gestito dalla Wikimedia Foundation. Contiene dati strutturati su milioni di entita (persone, luoghi, concetti) con relazioni tipizzate.
+
+### Wordpiece (tokenizzazione)
+Algoritmo di tokenizzazione subword usato da BERT (e quindi da Contriever). Spezza parole rare in sotto-unita (es. "Calrissian" → ["cal", "##ris", "##sian"]). Il prefisso `##` indica continuazione della parola precedente. Rilevante nel progetto per il conteggio token delle risposte (soglia ≤ 5).
 
 ---
 
@@ -105,4 +127,4 @@ File TSV prodotto dal preprocessing DPR. Contiene ~21M righe, ciascuna un passag
 
 ---
 
-*Ultimo aggiornamento: 2026-02-24*
+*Ultimo aggiornamento: 2026-03-20*
