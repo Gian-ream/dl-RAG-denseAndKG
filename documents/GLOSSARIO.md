@@ -42,7 +42,10 @@ Insieme di entita candidate per il linking. ReFiNed offre due opzioni: `wikipedi
 ## F
 
 ### FAISS (Facebook AI Similarity Search)
-Libreria di Meta per ricerca efficiente di nearest-neighbor su vettori densi. Permette di indicizzare milioni di embeddings e trovare i piu simili a una query in tempi sub-lineari.
+Libreria di Meta per ricerca efficiente di nearest-neighbor su vettori densi. Permette di indicizzare milioni di embeddings e trovare i piu simili a una query in tempi sub-lineari. FAISS contiene **solo vettori numerici**, niente testo o metadati: per risalire al testo originale serve un mapping esterno (nel nostro caso i file `shard_XX_ids.npy`).
+
+### FAISS IndexFlatIP
+Tipo di indice FAISS che usa il prodotto interno (Inner Product) come metrica di similarita. "Flat" = ricerca brute-force esatta (confronta la query con tutti i vettori, nessuna approssimazione). Su vettori normalizzati, il prodotto interno equivale alla cosine similarity. Nel progetto usiamo un indice per shard (~5M vettori ciascuno).
 
 ## H
 
@@ -62,10 +65,18 @@ Grafo strutturato dove i nodi sono entita e gli archi sono relazioni tra esse. W
 ### KG Score
 Score calcolato dalla topologia del grafo: `kg_score = connected_ratio * purity_ratio`. Usato per reranking dei documenti combinandolo con lo score denso.
 
+## I
+
+### Inner Product (prodotto interno)
+Operazione tra due vettori: somma dei prodotti elemento per elemento. Per vettori normalizzati (norma = 1), il prodotto interno coincide con la cosine similarity. Usato da FAISS (`IndexFlatIP`) come metrica di similarita tra embedding di query e passaggi.
+
 ## L
 
 ### Lazy Evaluation (Polars)
 Modalità in cui le operazioni non vengono eseguite immediatamente, ma accumulate in un piano logico. Polars ottimizza il piano (riordina operazioni, elimina colonne inutili, fonde passaggi ridondanti) prima di eseguirlo. Analogo al query planner di un database SQL. Si attiva con `scan_csv()` (lazy) invece di `read_csv()` (eager).
+
+### Mean Pooling
+Tecnica per ottenere un singolo vettore embedding da una sequenza di token. Si fa la media dei vettori di tutti i token reali (escludendo il padding). Contriever usa mean pooling invece del token CLS (usato da BERT). Formula: somma dei vettori token / numero di token reali.
 
 ## N
 
@@ -101,6 +112,9 @@ Processo di riordinamento dei documenti recuperati. Nel nostro caso: si recupera
 
 ## S
 
+### Sharding (FAISS)
+Strategia di partizionamento dell'indice FAISS in piu pezzi (shard) per gestire dataset che non entrano in memoria. Nel progetto: 23.9M vettori × 768 dim × 4 bytes ≈ 73 GB, suddivisi in 5 shard da ~5M vettori (~15 GB ciascuno). A search time si carica uno shard alla volta su GPU.
+
 ### SPARQL
 Linguaggio di query per grafi RDF/knowledge graph. Usato per interrogare l'endpoint Wikidata ed estrarre vicinati di entita.
 
@@ -127,4 +141,4 @@ File TSV prodotto dal preprocessing DPR. Contiene ~21M righe, ciascuna un passag
 
 ---
 
-*Ultimo aggiornamento: 2026-03-20*
+*Ultimo aggiornamento: 2026-03-23*

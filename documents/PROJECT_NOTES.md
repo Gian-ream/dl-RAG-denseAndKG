@@ -48,7 +48,23 @@
   - Usato da Silvestri et al. in "The Power of Noise"
 - **Fonte**: HuggingFace dataset `florin-hf/wiki_dump2018_nq_open`
 - **Processing**: Download da HF → cache locale come TSV → segmentazione sentence-aligned → indicizzazione con Contriever embeddings
-- **Output**: `psgs_w100_sentence.tsv` (passaggi sentence-aligned da 100 parole) + indice FAISS
+- **Output**: `psgs_w100_sentence.tsv` (passaggi sentence-aligned da 100 parole) + indice FAISS shardato
+
+### Step 1b.4 — Passage Encoding & FAISS Indexing
+- **Input**: `psgs_w100_sentence.tsv` (23.9M passaggi, 14.5 GB)
+- **Notebook**: `embedding.ipynb`
+- **Processing**:
+  1. Caricamento corpus con Polars (`pl.read_csv` con `schema_overrides`)
+  2. Per ogni passaggio: concatenazione `title + " " + text` (stesso formato di Silvestri et al.)
+  3. Encoding con Contriever su GPU (batch 512, mean pooling su token non-padding)
+  4. Sharding: 5 shard da ~5M vettori (23.9M × 768 × 4B ≈ 73 GB, non entra in RAM/VRAM)
+  5. Costruzione indici `faiss.IndexFlatIP` (brute-force exact inner product)
+- **Output** (in `data/faiss_index/`):
+  - `shard_XX.npy`: embedding float32 (5M × 768)
+  - `shard_XX_ids.npy`: mapping posizione → passage ID (per risalire al testo nel TSV)
+  - `shard_XX.faiss`: indice FAISS serializzato
+- **Nota chiave**: FAISS contiene solo vettori numerici, niente testo. Per recuperare il testo serve: posizione FAISS → `shard_ids` → passage ID → corpus TSV
+- **Resume support**: shard già completati vengono skippati automaticamente
 - **Storico**: inizialmente si usava `psgs_w100.tsv` (corpus DPR pre-segmentato da repo Silvestri), ricostruendo articoli con Polars e rimuovendo padding DPR. Ora si parte direttamente da articoli interi via HF.
 
 ### Step 2 — Query Filtering
@@ -219,6 +235,7 @@
 | Step | Stato | Note |
 |------|-------|------|
 | Corpus Preparation | Completato | Corpus da HF `florin-hf/wiki_dump2018_nq_open` (~21M articoli con gold NQ). Segmentazione sentence-aligned completata: 23,910,209 passaggi da 100 parole in `data/wikipedia_2018_sentence_aligned/psgs_w100_sentence.tsv` (14.5 GB). Approccio file-based shared-nothing (100 frammenti, ~22s su 24 core). |
+| **FAISS Indexing** | **In corso** | Notebook `embedding.ipynb`. Encoding 23.9M passaggi con Contriever (batch 512, GPU) → 5 shard da ~5M vettori ciascuno. Indici `IndexFlatIP` (exact inner product, equivalente a cosine similarity su vettori normalizzati). Output: `data/faiss_index/shard_XX.npy` + `shard_XX_ids.npy` + `shard_XX.faiss`. Nota: FAISS contiene solo vettori numerici — per risalire al testo serve il lookup `posizione FAISS → shard_ids → passage ID → TSV corpus`. |
 | Query Filtering | **Completato** | Notebook `nq_filtering.ipynb`. Dataset `florin-hf/nq_open_gold` (83,104 query, 3 split uniti). Token filter ≤5 (Contriever tokenizer, ALL variants): 76,406 query. Entity linking ReFiNed (`questions_model`, entity_set `wikipedia`): 31,372 query con entità sia in domanda che in TUTTE le varianti risposta (41.1%). Output: `data/NQ_question/qa_all_entities.jsonl` (filtrate) + `qa_entities_general.jsonl` (tutte con entity info). |
 | KG Subgraph Construction | Da fare | Notebook `wikidata_preparation.ipynb` da popolare |
 | Baseline Contriever-only | Da fare | |
@@ -255,12 +272,18 @@ dl-RAG-denseAndKG/
 │   │   ├── qa_all_entities.jsonl       # 31,372 query filtrate (Q+A hanno entità)
 │   │   └── qa_entities_general.jsonl   # 76,406 query post token filter (con entity info)
 │   └── refined_cache/                  # Cache locale modello ReFiNed (~9 GB)
+├── embedding.ipynb                     # Step 1b.4 — Passage Encoding & FAISS Indexing
 ├── nq_filtering.ipynb                  # Step 2 — Query Filtering (token + entity linking)
 ├── wikidata_preparation.ipynb          # Notebook principale (Step 3+)
+├── data/
+│   └── faiss_index/                    # Output di embedding.ipynb
+│       ├── shard_XX.npy                # Embedding float32 (5M × 768 per shard)
+│       ├── shard_XX_ids.npy            # Mapping posizione FAISS → passage ID
+│       └── shard_XX.faiss              # Indice FAISS IndexFlatIP
 ├── main.py                             # Entry point (da definire)
 └── .venv/                              # Virtual environment locale
 ```
 
 ---
 
-*Ultimo aggiornamento: 2026-03-20*
+*Ultimo aggiornamento: 2026-03-23*

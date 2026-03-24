@@ -1,0 +1,29 @@
+PROSSIMI STEP — aggiornato 2026-03-23
+
+Step 1 — Corpus Preparation: COMPLETATO
+Step 2 — Query Filtering: COMPLETATO
+Step 1b.4 — Indicizzazione FAISS: IN CORSO
+  - Notebook: embedding.ipynb
+  - Encoding 23.9M passaggi con Contriever (GPU) in 5 shard da 5M
+  - Indici FAISS IndexFlatIP (exact inner product) per shard
+  - Output: data/faiss_index/shard_XX.npy + shard_XX_ids.npy + shard_XX.faiss
+  - FAISS contiene solo vettori: per risalire al testo serve shard_ids -> TSV corpus
+
+Step 3 — Retrieval + Entity Linking sui documenti
+  - Per ogni query filtrata: top-100 passaggi da FAISS (ricerca multi-shard su GPU)
+  - Entity linking (ReFiNed) sui passaggi recuperati
+
+Step 3b — KG Subgraph Construction
+  - Per entita (query + documenti): 3-hop su Wikidata via SPARQL
+  - Caching aggressivo (rate limiting Wikidata)
+  - Output: grafo locale NetworkX
+
+Step 5 — KG-Enhanced Reranking
+  - kg_score = connected_ratio * purity_ratio
+  - final_score = 0.5 * contriever_score + 0.5 * kg_score
+  - Reranking top-100 -> top-5
+
+Step 4 + 6 — Baseline + Evaluation
+  - Baseline: top-5 da Contriever puro -> Llama2-7B -> Exact Match
+  - KG-enhanced: top-5 da reranking -> Llama2-7B -> Exact Match
+  - Confronto accuracy
