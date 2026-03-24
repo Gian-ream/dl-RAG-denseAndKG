@@ -57,7 +57,7 @@
   1. Caricamento corpus con Polars (`pl.read_csv` con `schema_overrides`)
   2. Per ogni passaggio: concatenazione `title + " " + text` (stesso formato di Silvestri et al.)
   3. Encoding con Contriever su GPU (batch 512, mean pooling su token non-padding)
-  4. Sharding: 5 shard da ~5M vettori (23.9M × 768 × 4B ≈ 73 GB, non entra in RAM/VRAM)
+  4. Sharding: 9 shard da ~5M vettori (ultimo shard ~2M). Corpus effettivo: ~42M passaggi × 768 × 4B ≈ 129 GB, non entra in RAM/VRAM
   5. Costruzione indici `faiss.IndexFlatIP` (brute-force exact inner product)
 - **Output** (in `data/faiss_index/`):
   - `shard_XX.npy`: embedding float32 (5M × 768)
