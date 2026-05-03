@@ -76,9 +76,12 @@
 - **Notebook**: `nq_filtering.ipynb`
 
 ### Step 3 — KG Subgraph Construction (Wikidata Preparation)
-- **Input**: Entita estratte dalle query filtrate + entita nei top-100 documenti recuperati
-- **Processing**: Per ogni entita, estrazione vicinato 3-hop su Wikidata via SPARQL API
-- **Output**: Grafo locale (networkx o similare) con le connessioni tra entita
+- **Input**:
+  - Query entities: `data/NQ_answer/queries_curated.jsonl` (1000 query, `question_qids` + `answer_variant_qids`)
+  - Passage entities: `data/NQ_answer/passage_entities_curated.parquet` (90.667 passaggi unici, lista QID per passaggio)
+- **Storage del grafo Wikidata**: **dump HDT pre-built locale** (`latest-all-06-Jan-2022.hdt`, ~166 GB) interrogato via `pyHDT` in WSL2. SPARQL endpoint pubblico abbandonato dopo prove empiriche di timeout sui count per iper-hub (vedi 4.7).
+- **Processing**: BFS a 3 onde con deduplicazione globale dei nodi visitati. Per ogni seed l'helper `neighbors_q(doc, qid)` (in `scripts/hdt_query_test.py`) restituisce vicini Q-target uscenti+entranti, indicizzati per predicato.
+- **Output**: Grafo locale (NetworkX) con archi `(src_qid, predicate, dst_qid)`, salvato come parquet incrementale onda-per-onda per resumability
 
 ### Step 4 — Baseline (Contriever-only)
 - **Input**: Query filtrate
@@ -198,6 +201,186 @@
   - Batch delle richieste dove possibile
   - Eventuale download di un dump Wikidata locale per query intensive
 
+### 4.7 SPARQL endpoint pubblico → dump HDT locale (decisione 2026-04-25)
+
+**Piano iniziale**: lookup tramite `https://query.wikidata.org/sparql` con strategia "pre-onda count + onda estrazione", organizzata in fallback a 4 livelli (count globale → distinct predicates → per-predicato → skip nodo).
+
+**Problema empirico verificato sull'endpoint pubblico**:
+- `SELECT DISTINCT ?p WHERE { ?n ?p wd:Q5 }` → **timeout** (nemmeno la lista dei predicati distinti)
+- `SELECT (COUNT(?n) AS ?c) WHERE { ?n wdt:P31 wd:Q5 }` → **timeout** (anche solo il count, query minimale, niente FILTER)
+
+Q5 ("essere umano") come oggetto di P31 ha ~10M+ righe e il server pubblico non riesce a contarle entro il limite di 60s. Questo invalida tutto lo schema di fallback: per coppie *(hub, predicato-popolare)* anche il livello L4 (count per singolo predicato) fallisce.
+
+**Pivot**: passaggio al dump HDT pre-built `latest-all-06-Jan-2022.hdt` (~166 GB), URL `https://hdt-dumps.cluster.ai.wu.ac.at/dumps/`. Lookup locali tramite `pyHDT` da Python in **WSL2/Ubuntu** (Windows nativo non supporta la build C++ del binding pulitamente). I count per pattern triple su HDT sono sub-millisecondi: vanno direttamente all'indice POS pre-costruito.
+
+**Conseguenze sul piano**:
+- Niente blacklist predicati popolari, niente fallback, niente rate limit
+- BFS 3-hop con espansione completa (anche su Q5, Q30) diventa fattibile
+- Tempo stimato per i ~100k seed: poche ore in totale (vs 1-2 giorni col pubblico)
+- Snapshot gennaio 2022 va bene: ReFiNed è anch'esso 2022, le QID seed sono stabili, il grafo concettuale post-2022 non è rilevante per il task
+
+**Alternative scartate**:
+- **Triple store self-hosted** (Blazegraph/Virtuoso/QLever): l'utente l'aveva provato in passato, esploso a 5 TB in fase di ingestione (working space per la build degli indici 3x-5x il dataset finale)
+- **Build HDT da `latest-truthy.nt.gz`**: 12-24h di build + disco transitorio. Il pre-built copre già i nostri scopi
+- **Linked Data Fragments**: per pattern singoli funziona ma più lento, ed endpoint pubblico per Wikidata non sempre affidabile
+- **`hdt` package PyPI su Windows nativo**: build C++ richiede Visual Studio Build Tools, deps native (`pybind11` non dichiarata correttamente nel `pyproject.toml` upstream, lib `libserd`/`libraptor`), troppo fragile
+
+**Materiale archeologico** (esperimenti SPARQL precedenti, tenuti per riferimento ma non più nella pipeline):
+- `data/Wikidata_service/queryPredicati.csv` — lista 13.431 predicati Wikidata
+- `data/Wikidata_service/test_queries/query_NNNNN.sparql` — file di test count batched (100→5000 predicati su Q5)
+- `scripts/build_test_queries.py` — generatore dei file sopra
+
+### 4.8 Layer 1 export: bug pyHDT wildcard iterator → fix per-predicate (2026-04-27 / 2026-04-28)
+
+**Sintomo**. La prima versione di `scripts/hdt_export.py` usava `doc.search_triples("", "", "")` (wildcard puro) per enumerare tutte le triple e filtrare in-loop le Q-Q `wdt:*`. L'iteratore ha mostrato due anomalie:
+
+1. **Overshoot**: yieldava 8.85B+ triple contro le 3.65B dichiarate da `doc.total_triples` (header HDT). Probabile causa: l'header conta una sezione, l'iteratore wildcard traversa anche labels/descrizioni/reificazioni `wd:statement:*`/proprietà.
+2. **Gap silenziosi**: pur in overshoot, MANCAVANO righe Q-Q `wdt:*` genuine. Ctrl+C al 242% di iterazione con buffer parziale (max 999.999 righe) non flushato.
+
+**Diagnosi**. `verify_completeness.py` Phase 1 ha confermato che la API HDT *predicate-restricted* (`search_triples("", "wdt:Pxxx", "")`) restituisce conteggi **esatti** (`iter_total == hdt_count` per P7481/P3174/P2860). Il bug è solo nel wildcard puro su dump di questa dimensione.
+
+**Fix**. Nuovo script `scripts/hdt_export_per_predicate.py` che enumera `P1...P15000` e per ogni `Pxxx` con count > 0 itera in modo bounded. Risultato (run ~1h):
+- 661.471.158 righe Q-Q `wdt:*` (vs 661.000.000 del wildcard parziale, +471k recuperate)
+- 1.431 predicati con dati
+- iterazione deterministica, validabile per-predicato
+
+Verifica empirica del nuovo parquet (DuckDB) sui 3 predicati sanity-checked: 1, 1.200, 284.766.906 — match esatto con `iter_qq` di Phase 1.
+
+**File**. Lo script wildcard buggato (`scripts/hdt_export.py`) è stato **cancellato**. Il vecchio parquet è conservato come artifact storico in `data/db/edges_v1_wildcard_partial.parquet`; quello canonico è `data/db/edges.parquet` (versione per-predicato).
+
+**Lesson learned**. Le API "wildcard scan" su dump grandi possono fallire silenziosamente. Quando un index permette di restringere via predicate/type, **preferire l'iterazione vincolata e validare con header counts**.
+
+### 4.9 Layer 3 — gestione seed-hub: option A1 (degree-threshold seed-skip) (decisione 2026-04-28)
+
+**Sintomo**. Primo dry-run di `scripts/build_n3.py` con threshold=5000, 100 seed sampled, 12 worker: tutti i seed hub-popolari (Q21=England, Q145=UK, …) andavano in `TIMEOUT` a 60s con `reach=0 ban=0`. Il guard `total_degree > threshold` esistente nel BFS si applicava ai *vicini* incontrati durante l'espansione, ma il seed *stesso* veniva sempre espanso → wave 1 di un seed mega-hub (es. Q30=USA, 2.3M edges) da sola supera 60s prima ancora di hit-tare il primo guard.
+
+**Diagnosi**. Script diagnostico `scripts/seed_degree_stats.py` (DuckDB in-memory + JOIN su `node_stats.parquet`) sulla seed pool (1.416 distinct = unione `question_qids ∪ answer_variant_qids`):
+
+- distribuzione: p50=71, p90=3.760, p95=17.064, p99=379.800, max=2.353.407 (Q30=USA)
+- a soglia 5.000: **124 seed (8.8%)** sono hub
+- top-30: tutti **paesi** (USA, UK, DE, FR, CN, IN, …) + Catholic Church, Paris, London
+
+Estensione del diagnostic alla classificazione **per-query** usando solo `question_qids` (non answer-variants — al retrieval-time abbiamo solo la query, non la risposta):
+
+- 1.000 query, **media 1.0 question_qids/query** (max 2) → ogni query è essenzialmente determinata dal suo unico concept di partenza
+- a soglia 5.000: **822 `clean` (82.2%)**, 4 `mixed` (0.4%), **174 `all-hub` (17.4%)**
+
+Asimmetria seed-vs-query: 8.8% di hub-seeds → 17.4% di query "tainted", perché i seed hub-popolari (Q30, Q145, Q142) compaiono come unico question_qid in molte query.
+
+**Decisione — option A1: degree-threshold seed-skip**. Confronto con la letteratura (HippoRAG NeurIPS 2024, GraphSAGE NeurIPS 2017, PullNet EMNLP 2019, Resource Allocation Index Zhou et al. 2009, PPR family) ordinato per implementation effort:
+
+1. **A1 — degree-threshold seed-skip** — 5 min, 3 righe (scelta)
+2. PDB — predicate-direction blacklist (P17/P31/P131/P276 incoming) — 1-2h + tuning iterativo
+3. Resource Allocation weighted overlap (`Σ 1/deg(z)` invece di `|∩|`) — 2-3h + downstream rewrite + serve A1 sotto comunque
+4. PPR à la HippoRAG — giorni (sparse matrix, scoring continuo, downstream da rifare)
+
+A1 è anche **prassi metodologica** in WebQSP (Yih et al. ACL 2016) e CWQ (Talmor & Berant NAACL 2018): split eval set per `clean`/`hub` subset e riportare metriche separate. Le 174 query `all-hub` riceveranno KG-score=0 → fallback denso puro.
+
+**Implementazione**. Guard all'inizio di `bfs_3_waves`:
+
+```python
+seed_deg = get_degrees_batch([seed_qid], db).get(seed_qid, 0)
+if seed_deg > threshold:
+    seed_lbl = get_label(seed_qid, doc, label)
+    return {}, [(seed_qid, seed_lbl, seed_deg, 0)]
+```
+
+I seed-hub vengono registrati in `banned_hubs.parquet` con `origin_qid == hub_qid` e `first_seen_dist=0` — distinguibili dai banned-mid-BFS via filtro SQL. Nuovo status worker `seed_hub` separato da `ok` e `timeout`, con marker `SKIPHUB` nel log per-seed e counter dedicato `n_seed_hub` nel summary finale.
+
+**Limite onesto da riportare nel paper**: ~17% delle query ricadono nella categoria "popular entity" (paesi, religioni, città capitali) dove il KG-overlap con N3 a 3-hop non è discriminativo (qualsiasi passaggio mainstream "tocca" Italy / USA / UK). Per quelle query la pipeline ricade sul pure dense retrieval. Le metriche andranno riportate separatamente per `clean` (n=822) vs `all-hub` (n=174).
+
+**Alternative scartate**:
+
+- **A2 — drop hard delle query non-clean**: avrebbe ridotto eval set da 1000 a 822 e introdotto **selection bias** sistematico (rimuove proprio le query su entità popolari → KG-rerank apparirebbe migliore di quanto sia in produzione, hide failure mode su traffico real-world)
+- **PDB — predicate-direction blacklist**: elegante ma richiede tuning iterativo dei predicati da bannare (P17/P31/P131/P276/P19/…) + non risolve seed estremi tipo Q30 con 506k incoming P17. Tenuto come **ablation v2**
+- **PPR/HippoRAG**: rewrite completo (sparse matrix, scoring continuo), incompatibile con set-overlap metric scelta nel proposal
+- **Resource Allocation weighted overlap**: serve A1 sotto comunque (hub estremi ammazzano BFS prima del weighting), poi `Σ 1/deg(z)` sostituisce `|∩|`. Tenuto come **ablation v3**
+
+### 4.10 BFS-N3 abbandonato → switch a N1+per-pair (decisione 2026-04-28)
+
+**Sintomo**. Dry-run di `scripts/build_n3.py` post-fix seed-hub guard (vedi §4.9), 100 seed sample, 12 worker, threshold=5000:
+
+- 7/100 SKIPHUB (guard funziona — Q21, Q148, Q241, Q298, Q664, Q771, Q8222 — paesi/regioni/ONG)
+- 4/100 OK (reach 3.6k-9.1k, t 5-52s — borderline anche quando "completa")
+- **89/100 TIMEOUT** a 60s con `reach=0 ban=0`
+
+I timeout colpiscono seed con degree well below 5000 (Q1558, Q119, Q23666, Q132616, Q4447, …). Sono entità "ordinarie" (persone, eventi, opere), non hub.
+
+**Diagnosi**. Il problema non è il degree del seed, è la **somma esponenziale di wave 2-3**. Anche per seed con degree ~100-1000:
+
+- Wave 1: 100-1000 nodi (ok)
+- Wave 2: degree-batch lookup, hub-ban a 5000, ma i restanti 50-90% non-hub espandono ognuno ~100-1000 vicini → 10k-100k unici dopo dedup
+- Wave 3: 10k × 100-1000 = milioni di triple HDT da iterare → 60s+ anche con I/O parallelo a 12 worker
+
+L'hub-banning node-level cattura solo i casi estremi. Il **costo cumulativo** della BFS-3-onde su un grafo denso come Wikidata supera SEED_TIMEOUT_S per la maggioranza dei seed, indipendentemente dal degree del seed stesso.
+
+**Decisione: switch ad architettura B (N1 precompute + per-pair check)**.
+
+Insight chiave (intuizione dell'utente): la metrica `connected_ratio`/`purity_ratio` chiede *reachability booleana* (`∃ d ∈ D : dist(q,d) ≤ 3`), NON l'intero `N3(q)`. Computare l'intero N3 è overkill; per la metrica binaria basta:
+
+- **dist=1**: `d ∈ N1(q)` — set lookup, O(1)
+- **dist=2**: `N1(q) ∩ N1(d) ≠ ∅` — set intersection, O(min |N1|)
+- **dist=3**: `∃ edge (x,y) : x ∈ N1(q), y ∈ N1(d)` — SQL indicizzata su `edges.parquet`
+
+Costo:
+
+- N1 precompute via DuckDB su `edges.parquet`: ~30-60 min (NO HDT, NO BFS)
+- Per-pair check al scoring: ~1-5ms × ~500k coppie = 8-40 min
+- Totale ~1-2h vs ~5-10h sperate (mai ottenute) della BFS-N3
+
+**Multi-threshold ablation gratis**. La nuova architettura abilita ablation senza ricomputare N1: precompute N1 unfiltered, filtra al volo per soglie multiple `[500, 1000, 2000, 5000, 10000, ∞]`. Permette il claim del paper: "fino a t=X i seed-hub non causano degradazione metrica, oltre cambia così".
+
+**Letteratura — questa è prassi standard per reachability su grafi grandi**:
+
+- **Cohen et al., SODA 2003** — *Reachability and Distance Queries via 2-Hop Labels*. Base teorica del meet-in-the-middle: precomputi label per ogni nodo, query in O(1). I nostri N1 sono la versione "cheap" (1-hop label) di quel framework.
+- **Bidirectional BFS** (CLRS) — costo `O(b^(d/2))` invece di `O(b^d)`. Per il nostro 3-hop dimezza l'esponente.
+- **Lao & Cohen, ACL 2010 (PRA)** — query on-demand su KG senza precompute del subgraph completo.
+
+**Cosa cambia operativamente**:
+
+- `scripts/build_n3.py` deprecato (da rinominare `build_n3_BFS_DEPRECATED.py` per chiarezza, mantenuto per riferimento storico)
+- Nuovo `scripts/build_n1.py` (Layer 3 alternativo, output `data/n1/n1.parquet`)
+- Nuovo `scripts/ablation_diagnostic.py` (output `data/n1/ablation_summary.parquet` + `data/n1/ablation_invalidated_per_t.jsonl`)
+- `scripts/kg.py` v2 (Layer 4) con per-pair check + multi-threshold
+
+**Alternative scartate**:
+
+- Aumentare SEED_TIMEOUT_S a 300s+: sposta il problema senza risolverlo. 1500 seeds × 300s ÷ 12 worker ≈ 10h non garantiti
+- Cap esplicito su frontier wave-2 size: hack, non principled, non riproducibile
+- Restare su BFS accettando 50%+ TIMEOUT: non viable, numeri non attendibili sul KG-rerank
+
+**Lezione**. Per metriche binarie di reachability su grafo denso, la versione *space-eager* (BFS precompute completo) è categoricamente più costosa della *space-lazy* (precompute minimo, calcola al volo). Gli hub-seed sono gestiti naturalmente: non enumeriamo MAI tutti i 2.3M vicini di Q30, controlliamo solo "il `d` specifico è tra di essi?" — set lookup costante.
+
+### 4.11 Layer 4 advanced — query unificata min_dist + persistenza disco (decisione 2026-05-03)
+
+**Contesto**. `scripts/kg.py` (Layer 4) restituisce `(Q_reached, D_reached)` per una sola configurazione `(threshold, max_distance=3)` per chiamata. Per ablation a griglia `distance × threshold` (3 × 6 = 18 celle) richiederebbe 18 query SQL per coppia (Q, D), con grosso overlap di lavoro: la query a `max_dist=3` esegue tutto quello che farebbe la query a `max_dist=2` e `max_dist=1`.
+
+**Decisione: aggiungere `scripts/kg_advanced.py` con classe `KGScorerAdvanced`** che eredita `KGScorer` e introduce due ottimizzazioni indipendenti.
+
+**(1) Query unificata con min_dist**. Le 4 CTE (`d1`, `d2`, `d3a`, `d3b`) proiettano in più una colonna letterale `dist`; l'aggregato finale `MIN(dist) GROUP BY q, d` collassa cammini multipli sulla stessa coppia restituendo la distanza minima. Risultato: mappa `(q, d) → min_dist ∈ {1, 2, 3}`. In Python si deriva il risultato per ogni `max_distance ∈ {1, 2, 3}` filtrando `min_dist ≤ k` — zero lavoro SQL ripetuto sulla dimensione distanza.
+
+Riduzione effettiva su griglia 3×6:
+- Approccio loop: 18 query SQL → 6 × (1+2+4) = 42 esecuzioni di CTE
+- Approccio min_dist: 6 query SQL (1 per threshold) → 6 × 4 = 24 esecuzioni di CTE
+- Speed-up ~1.75x sul lavoro di scansione, ~3x sull'overhead di parsing/planning DuckDB
+
+NB: la threshold cambia il filtro `WHERE neighbor_degree <= ?`, quindi 6 query distinte restano necessarie. Annotare anche `max_bridge_degree` per fattorizzare le threshold rischia esplosione di cardinalità intermedia — non implementato.
+
+**(2) Persistenza su disco** (`data/kg.duckdb`). Il `__init__` ora supporta tre modalità:
+- `db_path=None` → in-memory (fallback debug, comportamento di `KGScorer`)
+- `read_only=True` → apre il file esistente in RO; errore se mancante
+- default → RW, builda solo le tabelle non già presenti nel file (idempotente)
+
+Prima init: ~5 min, ~10-15 GB su disco. Init successive: ~1s (skip rebuild). I worker MP aprono in `read_only=True`, condividono il page cache OS — niente RAM duplicata tra processi.
+
+**API griglia**:
+- `kg_components_grid(Q, D, distances, thresholds) -> pd.DataFrame` — single pair
+- `kg_components_grid_batch(pairs, distances, thresholds) -> pd.DataFrame` — lista `(query_id, Q, passage_id, D)`, ritorna DataFrame "lungo" con colonne `[query_id, passage_id, distance, threshold, connected_ratio, purity_ratio, kg_score]` pronto per `pivot_table`.
+
+**Nota interpretativa**. A `distance=1` la threshold è inerte (no bridge, endpoint sempre preservati): tutte le righe `distance=1` saranno identiche al variare del threshold. A `distance=2` un solo bridge è soggetto a filtro; a `distance=3` due bridge → effetto threshold più pronunciato.
+
+**File originale `scripts/kg.py`**: invariato. La classe vecchia resta operativa per chi la usa già.
+
 ---
 
 ## 5. Flusso Operativo
@@ -235,12 +418,111 @@
 | Step | Stato | Note |
 |------|-------|------|
 | Corpus Preparation | Completato | Corpus da HF `florin-hf/wiki_dump2018_nq_open` (~21M articoli con gold NQ). Segmentazione sentence-aligned completata: 23,910,209 passaggi da 100 parole in `data/wikipedia_2018_sentence_aligned/psgs_w100_sentence.tsv` (14.5 GB). Approccio file-based shared-nothing (100 frammenti, ~22s su 24 core). |
-| **FAISS Indexing** | **In corso** | Notebook `embedding.ipynb`. Encoding 23.9M passaggi con Contriever (batch 512, GPU) → 5 shard da ~5M vettori ciascuno. Indici `IndexFlatIP` (exact inner product, equivalente a cosine similarity su vettori normalizzati). Output: `data/faiss_index/shard_XX.npy` + `shard_XX_ids.npy` + `shard_XX.faiss`. Nota: FAISS contiene solo vettori numerici — per risalire al testo serve il lookup `posizione FAISS → shard_ids → passage ID → TSV corpus`. |
-| Query Filtering | **Completato** | Notebook `nq_filtering.ipynb`. Dataset `florin-hf/nq_open_gold` (83,104 query, 3 split uniti). Token filter ≤5 (Contriever tokenizer, ALL variants): 76,406 query. Entity linking ReFiNed (`questions_model`, entity_set `wikipedia`): 31,372 query con entità sia in domanda che in TUTTE le varianti risposta (41.1%). Output: `data/NQ_question/qa_all_entities.jsonl` (filtrate) + `qa_entities_general.jsonl` (tutte con entity info). |
-| KG Subgraph Construction | Da fare | Notebook `wikidata_preparation.ipynb` da popolare |
+| FAISS Indexing | Completato | Notebook `embedding.ipynb`. Encoding con Contriever (batch 512, GPU) in 9 shard. Indici `IndexFlatIP` (exact inner product). Output in `data/faiss_index/shard_XX.{npy,faiss}` + `shard_XX_ids.npy`. |
+| Query Filtering | Completato | Notebook `nq_filtering.ipynb`. Dataset `florin-hf/nq_open_gold` (83,104 query, 3 split uniti). Token filter ≤5 (Contriever tokenizer, ALL variants): 76,406 query. Entity linking ReFiNed (`questions_model`, entity_set `wikipedia`): 31,372 query con entità sia in domanda che in TUTTE le varianti risposta (41.1%). Output: `data/NQ_question/qa_all_entities.jsonl` (filtrate) + `qa_entities_general.jsonl` (tutte con entity info). |
+| Answer preparation + curation | Completato | Notebook `answer_preparation.ipynb` (top-100 retrieval per query, 1000 query subset) + `answer_curation.ipynb` (sostituzione query con passaggi a 0 entità) + `apply_curation.ipynb` (apply 344 sostituzioni). Output: `data/NQ_answer/{queries_curated.jsonl, top100_curated.parquet, passage_entities_curated.parquet, query_embeddings_curated.npy}` — 1000 query, 100k righe top-100, 90.667 passaggi unici tutti con ≥1 entità. |
+| **KG Subgraph Construction** | **In corso** | Layer 1 (edges.parquet 661.5M righe) + Layer 1.5 (node_stats.parquet con top hub Q13442814/Q1860/Q5) completati al 2026-04-28. Layer 1.6 (labels) in lancio. Bug wildcard iterator e recovery per-predicate documentati in §4.8. Pendenze attive in §6.1. |
 | Baseline Contriever-only | Da fare | |
-| KG-Enhanced Reranking | Da fare | |
+| KG-Enhanced Reranking | Da fare | Userà `connected_ratio` e `purity_ratio` su set di QID a distanza ≤ k via Layer 4 (vedi 6.3). |
 | Evaluation | Da fare | |
+
+### 6.1 Pendenze attive — Step 3 (KG Subgraph Construction)
+
+Stato al **2026-04-25**, in ordine dipendenza:
+
+1. **[fatto, 2026-04-25]** Download dump HDT `latest-all-06-Jan-2022.hdt` (~166 GB), sorgente `https://hdt-dumps.cluster.ai.wu.ac.at/dumps/`. File spostato dentro la repo in `data/Wikidata_service/latest-all-06-Jan-2022.hdt` (path gitignored). Accessibile da WSL2 via `/mnt/c/Users/Utente/Documents/PycharmProjects/dl-RAG-denseAndKG/data/Wikidata_service/`.
+2. **[fatto, 2026-04-25]** Setup WSL2 + Ubuntu 24.04 LTS (noble). 31 GB RAM, 24 core, Python 3.12.3 di sistema. File HDT raggiungibile da `/mnt/c/...` con read+write OK.
+3. **[fatto, 2026-04-25]** Setup pyHDT in Ubuntu. **Recipe** (da memorizzare per riproducibilità):
+   ```bash
+   sudo apt install -y build-essential cmake libserd-0-0 libserd-dev python3-dev
+   curl -LsSf https://astral.sh/uv/install.sh | sh && source ~/.bashrc
+   uv venv ~/.venvs/dl-rag-wsl --python 3.12 && source ~/.venvs/dl-rag-wsl/bin/activate
+   uv pip install --upgrade pip wheel setuptools pybind11
+   CXXFLAGS="-include cstdint" CFLAGS="-include cstdint" \
+     uv pip install hdt --no-build-isolation --no-cache
+   python -c "from hdt import HDTDocument; print('ok')"
+   ```
+   Due workaround necessari per `hdt 2.3` (PyPI, packaging non aggiornato dal 2018):
+   - `pybind11` non dichiarato in `build-system.requires` → installarlo prima e usare `--no-build-isolation`
+   - `hdt-cpp 1.3.3` (vendored) usa `uint64_t` senza `#include <cstdint>` → GCC 13 non lo include più transitivamente → flag `-include cstdint` come pre-include forzato
+4. **[fatto, 2026-04-25]** Smoke test: scaricato index pre-built `latest-all-06-Jan-2022.hdt.index.v1-1` (115 GB, da `https://hdt-dumps.cluster.ai.wu.ac.at/dumps/`) per evitare build locale che andava OOM (working set indexer ≈ 30 GB anon-rss su 32 GB cap WSL2). Apertura HDT 30s prima volta, <1s successive. Numeri reali su Q42 (150 edges, healthy) e Q5 (9.7M incoming P31, mega hub) confermano necessità di filtraggio strutturale.
+5. **[fatto, 2026-04-26]** Architettura 4-layer decisa, vedi §6.3.
+6. **[fatto, 2026-04-28]** Layer 1 — `scripts/hdt_export_per_predicate.py`: enumera `P1...P15000`, per ogni `Pxxx` con count > 0 itera in modo bounded e filtra Q-Q `wdt:*`, scrive `data/db/edges.parquet`. Run completo ~1h, **661.471.158 righe** finali su 1.431 predicati. La prima versione (wildcard) è stata cancellata dopo aver scoperto bug di overshoot + gap silenziosi: storia in §4.8.
+7. **[fatto, 2026-04-28]** Layer 1.5 — `scripts/node_stats.py`: degree in/out per ogni QID, output `data/db/node_stats.parquet`. Top-10 hub coerenti con la struttura attesa di Wikidata: Q13442814 scholarly article (37.4M in_degree), Q1860 EN, Q5 human, Q1264450 (da identificare via labels), Q6581097 male, Q4167836 Wikimedia category, Q16521 taxon, Q523 star, Q7432 species, Q30 USA. Out-degree ≤ 450 per gli hub (tipico delle "type entities").
+8. **[in corso]** Layer 1.6 — `scripts/build_labels.py`: lookup `rdfs:label@en` per ogni QID di interesse, scrive `data/db/labels.parquet`. ~5-10 min.
+9. **[abbandonato 2026-04-28]** Layer 3 BFS-N3 — `scripts/build_n3.py`: dry-run con 100 seed, threshold=5000, 12 worker, seed-hub guard attivo (vedi §4.9) → **89/100 TIMEOUT** (4 OK, 7 SKIPHUB) per esplosione cumulativa wave 2-3 anche su seed non-hub. Decisione: switch ad architettura N1+per-pair (vedi §4.10). Script da rinominare `build_n3_BFS_DEPRECATED.py` per chiarezza, mantenuto come riferimento storico.
+10. **[da fare]** Layer 3 N1 — `scripts/build_n1.py`: per ogni QID in `seeds ∪ passage_entities` (~140k), estrai `N1` da `edges.parquet` via DuckDB JOIN. Output `data/n1/n1.parquet` (schema long: `qid`, `neighbor`, `neighbor_degree`). Nessun HDT, nessuna BFS. Tempo stimato: ~30-60 min su una sola pass DuckDB.
+11. **[bloccato da 10]** Layer 3 ablation — `scripts/ablation_diagnostic.py`: per ogni threshold in `[500, 1000, 2000, 5000, 10000, ∞]`, classifica le query (clean/mixed/all-hub) usando solo `question_qids` (vedi §4.9) + statistiche `|N1_filtered|`. Output:
+    - `data/n1/ablation_summary.parquet` — una riga per threshold con counts e medie
+    - `data/n1/ablation_invalidated_per_t.jsonl` — per ogni threshold, lista delle query invalidate con `question_qids`, `max_degree`, `labels`
+12. **[bloccato da 10,11]** Layer 4 v2 — `scripts/kg.py`: modulo runtime con `connected_ratio(Q, D, threshold)` e `purity_ratio(Q, D, threshold)`. Carica `n1.parquet` in dict in-memory, filtra al volo per threshold, edge-probe via DuckDB su `edges.parquet` per `dist=3`. Multi-threshold scoring built-in.
+13. **[bloccato da 12]** Pulizia residuale: rimuovere `pybind11` e `hdt` dal `pyproject.toml` Windows se rimasti (l'architettura B non usa più HDT al di fuori di Layer 1/1.5/1.6 già completati).
+
+**Decisione architetturale 2026-04-28** — workflow `build_labels.py` ↔ `build_n3.py`. Versione precedente prevedeva: (1) `build_labels.py` su dataset QIDs; (2) `build_n3.py` produce `banned_hubs.parquet` con `hub_label` da `labels.parquet`; (3) re-run `build_labels.py` per estendere con hub QIDs. Problemi: al passo (2), la maggior parte degli hub (Q5, Q4167836, ecc.) non sono dataset QIDs → `hub_label = None` → re-run di (3) NON popola comunque la colonna in `banned_hubs.parquet` (servirebbe un JOIN downstream). **Fix**: `build_n3.py` ora cerca `rdfs:label@en` direttamente da HDT quando un hub non è in `labels.parquet` (cache warm), e memoizza il risultato. Costo aggiuntivo per run: <1s su poche centinaia di hub deduplicati. `build_labels.py` semplificato: rimossa `collect_banned_hub_qids` e dipendenza da `banned_hubs_*.parquet`. Workflow ora lineare: build_labels una volta, build_n3 una volta, fine.
+
+### 6.2 Decisioni architetturali (chiuse)
+
+- **~~Strategia di pruning~~ (deprecato 2026-04-28, vedi §4.10)**: ~~hub-banning a expansion-time via degree threshold (default 5000) durante BFS-3-onde~~. Approccio abbandonato dopo dry-run con 89% TIMEOUT.
+- **Architettura B — N1 precompute + per-pair check (decisa 2026-04-28)**: per ogni QID in `seeds ∪ passage_entities`, precompute solo `N1` (1-hop neighborhood) da `edges.parquet`. Al scoring, reachability `dist(q,d) ≤ 3` calcolata on-demand via meet-in-the-middle: dist=1 lookup, dist=2 set-intersection, dist=3 SQL edge-probe su `edges.parquet`. Hub-handling naturale (hub-seed non enumerati, controlliamo solo membership). Multi-threshold ablation built-in.
+- **Multi-threshold ablation (decisa 2026-04-28)**: per ogni threshold in `[500, 1000, 2000, 5000, 10000, ∞]` calcoliamo `connected_ratio_t` e `purity_ratio_t` filtrando `N1` al volo. File di output dedicati a ablation_summary + ablation_invalidated_per_t.
+- **Multi-distance**: schema Layer 3 include `min_distance ∈ {1,2,3}`. Permette esperimenti su distanza 1/2/3 senza ricomputare BFS.
+- **Direzione**: non-direzionale (in+out collassati nello stesso BFS).
+- **Filtro target**: solo Q-entity vere (escludendo statement nodes `Q42-uuid`).
+- **Operazioni runtime**: set-theoretic — `connected_ratio` e `purity_ratio` (vedi §6.3.4).
+- **Niente seed-class blacklist**: i seed vengono da entity linking ReFiNed sui passaggi → individui, non classi. Validazione runtime via inspection del file `banned_hubs_*.parquet` (se vediamo classi tra gli hub frequenti, le possiamo blacklistare ex-post).
+- **Niente predicate-direction blacklist**: scartata in favore del hub-banning per maggiore trasparenza ("vedo cosa escludo, non escludo per regola"). Tenuta come ablation v2 se serve recuperare il 17% di query `all-hub`.
+- **Seed-hub skip — option A1 (decisa 2026-04-28)**: se il seed stesso ha `total_degree > threshold`, BFS skip immediato (return empty N3 + 1 banned row con `origin == hub_qid`, `first_seen_dist=0`). Per le ~17% query interessate (174/1000 a soglia 5000), KG-score=0 → fallback dense-only. Alternativa "drop hard delle query non-clean" scartata per **selection bias** (avrebbe rimosso sistematicamente le query su entità popolari, gonfiando i numeri KG-rerank). Confronto con la letteratura (HippoRAG/PPR, Resource Allocation, PDB) ordinato per effort in §4.9.
+
+### 6.3 Architettura 4-layer KG (Step 3 + Step 4)
+
+```
+Layer 1     data/db/edges.parquet                       # 661.471.158 Q-Q wdt:*, una tantum (~1h via per-predicate)
+Layer 1.5   data/db/node_stats.parquet                  # qid, in_deg, out_deg, total_deg
+Layer 1.6   data/db/labels.parquet                      # qid, label_en
+Layer 3a    data/n1/n1.parquet                          # qid, neighbor, neighbor_degree (~140k qids × ~N1 size)
+Layer 3b    data/n1/ablation_summary.parquet            # threshold, n_clean, n_mixed, n_all_hub, mean_n1, ...
+Layer 3c    data/n1/ablation_invalidated_per_t.jsonl    # per threshold: lista query invalidate con dettagli
+Layer 4     scripts/kg.py v2                            # connected_ratio(Q,D,t), purity_ratio(Q,D,t), edge-probe SQL
+```
+
+**[abbandonato]** ~~Layer 3 BFS-N3: hop_sets_tNNNN.parquet, banned_hubs_tNNNN.parquet~~ — vedi §4.10 per ragioni del switch.
+
+**Layer 1** (data) è immutabile. Qualsiasi cambio di filtro/threshold ricomputa solo Layer 3 (~30 min).
+
+**Layer 2** (view) è un costrutto SQL DuckDB: `CREATE VIEW factual_edges AS SELECT * FROM edges WHERE ...`. Non ha file fisico, è solo una proiezione. Usato per esperimenti di query (es. "neighbors esclusi predicate X").
+
+**Layer 3** è precomputato per le entità del dataset (passage QIDs + question QIDs + answer QIDs). Schema con `min_distance` permette di simulare a runtime distanze 1, 2, o 3 senza ricomputare.
+
+**Layer 4 v2** carica `n1.parquet` in `dict[qid, dict[neighbor, degree]]` (~500 MB-1 GB in RAM). Per `dist=3` apre una connessione DuckDB read-only su `edges.parquet`. Operazioni:
+
+```python
+def reachable_within_3(q: str, d: str, n1, edges_db, threshold: int) -> bool:
+    """True iff dist(q, d) ≤ 3 nel grafo filtrato a deg ≤ threshold."""
+    n1_q = {n for n, deg in n1.get(q, {}).items() if deg <= threshold}
+    n1_d = {n for n, deg in n1.get(d, {}).items() if deg <= threshold}
+    # dist=1
+    if d in n1_q: return True
+    # dist=2
+    if not n1_q.isdisjoint(n1_d): return True
+    # dist=3: edge-probe su edges.parquet
+    return edges_db.execute(
+        "SELECT 1 FROM edges WHERE subject = ANY(?) AND object = ANY(?) LIMIT 1",
+        [list(n1_q), list(n1_d)]
+    ).fetchone() is not None
+
+def connected_ratio(Q: set[str], D: set[str], n1, edges_db, threshold: int) -> float:
+    if not Q: return 0.0
+    return sum(1 for q in Q if any(reachable_within_3(q, d, n1, edges_db, threshold) for d in D)) / len(Q)
+
+def purity_ratio(Q: set[str], D: set[str], n1, edges_db, threshold: int) -> float:
+    if not D: return 0.0
+    return sum(1 for d in D if any(reachable_within_3(q, d, n1, edges_db, threshold) for q in Q)) / len(D)
+```
+
+Costo per query-doc pair:
+- `dist=1`/`dist=2`: O(|N1|) set ops, microsecondi
+- `dist=3`: ~1-5 ms per coppia con DuckDB indicizzato (solo se le precedenti falliscono)
+- Multi-threshold scoring: stessa N1 in dict, basta riapplicare il filtro
 
 ---
 
@@ -256,9 +538,21 @@ dl-RAG-denseAndKG/
 │   └── preprocessing.ipynb             # Vecchio notebook Colab (riferimento)
 ├── utils/
 │   ├── __init__.py
-│   └── text_processing.py             # segment_article, _init_file_worker, file_segment_worker
+│   └── text_processing.py              # segment_article, _init_file_worker, file_segment_worker
 ├── scripts/
-│   └── patch_refined.py               # Patch sorgente per ReFiNed V1 (Windows + Python 3.12+ + transformers 4.x)
+│   ├── patch_refined.py                # Patch sorgente per ReFiNed V1 (Windows + Python 3.12+ + transformers 4.x)
+│   ├── build_test_queries.py           # [archeologia SPARQL] generatore test queries con VALUES variabili
+│   ├── hdt_query_test.py               # Smoke test HDT (jupytext .py)
+│   ├── hdt_export_per_predicate.py     # Layer 1 — export per-predicate Q-Q wdt:* da HDT (WSL only)
+│   ├── verify_completeness.py          # Sanity check + comparison HDT counts vs parquet (WSL only)
+│   ├── node_stats.py                   # Layer 1.5 — degree in/out per QID (Windows venv, polars streaming)
+│   ├── build_labels.py                 # Layer 1.6 — lookup rdfs:label@en via HDT (WSL only)
+│   ├── seed_degree_stats.py            # Diagnostic — distribuzione degree dei seed + classificazione clean/mixed/all-hub (Windows venv)
+│   ├── build_n3.py                     # ~~Layer 3 BFS-N3~~ — DEPRECATO 2026-04-28 dopo 89% TIMEOUT (vedi §4.10)
+│   ├── build_n1.py                     # Layer 3 N1 — precompute 1-hop neighborhoods via DuckDB (Windows venv)
+│   ├── ablation_diagnostic.py          # Layer 3 ablation — multi-threshold analysis su N1 (Windows venv)
+│   ├── kg.py                           # Layer 4 v2 — runtime con connected_ratio(Q,D,t), purity_ratio(Q,D,t), edge-probe SQL
+│   └── kg_advanced.py                  # Layer 4 advanced — query unificata min_dist, persistenza disco (data/kg.duckdb), griglia DataFrame (vedi §4.11)
 ├── data/
 │   ├── wikipedia_2018_clean/
 │   │   ├── articles_clean.tsv          # Articoli interi da HF (cache locale, ~3.2M articoli)
@@ -271,19 +565,52 @@ dl-RAG-denseAndKG/
 │   ├── NQ_question/
 │   │   ├── qa_all_entities.jsonl       # 31,372 query filtrate (Q+A hanno entità)
 │   │   └── qa_entities_general.jsonl   # 76,406 query post token filter (con entity info)
-│   └── refined_cache/                  # Cache locale modello ReFiNed (~9 GB)
-├── embedding.ipynb                     # Step 1b.4 — Passage Encoding & FAISS Indexing
-├── nq_filtering.ipynb                  # Step 2 — Query Filtering (token + entity linking)
-├── wikidata_preparation.ipynb          # Notebook principale (Step 3+)
-├── data/
+│   ├── NQ_answer/
+│   │   ├── queries_subset.jsonl        # 1000 query originali subset
+│   │   ├── queries_curated.jsonl       # 1000 query post-curation (344 sostituite)
+│   │   ├── top100_merged.parquet       # Top-100 originali per le 1000 query
+│   │   ├── top100_candidates.parquet   # Top-100 per 5000 query candidate (pool curation)
+│   │   ├── top100_curated.parquet      # Top-100 finale post-curation
+│   │   ├── passage_entities.parquet    # Entità per passaggi delle 1000 query originali
+│   │   ├── passage_entities_curated.parquet  # Entità per passaggi nel top-100 curato (90.667 unici)
+│   │   ├── query_embeddings_curated.npy  # (1000, 768) Contriever embeddings
+│   │   ├── curation_results.jsonl      # 344 mapping originale→sostituta
+│   │   ├── shard_{00..08}/             # Shard di lavoro per top-100 retrieval (parquet)
+│   │   ├── passage_entities/           # Chunk passage entities (parquet, originali)
+│   │   └── curation_chunks/            # Chunk passage entities (parquet, candidati)
+│   ├── Wikidata_service/               # [archeologia SPARQL] esperimenti pre-pivot HDT + dump HDT
+│   │   ├── latest-all-06-Jan-2022.hdt          # Dump Wikidata HDT (~166 GB, gitignored)
+│   │   ├── latest-all-06-Jan-2022.hdt.index.v1-1  # Indice HDT pre-built (~115 GB, gitignored)
+│   │   ├── queryPredicati.csv                  # 13.431 predicati Wikidata con URI entity-form
+│   │   └── test_queries/                       # query_NNNNN.sparql con VALUES da 100 a 5000 predicati
+│   ├── db/                             # Output parquet della pipeline KG
+│   │   ├── edges.parquet                       # Layer 1 — 661.471.158 triple Q-Q wdt:* (per-predicate)
+│   │   ├── edges_v1_wildcard_partial.parquet   # Artifact storico, run wildcard parziale (661M, vedi §4.8)
+│   │   ├── node_stats.parquet                  # Layer 1.5 — degree per QID
+│   │   ├── labels.parquet                      # Layer 1.6 — label EN (in arrivo)
+│   │   └── verification.json                   # Output di verify_completeness.py
+│   ├── n1/                             # Output Layer 3 architettura B (vedi §4.10)
+│   │   ├── n1.parquet                          # Layer 3a — qid, neighbor, neighbor_degree
+│   │   ├── ablation_summary.parquet            # Layer 3b — counts e medie per threshold
+│   │   └── ablation_invalidated_per_t.jsonl    # Layer 3c — query invalidate per threshold con dettagli
+│   ├── kg.duckdb                       # Layer 4 advanced — DuckDB persistito (n1+edges+indice), generato al primo init di KGScorerAdvanced (vedi §4.11)
+│   ├── refined_cache/                  # Cache locale modello ReFiNed (~9 GB)
 │   └── faiss_index/                    # Output di embedding.ipynb
 │       ├── shard_XX.npy                # Embedding float32 (5M × 768 per shard)
 │       ├── shard_XX_ids.npy            # Mapping posizione FAISS → passage ID
 │       └── shard_XX.faiss              # Indice FAISS IndexFlatIP
+├── embedding.ipynb                     # Step 1b.4 — Passage Encoding & FAISS Indexing
+├── nq_filtering.ipynb                  # Step 2 — Query Filtering
+├── answer_preparation.ipynb            # Top-100 retrieval per query subset
+├── answer_curation.ipynb               # Identificazione query sostituibili (passaggi 0-entity)
+├── apply_curation.ipynb                # Apply 344 sostituzioni → file _curated.*
+├── wikidata_preparation.ipynb          # Step 3 — KG Subgraph Construction (BFS-3-onde su HDT, da popolare)
 ├── main.py                             # Entry point (da definire)
-└── .venv/                              # Virtual environment locale
+└── .venv/                              # Virtual environment locale Windows (uv)
 ```
+
+**Nota infrastrutturale**: il dump HDT `latest-all-06-Jan-2022.hdt` (~166 GB) è in `data/Wikidata_service/` (gitignored), accessibile da WSL via `/mnt/c/Users/Utente/Documents/PycharmProjects/dl-RAG-denseAndKG/data/Wikidata_service/`. La pipeline KG gira **da WSL2/Ubuntu**, non dall'ambiente Python Windows: pyHDT richiede compilazione C++ che su Windows non collabora. Path resolution negli script avviene via walk-up fino a `pyproject.toml` — niente path hardcoded a username o posizione di clone.
 
 ---
 
-*Ultimo aggiornamento: 2026-03-23*
+*Ultimo aggiornamento: 2026-04-28 — **BFS-N3 abbandonato dopo dry-run con 89% TIMEOUT** (vedi §4.10). Switch ad architettura B: precompute solo `N1` (1-hop neighborhood) e check reachability `dist≤3` on-demand via meet-in-the-middle (dist=1/2 set ops, dist=3 SQL edge-probe). Multi-threshold ablation built-in. Nuovi script in arrivo: `scripts/build_n1.py` (Layer 3 N1) + `scripts/ablation_diagnostic.py` (analisi per threshold con file di output dedicati). `scripts/build_n3.py` deprecato, da rinominare `build_n3_BFS_DEPRECATED.py`.*
