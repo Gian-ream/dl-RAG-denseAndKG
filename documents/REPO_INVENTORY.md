@@ -38,8 +38,8 @@ Stato di un file:
 | `node_stats.py` | Layer 1.5 | Windows venv (polars streaming) | Calcola `in_degree`/`out_degree`/`total_degree` per ogni QID che appare in `edges.parquet`. Output `data/db/node_stats.parquet`. |
 | `build_labels.py` | Layer 1.6 | WSL2 (pyHDT) | Lookup `rdfs:label@en` per ogni QID dataset → `data/db/labels.parquet`. Per ispezione human-readable. |
 | `build_n1.py` | Layer 3 | Windows venv (DuckDB) | Precompute 1-hop neighborhood + degree del vicino, per i QID di `seeds ∪ passage_entities`. Output `data/n1/n1.parquet` (~93M righe). Sostituisce BFS-N3 deprecato (vedi §4.10). |
-| `kg.py` | Layer 4 v2 | Windows venv (DuckDB) | Runtime scoring: `KGScorer` con `connected_ratio`, `purity_ratio`, `kg_score`, `kg_components`, `kg_score_multi`, `is_reachable`. In-memory DuckDB. |
-| `kg_advanced.py` | Layer 4 advanced | Windows venv | **WIP** — eredita `KGScorer`, aggiunge query unificata `min_dist` + persistenza disco (`data/kg.duckdb`) + griglia `pd.DataFrame`. Da fondere con `kg.py` (vedi §4.11 di PROJECT_NOTES). Import rotto: `from scripts.kg import` non funziona perché `scripts/` non è un package. |
+
+> **Layer 4** è stato **fuso e spostato in `utils/kg.py`** il 2026-05-03 (vedi §3 e §4.11 di PROJECT_NOTES). I file `scripts/kg.py` e `scripts/kg_advanced.py` sono stati rimossi: il primo importava cross-script, il secondo ereditava dal primo — entrambi i pattern sono stati sostituiti da una sola classe `KGScorer` self-contained in `utils/`.
 
 ### 2.2 Diagnostica (DIAGNOSTIC)
 
@@ -81,6 +81,7 @@ Stato di un file:
 |------|-------|--------------|
 | `utils/__init__.py` | Vuoto. Rende `utils` un package Python. | — |
 | `utils/text_processing.py` | `segment_article`, `_init_file_worker`, `file_segment_worker`. Estratto da `wikidata_preparation.ipynb` per essere importabile dai worker `multiprocessing` (su Windows usa `spawn`, le funzioni notebook-defined non si picklano). | `wikidata_preparation.ipynb` |
+| `utils/kg.py` | **CORE Layer 4** — fusione di ex `scripts/kg.py` + `scripts/kg_advanced.py`. Classe unica `KGScorer` con persistenza DuckDB su disco (`data/kg.duckdb`, default), modalità `read_only` per worker MP, query unificata `min_dist`, API griglia `kg_components_grid`/`kg_components_grid_batch` che ritornano `pd.DataFrame`. Diagnostico `is_reachable` mantenuto. Smoke test invocabile via `python -m utils.kg`. | (futuri notebook KG-rerank) |
 
 ---
 
@@ -89,18 +90,18 @@ Stato di un file:
 | Importa | Importato da |
 |---------|--------------|
 | `utils.text_processing` | `wikidata_preparation.ipynb` |
-| `scripts.kg` | `scripts/kg_advanced.py` (rotto: `scripts/` non è un package) |
+| `utils.kg` | (futuri notebook KG-rerank — già eseguibile via `python -m utils.kg`) |
 | `scripts/patch_refined.py` | invocato via `subprocess` da `nq_filtering.ipynb` |
 
-Nessun altro script ha dipendenze incrociate. Ogni script in `scripts/` è essenzialmente self-contained ed eseguito da terminale.
+Nessun altro script ha dipendenze incrociate. Ogni script in `scripts/` è self-contained ed eseguito da terminale; tutto il codice condiviso vive in `utils/`.
 
 ---
 
-## 5. Diagnosi e problema attuale
+## 5. Diagnosi e problema attuale (RISOLTO 2026-05-03)
 
-`scripts/` non è un package Python (manca `__init__.py`). Quando si lancia `uv run scripts/kg_advanced.py`, Python mette `scripts/` in `sys.path[0]`, non la repo root → `from scripts.kg import ...` fallisce con `ModuleNotFoundError`.
+`scripts/` non è un package Python. Il vecchio `scripts/kg_advanced.py` faceva `from scripts.kg import ...`, che falliva con `ModuleNotFoundError` quando lanciato come standalone.
 
-L'estensione `KGScorerAdvanced(KGScorer)` aggrava il problema: due file accoppiati che si "vedono" solo se eseguiti da repo root con package corretto. Per uno script eseguito sia da terminale sia importato da notebook, il pattern moderno è:
+**Risolto** spostando il codice condivisibile in `utils/kg.py` (`utils/` è già package). Pattern adottato:
 
 - **Codice riusabile** → in `utils/` (già package, già funziona da notebook)
 - **Script eseguibili** → in `scripts/`, self-contained, importano da `utils/` (mai cross-import tra script)
@@ -158,10 +159,10 @@ dl-RAG-denseAndKG/
 
 ### Sequenza di esecuzione concordata
 
-1. Salvare questo report (fatto).
-2. Commit e push dello stato attuale (snapshot pre-riorg).
-3. Fusione `kg.py` + `kg_advanced.py` → `utils/kg.py`.
-4. Aggiornamento progressivo dei notebook per i nuovi path, con verifica funzionale step-by-step.
+1. ~~Salvare questo report.~~ (fatto)
+2. ~~Commit e push dello stato attuale (snapshot pre-riorg).~~ (fatto)
+3. ~~Fusione `kg.py` + `kg_advanced.py` → `utils/kg.py`.~~ (fatto 2026-05-03)
+4. **In corso**: aggiornamento progressivo dei notebook per i nuovi path/import, con verifica funzionale step-by-step.
 5. Riorganizzazione interattiva del repo (spostamento file in `pipeline/`/`diagnostic/`/`tooling/`/`legacy/`).
 
 ---

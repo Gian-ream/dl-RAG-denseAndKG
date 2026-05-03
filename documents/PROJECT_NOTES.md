@@ -351,11 +351,13 @@ Costo:
 
 **Lezione**. Per metriche binarie di reachability su grafo denso, la versione *space-eager* (BFS precompute completo) è categoricamente più costosa della *space-lazy* (precompute minimo, calcola al volo). Gli hub-seed sono gestiti naturalmente: non enumeriamo MAI tutti i 2.3M vicini di Q30, controlliamo solo "il `d` specifico è tra di essi?" — set lookup costante.
 
-### 4.11 Layer 4 advanced — query unificata min_dist + persistenza disco (decisione 2026-05-03)
+### 4.11 Layer 4 — query unificata min_dist + persistenza disco + fusione in utils/kg.py (decisione 2026-05-03)
 
-**Contesto**. `scripts/kg.py` (Layer 4) restituisce `(Q_reached, D_reached)` per una sola configurazione `(threshold, max_distance=3)` per chiamata. Per ablation a griglia `distance × threshold` (3 × 6 = 18 celle) richiederebbe 18 query SQL per coppia (Q, D), con grosso overlap di lavoro: la query a `max_dist=3` esegue tutto quello che farebbe la query a `max_dist=2` e `max_dist=1`.
+**Contesto**. La prima versione di `scripts/kg.py` (Layer 4) restituiva `(Q_reached, D_reached)` per una sola configurazione `(threshold, max_distance=3)` per chiamata. Per ablation a griglia `distance × threshold` (3 × 6 = 18 celle) richiederebbe 18 query SQL per coppia (Q, D), con grosso overlap di lavoro: la query a `max_dist=3` esegue tutto quello che farebbe la query a `max_dist=2` e `max_dist=1`.
 
-**Decisione: aggiungere `scripts/kg_advanced.py` con classe `KGScorerAdvanced`** che eredita `KGScorer` e introduce due ottimizzazioni indipendenti.
+**Decisione iniziale (poi superata)**. Era stato creato `scripts/kg_advanced.py` con `KGScorerAdvanced(KGScorer)` per introdurre le ottimizzazioni in modo additivo. Pattern problematico: `from scripts.kg import ...` falliva quando lanciato standalone perché `scripts/` non è un package Python. Vedi REPO_INVENTORY §5.
+
+**Decisione finale**. Fusione di entrambi in **`utils/kg.py`** con un'unica classe `KGScorer` self-contained. Niente eredità, niente cross-import. `utils/` è già un package quindi l'import `from utils.kg import KGScorer` funziona da qualunque punto del repo (notebook o terminale). Aggiunte due ottimizzazioni indipendenti:
 
 **(1) Query unificata con min_dist**. Le 4 CTE (`d1`, `d2`, `d3a`, `d3b`) proiettano in più una colonna letterale `dist`; l'aggregato finale `MIN(dist) GROUP BY q, d` collassa cammini multipli sulla stessa coppia restituendo la distanza minima. Risultato: mappa `(q, d) → min_dist ∈ {1, 2, 3}`. In Python si deriva il risultato per ogni `max_distance ∈ {1, 2, 3}` filtrando `min_dist ≤ k` — zero lavoro SQL ripetuto sulla dimensione distanza.
 
@@ -377,9 +379,11 @@ Prima init: ~5 min, ~10-15 GB su disco. Init successive: ~1s (skip rebuild). I w
 - `kg_components_grid(Q, D, distances, thresholds) -> pd.DataFrame` — single pair
 - `kg_components_grid_batch(pairs, distances, thresholds) -> pd.DataFrame` — lista `(query_id, Q, passage_id, D)`, ritorna DataFrame "lungo" con colonne `[query_id, passage_id, distance, threshold, connected_ratio, purity_ratio, kg_score]` pronto per `pivot_table`.
 
+**API single-configuration mantenute** per backward compatibility (debug, log per query): `connected_ratio`, `purity_ratio`, `kg_score`, `kg_components`. Tutte appoggiate sullo stesso helper `_reachable_pairs_min_dist` — nessuna duplicazione di SQL. `kg_score_multi` rimosso (sottocaso di `kg_components_grid` con `distances=(3,)`).
+
 **Nota interpretativa**. A `distance=1` la threshold è inerte (no bridge, endpoint sempre preservati): tutte le righe `distance=1` saranno identiche al variare del threshold. A `distance=2` un solo bridge è soggetto a filtro; a `distance=3` due bridge → effetto threshold più pronunciato.
 
-**File originale `scripts/kg.py`**: invariato. La classe vecchia resta operativa per chi la usa già.
+**File `scripts/kg.py` e `scripts/kg_advanced.py`**: rimossi. Storia preservata in git.
 
 ---
 
@@ -536,10 +540,11 @@ dl-RAG-denseAndKG/
 │   └── GLOSSARIO.md                    # Terminologia tecnica
 ├── base/
 │   └── preprocessing.ipynb             # Vecchio notebook Colab (riferimento)
-├── utils/
-│   ├── __init__.py
-│   └── text_processing.py              # segment_article, _init_file_worker, file_segment_worker
-├── scripts/
+├── utils/                              # Libreria importabile (package)
+│   ├── __init__.py                     # Re-export: from utils import KGScorer
+│   ├── text_processing.py              # segment_article, _init_file_worker, file_segment_worker
+│   └── kg.py                           # Layer 4 — KGScorer unificato (persistenza data/kg.duckdb, griglia DataFrame, MP-ready). Fusione di ex scripts/kg.py + scripts/kg_advanced.py il 2026-05-03 (vedi §4.11)
+├── scripts/                            # Script eseguibili, self-contained (mai cross-import; codice condiviso vive in utils/)
 │   ├── patch_refined.py                # Patch sorgente per ReFiNed V1 (Windows + Python 3.12+ + transformers 4.x)
 │   ├── build_test_queries.py           # [archeologia SPARQL] generatore test queries con VALUES variabili
 │   ├── hdt_query_test.py               # Smoke test HDT (jupytext .py)
@@ -550,9 +555,7 @@ dl-RAG-denseAndKG/
 │   ├── seed_degree_stats.py            # Diagnostic — distribuzione degree dei seed + classificazione clean/mixed/all-hub (Windows venv)
 │   ├── build_n3.py                     # ~~Layer 3 BFS-N3~~ — DEPRECATO 2026-04-28 dopo 89% TIMEOUT (vedi §4.10)
 │   ├── build_n1.py                     # Layer 3 N1 — precompute 1-hop neighborhoods via DuckDB (Windows venv)
-│   ├── ablation_diagnostic.py          # Layer 3 ablation — multi-threshold analysis su N1 (Windows venv)
-│   ├── kg.py                           # Layer 4 v2 — runtime con connected_ratio(Q,D,t), purity_ratio(Q,D,t), edge-probe SQL
-│   └── kg_advanced.py                  # Layer 4 advanced — query unificata min_dist, persistenza disco (data/kg.duckdb), griglia DataFrame (vedi §4.11)
+│   └── ablation_diagnostic.py          # Layer 3 ablation — multi-threshold analysis su N1 (Windows venv)
 ├── data/
 │   ├── wikipedia_2018_clean/
 │   │   ├── articles_clean.tsv          # Articoli interi da HF (cache locale, ~3.2M articoli)
@@ -593,7 +596,7 @@ dl-RAG-denseAndKG/
 │   │   ├── n1.parquet                          # Layer 3a — qid, neighbor, neighbor_degree
 │   │   ├── ablation_summary.parquet            # Layer 3b — counts e medie per threshold
 │   │   └── ablation_invalidated_per_t.jsonl    # Layer 3c — query invalidate per threshold con dettagli
-│   ├── kg.duckdb                       # Layer 4 advanced — DuckDB persistito (n1+edges+indice), generato al primo init di KGScorerAdvanced (vedi §4.11)
+│   ├── kg.duckdb                       # Layer 4 — DuckDB persistito (n1+edges+indice), generato al primo init di KGScorer (vedi §4.11)
 │   ├── refined_cache/                  # Cache locale modello ReFiNed (~9 GB)
 │   └── faiss_index/                    # Output di embedding.ipynb
 │       ├── shard_XX.npy                # Embedding float32 (5M × 768 per shard)
