@@ -14,3 +14,9 @@ __pycache__/
 
 # Jupyter
 .ipynb_checkpoints/
+
+# Claude Code local settings (per-machine, not shared)
+.claude/settings.local.json
+
+# Local scratch / temporary work
+.tmp/
