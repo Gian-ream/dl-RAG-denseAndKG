@@ -5,10 +5,12 @@ description = "Add your description here"
 requires-python = ">=3.10,<3.14"
 dependencies = [
     "datasets>=3.1.0",
+    "duckdb>=1.5.2",
     "hf-xet>=1.4.2",
     "huggingface>=0.0.1",
     "ipykernel>=6.29.5",
     "jupyter>=1.1.1",
+    "jupytext>=1.19.1",
     "pandas>=2.0.3",
     "pandas-stubs~=2.0.3",
     "polars>=1.8.2",
@@ -28,3 +30,6 @@ explicit = true
 torch = { index = "pytorch-cu128" }
 torchaudio = { index = "pytorch-cu128" }
 torchvision = { index = "pytorch-cu128" }
+
+[tool.jupytext]
+formats = "ipynb,py:percent"
