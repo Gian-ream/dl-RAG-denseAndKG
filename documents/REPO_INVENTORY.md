@@ -30,48 +30,45 @@ Stato di un file:
 
 ## 2. Script `scripts/`
 
-### 2.1 Pipeline KG (CORE)
+A partire dal 2026-05-04, gli script sono organizzati in 4 sottocartelle (`pipeline/`, `diagnostic/`, `tooling/`, `legacy/`) — vedi §6 per il layout completo.
+
+### 2.1 Pipeline KG (CORE) — `scripts/pipeline/`
 
 | File | Layer | Ambiente | Scopo |
 |------|-------|----------|-------|
-| `hdt_export_per_predicate.py` | Layer 1 | WSL2 (pyHDT) | Esporta tutte le triple Q-Q `wdt:*` dal dump Wikidata HDT, una pass per predicato. Output `data/db/edges.parquet` (661.471.158 righe). Sostituisce il deprecato wildcard iterator (vedi PROJECT_NOTES §4.8). |
-| `node_stats.py` | Layer 1.5 | Windows venv (polars streaming) | Calcola `in_degree`/`out_degree`/`total_degree` per ogni QID che appare in `edges.parquet`. Output `data/db/node_stats.parquet`. |
-| `build_labels.py` | Layer 1.6 | WSL2 (pyHDT) | Lookup `rdfs:label@en` per ogni QID dataset → `data/db/labels.parquet`. Per ispezione human-readable. |
-| `build_n1.py` | Layer 3 | Windows venv (DuckDB) | Precompute 1-hop neighborhood + degree del vicino, per i QID di `seeds ∪ passage_entities`. Output `data/n1/n1.parquet` (~93M righe). Sostituisce BFS-N3 deprecato (vedi §4.10). |
+| `pipeline/hdt_export_per_predicate.py` | Layer 1 | WSL2 (pyHDT) | Esporta tutte le triple Q-Q `wdt:*` dal dump Wikidata HDT, una pass per predicato. Output `data/db/edges.parquet` (661.471.158 righe). Sostituisce il deprecato wildcard iterator (vedi PROJECT_NOTES §4.8). |
+| `pipeline/node_stats.py` | Layer 1.5 | Windows venv (polars streaming) | Calcola `in_degree`/`out_degree`/`total_degree` per ogni QID che appare in `edges.parquet`. Output `data/db/node_stats.parquet`. |
+| `pipeline/build_labels.py` | Layer 1.6 | WSL2 (pyHDT) | Lookup `rdfs:label@en` per ogni QID dataset → `data/db/labels.parquet`. Per ispezione human-readable. |
+| `pipeline/build_n1.py` | Layer 3 | Windows venv (DuckDB) | Precompute 1-hop neighborhood + degree del vicino, per i QID di `seeds ∪ passage_entities`. Output `data/n1/n1.parquet` (~93M righe). Sostituisce BFS-N3 deprecato (vedi §4.10). |
 
 > **Layer 4** è stato **fuso e spostato in `utils/kg.py`** il 2026-05-03 (vedi §3 e §4.11 di PROJECT_NOTES). I file `scripts/kg.py` e `scripts/kg_advanced.py` sono stati rimossi: il primo importava cross-script, il secondo ereditava dal primo — entrambi i pattern sono stati sostituiti da una sola classe `KGScorer` self-contained in `utils/`.
 
-### 2.2 Diagnostica (DIAGNOSTIC)
+### 2.2 Diagnostica (DIAGNOSTIC) — `scripts/diagnostic/`
 
 | File | Ambiente | Scopo |
 |------|----------|-------|
-| `ablation_diagnostic.py` | Windows venv | Per ogni threshold ∈ {500,1000,2000,5000,10000,∞}: classifica le query in clean/mixed/all-hub e calcola `mean |N1_filtered|`. Output `data/n1/ablation_summary.parquet` + `ablation_invalidated_per_t.jsonl`. |
-| `seed_degree_stats.py` | Windows venv | Distribuzione `total_degree` sul pool di seed (question_qids + answer_variant_qids). Usato per dimensionare la threshold di hub-banning. |
-| `verify_completeness.py` | WSL2 (pyHDT) | Verifica che `edges.parquet` copra tutte le triple `wdt:*` Q-Q dell'HDT. Output `data/db/verification.json`. |
-| `check_qids.py` | Windows venv (polars) | Pre-flight: verifica che tutti i QID dai dataset matchino `^Q\d+$`. |
-| `hdt_query_test.py` | WSL2 (pyHDT) — jupytext | Smoke test HDT + helper di lookup. Paired `.py`/`.ipynb` (vedi `pyproject.toml [tool.jupytext]`). |
+| `diagnostic/ablation_diagnostic.py` | Windows venv | Per ogni threshold ∈ {500,1000,2000,5000,10000,∞}: classifica le query in clean/mixed/all-hub e calcola `mean |N1_filtered|`. Output `data/n1/ablation_summary.parquet` + `ablation_invalidated_per_t.jsonl`. |
+| `diagnostic/seed_degree_stats.py` | Windows venv | Distribuzione `total_degree` sul pool di seed (question_qids + answer_variant_qids). Usato per dimensionare la threshold di hub-banning. |
+| `diagnostic/verify_completeness.py` | WSL2 (pyHDT) | Verifica che `edges.parquet` copra tutte le triple `wdt:*` Q-Q dell'HDT. Output `data/db/verification.json`. |
+| `diagnostic/check_qids.py` | Windows venv (polars) | Pre-flight: verifica che tutti i QID dai dataset matchino `^Q\d+$`. |
+| `diagnostic/hdt_query_test.py` | WSL2 (pyHDT) — jupytext | Smoke test HDT + helper di lookup. Paired `.py`/`.ipynb` (vedi `pyproject.toml [tool.jupytext]`). |
 
-### 2.3 Tooling (CORE — eseguito raramente)
+### 2.3 Tooling (CORE — eseguito raramente) — `scripts/tooling/`
 
 | File | Scopo |
 |------|-------|
-| `patch_refined.py` | Patch source-level di ReFiNed V1 per Windows + Python 3.12+ + transformers 4.48+. Idempotente. **Chiamato in automatico da `02_nq_filtering.ipynb` via subprocess** — non rimuovere. Eseguibile anche manuale: `python scripts/patch_refined.py [--check]`. |
+| `tooling/patch_refined.py` | Patch source-level di ReFiNed V1 per Windows + Python 3.12+ + transformers 4.48+. Idempotente. **Chiamato in automatico da `02_nq_filtering.ipynb` e `04_answer_preparation.ipynb` via subprocess** — non rimuovere. Eseguibile anche manuale: `python scripts/tooling/patch_refined.py [--check]`. |
 
-### 2.4 Legacy / archeologia
+### 2.4 Legacy / archeologia — `scripts/legacy/`
 
 | File | Motivo |
 |------|--------|
-| `build_n3.py` | BFS-N3 con hub-banning. Deprecato 2026-04-28 dopo 89% TIMEOUT (vedi PROJECT_NOTES §4.10). Sostituito da `build_n1.py`. |
-| `build_test_queries.py` | Generatore di test query SPARQL con VALUES variabili. Pre-pivot HDT (vedi §4.7). Non più usato. |
-
-### 2.5 One-shot già applicati
-
-| File | Scopo storico |
-|------|---------------|
-| `patch_answer_preparation.py` | Inserì la sezione 3b (subset 1k) in `04_answer_preparation.ipynb`. Già applicato; il notebook è ora committato con la modifica. |
-| `_extract_cells.py` | Estrasse celle da `04_answer_preparation.ipynb` per editing offline. |
-| `_extract_curation_cells.py` | Stesso, per `05_answer_curation.ipynb`. |
-| `_copy_nb.py` | Helper triviale: copia notebook → JSON per editing manuale. |
+| `legacy/build_n3.py` | BFS-N3 con hub-banning. Deprecato 2026-04-28 dopo 89% TIMEOUT (vedi PROJECT_NOTES §4.10). Sostituito da `pipeline/build_n1.py`. |
+| `legacy/build_test_queries.py` | Generatore di test query SPARQL con VALUES variabili. Pre-pivot HDT (vedi §4.7). Non più usato. |
+| `legacy/patch_answer_preparation.py` | One-shot. Inserì la sezione 3b (subset 1k) in `04_answer_preparation.ipynb`. Già applicato; il notebook è ora committato con la modifica. |
+| `legacy/_extract_cells.py` | One-shot. Estrasse celle da `04_answer_preparation.ipynb` per editing offline. |
+| `legacy/_extract_curation_cells.py` | One-shot. Stesso, per `05_answer_curation.ipynb`. |
+| `legacy/_copy_nb.py` | One-shot. Helper triviale: copia notebook → JSON per editing manuale. |
 
 ---
 
@@ -91,7 +88,7 @@ Stato di un file:
 |---------|--------------|
 | `utils.text_processing` | `01_corpus_preparation.ipynb` |
 | `utils.kg` | (futuri notebook KG-rerank — già eseguibile via `python -m utils.kg`) |
-| `scripts/patch_refined.py` | invocato via `subprocess` da `02_nq_filtering.ipynb` |
+| `scripts/tooling/patch_refined.py` | invocato via `subprocess` da `02_nq_filtering.ipynb` e `04_answer_preparation.ipynb` |
 
 Nessun altro script ha dipendenze incrociate. Ogni script in `scripts/` è self-contained ed eseguito da terminale; tutto il codice condiviso vive in `utils/`.
 
@@ -108,37 +105,35 @@ Nessun altro script ha dipendenze incrociate. Ogni script in `scripts/` è self-
 
 ---
 
-## 6. Piano di riorganizzazione (proposto, NON ancora applicato)
+## 6. Layout del repo (applicato 2026-05-04)
 
 ```
 dl-RAG-denseAndKG/
-├── notebooks/                          # i .ipynb (da decidere se spostare o lasciare in root)
-│   ├── 01_corpus_preparation.ipynb
-│   ├── 02_nq_filtering.ipynb
-│   ├── 03_embedding.ipynb
-│   ├── 04_answer_preparation.ipynb
-│   ├── 05_answer_curation.ipynb
-│   └── 06_apply_curation.ipynb
-├── utils/                              # libreria importabile (già package)
-│   ├── __init__.py
-│   ├── paths.py                        # NEW: REPO_ROOT, N1_PATH, EDGES_PATH, _find_repo_root
-│   ├── text_processing.py              # esistente
-│   └── kg.py                           # NEW: KGScorer unificata (kg.py + kg_advanced.py fusi)
-├── scripts/                            # script eseguibili, self-contained
-│   ├── pipeline/
+├── 01_corpus_preparation.ipynb         # notebook in root (decisione 2026-05-04: NON spostati in notebooks/)
+├── 02_nq_filtering.ipynb
+├── 03_embedding.ipynb
+├── 04_answer_preparation.ipynb
+├── 05_answer_curation.ipynb
+├── 06_apply_curation.ipynb
+├── utils/                              # libreria importabile (package)
+│   ├── __init__.py                     # re-export KGScorer
+│   ├── text_processing.py
+│   └── kg.py                           # KGScorer unificata (Layer 4)
+├── scripts/                            # script eseguibili, self-contained, mai cross-import
+│   ├── pipeline/                       # build pipeline KG (Layer 1-3)
 │   │   ├── hdt_export_per_predicate.py
 │   │   ├── node_stats.py
 │   │   ├── build_labels.py
 │   │   └── build_n1.py
-│   ├── diagnostic/
+│   ├── diagnostic/                     # ispezione e verifica (eseguibile a piacimento)
 │   │   ├── ablation_diagnostic.py
 │   │   ├── seed_degree_stats.py
 │   │   ├── verify_completeness.py
 │   │   ├── check_qids.py
 │   │   └── hdt_query_test.py
-│   ├── tooling/
-│   │   └── patch_refined.py            # mantenuto (chiamato da subprocess dal notebook)
-│   └── legacy/
+│   ├── tooling/                        # supporto runtime (chiamato da subprocess dai notebook)
+│   │   └── patch_refined.py
+│   └── legacy/                         # archeologia (one-shot già applicati + deprecated)
 │       ├── build_n3.py
 │       ├── build_test_queries.py
 │       ├── patch_answer_preparation.py
@@ -146,24 +141,23 @@ dl-RAG-denseAndKG/
 │       ├── _extract_curation_cells.py
 │       └── _copy_nb.py
 └── base/
-    └── preprocessing.ipynb             # già qui
+    └── preprocessing.ipynb             # vecchio notebook Colab, solo riferimento
 ```
 
 ### Principi guida
 
-1. **Fondere `kg.py` + `kg_advanced.py` in `utils/kg.py`** con un'unica classe `KGScorer` (persistenza disco di default, API griglia + diagnostici inclusi). Niente eredità, niente cross-import. Smoke test diventa `scripts/diagnostic/kg_smoke.py`.
-2. **`utils/paths.py`** centralizza `_find_repo_root` e i path di dati — usato da chiunque ne abbia bisogno.
-3. **Nessuno script in `scripts/` importa da altri script.** Tutto il codice condiviso vive in `utils/`.
-4. **Notebook**: da decidere se spostare in `notebooks/` (richiede aggiornare i path relativi tipo `Path.cwd() / "data"` in 6 notebook) o lasciarli in root (più pragmatico).
-5. **`legacy/` invece di cancellare**: mantieni storia + non rompi link in PROJECT_NOTES. Eventualmente cancellabili dopo che il paper è chiuso.
+1. **Codice riusabile** → in `utils/` (già package, importabile dovunque). **Script eseguibili** → in `scripts/<dominio>/`, self-contained, mai cross-import.
+2. **Notebook in root** (decisione 2026-05-04): spostarli in `notebooks/` avrebbe richiesto di aggiornare ~50 path relativi tipo `Path.cwd() / "data"` in 6 notebook — pragmaticamente non vale la pena.
+3. **`legacy/` invece di cancellare**: preserva storia git + link in PROJECT_NOTES. Eventualmente cancellabile dopo chiusura paper.
+4. **Risoluzione path negli script**: tutti usano `_find_repo_root()` che fa walk-up a `pyproject.toml` — robusto a futuri rename di cartella.
 
-### Sequenza di esecuzione concordata
+### Cronologia
 
 1. ~~Salvare questo report.~~ (fatto)
 2. ~~Commit e push dello stato attuale (snapshot pre-riorg).~~ (fatto)
 3. ~~Fusione `kg.py` + `kg_advanced.py` → `utils/kg.py`.~~ (fatto 2026-05-03)
-4. **In corso**: aggiornamento progressivo dei notebook per i nuovi path/import, con verifica funzionale step-by-step.
-5. Riorganizzazione interattiva del repo (spostamento file in `pipeline/`/`diagnostic/`/`tooling/`/`legacy/`).
+4. ~~Audit + rinomina con prefisso `0X_` di tutti i 6 notebook attivi.~~ (fatto 2026-05-04)
+5. ~~Riorganizzazione `scripts/` in `pipeline/`/`diagnostic/`/`tooling/`/`legacy/`.~~ (fatto 2026-05-04)
 
 ---
 

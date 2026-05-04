@@ -153,6 +153,8 @@
 
 ## 4. Osservazioni sull'Implementazione
 
+> **Nota (2026-05-04)**: i path `scripts/<file>.py` citati nelle sezioni §4.x si riferiscono al layout pre-riorg. Dal 2026-05-04 la cartella `scripts/` è suddivisa in `pipeline/`, `diagnostic/`, `tooling/`, `legacy/` (vedi alberatura "Struttura del Progetto" sotto, o `documents/REPO_INVENTORY.md` §6 per il layout corrente). Le referenze nei log storici sono volutamente lasciate al path d'epoca per coerenza narrativa con la decisione presa al momento.
+
 ### 4.1 Corpus: evoluzione delle scelte
 - **Vecchio notebook** (`base/preprocessing.ipynb`): era su Google Colab, usava dataset Kaggle `jjinho/wikipedia-20230701` (~442K articoli) e HuggingFace `HuggingFaceFW/clean-wikipedia`. Rimane come **riferimento storico**, non più eseguito.
 - **Cambio corpus (2026-02-24)**: il dataset Kaggle 2023 è stato **scartato** perché non allineato con NQ-open (le cui risposte provengono da Wikipedia Dec 2018). Inizialmente sostituito con `psgs_w100.tsv` (corpus DPR pre-segmentato dal repo Silvestri).
@@ -193,7 +195,7 @@
 - **Bug 3 — `re.compile()` senza raw string**: `loaders.py` usa escape sequences in pattern regex senza `r"..."`, causando `SyntaxWarning` in Python 3.12+. **Fix**: patch sorgente che aggiunge il prefisso `r`.
 - **Entity set `wikidata` vs `wikipedia`**: `entity_set="wikidata"` scarica ~20 GB di embeddings pre-calcolati per 33M entità. `entity_set="wikipedia"` (~6M entità) è molto più leggero (~9 GB totali) e sufficiente per NQ-open (tutte le risposte provengono da Wikipedia). Restituisce comunque QID Wikidata.
 - **Cache locale**: i dati del modello vengono salvati in `data/refined_cache/` (gitignored) per evitare re-download.
-- **Patch applicati a livello sorgente** tramite `scripts/patch_refined.py` — lo script modifica direttamente i file installati nella venv. Va ri-eseguito dopo `uv sync` o reinstallazione del pacchetto. Il notebook `02_nq_filtering.ipynb` invoca lo script automaticamente prima del caricamento del modello.
+- **Patch applicati a livello sorgente** tramite `scripts/tooling/patch_refined.py` — lo script modifica direttamente i file installati nella venv. Va ri-eseguito dopo `uv sync` o reinstallazione del pacchetto. I notebook `02_nq_filtering.ipynb` e `04_answer_preparation.ipynb` invocano lo script automaticamente prima del caricamento del modello.
 
 ### 4.6 Rate limiting SPARQL
 - L'endpoint Wikidata ha limiti di rate. Sara necessario:
@@ -545,17 +547,26 @@ dl-RAG-denseAndKG/
 │   ├── text_processing.py              # segment_article, _init_file_worker, file_segment_worker
 │   └── kg.py                           # Layer 4 — KGScorer unificato (persistenza data/kg.duckdb, griglia DataFrame, MP-ready). Fusione di ex scripts/kg.py + scripts/kg_advanced.py il 2026-05-03 (vedi §4.11)
 ├── scripts/                            # Script eseguibili, self-contained (mai cross-import; codice condiviso vive in utils/)
-│   ├── patch_refined.py                # Patch sorgente per ReFiNed V1 (Windows + Python 3.12+ + transformers 4.x)
-│   ├── build_test_queries.py           # [archeologia SPARQL] generatore test queries con VALUES variabili
-│   ├── hdt_query_test.py               # Smoke test HDT (jupytext .py)
-│   ├── hdt_export_per_predicate.py     # Layer 1 — export per-predicate Q-Q wdt:* da HDT (WSL only)
-│   ├── verify_completeness.py          # Sanity check + comparison HDT counts vs parquet (WSL only)
-│   ├── node_stats.py                   # Layer 1.5 — degree in/out per QID (Windows venv, polars streaming)
-│   ├── build_labels.py                 # Layer 1.6 — lookup rdfs:label@en via HDT (WSL only)
-│   ├── seed_degree_stats.py            # Diagnostic — distribuzione degree dei seed + classificazione clean/mixed/all-hub (Windows venv)
-│   ├── build_n3.py                     # ~~Layer 3 BFS-N3~~ — DEPRECATO 2026-04-28 dopo 89% TIMEOUT (vedi §4.10)
-│   ├── build_n1.py                     # Layer 3 N1 — precompute 1-hop neighborhoods via DuckDB (Windows venv)
-│   └── ablation_diagnostic.py          # Layer 3 ablation — multi-threshold analysis su N1 (Windows venv)
+│   ├── pipeline/                       # Build pipeline KG (Layer 1-3)
+│   │   ├── hdt_export_per_predicate.py # Layer 1 — export per-predicate Q-Q wdt:* da HDT (WSL only)
+│   │   ├── node_stats.py               # Layer 1.5 — degree in/out per QID (Windows venv, polars streaming)
+│   │   ├── build_labels.py             # Layer 1.6 — lookup rdfs:label@en via HDT (WSL only)
+│   │   └── build_n1.py                 # Layer 3 — precompute 1-hop neighborhoods via DuckDB (Windows venv)
+│   ├── diagnostic/                     # Ispezione e verifica
+│   │   ├── ablation_diagnostic.py      # Layer 3 ablation — multi-threshold analysis su N1 (Windows venv)
+│   │   ├── seed_degree_stats.py        # Distribuzione degree dei seed + classificazione clean/mixed/all-hub (Windows venv)
+│   │   ├── verify_completeness.py      # Sanity check + comparison HDT counts vs parquet (WSL only)
+│   │   ├── check_qids.py               # Pre-flight regex QID matching (Windows venv)
+│   │   └── hdt_query_test.py           # Smoke test HDT (jupytext .py)
+│   ├── tooling/                        # Supporto runtime (chiamato da subprocess dai notebook)
+│   │   └── patch_refined.py            # Patch sorgente per ReFiNed V1 (Windows + Python 3.12+ + transformers 4.x)
+│   └── legacy/                         # Archeologia (one-shot già applicati + deprecated)
+│       ├── build_n3.py                 # ~~Layer 3 BFS-N3~~ — DEPRECATO 2026-04-28 dopo 89% TIMEOUT (vedi §4.10)
+│       ├── build_test_queries.py       # generatore test queries SPARQL con VALUES variabili (pre-pivot HDT)
+│       ├── patch_answer_preparation.py # one-shot: inserì la sezione 3b in 04_answer_preparation.ipynb
+│       ├── _extract_cells.py           # one-shot: estrasse celle da 04_answer_preparation.ipynb
+│       ├── _extract_curation_cells.py  # one-shot: estrasse celle da 05_answer_curation.ipynb
+│       └── _copy_nb.py                 # one-shot: helper di copia notebook → JSON
 ├── data/
 │   ├── wikipedia_2018_clean/
 │   │   ├── articles_clean.tsv          # Articoli interi da HF (cache locale, ~3.2M articoli)
