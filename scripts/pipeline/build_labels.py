@@ -93,7 +93,7 @@ of the .hdt label section gets paged into the OS cache.
 HOW TO RUN
 ==========
 From WSL with the dl-rag-wsl venv (pyHDT and pyarrow installed):
-    python scripts/build_labels.py
+    python scripts/pipeline/build_labels.py
 """
 
 import json

@@ -47,7 +47,7 @@ The OLD `edges.parquet` is NOT touched — kept as backup until promotion.
 USAGE
 =====
 From WSL with the dl-rag-wsl venv:
-    python scripts/hdt_export_per_predicate.py 2>&1 | tee /tmp/hdt_export_v2.log
+    python scripts/pipeline/hdt_export_per_predicate.py 2>&1 | tee /tmp/hdt_export_v2.log
 """
 
 import time

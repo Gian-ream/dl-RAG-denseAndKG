@@ -116,11 +116,11 @@ OUT_PATH = REPO_ROOT / "data" / "db" / "node_stats.parquet"
 
 def main() -> None:
     # Pre-condition: edges.parquet must already exist.
-    # We refuse to silently auto-run hdt_export.py — that's an 8-hour job
-    # the user must initiate explicitly (and from WSL, not Windows).
+    # We refuse to silently auto-run hdt_export_per_predicate.py — that's a
+    # ~1h job the user must initiate explicitly (and from WSL, not Windows).
     assert EDGES_PATH.exists(), (
         f"\nedges.parquet not found at: {EDGES_PATH}\n"
-        "Run scripts/hdt_export.py from WSL first (Layer 1).\n"
+        "Run scripts/pipeline/hdt_export_per_predicate.py from WSL first (Layer 1).\n"
     )
     OUT_PATH.parent.mkdir(parents=True, exist_ok=True)
 

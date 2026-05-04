@@ -268,7 +268,7 @@ class KGScorer:
         if "n1" not in existing:
             assert n1_path.exists(), (
                 f"n1.parquet not found at {n1_path}\n"
-                "Run scripts/build_n1.py first (Layer 3)."
+                "Run scripts/pipeline/build_n1.py first (Layer 3)."
             )
             if verbose:
                 print(f"Building n1 in {db_path} (one-time, ~30s)...", flush=True)
@@ -329,7 +329,7 @@ class KGScorer:
         """
         assert n1_path.exists(), (
             f"n1.parquet not found at {n1_path}\n"
-            "Run scripts/build_n1.py first (Layer 3)."
+            "Run scripts/pipeline/build_n1.py first (Layer 3)."
         )
         assert edges_path.exists(), f"edges.parquet not found at {edges_path}"
 
