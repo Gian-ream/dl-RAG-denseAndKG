@@ -21,7 +21,7 @@ Stato di un file:
 | `01_corpus_preparation.ipynb` | CORE | 0 + 1 | Download corpus HF (`florin-hf/wiki_dump2018_nq_open`) → `data/wikipedia_2018_clean/articles_clean.tsv`; segmentazione sentence-aligned in passaggi 100-word → `data/wikipedia_2018_sentence_aligned/psgs_w100_sentence.tsv` (~42M passaggi, 25 GB). Output consumato da `03_embedding.ipynb`. |
 | `02_nq_filtering.ipynb` | CORE | 2 | Filtra `florin-hf/nq_open_gold`: token ≤ 5 + entità ReFiNed su question + answer. Output `data/NQ_question/qa_all_entities.jsonl` (31.372 query). Chiama `scripts/patch_refined.py` via subprocess. |
 | `03_embedding.ipynb` | CORE | 1b | Encoding Contriever (mean pooling) di tutti i ~42M passaggi; build di 9 shard FAISS (`IndexFlatIP`) in `data/faiss_index/`. |
-| `answer_preparation.ipynb` | CORE | 4 | Top-100 retrieval per le 1000 query del subset; entity linking dei passaggi recuperati; output `data/NQ_answer/top100_*.parquet` + `passage_entities*.parquet`. |
+| `04_answer_preparation.ipynb` | CORE | 4 | Top-100 retrieval per le 1000 query del subset; entity linking dei passaggi recuperati; output `data/NQ_answer/top100_*.parquet` + `passage_entities*.parquet`. |
 | `answer_curation.ipynb` | CORE | 4.5 | Identifica 344 query con 0 entità nei loro passaggi; produce `data/NQ_answer/curation_results.jsonl` con mapping originale→sostituta. |
 | `apply_curation.ipynb` | CORE | 4.5 | Applica lo swap delle 344 query → produce `queries_curated.jsonl`, `top100_curated.parquet`, `passage_entities_curated.parquet`. |
 | `base/preprocessing.ipynb` | LEGACY | — | Vecchio notebook Colab. Riferimento storico. **Non eseguire** (vedi CLAUDE.md). |
@@ -68,8 +68,8 @@ Stato di un file:
 
 | File | Scopo storico |
 |------|---------------|
-| `patch_answer_preparation.py` | Inserì la sezione 3b (subset 1k) in `answer_preparation.ipynb`. Già applicato; il notebook è ora committato con la modifica. |
-| `_extract_cells.py` | Estrasse celle da `answer_preparation.ipynb` per editing offline. |
+| `patch_answer_preparation.py` | Inserì la sezione 3b (subset 1k) in `04_answer_preparation.ipynb`. Già applicato; il notebook è ora committato con la modifica. |
+| `_extract_cells.py` | Estrasse celle da `04_answer_preparation.ipynb` per editing offline. |
 | `_extract_curation_cells.py` | Stesso, per `answer_curation.ipynb`. |
 | `_copy_nb.py` | Helper triviale: copia notebook → JSON per editing manuale. |
 
