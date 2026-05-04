@@ -134,7 +134,7 @@ def load_labels(con: duckdb.DuckDBPyConnection) -> dict[str, str]:
 def main() -> None:
     assert N1_PATH.exists(), (
         f"n1.parquet not found at {N1_PATH}\n"
-        "Run scripts/build_n1.py first (Layer 3)."
+        "Run scripts/pipeline/build_n1.py first (Layer 3)."
     )
     assert NODE_STATS_PATH.exists(), f"node_stats.parquet not found at {NODE_STATS_PATH}"
     OUT_DIR.mkdir(parents=True, exist_ok=True)

@@ -56,7 +56,7 @@ JSON dump at data/db/verification.json for follow-up analysis.
 USAGE
 =====
 From WSL with the dl-rag-wsl venv (pyHDT + pyarrow installed):
-    python scripts/verify_completeness.py
+    python scripts/diagnostic/verify_completeness.py
 """
 
 import json
