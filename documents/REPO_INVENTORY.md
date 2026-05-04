@@ -18,9 +18,9 @@ Stato di un file:
 
 | File | Stato | Step pipeline | Scopo |
 |------|-------|---------------|-------|
-| `01_corpus_preparation.ipynb` | CORE | 0 + 1 | Download corpus HF (`florin-hf/wiki_dump2018_nq_open`) → `data/wikipedia_2018_clean/articles_clean.tsv`; segmentazione sentence-aligned in passaggi 100-word → `data/wikipedia_2018_sentence_aligned/psgs_w100_sentence.tsv` (~42M passaggi, 25 GB). Output consumato da `embedding.ipynb`. |
+| `01_corpus_preparation.ipynb` | CORE | 0 + 1 | Download corpus HF (`florin-hf/wiki_dump2018_nq_open`) → `data/wikipedia_2018_clean/articles_clean.tsv`; segmentazione sentence-aligned in passaggi 100-word → `data/wikipedia_2018_sentence_aligned/psgs_w100_sentence.tsv` (~42M passaggi, 25 GB). Output consumato da `03_embedding.ipynb`. |
 | `02_nq_filtering.ipynb` | CORE | 2 | Filtra `florin-hf/nq_open_gold`: token ≤ 5 + entità ReFiNed su question + answer. Output `data/NQ_question/qa_all_entities.jsonl` (31.372 query). Chiama `scripts/patch_refined.py` via subprocess. |
-| `embedding.ipynb` | CORE | 1b | Encoding Contriever (mean pooling) di tutti i ~42M passaggi; build di 9 shard FAISS (`IndexFlatIP`) in `data/faiss_index/`. |
+| `03_embedding.ipynb` | CORE | 1b | Encoding Contriever (mean pooling) di tutti i ~42M passaggi; build di 9 shard FAISS (`IndexFlatIP`) in `data/faiss_index/`. |
 | `answer_preparation.ipynb` | CORE | 4 | Top-100 retrieval per le 1000 query del subset; entity linking dei passaggi recuperati; output `data/NQ_answer/top100_*.parquet` + `passage_entities*.parquet`. |
 | `answer_curation.ipynb` | CORE | 4.5 | Identifica 344 query con 0 entità nei loro passaggi; produce `data/NQ_answer/curation_results.jsonl` con mapping originale→sostituta. |
 | `apply_curation.ipynb` | CORE | 4.5 | Applica lo swap delle 344 query → produce `queries_curated.jsonl`, `top100_curated.parquet`, `passage_entities_curated.parquet`. |
