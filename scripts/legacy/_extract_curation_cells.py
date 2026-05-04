@@ -2,12 +2,12 @@
 Extract specific cell sources from answer_curation.ipynb.
 Writes each cell source to a separate file in scripts/_cells/ directory.
 
-Run: .venv/Scripts/python.exe scripts/_extract_curation_cells.py
+Run: .venv/Scripts/python.exe scripts/legacy/_extract_curation_cells.py
 """
 import json
 from pathlib import Path
 
-root = Path(__file__).resolve().parent.parent
+root = Path(__file__).resolve().parent.parent.parent  # scripts/legacy/file -> repo root
 nb_path = root / "answer_curation.ipynb"
 out_dir = root / "scripts" / "_cells"
 out_dir.mkdir(exist_ok=True)

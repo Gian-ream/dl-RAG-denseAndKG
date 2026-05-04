@@ -5,7 +5,7 @@ right after loading queries, BEFORE encoding and retrieval.
 Sections 4-8 will then operate on the 1K subset natively.
 Section 9.1 needs no change — top100_merged.parquet will already be subset-only.
 
-Run: uv run python scripts/patch_answer_preparation.py
+Run: uv run python scripts/legacy/patch_answer_preparation.py
 """
 
 import json

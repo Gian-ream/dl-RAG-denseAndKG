@@ -135,13 +135,13 @@ block-buffering stdout when piped to tee (otherwise the log appears
 empty for minutes despite the script printing).
 
     # Dry run on 100 random seeds, 12 workers
-    PYTHONUNBUFFERED=1 DRY_RUN=1 python scripts/build_n3.py 2>&1 | tee /tmp/build_n3_dry.log
+    PYTHONUNBUFFERED=1 DRY_RUN=1 python scripts/legacy/build_n3.py 2>&1 | tee /tmp/build_n3_dry.log
 
     # Full run, 12 workers
-    PYTHONUNBUFFERED=1 python scripts/build_n3.py 2>&1 | tee /tmp/build_n3_full.log
+    PYTHONUNBUFFERED=1 python scripts/legacy/build_n3.py 2>&1 | tee /tmp/build_n3_full.log
 
     # Tune worker count (e.g., 4 workers for low memory):
-    PYTHONUNBUFFERED=1 N_WORKERS=4 python scripts/build_n3.py
+    PYTHONUNBUFFERED=1 N_WORKERS=4 python scripts/legacy/build_n3.py
 """
 
 import json
@@ -223,7 +223,7 @@ SEED_TIMEOUT_S = 60
 # (mmap reads on a 166 GB file), so parallel workers overlap I/O wait
 # across cores. With 24 cores typical on WSL, 12 workers is a balance:
 # leaves headroom for OS, page cache, and the parent's parquet writer.
-# Override via env: N_WORKERS=4 python scripts/build_n3.py
+# Override via env: N_WORKERS=4 python scripts/legacy/build_n3.py
 N_WORKERS = int(os.environ.get("N_WORKERS", "12"))
 
 # Dry-run mode: process only this many randomly-sampled seeds.

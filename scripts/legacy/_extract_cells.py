@@ -2,13 +2,13 @@
 Extract specific cell sources from answer_preparation.ipynb.
 Writes each cell source to a separate file in scripts/_cells/ directory.
 
-Run: python scripts/_extract_cells.py
-  or: .venv/Scripts/python.exe scripts/_extract_cells.py
+Run: python scripts/legacy/_extract_cells.py
+  or: .venv/Scripts/python.exe scripts/legacy/_extract_cells.py
 """
 import json, os
 from pathlib import Path
 
-root = Path(__file__).resolve().parent.parent
+root = Path(__file__).resolve().parent.parent.parent  # scripts/legacy/file -> repo root
 nb_path = root / "answer_preparation.ipynb"
 out_dir = root / "scripts" / "_cells"
 out_dir.mkdir(exist_ok=True)

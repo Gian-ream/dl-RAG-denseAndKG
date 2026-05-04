@@ -11,7 +11,7 @@ import csv
 from pathlib import Path
 
 # --- Configuration ---
-PROJECT_ROOT = Path(__file__).resolve().parent.parent
+PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent  # scripts/legacy/file -> repo root
 CSV_PATH     = PROJECT_ROOT / "data" / "Wikidata_service" / "queryPredicati.csv"
 OUT_DIR      = PROJECT_ROOT / "data" / "Wikidata_service" / "test_queries"
 
