@@ -602,12 +602,12 @@ dl-RAG-denseAndKG/
 │       ├── shard_XX.npy                # Embedding float32 (5M × 768 per shard)
 │       ├── shard_XX_ids.npy            # Mapping posizione FAISS → passage ID
 │       └── shard_XX.faiss              # Indice FAISS IndexFlatIP
+├── 01_corpus_preparation.ipynb         # Step 0-1 — Download corpus HF + sentence-aligned segmentation (output: data/wikipedia_2018_sentence_aligned/psgs_w100_sentence.tsv)
+├── nq_filtering.ipynb                  # Step 2 — Query Filtering (token + ReFiNed entity linking)
 ├── embedding.ipynb                     # Step 1b.4 — Passage Encoding & FAISS Indexing
-├── nq_filtering.ipynb                  # Step 2 — Query Filtering
-├── answer_preparation.ipynb            # Top-100 retrieval per query subset
-├── answer_curation.ipynb               # Identificazione query sostituibili (passaggi 0-entity)
-├── apply_curation.ipynb                # Apply 344 sostituzioni → file _curated.*
-├── wikidata_preparation.ipynb          # Step 3 — KG Subgraph Construction (BFS-3-onde su HDT, da popolare)
+├── answer_preparation.ipynb            # Step 4 — Top-100 retrieval per query subset
+├── answer_curation.ipynb               # Step 4.5 — Identificazione query sostituibili (passaggi 0-entity)
+├── apply_curation.ipynb                # Step 4.5 — Apply 344 sostituzioni → file _curated.*
 ├── main.py                             # Entry point (da definire)
 └── .venv/                              # Virtual environment locale Windows (uv)
 ```

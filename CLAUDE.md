@@ -41,7 +41,7 @@ La conoscenza del progetto NON sta in questo file. Consulta:
 - **Package manager**: `uv` — `uv sync` per installare, `uv add <pkg>` per aggiungere dipendenze
 - **Python**: >=3.8 (venv in `.venv/`)
 - **Dati**: `data/` è gitignored (~14.7 GB); auto-download via `kagglehub` nel notebook
-- **Notebook principale**: `wikidata_preparation.ipynb`
+- **Notebook principale**: `01_corpus_preparation.ipynb`
 
 ## Tavola Rotonda Python AI
 

@@ -18,7 +18,7 @@ Stato di un file:
 
 | File | Stato | Step pipeline | Scopo |
 |------|-------|---------------|-------|
-| `wikidata_preparation.ipynb` | CORE | 0 + 1 | Download corpus HF (`florin-hf/wiki_dump2018_nq_open`); segmentazione sentence-aligned in passaggi 100-word; output `data/wikipedia_2018_sentence_aligned/psgs_w100_sentence.tsv` (~42M passaggi, 25 GB). Step 2-3 al suo interno (entity linking + KG via SPARQL) sono archeologia pre-pivot HDT — la parte effettivamente usata oggi è Step 0-1. |
+| `01_corpus_preparation.ipynb` | CORE | 0 + 1 | Download corpus HF (`florin-hf/wiki_dump2018_nq_open`) → `data/wikipedia_2018_clean/articles_clean.tsv`; segmentazione sentence-aligned in passaggi 100-word → `data/wikipedia_2018_sentence_aligned/psgs_w100_sentence.tsv` (~42M passaggi, 25 GB). Output consumato da `embedding.ipynb`. |
 | `nq_filtering.ipynb` | CORE | 2 | Filtra `florin-hf/nq_open_gold`: token ≤ 5 + entità ReFiNed su question + answer. Output `data/NQ_question/qa_all_entities.jsonl` (31.372 query). Chiama `scripts/patch_refined.py` via subprocess. |
 | `embedding.ipynb` | CORE | 1b | Encoding Contriever (mean pooling) di tutti i ~42M passaggi; build di 9 shard FAISS (`IndexFlatIP`) in `data/faiss_index/`. |
 | `answer_preparation.ipynb` | CORE | 4 | Top-100 retrieval per le 1000 query del subset; entity linking dei passaggi recuperati; output `data/NQ_answer/top100_*.parquet` + `passage_entities*.parquet`. |
@@ -80,7 +80,7 @@ Stato di un file:
 | File | Scopo | Importato da |
 |------|-------|--------------|
 | `utils/__init__.py` | Vuoto. Rende `utils` un package Python. | — |
-| `utils/text_processing.py` | `segment_article`, `_init_file_worker`, `file_segment_worker`. Estratto da `wikidata_preparation.ipynb` per essere importabile dai worker `multiprocessing` (su Windows usa `spawn`, le funzioni notebook-defined non si picklano). | `wikidata_preparation.ipynb` |
+| `utils/text_processing.py` | `segment_article`, `_init_file_worker`, `file_segment_worker`. Estratto da `01_corpus_preparation.ipynb` per essere importabile dai worker `multiprocessing` (su Windows usa `spawn`, le funzioni notebook-defined non si picklano). | `01_corpus_preparation.ipynb` |
 | `utils/kg.py` | **CORE Layer 4** — fusione di ex `scripts/kg.py` + `scripts/kg_advanced.py`. Classe unica `KGScorer` con persistenza DuckDB su disco (`data/kg.duckdb`, default), modalità `read_only` per worker MP, query unificata `min_dist`, API griglia `kg_components_grid`/`kg_components_grid_batch` che ritornano `pd.DataFrame`. Diagnostico `is_reachable` mantenuto. Smoke test invocabile via `python -m utils.kg`. | (futuri notebook KG-rerank) |
 
 ---
@@ -89,7 +89,7 @@ Stato di un file:
 
 | Importa | Importato da |
 |---------|--------------|
-| `utils.text_processing` | `wikidata_preparation.ipynb` |
+| `utils.text_processing` | `01_corpus_preparation.ipynb` |
 | `utils.kg` | (futuri notebook KG-rerank — già eseguibile via `python -m utils.kg`) |
 | `scripts/patch_refined.py` | invocato via `subprocess` da `nq_filtering.ipynb` |
 
@@ -113,7 +113,7 @@ Nessun altro script ha dipendenze incrociate. Ogni script in `scripts/` è self-
 ```
 dl-RAG-denseAndKG/
 ├── notebooks/                          # i .ipynb (da decidere se spostare o lasciare in root)
-│   ├── 01_wikidata_preparation.ipynb
+│   ├── 01_01_corpus_preparation.ipynb
 │   ├── 02_nq_filtering.ipynb
 │   ├── 03_embedding.ipynb
 │   ├── 04_answer_preparation.ipynb
