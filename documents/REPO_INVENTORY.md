@@ -22,7 +22,7 @@ Stato di un file:
 | `02_nq_filtering.ipynb` | CORE | 2 | Filtra `florin-hf/nq_open_gold`: token ≤ 5 + entità ReFiNed su question + answer. Output `data/NQ_question/qa_all_entities.jsonl` (31.372 query). Chiama `scripts/patch_refined.py` via subprocess. |
 | `03_embedding.ipynb` | CORE | 1b | Encoding Contriever (mean pooling) di tutti i ~42M passaggi; build di 9 shard FAISS (`IndexFlatIP`) in `data/faiss_index/`. |
 | `04_answer_preparation.ipynb` | CORE | 4 | Top-100 retrieval per le 1000 query del subset; entity linking dei passaggi recuperati; output `data/NQ_answer/top100_*.parquet` + `passage_entities*.parquet`. |
-| `answer_curation.ipynb` | CORE | 4.5 | Identifica 344 query con 0 entità nei loro passaggi; produce `data/NQ_answer/curation_results.jsonl` con mapping originale→sostituta. |
+| `05_answer_curation.ipynb` | CORE | 4.5 | Identifica 344 query con 0 entità nei loro passaggi; produce `data/NQ_answer/curation_results.jsonl` con mapping originale→sostituta. |
 | `apply_curation.ipynb` | CORE | 4.5 | Applica lo swap delle 344 query → produce `queries_curated.jsonl`, `top100_curated.parquet`, `passage_entities_curated.parquet`. |
 | `base/preprocessing.ipynb` | LEGACY | — | Vecchio notebook Colab. Riferimento storico. **Non eseguire** (vedi CLAUDE.md). |
 
@@ -70,7 +70,7 @@ Stato di un file:
 |------|---------------|
 | `patch_answer_preparation.py` | Inserì la sezione 3b (subset 1k) in `04_answer_preparation.ipynb`. Già applicato; il notebook è ora committato con la modifica. |
 | `_extract_cells.py` | Estrasse celle da `04_answer_preparation.ipynb` per editing offline. |
-| `_extract_curation_cells.py` | Stesso, per `answer_curation.ipynb`. |
+| `_extract_curation_cells.py` | Stesso, per `05_answer_curation.ipynb`. |
 | `_copy_nb.py` | Helper triviale: copia notebook → JSON per editing manuale. |
 
 ---
@@ -113,12 +113,12 @@ Nessun altro script ha dipendenze incrociate. Ogni script in `scripts/` è self-
 ```
 dl-RAG-denseAndKG/
 ├── notebooks/                          # i .ipynb (da decidere se spostare o lasciare in root)
-│   ├── 01_01_corpus_preparation.ipynb
+│   ├── 01_corpus_preparation.ipynb
 │   ├── 02_nq_filtering.ipynb
 │   ├── 03_embedding.ipynb
 │   ├── 04_answer_preparation.ipynb
-│   ├── 04b_answer_curation.ipynb
-│   └── 04c_apply_curation.ipynb
+│   ├── 05_answer_curation.ipynb
+│   └── 06_apply_curation.ipynb       # rename pendente (prossimo audit)
 ├── utils/                              # libreria importabile (già package)
 │   ├── __init__.py
 │   ├── paths.py                        # NEW: REPO_ROOT, N1_PATH, EDGES_PATH, _find_repo_root

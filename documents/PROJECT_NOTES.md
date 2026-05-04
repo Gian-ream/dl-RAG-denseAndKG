@@ -424,7 +424,7 @@ Prima init: ~5 min, ~10-15 GB su disco. Init successive: ~1s (skip rebuild). I w
 | Corpus Preparation | Completato | Corpus da HF `florin-hf/wiki_dump2018_nq_open` (~21M articoli con gold NQ). Segmentazione sentence-aligned completata: 23,910,209 passaggi da 100 parole in `data/wikipedia_2018_sentence_aligned/psgs_w100_sentence.tsv` (14.5 GB). Approccio file-based shared-nothing (100 frammenti, ~22s su 24 core). |
 | FAISS Indexing | Completato | Notebook `03_embedding.ipynb`. Encoding con Contriever (batch 512, GPU) in 9 shard. Indici `IndexFlatIP` (exact inner product). Output in `data/faiss_index/shard_XX.{npy,faiss}` + `shard_XX_ids.npy`. |
 | Query Filtering | Completato | Notebook `02_nq_filtering.ipynb`. Dataset `florin-hf/nq_open_gold` (83,104 query, 3 split uniti). Token filter ≤5 (Contriever tokenizer, ALL variants): 76,406 query. Entity linking ReFiNed (`questions_model`, entity_set `wikipedia`): 31,372 query con entità sia in domanda che in TUTTE le varianti risposta (41.1%). Output: `data/NQ_question/qa_all_entities.jsonl` (filtrate) + `qa_entities_general.jsonl` (tutte con entity info). |
-| Answer preparation + curation | Completato | Notebook `04_answer_preparation.ipynb` (top-100 retrieval per query, 1000 query subset) + `answer_curation.ipynb` (sostituzione query con passaggi a 0 entità) + `apply_curation.ipynb` (apply 344 sostituzioni). Output: `data/NQ_answer/{queries_curated.jsonl, top100_curated.parquet, passage_entities_curated.parquet, query_embeddings_curated.npy}` — 1000 query, 100k righe top-100, 90.667 passaggi unici tutti con ≥1 entità. |
+| Answer preparation + curation | Completato | Notebook `04_answer_preparation.ipynb` (top-100 retrieval per query, 1000 query subset) + `05_answer_curation.ipynb` (sostituzione query con passaggi a 0 entità) + `apply_curation.ipynb` (apply 344 sostituzioni). Output: `data/NQ_answer/{queries_curated.jsonl, top100_curated.parquet, passage_entities_curated.parquet, query_embeddings_curated.npy}` — 1000 query, 100k righe top-100, 90.667 passaggi unici tutti con ≥1 entità. |
 | **KG Subgraph Construction** | **In corso** | Layer 1 (edges.parquet 661.5M righe) + Layer 1.5 (node_stats.parquet con top hub Q13442814/Q1860/Q5) completati al 2026-04-28. Layer 1.6 (labels) in lancio. Bug wildcard iterator e recovery per-predicate documentati in §4.8. Pendenze attive in §6.1. |
 | Baseline Contriever-only | Da fare | |
 | KG-Enhanced Reranking | Da fare | Userà `connected_ratio` e `purity_ratio` su set di QID a distanza ≤ k via Layer 4 (vedi 6.3). |
@@ -606,7 +606,7 @@ dl-RAG-denseAndKG/
 ├── 02_nq_filtering.ipynb               # Step 2 — Query Filtering (token + ReFiNed entity linking)
 ├── 03_embedding.ipynb                  # Step 1b.4 — Passage Encoding & FAISS Indexing
 ├── 04_answer_preparation.ipynb         # Step 4 — Top-100 retrieval per query subset + entity linking ReFiNed dei passaggi recuperati
-├── answer_curation.ipynb               # Step 4.5 — Identificazione query sostituibili (passaggi 0-entity)
+├── 05_answer_curation.ipynb            # Step 4.5 — Identificazione query sostituibili (passaggi 0-entity)
 ├── apply_curation.ipynb                # Step 4.5 — Apply 344 sostituzioni → file _curated.*
 └── .venv/                              # Virtual environment locale Windows (uv)
 ```
