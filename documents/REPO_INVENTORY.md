@@ -23,7 +23,7 @@ Stato di un file:
 | `03_embedding.ipynb` | CORE | 1b | Encoding Contriever (mean pooling) di tutti i ~42M passaggi; build di 9 shard FAISS (`IndexFlatIP`) in `data/faiss_index/`. |
 | `04_answer_preparation.ipynb` | CORE | 4 | Top-100 retrieval per le 1000 query del subset; entity linking dei passaggi recuperati; output `data/NQ_answer/top100_*.parquet` + `passage_entities*.parquet`. |
 | `05_answer_curation.ipynb` | CORE | 4.5 | Identifica 344 query con 0 entità nei loro passaggi; produce `data/NQ_answer/curation_results.jsonl` con mapping originale→sostituta. |
-| `apply_curation.ipynb` | CORE | 4.5 | Applica lo swap delle 344 query → produce `queries_curated.jsonl`, `top100_curated.parquet`, `passage_entities_curated.parquet`. |
+| `06_apply_curation.ipynb` | CORE | 4.5 | Applica lo swap delle 344 query → produce `queries_curated.jsonl`, `top100_curated.parquet`, `passage_entities_curated.parquet`, `query_embeddings_curated.npy`. |
 | `base/preprocessing.ipynb` | LEGACY | — | Vecchio notebook Colab. Riferimento storico. **Non eseguire** (vedi CLAUDE.md). |
 
 ---
@@ -118,7 +118,7 @@ dl-RAG-denseAndKG/
 │   ├── 03_embedding.ipynb
 │   ├── 04_answer_preparation.ipynb
 │   ├── 05_answer_curation.ipynb
-│   └── 06_apply_curation.ipynb       # rename pendente (prossimo audit)
+│   └── 06_apply_curation.ipynb
 ├── utils/                              # libreria importabile (già package)
 │   ├── __init__.py
 │   ├── paths.py                        # NEW: REPO_ROOT, N1_PATH, EDGES_PATH, _find_repo_root
