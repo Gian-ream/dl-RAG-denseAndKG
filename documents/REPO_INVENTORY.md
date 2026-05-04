@@ -19,7 +19,7 @@ Stato di un file:
 | File | Stato | Step pipeline | Scopo |
 |------|-------|---------------|-------|
 | `01_corpus_preparation.ipynb` | CORE | 0 + 1 | Download corpus HF (`florin-hf/wiki_dump2018_nq_open`) → `data/wikipedia_2018_clean/articles_clean.tsv`; segmentazione sentence-aligned in passaggi 100-word → `data/wikipedia_2018_sentence_aligned/psgs_w100_sentence.tsv` (~42M passaggi, 25 GB). Output consumato da `embedding.ipynb`. |
-| `nq_filtering.ipynb` | CORE | 2 | Filtra `florin-hf/nq_open_gold`: token ≤ 5 + entità ReFiNed su question + answer. Output `data/NQ_question/qa_all_entities.jsonl` (31.372 query). Chiama `scripts/patch_refined.py` via subprocess. |
+| `02_nq_filtering.ipynb` | CORE | 2 | Filtra `florin-hf/nq_open_gold`: token ≤ 5 + entità ReFiNed su question + answer. Output `data/NQ_question/qa_all_entities.jsonl` (31.372 query). Chiama `scripts/patch_refined.py` via subprocess. |
 | `embedding.ipynb` | CORE | 1b | Encoding Contriever (mean pooling) di tutti i ~42M passaggi; build di 9 shard FAISS (`IndexFlatIP`) in `data/faiss_index/`. |
 | `answer_preparation.ipynb` | CORE | 4 | Top-100 retrieval per le 1000 query del subset; entity linking dei passaggi recuperati; output `data/NQ_answer/top100_*.parquet` + `passage_entities*.parquet`. |
 | `answer_curation.ipynb` | CORE | 4.5 | Identifica 344 query con 0 entità nei loro passaggi; produce `data/NQ_answer/curation_results.jsonl` con mapping originale→sostituta. |
@@ -55,7 +55,7 @@ Stato di un file:
 
 | File | Scopo |
 |------|-------|
-| `patch_refined.py` | Patch source-level di ReFiNed V1 per Windows + Python 3.12+ + transformers 4.48+. Idempotente. **Chiamato in automatico da `nq_filtering.ipynb` via subprocess** — non rimuovere. Eseguibile anche manuale: `python scripts/patch_refined.py [--check]`. |
+| `patch_refined.py` | Patch source-level di ReFiNed V1 per Windows + Python 3.12+ + transformers 4.48+. Idempotente. **Chiamato in automatico da `02_nq_filtering.ipynb` via subprocess** — non rimuovere. Eseguibile anche manuale: `python scripts/patch_refined.py [--check]`. |
 
 ### 2.4 Legacy / archeologia
 
@@ -91,7 +91,7 @@ Stato di un file:
 |---------|--------------|
 | `utils.text_processing` | `01_corpus_preparation.ipynb` |
 | `utils.kg` | (futuri notebook KG-rerank — già eseguibile via `python -m utils.kg`) |
-| `scripts/patch_refined.py` | invocato via `subprocess` da `nq_filtering.ipynb` |
+| `scripts/patch_refined.py` | invocato via `subprocess` da `02_nq_filtering.ipynb` |
 
 Nessun altro script ha dipendenze incrociate. Ogni script in `scripts/` è self-contained ed eseguito da terminale; tutto il codice condiviso vive in `utils/`.
 

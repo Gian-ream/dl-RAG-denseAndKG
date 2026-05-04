@@ -73,7 +73,7 @@
   1. **Token count ≤ 5** (tokenizer Contriever/BERT wordpiece, `add_special_tokens=False`): criterio ALL (tutte le varianti risposta devono passare). Risultato: 76,406 query (91.9%). Split answers (1.4%) sacrificate per coerenza.
   2. **Entity linking ReFiNed**: modello `questions_model` (fine-tuned WebQSP), entity_set `wikipedia` (~6M entità). Criterio: domanda ha ≥1 entità AND tutte le varianti risposta hanno ≥1 entità. Risultato: 31,372 query (41.1% delle 76,406).
 - **Output**: `data/NQ_question/qa_all_entities.jsonl` (31,372 query filtrate con QID) + `data/NQ_question/qa_entities_general.jsonl` (76,406 query con entity info completa)
-- **Notebook**: `nq_filtering.ipynb`
+- **Notebook**: `02_nq_filtering.ipynb`
 
 ### Step 3 — KG Subgraph Construction (Wikidata Preparation)
 - **Input**:
@@ -193,7 +193,7 @@
 - **Bug 3 — `re.compile()` senza raw string**: `loaders.py` usa escape sequences in pattern regex senza `r"..."`, causando `SyntaxWarning` in Python 3.12+. **Fix**: patch sorgente che aggiunge il prefisso `r`.
 - **Entity set `wikidata` vs `wikipedia`**: `entity_set="wikidata"` scarica ~20 GB di embeddings pre-calcolati per 33M entità. `entity_set="wikipedia"` (~6M entità) è molto più leggero (~9 GB totali) e sufficiente per NQ-open (tutte le risposte provengono da Wikipedia). Restituisce comunque QID Wikidata.
 - **Cache locale**: i dati del modello vengono salvati in `data/refined_cache/` (gitignored) per evitare re-download.
-- **Patch applicati a livello sorgente** tramite `scripts/patch_refined.py` — lo script modifica direttamente i file installati nella venv. Va ri-eseguito dopo `uv sync` o reinstallazione del pacchetto. Il notebook `nq_filtering.ipynb` invoca lo script automaticamente prima del caricamento del modello.
+- **Patch applicati a livello sorgente** tramite `scripts/patch_refined.py` — lo script modifica direttamente i file installati nella venv. Va ri-eseguito dopo `uv sync` o reinstallazione del pacchetto. Il notebook `02_nq_filtering.ipynb` invoca lo script automaticamente prima del caricamento del modello.
 
 ### 4.6 Rate limiting SPARQL
 - L'endpoint Wikidata ha limiti di rate. Sara necessario:
@@ -423,7 +423,7 @@ Prima init: ~5 min, ~10-15 GB su disco. Init successive: ~1s (skip rebuild). I w
 |------|-------|------|
 | Corpus Preparation | Completato | Corpus da HF `florin-hf/wiki_dump2018_nq_open` (~21M articoli con gold NQ). Segmentazione sentence-aligned completata: 23,910,209 passaggi da 100 parole in `data/wikipedia_2018_sentence_aligned/psgs_w100_sentence.tsv` (14.5 GB). Approccio file-based shared-nothing (100 frammenti, ~22s su 24 core). |
 | FAISS Indexing | Completato | Notebook `embedding.ipynb`. Encoding con Contriever (batch 512, GPU) in 9 shard. Indici `IndexFlatIP` (exact inner product). Output in `data/faiss_index/shard_XX.{npy,faiss}` + `shard_XX_ids.npy`. |
-| Query Filtering | Completato | Notebook `nq_filtering.ipynb`. Dataset `florin-hf/nq_open_gold` (83,104 query, 3 split uniti). Token filter ≤5 (Contriever tokenizer, ALL variants): 76,406 query. Entity linking ReFiNed (`questions_model`, entity_set `wikipedia`): 31,372 query con entità sia in domanda che in TUTTE le varianti risposta (41.1%). Output: `data/NQ_question/qa_all_entities.jsonl` (filtrate) + `qa_entities_general.jsonl` (tutte con entity info). |
+| Query Filtering | Completato | Notebook `02_nq_filtering.ipynb`. Dataset `florin-hf/nq_open_gold` (83,104 query, 3 split uniti). Token filter ≤5 (Contriever tokenizer, ALL variants): 76,406 query. Entity linking ReFiNed (`questions_model`, entity_set `wikipedia`): 31,372 query con entità sia in domanda che in TUTTE le varianti risposta (41.1%). Output: `data/NQ_question/qa_all_entities.jsonl` (filtrate) + `qa_entities_general.jsonl` (tutte con entity info). |
 | Answer preparation + curation | Completato | Notebook `answer_preparation.ipynb` (top-100 retrieval per query, 1000 query subset) + `answer_curation.ipynb` (sostituzione query con passaggi a 0 entità) + `apply_curation.ipynb` (apply 344 sostituzioni). Output: `data/NQ_answer/{queries_curated.jsonl, top100_curated.parquet, passage_entities_curated.parquet, query_embeddings_curated.npy}` — 1000 query, 100k righe top-100, 90.667 passaggi unici tutti con ≥1 entità. |
 | **KG Subgraph Construction** | **In corso** | Layer 1 (edges.parquet 661.5M righe) + Layer 1.5 (node_stats.parquet con top hub Q13442814/Q1860/Q5) completati al 2026-04-28. Layer 1.6 (labels) in lancio. Bug wildcard iterator e recovery per-predicate documentati in §4.8. Pendenze attive in §6.1. |
 | Baseline Contriever-only | Da fare | |
@@ -603,12 +603,11 @@ dl-RAG-denseAndKG/
 │       ├── shard_XX_ids.npy            # Mapping posizione FAISS → passage ID
 │       └── shard_XX.faiss              # Indice FAISS IndexFlatIP
 ├── 01_corpus_preparation.ipynb         # Step 0-1 — Download corpus HF + sentence-aligned segmentation (output: data/wikipedia_2018_sentence_aligned/psgs_w100_sentence.tsv)
-├── nq_filtering.ipynb                  # Step 2 — Query Filtering (token + ReFiNed entity linking)
+├── 02_nq_filtering.ipynb               # Step 2 — Query Filtering (token + ReFiNed entity linking)
 ├── embedding.ipynb                     # Step 1b.4 — Passage Encoding & FAISS Indexing
 ├── answer_preparation.ipynb            # Step 4 — Top-100 retrieval per query subset
 ├── answer_curation.ipynb               # Step 4.5 — Identificazione query sostituibili (passaggi 0-entity)
 ├── apply_curation.ipynb                # Step 4.5 — Apply 344 sostituzioni → file _curated.*
-├── main.py                             # Entry point (da definire)
 └── .venv/                              # Virtual environment locale Windows (uv)
 ```
 
