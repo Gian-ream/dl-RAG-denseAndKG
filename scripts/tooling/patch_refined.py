@@ -14,8 +14,8 @@ ReFiNed V1 has compatibility issues with Windows / Python 3.12+ / transformers 4
      Fix: remove the kwarg (both call sites).
 
 Usage:
-    python scripts/patch_refined.py          # auto-detects .venv in project root
-    python scripts/patch_refined.py --check  # dry-run, only report status
+    python scripts/tooling/patch_refined.py          # auto-detects .venv in project root
+    python scripts/tooling/patch_refined.py --check  # dry-run, only report status
 """
 
 import argparse
@@ -55,7 +55,7 @@ PATCHES = [
 
 def find_site_packages() -> Path:
     """Find site-packages inside .venv relative to this script's project root."""
-    project_root = Path(__file__).resolve().parent.parent
+    project_root = Path(__file__).resolve().parent.parent.parent  # scripts/tooling/file -> repo root
     # Windows: .venv/Lib/site-packages  |  Unix: .venv/lib/python3.x/site-packages
     candidates = list(project_root.glob(".venv/**/site-packages"))
     if not candidates:
