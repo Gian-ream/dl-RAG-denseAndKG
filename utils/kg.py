@@ -883,6 +883,264 @@ class KGScorer:
             ])
         return pd.concat(sub_dfs, ignore_index=True)
 
+    # ------------------------------------------------------------------------
+    # Per-query batched grid (optimization for many-candidates-per-query)
+    # ------------------------------------------------------------------------
+
+    def kg_components_grid_per_query(
+        self,
+        query_id: str,
+        Q: list[str],
+        passages: list[tuple[str, list[str]]],
+        distances: Iterable[int] = DEFAULT_DISTANCES,
+        thresholds: Iterable[int | None] = DEFAULT_THRESHOLDS,
+        verbose: bool = False,
+    ) -> pd.DataFrame:
+        """Per-query batched scorer — output-equivalent a `kg_components_grid_batch`
+        per UNA query con N candidate, ma con `len(thresholds)` chiamate
+        SQL TOTALI invece di `N × len(thresholds)`.
+
+        OBIETTIVO E IDEA
+        ================
+        `kg_components_grid_batch` itera per coppia (query, passage) e per
+        ciascuna fa 6 query SQL (una per threshold). Per UNA stessa query
+        con N=100 passage candidate ⇒ 600 query SQL, ognuna che ricomputa
+        il sotto-grafo raggiungibile da Q (identico per tutte le 100
+        passage di quella query).
+
+        Questa API sfrutta la condivisione di Q: per UNA query con N
+        passage, calcola UNA volta il sotto-grafo raggiungibile da Q
+        (entro 3 hop, con bridge ≤ t, vincolato a D_union — dettagli sotto)
+        per ogni threshold t. Concretamente: chiama UNA volta per threshold
+        l'helper esistente `_reachable_pairs_min_dist(Q, D_union, t)` ⇒
+        6 SQL totali. Per ogni passage poi filtriamo il reach a `D_i` in
+        Python (set ops, gratis). Risultato: 6 SQL invece di 600 per query.
+
+        ARCHITETTURA
+        ============
+        - D_union = ⋃_i D_i (dedup) — usato come D_set della SQL. Bound
+          tipico: ~200-1500 entità (10-30 entità per passage × 100
+          passage / fattore di dedup ≈ 3-5x). Tenere D_union nella SQL
+          evita esplosione di memoria nei casi Q-hubby o threshold=∞ (vs
+          no-D-filter che potrebbe ritornare milioni di righe).
+        - Loop esterno: per ogni threshold t, ONE chiamata a
+          `_reachable_pairs_min_dist(Q, D_union, t)` ⇒ mappa
+          `{(q, x) → min_dist}` con x ∈ D_union, q ∈ Q raggiungibili in
+          ≤ 3 hop con bridge ≤ t.
+        - Loop interno: per ogni passage, filtra il reach a D_i
+          (intersezione Python set), deriva (cr, pr, kg_score) per ogni
+          distance k aggregando su `min_dist ≤ k`.
+
+        OUTPUT
+        ======
+        pd.DataFrame con colonne IDENTICHE a `kg_components_grid_batch`:
+            query_id        : str
+            passage_id      : str
+            distance        : int (∈ distances)
+            threshold       : int|None (chiave originale, 0/None per ∞)
+            connected_ratio : float ∈ [0, 1]
+            purity_ratio    : float ∈ [0, 1]
+            kg_score        : float ∈ [0, 1] = cr · pr
+        Numero di righe: `len(passages) × len(distances) × len(thresholds)`.
+
+        EQUIVALENZA NUMERICA con `kg_components_grid_batch`
+        ====================================================
+        I valori (cr, pr, kg_score) coincidono ESATTAMENTE per gli stessi
+        (query, passage, distance, threshold). L'unica differenza è
+        l'ordine delle righe: per asserire l'equivalenza, ordinare entrambi
+        i DataFrame per (passage_id, distance, threshold) prima di
+        confrontare colonna per colonna.
+
+        LOGGING DIAGNOSTICO (verbose=True)
+        ==================================
+        Per ogni (query, threshold) stampa:
+            query_id, qids di Q (per intero), threshold, tempo SQL, |reach|.
+        Le QID di Q sono riportate intere intenzionalmente: se una query è
+        anomalmente lenta, dalle QID si capisce semanticamente cosa è
+        (controlla wikidata.org/wiki/Q…), senza dover ricorrere a
+        metriche derivate (|N1(Q)| non discrimina perché threshold=∞ può
+        far esplodere il reach anche per Q non-hub).
+
+        TIMING ATTESO
+        =============
+        Per N=100 passage e 6 threshold: ~6 chiamate SQL totali ≈ 5-30s
+        a RAM warm. Confronto vs `kg_components_grid_batch` su gli stessi
+        100 pair: ~600 SQL ≈ 5-15 minuti. Speedup atteso: 50-100x.
+        """
+        # ============================================================
+        # Setup: cast iterables a list (servono len() e iterazione multipla)
+        # + validazione delle distance ammesse (la query SQL ha 4 CTE
+        # corrispondenti a d=1, d=2, d=3a, d=3b — niente d>3 supportato).
+        # ============================================================
+        distances = list(distances)
+        thresholds = list(thresholds)
+        for k in distances:
+            assert k in (1, 2, 3), (
+                f"distance {k} non valida — supportate solo (1, 2, 3)"
+            )
+
+        # ============================================================
+        # Edge case Q vuoto: nessun calcolo possibile (cr indefinito,
+        # divisione per 0). Niente SQL: ritorniamo subito un DataFrame
+        # con tutti zero per ogni (passage, distance, threshold).
+        # ============================================================
+        nQ = len(Q)
+        if nQ == 0:
+            zero_rows = [
+                {
+                    "query_id": query_id,
+                    "passage_id": passage_id,
+                    "distance": k,
+                    "threshold": t,
+                    "connected_ratio": 0.0,
+                    "purity_ratio": 0.0,
+                    "kg_score": 0.0,
+                }
+                for passage_id, _ in passages
+                for t in thresholds
+                for k in distances
+            ]
+            return pd.DataFrame(zero_rows)
+
+        # ============================================================
+        # Costruzione D_union: dedup di tutte le entità di tutti i passage.
+        #   - set comprehension annidata: scorre ogni passage e ogni qid
+        #     all'interno; il set globale dedup automaticamente.
+        #   - sorted() per ordine deterministico (riproducibilità).
+        #   - Costo: O(M log M) con M ≈ 200-1500 → trascurabile.
+        # ============================================================
+        D_union: list[str] = sorted({qid for _, D in passages for qid in D})
+
+        # ============================================================
+        # Edge case D_union vuoto: nessun passage ha entità → nessun
+        # raggiungimento possibile. Tutti zero, niente SQL.
+        # ============================================================
+        if not D_union:
+            zero_rows = [
+                {
+                    "query_id": query_id,
+                    "passage_id": passage_id,
+                    "distance": k,
+                    "threshold": t,
+                    "connected_ratio": 0.0,
+                    "purity_ratio": 0.0,
+                    "kg_score": 0.0,
+                }
+                for passage_id, _ in passages
+                for t in thresholds
+                for k in distances
+            ]
+            return pd.DataFrame(zero_rows)
+
+        # ============================================================
+        # Accumulator delle righe di output. Lista di dict che convertiamo
+        # in DataFrame in fondo. Più efficiente di pd.concat di N piccoli
+        # DataFrame (un'unica allocazione invece di N).
+        # ============================================================
+        out_rows: list[dict] = []
+
+        # ============================================================
+        # LOOP ESTERNO: una chiamata SQL per ogni threshold.
+        # Tutte le N passage condividono il reach calcolato qui.
+        # ============================================================
+        for t in thresholds:
+            # — Cronometro per logging diagnostico —
+            t_start = time.perf_counter()
+
+            # — La chiamata cara: SQL su (Q, D_union, t).
+            #   Riutilizza l'helper esistente _reachable_pairs_min_dist
+            #   (UNA query SQL con CTE d1+d2+d3a+d3b UNION + GROUP BY
+            #   q,d MIN(dist)). Output: dict {(q, x) → min_dist} con
+            #   x ∈ D_union, q ∈ Q, raggiungibili in ≤ 3 hop con bridge ≤ t.
+            #   Coppie non raggiungibili: assenti dal dict (sparse).
+            reach: dict[tuple[str, str], int] = self._reachable_pairs_min_dist(
+                Q, D_union, t,
+            )
+
+            sql_elapsed = time.perf_counter() - t_start
+
+            # — Log diagnostico per (query, threshold) —
+            #   Stampiamo Q per esteso (le QID stesse) per debug semantico:
+            #   se la query è lenta, da Q si vede subito che entità sono.
+            if verbose:
+                t_disp = "∞" if t in (None, 0) else f"{t}"
+                print(
+                    f"[query_id={query_id}  qids={Q}  t={t_disp:>5}  "
+                    f"→  {sql_elapsed:.1f}s  reach_rows={len(reach)}]",
+                    flush=True,
+                )
+
+            # ========================================================
+            # LOOP INTERNO 1: per ogni passage, filtra reach a D_i e
+            # deriva le metriche. Set ops Python = microsecondi.
+            # ========================================================
+            for passage_id, D in passages:
+                nD = len(D)
+
+                # — Edge case D vuoto: pr non definito (div per 0).
+                #   Output zero per le 3 distance di questa passage in
+                #   questo threshold. Stessa convenzione di
+                #   kg_components_grid (vedi linee 770-781 dell'API
+                #   single-pair) — garantisce equivalenza output.
+                if nD == 0:
+                    for k in distances:
+                        out_rows.append({
+                            "query_id": query_id,
+                            "passage_id": passage_id,
+                            "distance": k,
+                            "threshold": t,
+                            "connected_ratio": 0.0,
+                            "purity_ratio": 0.0,
+                            "kg_score": 0.0,
+                        })
+                    continue
+
+                # — Filtra reach a (q, x) con x ∈ D del passage corrente.
+                #   D_set per O(1) membership lookup. reach_in_D è il
+                #   sotto-dizionario di reach ristretto a questo passage.
+                #   Lo cachemo qui per riusarlo nelle 3 iterazioni di
+                #   distance sotto. Costo: O(|reach|) ≈ O(|D_union|).
+                D_set = set(D)
+                reach_in_D: dict[tuple[str, str], int] = {
+                    (q, x): md
+                    for (q, x), md in reach.items()
+                    if x in D_set
+                }
+
+                # ====================================================
+                # LOOP INTERNO 2: per ogni distance k, applichiamo il
+                # cap min_dist ≤ k e contiamo Q_reached / D_reached.
+                # ====================================================
+                for k in distances:
+                    # Q_reached = {q ∈ Q : ∃ x ∈ D, dist(q,x) ≤ k}
+                    Q_reached = {
+                        q for (q, _), md in reach_in_D.items() if md <= k
+                    }
+                    # D_reached = {x ∈ D : ∃ q ∈ Q, dist(q,x) ≤ k}
+                    # Nota: dist(x,q) = dist(q,x) per simmetria del grafo
+                    # logico non orientato (build_n1 fa UNION delle direzioni).
+                    D_reached = {
+                        x for (_, x), md in reach_in_D.items() if md <= k
+                    }
+                    cr = len(Q_reached) / nQ
+                    pr = len(D_reached) / nD
+                    out_rows.append({
+                        "query_id": query_id,
+                        "passage_id": passage_id,
+                        "distance": k,
+                        "threshold": t,
+                        "connected_ratio": cr,
+                        "purity_ratio": pr,
+                        "kg_score": cr * pr,
+                    })
+
+        # ============================================================
+        # Conversione finale: list[dict] → DataFrame. I nomi delle
+        # colonne ereditano dalle chiavi del primo dict (preservato in
+        # ordine di insertion in Python 3.7+).
+        # ============================================================
+        return pd.DataFrame(out_rows)
+
 
 # ============================================================================
 # Smoke test
