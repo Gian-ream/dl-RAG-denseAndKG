@@ -605,11 +605,13 @@ top100["passage_id_s"] = top100["passage_id"].astype(str)
 
 
 def min_max_per_group(s: pd.Series) -> pd.Series:
-    """Min-max normalize a Series, robust to constant-valued inputs."""
-    lo, hi = s.min(), s.max()
-    if hi - lo < 1e-12:
-        return pd.Series([0.5] * len(s), index=s.index)
-    return (s - lo) / (hi - lo)
+    """Max-only scaling: divide by per-group max, no shift.
+    Preserves the relative shape (rank-1 → 1.0, others → score/max).
+    """
+    hi = s.max()
+    if hi < 1e-12:
+        return pd.Series([0.0] * len(s), index=s.index)
+    return s / hi
 
 
 # Demo of groupby(col)[t].transform(fn) before the bulk apply.
@@ -784,3 +786,170 @@ df_grid.pivot(index="distance", columns="threshold", values="pct_jacc_at_10_lt_1
 
 # %%
 df_grid.pivot(index="distance", columns="threshold", values="mean_jacc_at_10")
+
+# %% [markdown]
+# ## 8 · α sweep — pre-screening for LLM-eval campaign
+#
+# The Phase B grid above used α=0.5 fixed. Before committing LLM budget
+# to the campaign, sweep α ∈ {0.1, 0.2, ..., 0.9} on ONE cell of the
+# grid (`distance=3, threshold=10000` — best recall/precision trade-off
+# from section 6) and answer:
+#
+# 1. **How much does each α deviate from pure retrieval?** (`mean_jacc@5` +
+#    `%j@5<1` vs the dense baseline)
+# 2. **Which α values give equivalent reranks?** (pairwise Jaccard@5
+#    matrix between all α pairs)
+#
+# **Formula**: `final_score(α) = (1 − α) · dense_norm + α · kg_score`
+#   - α=0   → pure retrieval (dense only, no KG influence)
+#   - α=0.5 → equal weight (= the Phase B configuration above)
+#   - α=1   → pure KG (no dense influence)
+#
+# **Output use**: pairs (α_i, α_j) with high jaccard ⇒ they produce
+# essentially the same top-5 ⇒ ridondanti, scegline uno per LLM-eval.
+# Pairs with low jaccard ⇒ rerank distinti ⇒ entrambi candidati. Riduce
+# 9 condizioni potenziali a un set rappresentativo (es. 3-4) sotto
+# budget LLM realistico.
+
+# %%
+ALPHA_CELL_DIST = 3
+ALPHA_CELL_THR = 10000
+
+# Pull the (query, passage) → kg_score for the chosen cell.
+df_cell_alpha = df_phase_a[
+    (df_phase_a["distance"] == ALPHA_CELL_DIST)
+    & (df_phase_a["threshold"] == ALPHA_CELL_THR)
+]
+print(f"cell selected: dist={ALPHA_CELL_DIST}, thr={ALPHA_CELL_THR}")
+print(f"df_cell_alpha shape: {df_cell_alpha.shape}  "
+      f"(expected: ({top100['query_id'].nunique() * 100}, 7))")
+
+# %%
+df_cell_alpha.head(1)
+
+# %%
+# Merge with top100 → per-pair (query_id_s, passage_id_s, score, dense_norm, kg_score).
+# Stesso pattern LEFT join di compute_cell_metrics (sezione 6); fillna(0) sui pair
+# senza kg_score (passage senza entità o non raggiunti dalla SQL).
+base_alpha = top100[["query_id_s", "passage_id_s", "score", "dense_norm"]].merge(
+    df_cell_alpha[["query_id", "passage_id", "kg_score"]],
+    left_on=["query_id_s", "passage_id_s"],
+    right_on=["query_id", "passage_id"],
+    how="left",
+    suffixes=("", "_kg"),
+)
+base_alpha["kg_score"] = base_alpha["kg_score"].fillna(0.0)
+print(f"base_alpha shape: {base_alpha.shape}")
+
+# %%
+base_alpha.head(1)
+
+# %%
+# Genera 9 colonne kg_final_alpha_X dove X = α · 10 (suffisso intero).
+# α = peso del segnale KG, (1-α) = peso dense_norm. α=0.1 → kg_final_alpha_1.
+ALPHAS = [round(0.1 * i, 1) for i in range(1, 10)]  # [0.1, 0.2, ..., 0.9]
+for alpha in ALPHAS:
+    col = f"kg_final_alpha_{int(round(alpha * 10))}"
+    base_alpha[col] = (1 - alpha) * base_alpha["dense_norm"] + alpha * base_alpha["kg_score"]
+
+print(f"alpha columns added: "
+      f"{[c for c in base_alpha.columns if c.startswith('kg_final_alpha')]}")
+
+# %%
+base_alpha.head(1)
+
+# %%
+# Per-query top-5 set per ogni "setting" (retrieval baseline + 9 alpha).
+# Cache come dict {label → {query_id_s → set(passage_id_s)}} per pairwise lookup veloce.
+# Costo: 10 × groupby(1000 query) × nlargest(5) ≈ pochi secondi.
+top5_by_setting: dict = {}
+
+# Retrieval baseline: ordina per `score` raw (= IP Contriever) decrescente.
+# Equivalente a nsmallest("rank") ma più simmetrico col loop alpha sotto.
+top5_by_setting["retrieval"] = {
+    qid: set(g.nlargest(5, "score")["passage_id_s"])
+    for qid, g in base_alpha.groupby("query_id_s", sort=False)
+}
+
+# Top-5 per ogni alpha
+for alpha in ALPHAS:
+    col = f"kg_final_alpha_{int(round(alpha * 10))}"
+    top5_by_setting[alpha] = {
+        qid: set(g.nlargest(5, col)["passage_id_s"])
+        for qid, g in base_alpha.groupby("query_id_s", sort=False)
+    }
+
+print(f"top-5 sets cached for {len(top5_by_setting)} settings "
+      f"(retrieval + {len(ALPHAS)} alphas)")
+
+
+# %%
+def jaccard_aggregate(setting_a: dict, setting_b: dict) -> tuple[float, float]:
+    """Aggrega Jaccard@5 su tutte le query tra due dict di top-5.
+
+    setting_a, setting_b : dict {query_id_s → set(passage_id_s)}
+    Returns: (mean_jaccard, pct_jaccard_lt_1)
+    """
+    common_qids = set(setting_a.keys()) & set(setting_b.keys())
+    arr = np.array([jaccard(setting_a[q], setting_b[q]) for q in common_qids])
+    return float(arr.mean()), float((arr < 1.0).mean())
+
+
+# %% [markdown]
+# ### 8.1 · α vs retrieval baseline
+#
+# Per ogni α, quanto perturba il top-5 rispetto al puro dense ranking?
+# - mean_jacc@5 vicino a 1 → poca differenza (rerank ≈ retrieval)
+# - mean_jacc@5 vicino a 0 → top-5 stravolto
+
+# %%
+results_vs_retrieval = []
+for alpha in ALPHAS:
+    mean_j, pct_lt1 = jaccard_aggregate(
+        top5_by_setting[alpha], top5_by_setting["retrieval"]
+    )
+    results_vs_retrieval.append({
+        "alpha": alpha,
+        "mean_jacc@5": mean_j,
+        "%j@5<1": pct_lt1,
+    })
+df_alpha_vs_retrieval = pd.DataFrame(results_vs_retrieval)
+df_alpha_vs_retrieval
+
+# %% [markdown]
+# ### 8.2 · Pairwise α vs α matrix (upper triangular)
+#
+# Per ogni coppia (α_i, α_j) con i < j: `mean_jacc@5` tra i loro top-5.
+# Valori vicini a 1 ⇒ rerank quasi identici ⇒ uno dei due ridondante per
+# LLM-eval. Valori bassi ⇒ rerank distinti ⇒ entrambi candidati.
+
+# %%
+# Costruisci la matrice 9×9. Riempiamo solo upper triangular (j > i):
+# la matrice è simmetrica per definizione, la diagonale è 1.0 (ogni
+# setting confrontato con sé stesso). Lower triangular lasciato a NaN
+# per leggibilità.
+matrix_jacc = pd.DataFrame(
+    np.full((len(ALPHAS), len(ALPHAS)), np.nan),
+    index=ALPHAS,
+    columns=ALPHAS,
+)
+for i, a1 in enumerate(ALPHAS):
+    matrix_jacc.iloc[i, i] = 1.0
+    for j, a2 in enumerate(ALPHAS):
+        if j > i:
+            mean_j, _ = jaccard_aggregate(top5_by_setting[a1], top5_by_setting[a2])
+            matrix_jacc.iloc[i, j] = mean_j
+
+print("mean_jaccard@5 between α_i (rows) and α_j (cols), upper triangular:")
+print(matrix_jacc.round(3).to_string(na_rep="—"))
+
+# %% [markdown]
+# **Lettura matrice**:
+# - Step "smooth": tipicamente α adiacenti (es. 0.4 vs 0.5) hanno jaccard alto
+#   (~0.85+); α distanti (es. 0.1 vs 0.9) hanno jaccard basso.
+# - **Strategia di pruning**: scegli un sottoinsieme di α dove ogni coppia
+#   ha jaccard < soglia (es. 0.7), così copri scenari distinti senza buttare
+#   budget LLM su run quasi-equivalenti.
+# - Esempio possibile: se 0.3 vs 0.5 ha jaccard=0.85 (simili) e 0.5 vs 0.7
+#   ha jaccard=0.6 (diversi), butti 0.3, tieni {0.5, 0.7}. Più altri α
+#   distanti per coprire estremi.
