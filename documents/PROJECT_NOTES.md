@@ -51,7 +51,7 @@
 - **Output**: `psgs_w100_sentence.tsv` (passaggi sentence-aligned da 100 parole) + indice FAISS shardato
 
 ### Step 1b.4 — Passage Encoding & FAISS Indexing
-- **Input**: `psgs_w100_sentence.tsv` (23.9M passaggi, 14.5 GB)
+- **Input**: `psgs_w100_sentence.tsv` (41,995,761 passaggi ≈ 42M, 25 GB)
 - **Notebook**: `03_embedding.ipynb`
 - **Processing**:
   1. Caricamento corpus con Polars (`pl.read_csv` con `schema_overrides`)
@@ -163,12 +163,12 @@
 
 ### 4.2 Sentence-aligned segmentation (decisione 2026-02-25)
 - **Problema riscontrato**: il taglio meccanico DPR a 100 parole causa chunk senza soggetto esplicito (es. l'articolo PAEEK ha un chunk che inizia con "he Cyprus Basketball Federation..." — il soggetto è nel chunk precedente). Questo penalizza entity linking (ReFiNed) e comprensione LLM.
-- **Nota storica**: nel flusso precedente (partendo da `psgs_w100.tsv`) era necessario rimuovere il padding DPR dall'ultimo chunk di ogni articolo prima della segmentazione. Con il passaggio al dataset HF (articoli interi) questo step non è più necessario.
-- **Strategia di segmentazione scelta**: applicare la stessa filosofia DPR a ogni segmento:
+- **Nota storica (corretta 2026-05)**: nel flusso precedente (partendo da `psgs_w100.tsv`) c'era uno step `strip_dpr_padding` che assumeva — **erroneamente** — che DPR paddasse l'ultimo chunk copiando l'inizio dell'articolo. Verifica alla fonte (vedi "Perché padding" sotto): DPR/Silvestri **non** paddano, quindi quello step era di fatto un no-op su dati non paddati. Rimosso col passaggio agli articoli interi HF (commit `726f957`).
+- **Strategia di segmentazione scelta**: segmentazione sentence-aligned con padding a lunghezza fissa, applicata a ogni segmento:
   1. Selezionare frasi complete finché `total_words < 100`
   2. Paddare lo spazio rimanente (`100 - total_words` parole) con le prime parole del primo segmento dell'articolo
   3. Risultato: esattamente 100 parole per segmento, frasi intere, padding contestuale
-- **Perché padding dal primo segmento**: coerente con DPR originale (che fa lo stesso sull'ultimo chunk). Dà a ogni passaggio un'ancora esplicita sull'identità dell'articolo.
+- **Perché padding fino a 100 parole**: per mantenere una dimensione di passaggio **uniforme**, pari all'unità di retrieval da 100 parole di DPR/Silvestri. Scelta **nostra**, non ereditata: DPR/Silvestri puntano a 100 parole ma lasciano l'ultimo passaggio di ogni articolo più corto e **non** paddano (`facebook/wiki_dpr`: "at most 100 words"; *The Power of Noise* usa il `psgs_w100` DPR grezzo senza ri-chunking). Noi paddiamo anche le code corte → corpus *più uniforme* di DPR. La sorgente del padding (parole d'apertura dell'articolo) ancora incidentalmente ogni passaggio al soggetto. NB: Contriever fa mean-pooling, quindi la lunghezza fissa è una scelta di consistenza, non un requisito del modello.
 - **Alternative scartate**:
   - Lunghezza variabile (80-120 parole senza padding): perde la proprietà di lunghezza fissa
   - Prefisso "From TITLE:" sintetico: Contriever non è stato addestrato su questo formato, effetto imprevedibile sugli embedding
@@ -423,7 +423,7 @@ Prima init: ~5 min, ~10-15 GB su disco. Init successive: ~1s (skip rebuild). I w
 
 | Step | Stato | Note |
 |------|-------|------|
-| Corpus Preparation | Completato | Corpus da HF `florin-hf/wiki_dump2018_nq_open` (~21M articoli con gold NQ). Segmentazione sentence-aligned completata: 23,910,209 passaggi da 100 parole in `data/wikipedia_2018_sentence_aligned/psgs_w100_sentence.tsv` (14.5 GB). Approccio file-based shared-nothing (100 frammenti, ~22s su 24 core). |
+| Corpus Preparation | Completato | Corpus da HF `florin-hf/wiki_dump2018_nq_open` (~21M articoli con gold NQ). Segmentazione sentence-aligned completata: 41,995,761 passaggi (≈42M) da 100 parole in `data/wikipedia_2018_sentence_aligned/psgs_w100_sentence.tsv` (25 GB). Approccio file-based shared-nothing (100 frammenti, ~22s su 24 core). |
 | FAISS Indexing | Completato | Notebook `03_embedding.ipynb`. Encoding con Contriever (batch 512, GPU) in 9 shard. Indici `IndexFlatIP` (exact inner product). Output in `data/faiss_index/shard_XX.{npy,faiss}` + `shard_XX_ids.npy`. |
 | Query Filtering | Completato | Notebook `02_nq_filtering.ipynb`. Dataset `florin-hf/nq_open_gold` (83,104 query, 3 split uniti). Token filter ≤5 (Contriever tokenizer, ALL variants): 76,406 query. Entity linking ReFiNed (`questions_model`, entity_set `wikipedia`): 31,372 query con entità sia in domanda che in TUTTE le varianti risposta (41.1%). Output: `data/NQ_question/qa_all_entities.jsonl` (filtrate) + `qa_entities_general.jsonl` (tutte con entity info). |
 | Answer preparation + curation | Completato | Notebook `04_answer_preparation.ipynb` (top-100 retrieval per query, 1000 query subset) + `05_answer_curation.ipynb` (sostituzione query con passaggi a 0 entità) + `06_apply_curation.ipynb` (apply 344 sostituzioni). Output: `data/NQ_answer/{queries_curated.jsonl, top100_curated.parquet, passage_entities_curated.parquet, query_embeddings_curated.npy}` — 1000 query, 100k righe top-100, 90.667 passaggi unici tutti con ≥1 entità. |

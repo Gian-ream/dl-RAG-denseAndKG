@@ -33,9 +33,9 @@ OUTPUT
 data/db/node_stats.parquet
     Columns:
         qid           (str)    — the Q-entity ID, e.g. "Q42"
-        in_degree     (uint64) — how many edges point TO this entity
-        out_degree    (uint64) — how many edges originate FROM this entity
-        total_degree  (uint64) — in + out
+        out_degree    (uint32) — how many edges originate FROM this entity
+        in_degree     (uint32) — how many edges point TO this entity
+        total_degree  (uint32) — in + out
     Rows sorted by total_degree DESC (hubs first — easy to inspect with
     `polars.read_parquet(...).head(20)`).
 

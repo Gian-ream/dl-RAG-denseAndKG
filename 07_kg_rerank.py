@@ -595,8 +595,10 @@ print(f"df_phase_a.shape: {df_phase_a.shape}")
 # 3. Compare with top-K retrieval set (original `rank` order) via Jaccard.
 # 4. Aggregate over all queries: `pct_jacc_at_K_lt_1`, `mean_jacc_at_K`.
 #
-# **Dense score normalization**: per-query min-max → `dense_norm ∈ [0, 1]`,
-# same range as `kg_score`. Degenerate case (all scores equal) → fallback 0.5.
+# **Dense score normalization**: per-query max-only scaling →
+# `dense_norm = score / max` (rank-1 → 1.0, others scaled proportionally),
+# roughly comparable range to `kg_score`. Degenerate case (per-query
+# max ≈ 0) → fallback 0.0.
 
 # %%
 # Add string-typed id columns for joining with df_phase_a (KGScorer stores str).
@@ -604,7 +606,7 @@ top100["query_id_s"] = top100["query_id"].astype(str)
 top100["passage_id_s"] = top100["passage_id"].astype(str)
 
 
-def min_max_per_group(s: pd.Series) -> pd.Series:
+def scale_by_max_per_group(s: pd.Series) -> pd.Series:
     """Max-only scaling: divide by per-group max, no shift.
     Preserves the relative shape (rank-1 → 1.0, others → score/max).
     """
@@ -620,15 +622,15 @@ def min_max_per_group(s: pd.Series) -> pd.Series:
 # Compare with .apply(): apply collapses to one value per group; transform
 # keeps the row alignment. Perfect for "add a per-group normalized column".
 _demo_q = top100[top100["query_id"] == 0]["score"]
-_demo_q_norm = min_max_per_group(_demo_q)
+_demo_q_norm = scale_by_max_per_group(_demo_q)
 print(f"query_id=0  raw scores [first 5]:    {_demo_q.head().round(3).tolist()}")
 print(f"query_id=0  normalized [first 5]:    {_demo_q_norm.head().round(3).tolist()}")
 print(f"query_id=0  raw range:        [{_demo_q.min():.3f}, {_demo_q.max():.3f}]")
 print(f"query_id=0  normalized range: [{_demo_q_norm.min():.3f}, {_demo_q_norm.max():.3f}]")
 
 # %%
-# Bulk: apply per-query min-max via groupby.transform
-top100["dense_norm"] = top100.groupby("query_id")["score"].transform(min_max_per_group)
+# Bulk: apply per-query max-only scaling via groupby.transform
+top100["dense_norm"] = top100.groupby("query_id")["score"].transform(scale_by_max_per_group)
 
 # %%
 top100.head(1)

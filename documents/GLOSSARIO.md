@@ -17,6 +17,9 @@ Componente del kg_score. Misura quante entita della query hanno almeno un'entita
 ### Contriever
 Modello di dense retrieval unsupervised sviluppato da Meta (facebook/contriever). Genera embeddings densi per passaggi e query, usati per calcolare similarita semantica tramite prodotto scalare o cosine similarity.
 
+### curated (files `*_curated.*`)
+Suffix marking the artifacts produced by the curation step (notebook 06). Curation **substituted** 344 of the 1000 queries (those whose retrieved passages had no linkable entities) with replacement queries from the NQ pool, and re-encoded their embeddings. The `*_curated.*` files (`queries_curated.jsonl`, `top100_curated.parquet`, `passage_entities_curated.parquet`, `query_embeddings_curated.npy`) form a **self-consistent set** indexed positionally 0..999. **Never mix** a `*_curated.*` file with its `*_subset.*` (pre-curation) counterpart — the positional `query_id` would silently point to a different query. See DATA_DICTIONARY for schemas.
+
 ## D
 
 ### DPR (Dense Passage Retrieval)
@@ -39,6 +42,9 @@ Task NLP che consiste nel riconoscere menzioni di entita nel testo e collegarle 
 ### Entity Set (ReFiNed)
 Insieme di entita candidate per il linking. ReFiNed offre due opzioni: `wikipedia` (~6M entita con pagina Wikipedia, ~9 GB) e `wikidata` (~33M entita, ~20 GB). Per NQ-open usiamo `wikipedia` perche tutte le risposte provengono da Wikipedia. Entrambi restituiscono QID Wikidata.
 
+### edges (DuckDB table / `edges.parquet`)
+The full set of Q-Q `wdt:*` triples extracted from the Wikidata HDT dump: 661M rows, schema `subject VARCHAR, object VARCHAR` (predicate discarded). Loaded into `kg.duckdb` as table `edges` (no index — DuckDB uses hash joins). Used by `utils/kg.py` for dist=3 reachability: it bridges the 1-hop neighborhoods of query and passage entities. Produced by `scripts/pipeline/hdt_export_per_predicate.py` (Layer 1). See DATA_DICTIONARY.
+
 ## F
 
 ### FAISS (Facebook AI Similarity Search)
@@ -56,6 +62,13 @@ Un "salto" lungo un arco del grafo. Se A e collegato a B e B a C, allora C e a 2
 
 ### JSONL (JSON Lines)
 Formato di file dove ogni riga e un oggetto JSON indipendente. Usato nel progetto per salvare i risultati dell'entity linking (`qa_all_entities.jsonl`, `qa_entities_general.jsonl`). Vantaggi: append-friendly, leggibile riga per riga senza caricare tutto in memoria.
+
+### jupytext (percent format, `# %%`)
+Tool that keeps a notebook in two paired files: a `.py` (source of truth) and a `.ipynb` (runnable). In the `py:percent` format, special comment markers delimit cells:
+- `# %%` → start of a **code cell**
+- `# %% [markdown]` → start of a **markdown cell** (the following `#`-prefixed lines are the rendered text)
+
+We edit only the `.py`, then sync with `jupytext --to ipynb --update <file>.py` (never bare `--sync`, which can lose edits to a timestamp race with the IDE). This is why every notebook in the repo exists as both `0X_name.py` and `0X_name.ipynb`.
 
 ## K
 
@@ -78,7 +91,24 @@ Modalità in cui le operazioni non vengono eseguite immediatamente, ma accumulat
 ### Mean Pooling
 Tecnica per ottenere un singolo vettore embedding da una sequenza di token. Si fa la media dei vettori di tutti i token reali (escludendo il padding). Contriever usa mean pooling invece del token CLS (usato da BERT). Formula: somma dei vettori token / numero di token reali.
 
+## M
+
+### mmap (memory-mapped file)
+OS technique to access an on-disk file *as if* it were an in-RAM array, without loading it whole. Only the pages you actually touch are read on-demand (lazy). Used in two places:
+- `07_kg_rerank` loads each FAISS embedding shard with `np.load(..., mmap_mode="r")`: fancy-indexing the mmap reads only the ~30 MB of rows actually needed instead of the full ~1.6 GB shard.
+- DuckDB (`kg.duckdb`) memory-maps its tables, so the OS page cache is shared across read-only worker processes (no RAM duplication).
+
+Trade-off: tiny RAM footprint, but random scattered access causes page faults (slow if not roughly sequential). mmap views must be released (`del`) to free the mapping.
+
 ## N
+
+### n1 (DuckDB table / `n1.parquet`)
+Precomputed **1-hop adjacency list** of the Wikidata KG, restricted to the QIDs of `seeds ∪ passage_entities`. ~93M rows, schema `qid VARCHAR, neighbor VARCHAR, neighbor_degree UBIGINT` (+ B-tree index on `qid`). Each row = "entity `qid` is directly connected to `neighbor`, which has `neighbor_degree` total connections". It is the workhorse of all reachability queries in `utils/kg.py`:
+- dist=1: is `d ∈ N1(q)`?
+- dist=2: do `q` and `d` share a common neighbor (with degree ≤ threshold)?
+- dist=3: `n1` gives the neighbors of `q` and `d`, `edges` bridges them.
+
+The `neighbor_degree` column is exactly what the **threshold** filters (hub-banning): a bridge node is allowed only if `neighbor_degree ≤ threshold`. At dist=1 there is no intermediate node, so `neighbor_degree` is never consulted → **dist=1 is threshold-invariant**. Produced by `scripts/pipeline/build_n1.py` (Layer 3). See DATA_DICTIONARY.
 
 ### NQ-open (Natural Questions Open)
 Dataset di domande reali poste a Google, con risposte estratte da Wikipedia. Nella variante "open", il sistema deve trovare la risposta nell'intero corpus (non in un singolo documento dato).
@@ -113,7 +143,7 @@ Processo di riordinamento dei documenti recuperati. Nel nostro caso: si recupera
 ## S
 
 ### Sharding (FAISS)
-Strategia di partizionamento dell'indice FAISS in piu pezzi (shard) per gestire dataset che non entrano in memoria. Nel progetto: 23.9M vettori × 768 dim × 4 bytes ≈ 73 GB, suddivisi in 5 shard da ~5M vettori (~15 GB ciascuno). A search time si carica uno shard alla volta su GPU.
+Strategia di partizionamento dell'indice FAISS in piu pezzi (shard) per gestire dataset che non entrano in memoria. Nel progetto: ~42M vettori (un embedding per passaggio del corpus sentence-aligned) × 768 dim × 4 bytes ≈ 129 GB, suddivisi in 9 shard da ~4.7M vettori (~14 GB ciascuno). A search time si carica uno shard alla volta su GPU.
 
 ### SPARQL
 Linguaggio di query per grafi RDF/knowledge graph. Usato per interrogare l'endpoint Wikidata ed estrarre vicinati di entita.
@@ -141,4 +171,4 @@ File TSV prodotto dal preprocessing DPR. Contiene ~21M righe, ciascuna un passag
 
 ---
 
-*Ultimo aggiornamento: 2026-03-23*
+*Ultimo aggiornamento: 2026-05-20*

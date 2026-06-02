@@ -239,7 +239,7 @@ df_phase_a.head(1)
 
 # %%
 # Per-query dense_norm via max-only scaling (same formula as section 6 of notebook 07)
-def min_max_per_group(s: pd.Series) -> pd.Series:
+def scale_by_max_per_group(s: pd.Series) -> pd.Series:
     """Max-only scaling: divide by per-group max, no shift."""
     hi = s.max()
     if hi < 1e-12:
@@ -249,7 +249,7 @@ def min_max_per_group(s: pd.Series) -> pd.Series:
 
 top100["query_id_s"] = top100["query_id"].astype(str)
 top100["passage_id_s"] = top100["passage_id"].astype(str)
-top100["dense_norm"] = top100.groupby("query_id")["score"].transform(min_max_per_group)
+top100["dense_norm"] = top100.groupby("query_id")["score"].transform(scale_by_max_per_group)
 
 # %%
 top100.head(1)
@@ -373,7 +373,7 @@ print(f"\ntotal input rows: {len(input_rows):,}  "
 #
 # Final structure:
 # ```
-# {SILVESTRI_INSTRUCTION}
+# {EXTRACT_INSTRUCTION}
 #
 # Example:
 # Question: who wrote hamlet
@@ -419,7 +419,7 @@ print(f"\ntotal input rows: {len(input_rows):,}  "
 #   section 6 (logged as error rows in the JSONL).
 
 # %%
-SILVESTRI_INSTRUCTION = (
+EXTRACT_INSTRUCTION = (
     "You are given a question and you MUST respond by EXTRACTING the answer "
     "(max 5 tokens) from one of the provided documents. "
     "If none of the documents contain the answer, respond with NO-RES."
@@ -453,7 +453,7 @@ def build_user_message(question: str, passage_ids: list[str]) -> str:
 
     Layout (matches FEW_SHOT_EXAMPLE exactly so the model sees the same
     structure in the demonstration and in the real task):
-      1. SILVESTRI_INSTRUCTION (task definition)
+      1. EXTRACT_INSTRUCTION (task definition)
       2. FEW_SHOT_EXAMPLE (demonstration: Question → Documents → Answer)
       3. Real `Question: ... / Documents: ... / Answer:` block
 
@@ -468,8 +468,7 @@ def build_user_message(question: str, passage_ids: list[str]) -> str:
     similarly short extractive span and a newline → our newline-stop fires
     cleanly instead of the 15-token cap chopping mid-word.
     """
-    parts = [SILVESTRI_INSTRUCTION, "", FEW_SHOT_EXAMPLE, ""]
-    #parts = [SILVESTRI_INSTRUCTION, ""]
+    parts = [EXTRACT_INSTRUCTION, "", FEW_SHOT_EXAMPLE, ""]
     parts.append(f"Question: {question}")
     parts.append("Documents:")
     for i, pid in enumerate(reversed(passage_ids), start=1):
@@ -525,8 +524,10 @@ tokenizer.padding_side = "left"
 print(f"tokenizer loaded. pad_token={tokenizer.pad_token!r}, padding_side={tokenizer.padding_side}")
 
 # %%
-# 4-bit NF4 quantization config (verbatim from florin-git/The-Power-of-Noise,
-# src/llm.py::_set_quantization). nf4 = 4-bit NormalFloat, optimized for
+# 4-bit NF4 quantization config. Same 4 values as florin-git/The-Power-of-Noise
+# (src/llm.py::_set_quantization): load_in_4bit, nf4, double_quant, bf16 compute
+# — we just pass them as constructor kwargs instead of setting attributes one
+# by one. nf4 = 4-bit NormalFloat, optimized for
 # weights that follow a normal distribution (i.e. most LLM weights).
 # double_quant also quantizes the quantization constants themselves,
 # saving another ~0.4 bit/weight. compute_dtype=bfloat16 (paper choice):

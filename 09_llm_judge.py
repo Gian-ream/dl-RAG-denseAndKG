@@ -134,7 +134,7 @@ if HF_TOKEN_PATH.is_file():
 elif "HF_TOKEN" in os.environ:
     print(f"HF_TOKEN already in env (len={len(os.environ['HF_TOKEN'])})")
 else:
-    print("WARNING: no HF_TOKEN found (download may work anyway since Qwen3 is open).")
+    print("WARNING: no HF_TOKEN found (download may work anyway since Qwen2.5 is open).")
 
 # %% [markdown]
 # ## 2 · Configuration
@@ -234,7 +234,7 @@ df_resp = df_resp.dropna(subset=["response"]).reset_index(drop=True)
 print(f"rows kept for judging: {len(df_resp):,}")
 
 # %% [markdown]
-# ## 4 · Build judge prompts (Qwen3 chat template, structured)
+# ## 4 · Build judge prompts (Qwen2.5 chat template, structured)
 
 # %% [markdown]
 # Two messages: a strict `system` defining the task, and a `user`
@@ -273,7 +273,7 @@ print("=== example judge user message ===")
 print(_demo_user)
 
 # %% [markdown]
-# ## 5 · Init Qwen3-8B (4-bit NF4 via bitsandbytes)
+# ## 5 · Init Qwen2.5-7B (4-bit NF4 via bitsandbytes)
 
 # %%
 print(f"Loading tokenizer for {JUDGE_MODEL_NAME}...")
@@ -290,7 +290,7 @@ print(f"tokenizer loaded. pad_token={tokenizer.pad_token!r}, "
 
 # %%
 # 4-bit NF4 quantization — same config as 08 (compute_dtype=bfloat16,
-# double_quant on). On the RTX 5070 Ti (16 GB), Qwen3-8B in 4-bit fits
+# double_quant on). On the RTX 5070 Ti (16 GB), Qwen2.5-7B in 4-bit fits
 # in ~5 GB → plenty of headroom for larger batches.
 bnb_config = BitsAndBytesConfig(
     load_in_4bit=True,
@@ -506,7 +506,7 @@ print(f"loaded judgments: {len(df_judge):,} across "
 
 # %%
 # Tally any unparseable judgments (verdict_bool=None) — should be near-zero
-# with Qwen3-8B + strict system prompt, but worth tracking.
+# with Qwen2.5-7B + strict system prompt, but worth tracking.
 n_unparsed = df_judge["verdict_bool"].isna().sum()
 print(f"unparseable judgments: {n_unparsed:,} / {len(df_judge):,} "
       f"({n_unparsed / len(df_judge):.1%})")
@@ -589,82 +589,164 @@ plt.show()
 # ## 9 · McNemar significance + sanity spot-check
 
 # %% [markdown]
-# ### 9.1 · McNemar test — retrieval vs each alpha condition
+# ### 9.1 · McNemar test — retrieval vs each rerank condition
 #
-# Each query has a paired observation (was retrieval correct? was
-# condition X correct?). McNemar tests if the **disagreement** between
-# the two is symmetric (no real effect) or asymmetric (one beats the
-# other beyond chance).
+# **What it tests.** Each query is a *paired* observation (was retrieval
+# correct? was condition X correct?). McNemar's null hypothesis H0 is that the
+# two systems are **equally accurate** — i.e. their disagreement is *symmetric*.
+# Note: "equally accurate" is NOT "identical": two systems can disagree on
+# hundreds of queries and still be equivalent under McNemar if the wins cancel
+# out (b ≈ c).
 #
-# 2×2 table: rows = retrieval verdict, cols = condition verdict.
-# We only care about the off-diagonal:
-# - `b` = retrieval=T, condition=F  (KG made it worse)
-# - `c` = retrieval=F, condition=T  (KG made it better)
-# Statistic: `(b - c)² / (b + c)`, χ² with 1 df.
-# Significant p < 0.05 means the two methods disagree non-symmetrically.
+# **The 2×2 table** (rows = retrieval verdict, cols = condition verdict). Only
+# the off-diagonal (discordant) cells carry information:
+# - `b` = retrieval=T, condition=F  (retrieval wins → KG made it worse)
+# - `c` = retrieval=F, condition=T  (condition wins → KG made it better)
+# The concordant cells (both right / both wrong) are ties and are ignored.
+#
+# **The test.** McNemar's EXACT test = a two-sided binomial test on the b+c
+# discordant pairs (`scipy.stats.binomtest`): under H0 each disagreement is a
+# fair coin flip, so b ~ Binomial(b+c, 0.5). Exact (no χ² approximation), so it
+# stays valid when b+c is small (our case: few movers).
+#
+# **How to read the p-value (carefully).** p is the probability that, *IF the
+# two systems were equally accurate*, pure chance alone would produce an
+# imbalance **at least as extreme** as the one observed. It is NOT "how random
+# the result is", and it is NOT P(H0 true). (Why a 0.05 cutoff gives a 5%
+# false-positive rate: under H0 the p-value is ~Uniform(0,1), so P(p<α | H0)=α —
+# the per-test error rate simply IS the threshold we choose. For the *discrete*
+# exact test it is actually ≤ α, i.e. slightly conservative.)
+# - p low ⇒ such an imbalance would be too rare under H0 ⇒ we **reject**
+#   equal-accuracy ⇒ a **real difference** exists.
+# - p tells us only **whether** they differ — NOT **which** is better (read the
+#   sign of `delta_acc` / `b` vs `c`) and NOT **how much it matters** (effect
+#   size). A low p on a *negative* `delta_acc` is a certified loss, not a win.
+#
+# **Multiple comparisons — the PROBLEM.** With m tests, each true-null test is a
+# false positive with probability α, so we expect ~α·m of them by chance
+# (α·m = expected COUNT, 0.05·90 ≈ 4.5 — not a probability; the exact chance of
+# ≥1 is 1−(1−α)^m ≈ 0.99). That is why "sig@.05 (raw)" alone over-counts.
+#
+# **Bonferroni — the FIX.** It does not touch McNemar; it just raises the bar to
+# p < α/m per test. Then the family-wide chance of *any* false positive stays
+# ≤ α (union bound: m·(α/m)=α, no independence needed). Cost: conservative →
+# loses power on small real effects (fine here — we are proving a negative).
+#
+# **Four layers to read the grid.** (1) McNemar p = *do they differ?*
+# (2) Bonferroni = *do I still trust it after m tests?* (3) sign of `delta_acc`
+# = *which one wins?* (here: always KG-worse). (4) the pattern across conditions
+# (degradation grows with α, distance, threshold→∞) = *why?* — that mechanistic
+# reading is a separate analysis, not an output of the test.
 
 # %%
-from scipy.stats import chi2
+from scipy.stats import binomtest
 
 
-def mcnemar_paired(verdict_a: pd.Series, verdict_b: pd.Series) -> dict:
-    """Returns {'b': only_A, 'c': only_B, 'stat': chi2, 'p_value': float}.
+def mcnemar_exact(verdict_a: pd.Series, verdict_b: pd.Series) -> dict:
+    """Exact McNemar test via scipy's binomial test.
 
-    b = A correct AND B incorrect
-    c = A incorrect AND B correct
+    McNemar's EXACT test IS a two-sided binomial test on the discordant pairs:
+    under H0 (the two methods are equally good) each of the b+c disagreements
+    is a fair coin flip, so b ~ Binomial(b+c, 0.5). scipy.stats.binomtest
+    returns the exact p-value DIRECTLY — no χ² approximation to hand-roll, and
+    valid even when b+c is small (our case: few movers).
+
+    b = A correct AND B incorrect   (retrieval wins)
+    c = A incorrect AND B correct   (the rerank condition wins)
+    n_disc = b + c                  (movers: queries whose correctness flipped)
     """
     b = int(((verdict_a == True) & (verdict_b == False)).sum())
     c = int(((verdict_a == False) & (verdict_b == True)).sum())
-    if (b + c) == 0:
-        return {"b": b, "c": c, "stat": 0.0, "p_value": 1.0}
-    stat = (b - c) ** 2 / (b + c)
-    p_value = float(1.0 - chi2.cdf(stat, df=1))
-    return {"b": b, "c": c, "stat": float(stat), "p_value": p_value}
+    n_disc = b + c
+    if n_disc == 0:
+        # No query changed correctness between the two methods → nothing to test.
+        return {"b": b, "c": c, "n_disc": 0, "p_value": 1.0}
+    # Two-sided exact test: is b (out of n_disc) far from the 50% expected under H0?
+    p_value = binomtest(b, n_disc, 0.5, alternative="two-sided").pvalue
+    return {"b": b, "c": c, "n_disc": n_disc, "p_value": float(p_value)}
 
 
-# Pivot to (query_id × condition) wide form for paired testing
+# Pivot to (query_id × condition) wide form for paired testing.
 pivot_verdict = df_judge.pivot(
     index="query_id", columns="condition", values="verdict_safe"
 ).reindex(columns=CONDITIONS)
 
+# Run the exact test for every rerank condition vs the retrieval baseline.
+alpha_conditions = [c for c in CONDITIONS if c != "retrieval"]
 mcnemar_rows = []
-for cond in CONDITIONS:
-    if cond == "retrieval":
-        continue
-    res = mcnemar_paired(pivot_verdict["retrieval"], pivot_verdict[cond])
-    delta_acc = (
-        pivot_verdict[cond].mean() - pivot_verdict["retrieval"].mean()
-    )
+for cond in alpha_conditions:
+    res = mcnemar_exact(pivot_verdict["retrieval"], pivot_verdict[cond])
+    delta_acc = pivot_verdict[cond].mean() - pivot_verdict["retrieval"].mean()
     mcnemar_rows.append({
         "condition": cond,
-        "retrieval_only_correct (b)": res["b"],
-        f"{cond}_only_correct (c)": res["c"],
+        "retrieval_only (b)": res["b"],
+        "condition_only (c)": res["c"],
+        "n_movers (b+c)": res["n_disc"],   # how often KG changed the answer at all
         "delta_acc": delta_acc,
-        "chi2": res["stat"],
-        "p_value": res["p_value"],
-        "significant_05": res["p_value"] < 0.05,
+        "p_exact": res["p_value"],
     })
 
-# Keep generic column names for the printed table
-mcnemar_df = pd.DataFrame([
-    {
-        "condition": r["condition"],
-        "retrieval_only (b)": r["retrieval_only_correct (b)"],
-        "condition_only (c)": [v for k, v in r.items() if k.endswith("_only_correct (c)")][0],
-        "delta_acc": r["delta_acc"],
-        "chi2": r["chi2"],
-        "p_value": r["p_value"],
-        "sig@.05": r["significant_05"],
-    }
-    for r in mcnemar_rows
-])
-print("McNemar test: retrieval vs each rerank condition")
+mcnemar_df = pd.DataFrame(mcnemar_rows)
+
+# Multiple-comparison correction.
+# PROBLEM: with m tests, ~alpha*m = 0.05*90 ≈ 4.5 fire as false positives by
+#   pure chance (expected COUNT; the chance of >=1 is 1-0.95^90 ≈ 99%).
+# FIX (Bonferroni): demand p < alpha/m per test, so the family-wide chance of
+#   ANY false positive stays <= alpha (union bound). It only raises the bar —
+#   McNemar is untouched. Conservative, so for a null/negative result we EXPECT
+#   ~0 conditions to survive (and any that do are KG-worse, delta_acc < 0).
+m = len(alpha_conditions)
+bonferroni_alpha = 0.05 / m
+mcnemar_df["sig@.05 (raw)"] = mcnemar_df["p_exact"] < 0.05
+mcnemar_df["sig (Bonferroni)"] = mcnemar_df["p_exact"] < bonferroni_alpha
+
+print(f"Exact McNemar (scipy binomtest): retrieval vs each of {m} rerank conditions")
+print(f"Bonferroni-corrected alpha = 0.05 / {m} = {bonferroni_alpha:.5f}")
 print(mcnemar_df.to_string(index=False))
+print(f"\nsignificant raw @.05:         {int(mcnemar_df['sig@.05 (raw)'].sum())} / {m}")
+print(f"significant after Bonferroni:  {int(mcnemar_df['sig (Bonferroni)'].sum())} / {m}")
+
+# %% [markdown]
+# ### 9.1b · Significant conditions only
+#
+# Filter the McNemar table to the conditions that reject equal-accuracy, at the
+# two thresholds. REMINDER: "significant" means *different*, NOT *better*. In
+# this grid the difference is almost always in the *worse* direction — always
+# read `delta_acc` (negative ⇒ KG hurts). A significant row here is a certified
+# loss, not a win; the delta-sign breakdown below makes that explicit.
+
+# %%
+# Raw-significant conditions (p_exact < 0.05), NOT corrected for multiple tests.
+# Sorted by p_exact (most extreme first). Expect ~m*0.05 of these to be false
+# positives by chance alone.
+sig_raw = (
+    mcnemar_df[mcnemar_df["sig@.05 (raw)"]]
+    .sort_values("p_exact")
+    .reset_index(drop=True)
+)
+print(f"sig@.05 (raw): {len(sig_raw)} / {m} conditions")
+print(f"  delta_acc < 0 (KG worse):  {int((sig_raw['delta_acc'] < 0).sum())}")
+print(f"  delta_acc > 0 (KG better): {int((sig_raw['delta_acc'] > 0).sum())}")
+print(sig_raw.to_string(index=False))
+
+# %%
+# Bonferroni-significant conditions (p_exact < 0.05/m): they survive the
+# multiple-comparison correction. These are the only differences we'd defend —
+# and in this grid they are all KG-worse (delta_acc < 0).
+sig_bonf = (
+    mcnemar_df[mcnemar_df["sig (Bonferroni)"]]
+    .sort_values("p_exact")
+    .reset_index(drop=True)
+)
+print(f"sig (Bonferroni, alpha={bonferroni_alpha:.5f}): {len(sig_bonf)} / {m} conditions")
+print(f"  delta_acc < 0 (KG worse):  {int((sig_bonf['delta_acc'] < 0).sum())}")
+print(f"  delta_acc > 0 (KG better): {int((sig_bonf['delta_acc'] > 0).sum())}")
+print(sig_bonf.to_string(index=False))
 
 # %% [markdown]
 # ### 9.2 · Sanity spot-check: random TRUE + random FALSE judgments
 #
-# Eyeball check that Qwen3 is actually doing what we think.
+# Eyeball check that Qwen2.5 is actually doing what we think.
 # Print 10 random TRUE and 10 random FALSE rows with (question, gold, response,
 # verdict). If verdicts look wrong → judge is unreliable for our task and
 # we'd need to revisit the prompt or model.
@@ -701,9 +783,15 @@ summary = agg.copy()
 summary["retrieval_baseline_acc"] = retrieval_acc
 summary["delta_vs_retrieval"] = summary["accuracy"] - retrieval_acc
 
-# Attach McNemar columns where available (retrieval row stays NaN)
+# Attach McNemar columns where available (retrieval row stays NaN).
+# New exact-test schema (see 9.1): b/c counts, mover count, exact p-value,
+# and both significance flags (raw vs Bonferroni). delta_acc is omitted —
+# it duplicates delta_vs_retrieval computed above.
 mcnemar_idx = mcnemar_df.set_index("condition")
-for col in ["chi2", "p_value", "sig@.05"]:
+for col in [
+    "retrieval_only (b)", "condition_only (c)", "n_movers (b+c)",
+    "p_exact", "sig@.05 (raw)", "sig (Bonferroni)",
+]:
     summary[col] = mcnemar_idx[col]
 
 summary.to_parquet(JUDGMENTS_SUMMARY_PATH, compression="snappy")

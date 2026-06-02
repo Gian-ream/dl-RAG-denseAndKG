@@ -21,8 +21,13 @@ def segment_article(text: str) -> list[str]:
       3. Sentences > 100 words: mechanical split at 100-word boundaries;
          final fragment < 100 words uses backward slide (last 100 words
          of the sentence) to preserve contextual contiguity
-      4. Normal segments < 100 words: pad to exactly 100 words with words
-         from the article's first segment (mirrors DPR padding strategy)
+      4. Normal segments < 100 words: pad up to exactly 100 words with
+         words from the article's first segment, to enforce a UNIFORM
+         passage size equal to the DPR/Silvestri 100-word retrieval unit.
+         This padding is OUR choice, not DPR's: DPR/Silvestri target 100
+         words but leave each article's last passage shorter and do NOT
+         pad (facebook/wiki_dpr: "at most 100 words"). We pad short tails
+         so every passage is the same fixed size.
 
     Args:
         text: Full article text.
@@ -84,10 +89,15 @@ def segment_article(text: str) -> list[str]:
     if not segments:
         return []
 
-    # --- Pad to exactly 100 words ---
-    # Source: words from the first segment (same strategy as DPR, which pads
-    # the last chunk from the article's beginning). Gives every passage an
-    # explicit anchor to the article's identity.
+    # --- Pad to exactly 100 words (uniform passage size) ---
+    # We fix every passage at exactly 100 words — the DPR/Silvestri passage
+    # unit — so the corpus has a uniform retrieval-unit size. OUR design
+    # choice: DPR/Silvestri target 100 words but leave each article's final
+    # passage shorter (they do NOT pad). We pad those short segments instead,
+    # making the corpus MORE uniform than DPR. Padding source = the article's
+    # opening words (which incidentally anchors each passage to the subject).
+    # NB: Contriever mean-pools, so fixed length is a consistency choice, not
+    # a modeling requirement.
     #
     # Circular repetition: if first_words has fewer words than padding_needed,
     # we cycle through them repeatedly. This guarantees exactly 100 words

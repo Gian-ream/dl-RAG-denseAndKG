@@ -39,8 +39,8 @@ Una sola classe `KGScorer` con tre modalità di init:
    Idempotente: chiamate successive sullo stesso db_path partono in ~1s.
 
 Schema delle tabelle:
-- `n1` (~93M righe): qid VARCHAR, neighbor VARCHAR, neighbor_degree UBIGINT
-  + indice B-tree su qid.
+- `n1` (~93M righe): qid VARCHAR, neighbor VARCHAR, neighbor_degree UINTEGER
+  (uint32 nel parquet) + indice B-tree su qid.
 - `edges` (661M righe): subject VARCHAR, object VARCHAR (proiettato dal
   parquet originale, predicate scartato). NESSUN indice — DuckDB usa hash
   join per JOIN su colonne (non lookup ad indice), quindi gli indici su

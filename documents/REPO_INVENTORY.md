@@ -1,7 +1,7 @@
 # REPO_INVENTORY
 
 Mappa di notebook, script e utility del progetto.
-Snapshot al **2026-05-03** (branch `develop`).
+Snapshot al **2026-05-20** (branch `develop`).
 Documento vivo: aggiornare quando si aggiunge/rimuove un file o si cambia stato.
 
 Stato di un file:
@@ -24,6 +24,9 @@ Stato di un file:
 | `04_answer_preparation.ipynb` | CORE | 4 | Top-100 retrieval per le 1000 query del subset; entity linking dei passaggi recuperati; output `data/NQ_answer/top100_*.parquet` + `passage_entities*.parquet`. |
 | `05_answer_curation.ipynb` | CORE | 4.5 | Identifica 344 query con 0 entità nei loro passaggi; produce `data/NQ_answer/curation_results.jsonl` con mapping originale→sostituta. |
 | `06_apply_curation.ipynb` | CORE | 4.5 | Applica lo swap delle 344 query → produce `queries_curated.jsonl`, `top100_curated.parquet`, `passage_entities_curated.parquet`, `query_embeddings_curated.npy`. |
+| `07_kg_rerank.ipynb` | CORE | 5 | KG reachability scoring (Phase A) + Jaccard impact grid (Phase B). Uses `utils/kg.py` KGScorer over `n1.parquet`/`edges.parquet`. Outputs `kg_pairs_raw.parquet` (1.8M rows, cr/pr/kg_score per dist×thr cell) + `kg_rerank_grid.parquet` (18 cells). Paired jupytext `.py`/`.ipynb`. |
+| `08_llm_eval.ipynb` | CORE | 6 | Llama-2-7b base (4-bit NF4) generates answers for 91 conditions (retrieval + 18 KG cells × 5 alphas) over 1000 queries. Raw-completion prompt + one-shot example. Outputs `llm_eval/llm_eval_inputs.parquet` + 91 × `llm_responses_{condition}.jsonl`. Resumable. Paired jupytext. |
+| `09_llm_judge.ipynb` | CORE | 7 | Qwen2.5-7B-Instruct (4-bit) judges each response CORRECT/INCORRECT vs NQ gold. Outputs 91 × `judgments_{condition}.jsonl` + `judgments_summary.parquet` (accuracy + McNemar per condition). 3-subplot accuracy plot. Resumable. Paired jupytext. |
 | `base/preprocessing.ipynb` | LEGACY | — | Vecchio notebook Colab. Riferimento storico. **Non eseguire** (vedi CLAUDE.md). |
 
 ---
@@ -78,7 +81,7 @@ A partire dal 2026-05-04, gli script sono organizzati in 4 sottocartelle (`pipel
 |------|-------|--------------|
 | `utils/__init__.py` | Vuoto. Rende `utils` un package Python. | — |
 | `utils/text_processing.py` | `segment_article`, `_init_file_worker`, `file_segment_worker`. Estratto da `01_corpus_preparation.ipynb` per essere importabile dai worker `multiprocessing` (su Windows usa `spawn`, le funzioni notebook-defined non si picklano). | `01_corpus_preparation.ipynb` |
-| `utils/kg.py` | **CORE Layer 4** — fusione di ex `scripts/kg.py` + `scripts/kg_advanced.py`. Classe unica `KGScorer` con persistenza DuckDB su disco (`data/kg.duckdb`, default), modalità `read_only` per worker MP, query unificata `min_dist`, API griglia `kg_components_grid`/`kg_components_grid_batch` che ritornano `pd.DataFrame`. Diagnostico `is_reachable` mantenuto. Smoke test invocabile via `python -m utils.kg`. | (futuri notebook KG-rerank) |
+| `utils/kg.py` | **CORE Layer 4** — fusione di ex `scripts/kg.py` + `scripts/kg_advanced.py`. Classe unica `KGScorer` con persistenza DuckDB su disco (`data/kg.duckdb`, default), modalità `read_only` per worker MP, query unificata `min_dist`, API griglia `kg_components_grid`/`kg_components_grid_batch`/`kg_components_grid_per_query` che ritornano `pd.DataFrame`. Diagnostico `is_reachable` mantenuto. Smoke test invocabile via `python -m utils.kg`. | `07_kg_rerank.ipynb` |
 
 ---
 
@@ -87,7 +90,7 @@ A partire dal 2026-05-04, gli script sono organizzati in 4 sottocartelle (`pipel
 | Importa | Importato da |
 |---------|--------------|
 | `utils.text_processing` | `01_corpus_preparation.ipynb` |
-| `utils.kg` | (futuri notebook KG-rerank — già eseguibile via `python -m utils.kg`) |
+| `utils.kg` | `07_kg_rerank.ipynb` (anche eseguibile via `python -m utils.kg`) |
 | `scripts/tooling/patch_refined.py` | invocato via `subprocess` da `02_nq_filtering.ipynb` e `04_answer_preparation.ipynb` |
 
 Nessun altro script ha dipendenze incrociate. Ogni script in `scripts/` è self-contained ed eseguito da terminale; tutto il codice condiviso vive in `utils/`.
