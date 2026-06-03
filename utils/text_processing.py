@@ -23,8 +23,8 @@ def segment_article(text: str) -> list[str]:
          of the sentence) to preserve contextual contiguity
       4. Normal segments < 100 words: pad up to exactly 100 words with
          words from the article's first segment, to enforce a UNIFORM
-         passage size equal to the DPR/Silvestri 100-word retrieval unit.
-         This padding is OUR choice, not DPR's: DPR/Silvestri target 100
+         passage size equal to the DPR/The Power of Noise 100-word retrieval unit.
+         This padding is OUR choice, not DPR's: DPR/The Power of Noise target 100
          words but leave each article's last passage shorter and do NOT
          pad (facebook/wiki_dpr: "at most 100 words"). We pad short tails
          so every passage is the same fixed size.
@@ -90,9 +90,9 @@ def segment_article(text: str) -> list[str]:
         return []
 
     # --- Pad to exactly 100 words (uniform passage size) ---
-    # We fix every passage at exactly 100 words — the DPR/Silvestri passage
+    # We fix every passage at exactly 100 words — the DPR/The Power of Noise passage
     # unit — so the corpus has a uniform retrieval-unit size. OUR design
-    # choice: DPR/Silvestri target 100 words but leave each article's final
+    # choice: DPR/The Power of Noise target 100 words but leave each article's final
     # passage shorter (they do NOT pad). We pad those short segments instead,
     # making the corpus MORE uniform than DPR. Padding source = the article's
     # opening words (which incidentally anchors each passage to the subject).

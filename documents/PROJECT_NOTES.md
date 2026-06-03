@@ -45,7 +45,7 @@
   - Basato sul dump Wikipedia **Dec 20, 2018** (stesso di DPR, Karpukhin et al. 2020)
   - Integra gold documents dal dataset NQ con deduplicazione, ~21M documenti
   - Colonne: `text`, `title` (articoli interi, non pre-segmentati)
-  - Usato da Silvestri et al. in "The Power of Noise"
+  - Usato in "The Power of Noise"
 - **Fonte**: HuggingFace dataset `florin-hf/wiki_dump2018_nq_open`
 - **Processing**: Download da HF → cache locale come TSV → segmentazione sentence-aligned → indicizzazione con Contriever embeddings
 - **Output**: `psgs_w100_sentence.tsv` (passaggi sentence-aligned da 100 parole) + indice FAISS shardato
@@ -55,7 +55,7 @@
 - **Notebook**: `03_embedding.ipynb`
 - **Processing**:
   1. Caricamento corpus con Polars (`pl.read_csv` con `schema_overrides`)
-  2. Per ogni passaggio: concatenazione `title + " " + text` (stesso formato di Silvestri et al.)
+  2. Per ogni passaggio: concatenazione `title + " " + text` (stesso formato di "The Power of Noise")
   3. Encoding con Contriever su GPU (batch 512, mean pooling su token non-padding)
   4. Sharding: 9 shard da ~5M vettori (ultimo shard ~2M). Corpus effettivo: ~42M passaggi × 768 × 4B ≈ 129 GB, non entra in RAM/VRAM
   5. Costruzione indici `faiss.IndexFlatIP` (brute-force exact inner product)
@@ -65,10 +65,10 @@
   - `shard_XX.faiss`: indice FAISS serializzato
 - **Nota chiave**: FAISS contiene solo vettori numerici, niente testo. Per recuperare il testo serve: posizione FAISS → `shard_ids` → passage ID → corpus TSV
 - **Resume support**: shard già completati vengono skippati automaticamente
-- **Storico**: inizialmente si usava `psgs_w100.tsv` (corpus DPR pre-segmentato da repo Silvestri), ricostruendo articoli con Polars e rimuovendo padding DPR. Ora si parte direttamente da articoli interi via HF.
+- **Storico**: inizialmente si usava `psgs_w100.tsv` (corpus DPR pre-segmentato da repo The Power of Noise), ricostruendo articoli con Polars e rimuovendo padding DPR. Ora si parte direttamente da articoli interi via HF.
 
 ### Step 2 — Query Filtering
-- **Input**: `florin-hf/nq_open_gold` — NQ-open arricchito con gold documents da `wiki_dump2018_nq_open` (Silvestri et al.). 83,104 query totali (train 72,209 + validation 8,006 + test 2,889), split uniti.
+- **Input**: `florin-hf/nq_open_gold` — NQ-open arricchito con gold documents da `wiki_dump2018_nq_open` ("The Power of Noise"). 83,104 query totali (train 72,209 + validation 8,006 + test 2,889), split uniti.
 - **Filtering** (pipeline a 2 stadi):
   1. **Token count ≤ 5** (tokenizer Contriever/BERT wordpiece, `add_special_tokens=False`): criterio ALL (tutte le varianti risposta devono passare). Risultato: 76,406 query (91.9%). Split answers (1.4%) sacrificate per coerenza.
   2. **Entity linking ReFiNed**: modello `questions_model` (fine-tuned WebQSP), entity_set `wikipedia` (~6M entità). Criterio: domanda ha ≥1 entità AND tutte le varianti risposta hanno ≥1 entità. Risultato: 31,372 query (41.1% delle 76,406).
@@ -141,7 +141,7 @@
 | **datasets** (HuggingFace) | Caricamento NQ-open e Wikipedia | `datasets.load_dataset()` |
 | **pandas** | Manipolazione dati tabulari | Preprocessing e analisi esplorativa |
 | **pyarrow** | Formato colonnare in memoria | Backend per pandas/datasets/Polars |
-| **kagglehub** | Download dataset Kaggle | ~~Usato nel vecchio notebook per Wikipedia dump~~ — non più necessario, corpus preso dal repo Silvestri |
+| **kagglehub** | Download dataset Kaggle | ~~Usato nel vecchio notebook per Wikipedia dump~~ — non più necessario, corpus preso dal repo The Power of Noise |
 
 ### 3.6 Utility
 | Libreria | Uso | Note |
@@ -157,18 +157,18 @@
 
 ### 4.1 Corpus: evoluzione delle scelte
 - **Vecchio notebook** (`base/preprocessing.ipynb`): era su Google Colab, usava dataset Kaggle `jjinho/wikipedia-20230701` (~442K articoli) e HuggingFace `HuggingFaceFW/clean-wikipedia`. Rimane come **riferimento storico**, non più eseguito.
-- **Cambio corpus (2026-02-24)**: il dataset Kaggle 2023 è stato **scartato** perché non allineato con NQ-open (le cui risposte provengono da Wikipedia Dec 2018). Inizialmente sostituito con `psgs_w100.tsv` (corpus DPR pre-segmentato dal repo Silvestri).
-- **Passaggio a HuggingFace (2026-03-10)**: scoperto che Silvestri et al. ([repo GitHub](https://github.com/florin-git/The-Power-of-Noise)) pubblicano il corpus come dataset HF `florin-hf/wiki_dump2018_nq_open` — articoli interi con gold documents NQ integrati e deduplicati. Questo elimina la necessità di ricostruire articoli da passaggi DPR e rimuovere padding. Il notebook è stato semplificato di conseguenza.
+- **Cambio corpus (2026-02-24)**: il dataset Kaggle 2023 è stato **scartato** perché non allineato con NQ-open (le cui risposte provengono da Wikipedia Dec 2018). Inizialmente sostituito con `psgs_w100.tsv` (corpus DPR pre-segmentato dal repo The Power of Noise).
+- **Passaggio a HuggingFace (2026-03-10)**: scoperto che in "The Power of Noise" ([repo GitHub](https://github.com/florin-git/The-Power-of-Noise)) pubblicano il corpus come dataset HF `florin-hf/wiki_dump2018_nq_open` — articoli interi con gold documents NQ integrati e deduplicati. Questo elimina la necessità di ricostruire articoli da passaggi DPR e rimuovere padding. Il notebook è stato semplificato di conseguenza.
 - **Dual-corpus strategy abbandonata (2026-03-10)**: inizialmente si pensava di mantenere sia il corpus DPR meccanico sia quello sentence-aligned per un'ablation study. Con il passaggio a HF (articoli interi), ricreare il taglio meccanico DPR richiederebbe un secondo splitter ad hoc — lavoro extra non previsto dal proposal. Si procede solo con segmentazione sentence-aligned.
 
 ### 4.2 Sentence-aligned segmentation (decisione 2026-02-25)
 - **Problema riscontrato**: il taglio meccanico DPR a 100 parole causa chunk senza soggetto esplicito (es. l'articolo PAEEK ha un chunk che inizia con "he Cyprus Basketball Federation..." — il soggetto è nel chunk precedente). Questo penalizza entity linking (ReFiNed) e comprensione LLM.
-- **Nota storica (corretta 2026-05)**: nel flusso precedente (partendo da `psgs_w100.tsv`) c'era uno step `strip_dpr_padding` che assumeva — **erroneamente** — che DPR paddasse l'ultimo chunk copiando l'inizio dell'articolo. Verifica alla fonte (vedi "Perché padding" sotto): DPR/Silvestri **non** paddano, quindi quello step era di fatto un no-op su dati non paddati. Rimosso col passaggio agli articoli interi HF (commit `726f957`).
+- **Nota storica (corretta 2026-05)**: nel flusso precedente (partendo da `psgs_w100.tsv`) c'era uno step `strip_dpr_padding` che assumeva — **erroneamente** — che DPR paddasse l'ultimo chunk copiando l'inizio dell'articolo. Verifica alla fonte (vedi "Perché padding" sotto): DPR/The Power of Noise **non** paddano, quindi quello step era di fatto un no-op su dati non paddati. Rimosso col passaggio agli articoli interi HF (commit `726f957`).
 - **Strategia di segmentazione scelta**: segmentazione sentence-aligned con padding a lunghezza fissa, applicata a ogni segmento:
   1. Selezionare frasi complete finché `total_words < 100`
   2. Paddare lo spazio rimanente (`100 - total_words` parole) con le prime parole del primo segmento dell'articolo
   3. Risultato: esattamente 100 parole per segmento, frasi intere, padding contestuale
-- **Perché padding fino a 100 parole**: per mantenere una dimensione di passaggio **uniforme**, pari all'unità di retrieval da 100 parole di DPR/Silvestri. Scelta **nostra**, non ereditata: DPR/Silvestri puntano a 100 parole ma lasciano l'ultimo passaggio di ogni articolo più corto e **non** paddano (`facebook/wiki_dpr`: "at most 100 words"; *The Power of Noise* usa il `psgs_w100` DPR grezzo senza ri-chunking). Noi paddiamo anche le code corte → corpus *più uniforme* di DPR. La sorgente del padding (parole d'apertura dell'articolo) ancora incidentalmente ogni passaggio al soggetto. NB: Contriever fa mean-pooling, quindi la lunghezza fissa è una scelta di consistenza, non un requisito del modello.
+- **Perché padding fino a 100 parole**: per mantenere una dimensione di passaggio **uniforme**, pari all'unità di retrieval da 100 parole di DPR/The Power of Noise. Scelta **nostra**, non ereditata: DPR/The Power of Noise puntano a 100 parole ma lasciano l'ultimo passaggio di ogni articolo più corto e **non** paddano (`facebook/wiki_dpr`: "at most 100 words"; *The Power of Noise* usa il `psgs_w100` DPR grezzo senza ri-chunking). Noi paddiamo anche le code corte → corpus *più uniforme* di DPR. La sorgente del padding (parole d'apertura dell'articolo) ancora incidentalmente ogni passaggio al soggetto. NB: Contriever fa mean-pooling, quindi la lunghezza fissa è una scelta di consistenza, non un requisito del modello.
 - **Alternative scartate**:
   - Lunghezza variabile (80-120 parole senza padding): perde la proprietà di lunghezza fissa
   - Prefisso "From TITLE:" sintetico: Contriever non è stato addestrato su questo formato, effetto imprevedibile sugli embedding
@@ -276,7 +276,7 @@ Asimmetria seed-vs-query: 8.8% di hub-seeds → 17.4% di query "tainted", perch�
 3. Resource Allocation weighted overlap (`Σ 1/deg(z)` invece di `|∩|`) — 2-3h + downstream rewrite + serve A1 sotto comunque
 4. PPR à la HippoRAG — giorni (sparse matrix, scoring continuo, downstream da rifare)
 
-A1 è anche **prassi metodologica** in WebQSP (Yih et al. ACL 2016) e CWQ (Talmor & Berant NAACL 2018): split eval set per `clean`/`hub` subset e riportare metriche separate. Le 174 query `all-hub` riceveranno KG-score=0 → fallback denso puro.
+Riportiamo le metriche **separatamente** per i subset `clean` e `all-hub`: tenere distinte le query su entità popolari evita di mascherare il failure mode su quel tipo di traffico. Le 174 query `all-hub` riceveranno KG-score=0 → fallback denso puro.
 
 **Implementazione**. Guard all'inizio di `bfs_3_waves`:
 
@@ -332,11 +332,10 @@ Costo:
 
 **Multi-threshold ablation gratis**. La nuova architettura abilita ablation senza ricomputare N1: precompute N1 unfiltered, filtra al volo per soglie multiple `[500, 1000, 2000, 5000, 10000, ∞]`. Permette il claim del paper: "fino a t=X i seed-hub non causano degradazione metrica, oltre cambia così".
 
-**Letteratura — questa è prassi standard per reachability su grafi grandi**:
+**Tecniche di riferimento per reachability su grafi grandi**:
 
-- **Cohen et al., SODA 2003** — *Reachability and Distance Queries via 2-Hop Labels*. Base teorica del meet-in-the-middle: precomputi label per ogni nodo, query in O(1). I nostri N1 sono la versione "cheap" (1-hop label) di quel framework.
+- **Cohen et al., SODA 2002** — *Reachability and Distance Queries via 2-Hop Labels*. Base teorica del meet-in-the-middle: precomputi label per ogni nodo, query in O(1). I nostri N1 sono la versione "cheap" (1-hop label) di quel framework.
 - **Bidirectional BFS** (CLRS) — costo `O(b^(d/2))` invece di `O(b^d)`. Per il nostro 3-hop dimezza l'esponente.
-- **Lao & Cohen, ACL 2010 (PRA)** — query on-demand su KG senza precompute del subgraph completo.
 
 **Cosa cambia operativamente**:
 

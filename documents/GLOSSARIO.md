@@ -23,7 +23,7 @@ Suffix marking the artifacts produced by the curation step (notebook 06). Curati
 ## D
 
 ### DPR (Dense Passage Retrieval)
-Paper di Karpukhin et al. (Facebook AI, 2020) che ha definito lo standard per l'open-domain QA. Ha introdotto: (1) un dual-encoder (query encoder + passage encoder) addestrato con in-batch negatives, (2) il corpus standard `psgs_w100.tsv` — Wikipedia Dec 2018 segmentata in ~21M passaggi di 100 parole. Questo corpus è il benchmark de facto riusato da quasi tutti i paper successivi (Contriever, FiD, ATLAS, RAG, Silvestri).
+Paper di Karpukhin et al. (Facebook AI, 2020) che ha definito lo standard per l'open-domain QA. Ha introdotto: (1) un dual-encoder (query encoder + passage encoder) addestrato con in-batch negatives, (2) il corpus standard `psgs_w100.tsv` — Wikipedia Dec 2018 segmentata in ~21M passaggi di 100 parole. Questo corpus è il benchmark de facto riusato da quasi tutti i paper successivi (Contriever, FiD, ATLAS, RAG, "The Power of Noise").
 
 ### Dense Retrieval
 Approccio al recupero di documenti che usa rappresentazioni vettoriali dense (embeddings) per trovare documenti simili alla query nello spazio vettoriale, in contrasto con metodi sparse come BM25/TF-IDF.
@@ -114,7 +114,7 @@ The `neighbor_degree` column is exactly what the **threshold** filters (hub-bann
 Dataset di domande reali poste a Google, con risposte estratte da Wikipedia. Nella variante "open", il sistema deve trovare la risposta nell'intero corpus (non in un singolo documento dato).
 
 ### nq_open_gold (florin-hf/nq_open_gold)
-Dataset HuggingFace di Silvestri et al. che arricchisce NQ-open con gold documents estratti dal corpus `wiki_dump2018_nq_open`. 83,104 query totali (train 72,209 + validation 8,006 + test 2,889). Colonne: `question`, `answers` (lista), `text` (gold document), `example_id`, `idx_gold_in_corpus`.
+Dataset HuggingFace di "The Power of Noise" che arricchisce NQ-open con gold documents estratti dal corpus `wiki_dump2018_nq_open`. 83,104 query totali (train 72,209 + validation 8,006 + test 2,889). Colonne: `question`, `answers` (lista), `text` (gold document), `example_id`, `idx_gold_in_corpus`.
 
 ## P
 

@@ -157,7 +157,7 @@ print(f"last 6:  {CONDITIONS[-6:]}")
 
 # Inference knobs (tune to your GPU)
 BATCH_SIZE = 4               # bump up if VRAM allows (8/16 on 24GB+)
-MAX_NEW_TOKENS = 15          # Silvestri "Power of Noise": extract-style answer (≤5 tok target, 15 = safe ceiling)
+MAX_NEW_TOKENS = 15          # "Power of Noise": extract-style answer (≤5 tok target, 15 = safe ceiling)
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 # Note: no PASSAGE_CHAR_LIMIT / no prompt truncation. Per design choice,
 # prompts that exceed the model's native context window (4096 tokens for
@@ -502,7 +502,7 @@ df_inputs.head(1)
 # ## 5 · Init Llama-2-7B base (4-bit NF4 via bitsandbytes)
 #
 # Loads model + tokenizer **quantized to 4-bit NF4** on the GPU.
-# Aligned with the Silvestri "Power of Noise" setup (4-bit representation).
+# Aligned with the "Power of Noise" setup (4-bit representation).
 # **Base model** (not -chat): naturally completion-style for extractive QA.
 # Requires:
 # - HF account that has accepted the Meta license on the model card
@@ -557,7 +557,7 @@ if torch.cuda.is_available():
 # %%
 # Generation config: deterministic + paper-aligned.
 # - do_sample=False: greedy decoding (paper)
-# - repetition_penalty=1.1: paper (Silvestri llm.py::generate). Discourages
+# - repetition_penalty=1.1: paper (The Power of Noise llm.py::generate). Discourages
 #   the model from repeating tokens it has just generated.
 # - eos_token_id=[eos, "\n"]: stop on EITHER the natural eos OR the first
 #   newline. Llama-2 in raw-completion mode tends to keep generating
