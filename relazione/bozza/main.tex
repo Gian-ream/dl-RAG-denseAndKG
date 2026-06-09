@@ -43,9 +43,7 @@ Dense retrieval can surface \emph{distractors} --- passages close to the query b
 % ------------------------------------------------------------------------------
 \section{Introduction}
 
-Retrieval-Augmented Generation (RAG) prepends retrieved passages to an LLM's prompt, but \cite{cuconasu2024power} show that high-scoring passages are often \emph{distractors} --- semantically similar to the query yet answer-free --- and hurt the reader. We ask whether the topology of an open knowledge graph (Wikidata) can separate relevant passages from distractors. The hypothesis: a passage whose entities are \emph{graph-close} to the query entities is less likely to be a distractor than one chosen by semantic similarity alone. Unlike approaches that exploit the graph's full relation semantics, we test the weakest signal --- bare proximity within $k$ hops --- to isolate its contribution.
-
-Our contributions are: (i) a pipeline that navigates the \emph{entire} Wikidata graph from a local HDT dump and tests $\le 3$-hop reachability meet-in-the-middle, without ever expanding a high-degree hub's neighbour list; (ii) a clean negative result, supported by exact McNemar tests and a mechanistic explanation; (iii) three deliberate deviations from the evaluation setup of~\cite{cuconasu2024power} (passage padding, an extraction prompt for the base model, an LLM judge), documented for reproducibility. Code:\,\{4\}.
+\cite{cuconasu2024power} show that high-scoring retrieved passages are often \emph{distractors} --- semantically similar to the query yet answer-free --- and degrade the reader. We test one idea against this: filter distractors by \emph{graph proximity} on an open knowledge graph, reranking retrieved passages by how close their entities are, on Wikidata, to the query entities. We deliberately restrict ourselves to pure topology --- bare $\le 3$-hop reachability, no relation semantics --- to isolate what proximity \emph{alone} contributes. The answer is negative: topology alone does not filter distractors. The report's main contribution is this controlled test and the mechanistic account of \emph{why} it fails; a by-product is a method to decide $\le 3$-hop reachability over the entire Wikidata graph without materialising hub neighbourhoods. Code\,\{4\}.
 
 % ------------------------------------------------------------------------------
 \section{Related work}
@@ -55,19 +53,15 @@ We adopt the corpus, retriever and reader of~\cite{cuconasu2024power}, who chara
 % ------------------------------------------------------------------------------
 \section{Method}
 
-\paragraph*{Data and retrieval.} The corpus is the gold-augmented Dec-2018 Wikipedia release of~\cite{cuconasu2024power}\,\{1\}, Contriever-encoded and indexed with FAISS (\texttt{IndexFlatIP}, $\sim$42M passages). From NQ-open\,\{2\} we keep queries with short ($\le 5$-token) answers --- matching the extractive setup of~\cite{cuconasu2024power} --- where the question and \emph{all} answer variants link to Wikidata entities (ReFinED), and evaluate on a curated 1000-query subset.
+\subsection{Baseline: dense RAG}
+We reproduce the dense-retrieval pipeline of~\cite{cuconasu2024power}. The corpus is its gold-augmented Dec-2018 Wikipedia release\,\{1\}; we re-segment it on sentence boundaries and pad each passage to exactly 100 words --- the raw DPR passages have ragged, subject-less tails that hurt entity linking and the reader, and since Contriever mean-pools, fixed length is only a consistency choice. Passages are Contriever-encoded and indexed with FAISS (\texttt{IndexFlatIP}, $\sim$42M). From NQ-open\,\{2\} we keep short ($\le 5$-token) answers --- matching the extractive setup of~\cite{cuconasu2024power} --- whose question and \emph{all} answer variants link to Wikidata entities (ReFinED); we evaluate on a curated 1000-query subset (344/1000 queries are substituted so retrieved passages carry entities; see Appendix). The top-5 passages feed Llama-2-7B (base) under a one-shot extraction prompt, and correctness is decided by an \emph{LLM judge} (Qwen2.5-7B-Instruct, a different model to avoid self-preference) that checks whether the response contains an NQ gold answer --- replacing the brittle substring exact-match of~\cite{cuconasu2024power} (prompt and judge in the Appendix).
 
-\paragraph*{Passage segmentation (departure 1).} The corpus of~\cite{cuconasu2024power} ships as raw 100-word passages with ragged, unpadded tails. We instead cut on sentence boundaries and pad each segment back to exactly 100 words using the article's opening words. This avoids subject-less chunks (e.g.\ a passage starting mid-sentence) that break entity linking and reader comprehension, keeps passage length uniform, and incidentally anchors every passage to the article subject. Contriever mean-pools, so fixed length is a consistency choice, not a model requirement.
-
-\paragraph*{Graph construction (engineering).} We query Wikidata from a pre-built HDT dump\,\{3\} (Jan 2022, $\sim$166\,GB) via \texttt{pyHDT}; the public SPARQL endpoint was abandoned after even a minimal \texttt{COUNT} on a hub (\texttt{Q5}, \emph{human}) timed out. We export every direct entity-to-entity statement (Wikidata's ``truthy'' \texttt{wdt:} predicates), one file per predicate, yielding $6.61\times10^8$ edges. For a pair $(q,d)$ we decide $\mathrm{dist}(q,d)\le 3$ meet-in-the-middle: distance~1 is a set lookup, distance~2 an intersection of 1-hop neighbourhoods $N_1$, distance~3 an indexed edge-probe between $N_1(q)$ and $N_1(d)$. We never materialise the neighbourhood of a hub (\texttt{Q30}, \emph{USA}, has 2.35M edges); we only test membership. A degree threshold $t$ optionally drops high-degree bridge nodes.
-
-\paragraph*{Scoring and fusion.} Following the proposal, the KG score is $s_{\mathrm{kg}} = \mathrm{cr}\cdot\mathrm{pr}$, where the \emph{connected ratio} $\mathrm{cr}$ is the fraction of query entities reaching $\ge 1$ document entity within $k$ hops and the \emph{purity ratio} $\mathrm{pr}$ the fraction of document entities reached by any query entity. We fuse with the dense score as
+\subsection{Contribution: KG concept-proximity reranking}
+We rerank the top-100 by graph proximity on Wikidata. We query a pre-built HDT dump\,\{3\} (Jan 2022, $\sim$166\,GB) via \texttt{pyHDT} --- the public SPARQL endpoint timed out even on a single hub count (see Appendix) --- and export every direct entity-to-entity statement (Wikidata's ``truthy'' \texttt{wdt:} predicates), $6.61\times10^8$ edges. For a pair $(q,d)$ we test $\mathrm{dist}(q,d)\le 3$ \emph{meet-in-the-middle}: distance~1 a set lookup, distance~2 an intersection of 1-hop neighbourhoods $N_1$, distance~3 an indexed edge-probe between $N_1(q)$ and $N_1(d)$ --- never materialising a hub's neighbour list (\texttt{Q30}, \emph{USA}: 2.35M edges). A degree threshold $t$ drops high-degree bridges. The KG score is $s_{\mathrm{kg}}=\mathrm{cr}\cdot\mathrm{pr}$, where the \emph{connected ratio} $\mathrm{cr}$ is the fraction of query entities reaching $\ge1$ document entity within $k$ hops and the \emph{purity ratio} $\mathrm{pr}$ the fraction of document entities reached by any query entity. We fuse with the dense score,
 \begin{equation}\label{eq:fuse}
 s = (1-\alpha)\,s_{\mathrm{dense}} + \alpha\,s_{\mathrm{kg}},
 \end{equation}
-with $\alpha$ the \emph{KG weight} and $s_{\mathrm{dense}}=\sigma/\max_q\sigma$ a per-query max-only rescaling of the raw Contriever score $\sigma$ that caps it at~1 without stretching its narrow band (min--max would). We sweep a grid of distance $k\in\{1,2,3\}$, threshold $t\in\{500,1\text{k},2\text{k},5\text{k},10\text{k},\infty\}$ and $\alpha\in\{0.1,0.3,0.5,0.7,0.9\}$: $90$ rerank cells plus the dense baseline.
-
-\paragraph*{Generation and evaluation (departures 2--3).} The top-5 passages feed Llama-2-7B (base). The prompt is derived from~\cite{cuconasu2024power} with two deviations: a one-shot exemplar (the base, non-instruct model otherwise continues ``Answer:'' with Wikipedia-style prose) and the question placed \emph{above} the documents (the paper places it after). Correctness is decided by an \emph{LLM judge} (Qwen2.5-7B-Instruct, a different model to avoid self-preference) that checks whether the response contains one of the NQ-open gold answers. This replaces the brittle substring exact-match of~\cite{cuconasu2024power}, which misses paraphrases and formatting.
+with $\alpha$ the \emph{KG weight} and $s_{\mathrm{dense}}=\sigma/\max_q\sigma$ a per-query max-only rescaling of the raw Contriever score $\sigma$ (the Appendix explains why not min--max). We sweep $k\in\{1,2,3\}$, $t\in\{500,1\text{k},2\text{k},5\text{k},10\text{k},\infty\}$, $\alpha\in\{0.1,0.3,0.5,0.7,0.9\}$: 90 rerank cells plus the dense baseline.
 
 % ------------------------------------------------------------------------------
 \section{Results}
@@ -106,6 +100,8 @@ $k$ & $t$ & $\alpha{=}.1$ & .3 & .5 & .7 & .9\\
 
 \paragraph*{No gain, then harm.} The best cell ($\alpha{=}0.3$, dist~2, $t{=}5\text{k}$) reaches $0.372$: $+0.8$pp $\approx 8$ queries, i.e.\ noise (Table~\ref{tab:results}). As $\alpha$ grows the KG signal dominates and accuracy falls monotonically, bottoming at $0.290$ ($\alpha{=}0.9$, dist~3, $t{=}5\text{k}$).
 
+\paragraph*{It reshuffles, but does not help.} The rerank is far from inert: at $\alpha{=}0.5$ it rewrites the top-5 for $>$95\% of queries (mean Jaccard@5 $\approx 0.12$ vs.\ pure retrieval --- barely one of five passages survives), yet accuracy stays at the baseline. It reorders aggressively without adding signal.
+
 \paragraph*{Threshold gradient is the mechanism.} Holding $\alpha{=}0.9$, dist~2, accuracy decays monotonically as the hub filter loosens, from $0.354$ ($t{=}500$) to $0.295$ ($t{=}\infty$): admitting high-degree nodes as bridges connects everything to everything and destroys the signal.
 
 \paragraph*{Significance.} Exact McNemar tests against the baseline, Bonferroni-corrected for the 90 comparisons (significance threshold $0.05/90\approx5.6\times10^{-4}$), flag 13 of the 90 conditions as significant --- \emph{all} worse, none better; each flips $\approx$200/1000 answers yet nets negative.
@@ -126,7 +122,7 @@ $k$ & $t$ & $\alpha{=}.1$ & .3 & .5 & .7 & .9\\
 % ------------------------------------------------------------------------------
 \section{Discussion and conclusions}
 
-\paragraph*{Why it fails.} On a graph as dense as Wikidata, $2$--$3$-hop reachability \emph{saturates}: almost every document entity is reachable from almost every query entity, so $\mathrm{cr}\approx 1$ and the score stops discriminating; the hub filter limits the damage but recovers no signal. For about 17\% of queries the question entity is itself a very high-degree node (a country, a religion), where any passage is graph-close and the KG score is uninformative.
+\paragraph*{Why it fails.} On a graph as dense as Wikidata, $2$--$3$-hop reachability \emph{saturates}: almost every document entity is reachable from almost every query entity, so $\mathrm{cr}\approx 1$, the score collapses onto $\mathrm{pr}$ alone, and discrimination is lost; the hub filter limits the damage but recovers no signal. For about 17\% of queries the question entity is itself a very high-degree node (a country, a religion), where any passage is graph-close and the KG score is uninformative.
 
 \paragraph*{Limitations and future work.} Our metric collapses relation semantics (\texttt{P31} \emph{instance-of} and \texttt{P19} \emph{place-of-birth} count alike), so it cannot screen out semantically irrelevant links. The honest next step is to use the graph's relations and semantics --- not just its bare topology.
 
@@ -142,5 +138,52 @@ $k$ & $t$ & $\alpha{=}.1$ & .3 & .5 & .7 & .9\\
 \nocite{naveed2023llm,peng2024graphrag}
 \bibliography{references.bib}
 \bibliographystyle{dlai2025}
+
+\appendix
+
+\section*{Appendix}
+
+\subsection*{Pipeline: notebook flow}
+The project runs as nine notebooks in order (the Wikidata graph itself is built separately by \texttt{scripts/pipeline/}, Layers~1--3, under WSL2):
+\begin{enumerate}\itemsep 0pt \parskip 0pt
+\item \texttt{01\_corpus\_preparation} --- download the corpus and segment it into sentence-aligned 100-word passages ($\sim$42M).
+\item \texttt{02\_nq\_filtering} --- filter NQ-open ($\le$5-token answers + ReFiNed entities) to 31{,}372 queries.
+\item \texttt{03\_embedding} --- Contriever-encode every passage and build 9 FAISS shards.
+\item \texttt{04\_answer\_preparation} --- top-100 retrieval and passage entity-linking for the 1000-query subset.
+\item \texttt{05\_answer\_curation} --- find the 344 queries whose top-100 carry no entities and pick replacements.
+\item \texttt{06\_apply\_curation} --- apply the swap, producing the \texttt{*\_curated} files.
+\item \texttt{07\_kg\_rerank} --- KG reachability ($\mathrm{cr}/\mathrm{pr}$) and the Jaccard reshuffle grid.
+\item \texttt{08\_llm\_eval} --- Llama-2-7B generates answers for all 91 conditions.
+\item \texttt{09\_llm\_judge} --- Qwen2.5 judges each answer; accuracy + McNemar.
+\end{enumerate}
+
+\subsection*{Environment}
+Two environments are required:
+\begin{itemize}\itemsep 0pt \parskip 0pt
+\item \textbf{Windows + \texttt{uv}} --- everything except the graph build.
+\item \textbf{WSL2/Ubuntu} for the HDT pipeline: \texttt{pyHDT} needs a C++ build that does not compile cleanly on Windows native; the 166\,GB dump is read via \texttt{/mnt/c}.
+\item \textbf{\texttt{faiss-gpu} via \texttt{conda}} --- no Windows pip wheel, so it is installed in miniconda and bridged into the \texttt{uv} venv at runtime (\texttt{add\_dll\_directory} + \texttt{sys.path.insert}; conda paths are machine-specific).
+\item \textbf{ReFiNed patch} --- ReFiNed~V1 breaks on Windows + Python~3.12 + transformers~4.48 (a Unix-only \texttt{strftime("\%s")} call); \texttt{scripts/tooling/patch\_refined.py} fixes it, auto-run via subprocess.
+\item \textbf{HuggingFace token} in \texttt{.hf\_token} at the repo root, for gated models (Llama-2).
+\end{itemize}
+All reported numbers are reproduced from the raw outputs by \texttt{documents/verify\_report\_numbers.py}; per-file schemas are catalogued in \texttt{DATA\_DICTIONARY.md}.
+
+\subsection*{Design choices}
+\textbf{Dense normalization: max-only, not min--max.} The raw Contriever score $\sigma$ (inner product, not L2-normalised) sits in a narrow per-query band; we rescale by the per-query maximum only ($s_{\mathrm{dense}}=\sigma/\max_q\sigma$). Min--max would stretch that band to $[0,1]$ and change the ranking \emph{philosophy}: e.g.\ A$(\sigma{=}1.05,\,s_{\mathrm{kg}}{=}0.2)$ vs B$(\sigma{=}1.00,\,s_{\mathrm{kg}}{=}0.4)$ at $\alpha{=}0.5$ --- max-only treats A's $5\%$ dense edge as negligible and picks \textbf{B}, while min--max inflates that $5\%$ gap to $100\%$ and flips to \textbf{A}. Max-only preserves the dense geometry and only caps it at~1.
+
+\textbf{Reader prompt.} Llama-2-7B base (not chat) is a completion model: without an exemplar it continues ``Answer:'' with prose. We prepend a one-shot extraction example and place the question \emph{above} the documents (vs~\cite{cuconasu2024power}, which places it after); the top-ranked passage sits last, nearest the answer slot.
+
+\textbf{Judge.} The judge must differ from the generator to avoid self-preference, so we use Qwen2.5-7B-Instruct (Apache-2.0, ungated), deciding YES/NO on whether a response contains a gold answer --- absorbing paraphrase and formatting that a substring match misses.
+
+\subsection*{What we tried first}
+The final reachability method is the third design.
+
+\textbf{SPARQL $\to$ local HDT.} The public Wikidata SPARQL endpoint timed out even on a minimal \texttt{COUNT} over a hub (\texttt{?x wdt:P31 wd:Q5}); a local HDT dump queried with \texttt{pyHDT} gives sub-millisecond predicate-restricted counts.
+
+\textbf{Wildcard $\to$ per-predicate export.} A wildcard triple iterator overshot and silently dropped genuine Q--Q edges on a dump this large; exporting one predicate at a time gave exact, verifiable counts ($661{,}471{,}158$ edges).
+
+\textbf{BFS-N3 $\to$ meet-in-the-middle.} Precomputing full 3-hop neighbourhoods by BFS timed out on 89\% of queries (hubs explode the frontier); we instead precompute only 1-hop neighbourhoods ($\sim$93M rows) and decide $\le 3$-hop reachability per pair by meeting in the middle.
+
+\textbf{Query curation.} 344/1000 subset queries had top-100 passages with no linkable entities (KG score then undefined); we substituted them with entity-bearing queries, which biases evaluation \emph{towards} the KG --- so the negative result reads ``even on KG-favourable queries it does not help''.
 
 \end{document}

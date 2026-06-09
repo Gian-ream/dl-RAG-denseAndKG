@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.6.7)  9 JUN 2026 10:01
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.6.7)  9 JUN 2026 11:49
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -492,27 +492,27 @@ File: omlptm.fd
 )
 LaTeX Font Info:    Font shape `OML/ptm/m/n' in size <9> not available
 (Font)              Font shape `OML/cmm/m/it' tried instead on input line 35.
-
-Underfull \hbox (badness 3547) in paragraph at lines 46--47
-[]\OT1/ptm/m/n/10 Retrieval-Augmented Gen-er-a-tion (RAG) prepends re-
- []
-
 LaTeX Font Info:    Trying to load font information for OMS+ptm on input line 4
-8.
+6.
+
 (C:\Users\Utente\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\omsptm.fd
 File: omsptm.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 48.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 46.
 LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 5
-8.
+7.
 
 (C:\Users\Utente\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
-Underfull \hbox (badness 5119) in paragraph at lines 58--59
-\OT1/ptm/m/n/10 Dec-2018 Wikipedia re-lease of [[]]\OMS/cmsy/m/n/10 f\OT1/ptm/m
-/n/10 1\OMS/cmsy/m/n/10 g\OT1/ptm/m/n/10 , Contriever-
+Underfull \hbox (badness 1147) in paragraph at lines 57--58
+\OT1/ptm/m/n/10 cor-pus is its gold-augmented Dec-2018 Wikipedia re-
+ []
+
+
+Underfull \hbox (badness 1515) in paragraph at lines 57--58
+\OT1/ptm/m/n/10 pas-sages have ragged, subject-less tails that hurt en-
  []
 
 
@@ -524,38 +524,94 @@ Utente/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}
 
 
 ]
-LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <9> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 137.
+Underfull \hbox (badness 1102) in paragraph at lines 63--65
+\OML/cmm/m/it/10 k \OMS/cmsy/m/n/10 2 f\OT1/cmr/m/n/10 1\OML/cmm/m/it/10 ; \OT1
+/cmr/m/n/10 2\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 3\OMS/cmsy/m/n/10 g$\OT1/ptm/m/
+n/10 , $\OML/cmm/m/it/10 t \OMS/cmsy/m/n/10 2 f\OT1/cmr/m/n/10 500\OML/cmm/m/it
+/10 ; \OT1/cmr/m/n/10 1[]\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 2[]\OML/cmm/m/it/10
+ ; \OT1/cmr/m/n/10 5[]\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 10[]\OML/cmm/m/it/10 ;
+ \OMS/cmsy/m/n/10 1g$\OT1/ptm/m/n/10 , $\OML/cmm/m/it/10  \OMS/cmsy/m/n/10 2
+ []
 
-Underfull \hbox (badness 4859) in paragraph at lines 136--141
+LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <9> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 133.
+
+Underfull \hbox (badness 4859) in paragraph at lines 132--137
 \OMS/cmsy/m/n/9 f\OT1/ptm/m/n/9 1\OMS/cmsy/m/n/9 g \OT1/ptm/m/n/9 Cor-pus: [][]
 $\OT1/pcr/m/n/9 https : / / huggingface . co / datasets /
  []
 
 
-Underfull \hbox (badness 3148) in paragraph at lines 136--141
+Underfull \hbox (badness 3148) in paragraph at lines 132--137
 \OMS/cmsy/m/n/9 f\OT1/ptm/m/n/9 2\OMS/cmsy/m/n/9 g \OT1/ptm/m/n/9 Queries: [][]
 $\OT1/pcr/m/n/9 https : / / huggingface . co / datasets /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 136--141
+Underfull \hbox (badness 10000) in paragraph at lines 132--137
 \OMS/cmsy/m/n/9 f\OT1/ptm/m/n/9 3\OMS/cmsy/m/n/9 g \OT1/ptm/m/n/9 Wiki-data HDT
  dump: [][]$\OT1/pcr/m/n/9 https : / / hdt-[]dumps .
  []
 
-[2
+(main.bbl [2
 pdfTeX warning (ext4): destination with the same identifier (name{table.1}) has
  been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.141 
-      ] (main.bbl
+l.17 ...23)Bast, Hertel, and Prange]{bast2023fair}
+                                                  ]
 Underfull \hbox (badness 2229) in paragraph at lines 41--44
 \OT1/ptm/m/n/10 C., Zhang, Y., and Tang, S.  Graph retrieval-
  []
 
-) [3
+)
+Underfull \hbox (badness 2012) in paragraph at lines 152--153
+[]\OT1/pcr/m/n/10 04[]answer[]preparation \OT1/ptm/m/n/10 --- top-100 re-trieva
+l
+ []
+
+
+Underfull \hbox (badness 1270) in paragraph at lines 153--154
+[]\OT1/pcr/m/n/10 05[]answer[]curation \OT1/ptm/m/n/10 --- find the 344 queries
+
+ []
+
+LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 1
+63.
+(C:\Users\Utente\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ts1ptm.fd
+File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
+)
+Underfull \hbox (badness 1454) in paragraph at lines 165--166
+\OT1/ptm/m/n/10 so it is in-stalled in mini-conda and bridged into
+ []
+
+
+Underfull \hbox (badness 1796) in paragraph at lines 165--166
+\OT1/pcr/m/n/10 sys.path.insert\OT1/ptm/m/n/10 ; conda paths are machine-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 166--167
+[]\OT1/ptm/b/n/10 ReFiNed patch \OT1/ptm/m/n/10 --- Re-FiNed V1 breaks
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 166--167
+\OT1/ptm/m/n/10 on Win-dows + Python 3.12 + trans-form-
+ []
+
+
+Underfull \hbox (badness 1831) in paragraph at lines 166--167
+\OT1/ptm/m/n/10 ers 4.48 (a Unix-only \OT1/pcr/m/n/10 strftime("%s") \OT1/ptm/m
+/n/10 call);
+ []
+
+
+Underfull \hbox (badness 1946) in paragraph at lines 166--167
+\OT1/pcr/m/n/10 scripts/tooling/patch[]refined.py \OT1/ptm/m/n/10 fixes
+ []
+
+[3] [4
 
 ] (main.aux)
  ***********
@@ -563,16 +619,16 @@ LaTeX2e <2025-11-01>
 L3 programming layer <2026-04-28>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 6B7121748105B07FAB5E68C8FFD84043;539.
+(rerunfilecheck)             Checksum: B99B450708FE9BF7D0E5B936130A4D32;983.
  ) 
 Here is how much of TeX's memory you used:
- 11309 strings out of 467683
- 174471 string characters out of 5414238
- 608343 words of memory out of 5000000
- 40157 multiletter control sequences out of 15000+600000
- 653475 words of font info for 90 fonts, out of 8000000 for 9000
+ 11358 strings out of 467683
+ 175188 string characters out of 5414238
+ 608328 words of memory out of 5000000
+ 40187 multiletter control sequences out of 15000+600000
+ 654304 words of font info for 93 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,11n,79p,1054b,611s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,11n,79p,1275b,611s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/Utente/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm
 /cmmi10.pfb><C:/Users/Utente/AppData/Local/Programs/MiKTeX/fonts/type1/public/a
 msfonts/cm/cmmi7.pfb><C:/Users/Utente/AppData/Local/Programs/MiKTeX/fonts/type1
@@ -583,15 +639,16 @@ rograms/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Users/Utente/AppData
 /Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Uten
 te/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/U
 sers/Utente/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy9.
-pfb><C:/Users/Utente/AppData/Local/Programs/MiKTeX/fonts/type1/urw/courier/ucrr
-8a.pfb><C:/Users/Utente/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utm
-b8a.pfb><C:/Users/Utente/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/ut
-mr8a.pfb><C:/Users/Utente/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/u
-tmr8a.pfb><C:/Users/Utente/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/
-utmri8a.pfb>
-Output written on main.pdf (3 pages, 196571 bytes).
+pfb><C:/Users/Utente/AppData/Local/Programs/MiKTeX/fonts/type1/urw/courier/ucrb
+8a.pfb><C:/Users/Utente/AppData/Local/Programs/MiKTeX/fonts/type1/urw/courier/u
+crr8a.pfb><C:/Users/Utente/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/
+utmb8a.pfb><C:/Users/Utente/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times
+/utmr8a.pfb><C:/Users/Utente/AppData/Local/Programs/MiKTeX/fonts/type1/urw/time
+s/utmr8a.pfb><C:/Users/Utente/AppData/Local/Programs/MiKTeX/fonts/type1/urw/tim
+es/utmri8a.pfb>
+Output written on main.pdf (4 pages, 217325 bytes).
 PDF statistics:
- 158 PDF objects out of 1000 (max. 8388607)
- 30 named destinations out of 1000 (max. 500000)
- 41 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 188 PDF objects out of 1000 (max. 8388607)
+ 43 named destinations out of 1000 (max. 500000)
+ 57 words of extra memory for PDF output out of 10000 (max. 10000000)
 
