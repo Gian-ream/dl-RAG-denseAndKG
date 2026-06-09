@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.6.7)  8 JUN 2026 14:21
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.6.7)  9 JUN 2026 10:01
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -403,7 +403,7 @@ Package hyperref Info: Option `colorlinks' set `true' on input line 107.
 \cv@tmpc=\count334
 )
 LaTeX Font Info:    Trying to load font information for OT1+ptm on input line 1
-5.
+9.
 
 (C:\Users\Utente\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ot1ptm.fd
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
@@ -415,25 +415,25 @@ File: l3backend-pdftex.def 2026-02-18 L3 backend support: PDF output (pdfTeX)
 ) (main.aux)
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-Package hyperref Info: Link coloring ON on input line 15.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+Package hyperref Info: Link coloring ON on input line 19.
  (main.out) (main.out)
 \@outlinefile=\write3
 \openout3 = `main.out'.
@@ -472,77 +472,90 @@ G,.JBIG2,.JB2,.eps]
 cfg
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
-LaTeX Font Info:    Trying to load font information for U+msa on input line 31.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 35.
 
  (C:\Users\Utente\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 31.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 35.
 
  (C:\Users\Utente\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 
-Package hyperref Warning: Ignoring empty anchor on input line 31.
+Package hyperref Warning: Ignoring empty anchor on input line 35.
 
 LaTeX Font Info:    Trying to load font information for OML+ptm on input line 3
-1.
+5.
 (C:\Users\Utente\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\omlptm.fd
 File: omlptm.fd 
 )
 LaTeX Font Info:    Font shape `OML/ptm/m/n' in size <9> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 31.
-LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 3
-5.
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 35.
+
+Underfull \hbox (badness 3547) in paragraph at lines 46--47
+[]\OT1/ptm/m/n/10 Retrieval-Augmented Gen-er-a-tion (RAG) prepends re-
+ []
+
+LaTeX Font Info:    Trying to load font information for OMS+ptm on input line 4
+8.
+(C:\Users\Utente\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\omsptm.fd
+File: omsptm.fd 
+)
+LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 48.
+LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 5
+8.
 
 (C:\Users\Utente\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
-Underfull \hbox (badness 10000) in paragraph at lines 42--43
-[]\OT1/ptm/m/n/10 Retrieval-Augmented Gen-er-a-tion (RAG) grounds
+Underfull \hbox (badness 5119) in paragraph at lines 58--59
+\OT1/ptm/m/n/10 Dec-2018 Wikipedia re-lease of [[]]\OMS/cmsy/m/n/10 f\OT1/ptm/m
+/n/10 1\OMS/cmsy/m/n/10 g\OT1/ptm/m/n/10 , Contriever-
  []
 
 
-Underfull \hbox (badness 1394) in paragraph at lines 42--43
-\OT1/ptm/m/n/10 conasu et al.[][], [][]2024[][]) show that high-scoring re-trie
-ved
- []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-
-Underfull \hbox (badness 5359) in paragraph at lines 54--55
- []\OT1/ptm/b/n/10 Data and re-trieval. \OT1/ptm/m/n/10 The cor-pus is the Dec-
-2018
- []
-
-[1{C:/Users/Utente/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/U
-tente/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}
+ [1{C:/Users/Utente/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/
+Utente/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}
 
 
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 60--61
- []\OT1/ptm/b/n/10 Scoring and fu-sion. \OT1/ptm/m/n/10 Fol-low-ing the pro-pos
-al,
+LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <9> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 137.
+
+Underfull \hbox (badness 4859) in paragraph at lines 136--141
+\OMS/cmsy/m/n/9 f\OT1/ptm/m/n/9 1\OMS/cmsy/m/n/9 g \OT1/ptm/m/n/9 Cor-pus: [][]
+$\OT1/pcr/m/n/9 https : / / huggingface . co / datasets /
  []
 
 
-Underfull \hbox (badness 2626) in paragraph at lines 60--61
-\OT1/ptm/m/n/10 where \OT1/pcr/m/n/10 connected[]ratio \OT1/ptm/m/n/10 is the f
-rac-tion of query
+Underfull \hbox (badness 3148) in paragraph at lines 136--141
+\OMS/cmsy/m/n/9 f\OT1/ptm/m/n/9 2\OMS/cmsy/m/n/9 g \OT1/ptm/m/n/9 Queries: [][]
+$\OT1/pcr/m/n/9 https : / / huggingface . co / datasets /
  []
 
 
-Underfull \hbox (badness 1783) in paragraph at lines 125--126
-\OT1/ptm/m/n/10 tity is reach-able from al-most ev-ery query en-tity, so
+Underfull \hbox (badness 10000) in paragraph at lines 136--141
+\OMS/cmsy/m/n/9 f\OT1/ptm/m/n/9 3\OMS/cmsy/m/n/9 g \OT1/ptm/m/n/9 Wiki-data HDT
+ dump: [][]$\OT1/pcr/m/n/9 https : / / hdt-[]dumps .
  []
 
-(main.bbl [2
+[2
 pdfTeX warning (ext4): destination with the same identifier (name{table.1}) has
  been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.16 
-     ]) [3
+l.141 
+      ] (main.bbl
+Underfull \hbox (badness 2229) in paragraph at lines 41--44
+\OT1/ptm/m/n/10 C., Zhang, Y., and Tang, S.  Graph retrieval-
+ []
+
+) [3
 
 ] (main.aux)
  ***********
@@ -553,13 +566,13 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 6B7121748105B07FAB5E68C8FFD84043;539.
  ) 
 Here is how much of TeX's memory you used:
- 11287 strings out of 467683
- 174075 string characters out of 5414238
- 609343 words of memory out of 5000000
- 40140 multiletter control sequences out of 15000+600000
- 653392 words of font info for 90 fonts, out of 8000000 for 9000
+ 11309 strings out of 467683
+ 174471 string characters out of 5414238
+ 608343 words of memory out of 5000000
+ 40157 multiletter control sequences out of 15000+600000
+ 653475 words of font info for 90 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,11n,79p,1104b,611s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,11n,79p,1054b,611s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/Utente/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm
 /cmmi10.pfb><C:/Users/Utente/AppData/Local/Programs/MiKTeX/fonts/type1/public/a
 msfonts/cm/cmmi7.pfb><C:/Users/Utente/AppData/Local/Programs/MiKTeX/fonts/type1
@@ -576,9 +589,9 @@ b8a.pfb><C:/Users/Utente/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/ut
 mr8a.pfb><C:/Users/Utente/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/u
 tmr8a.pfb><C:/Users/Utente/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/
 utmri8a.pfb>
-Output written on main.pdf (3 pages, 196481 bytes).
+Output written on main.pdf (3 pages, 196571 bytes).
 PDF statistics:
- 170 PDF objects out of 1000 (max. 8388607)
- 29 named destinations out of 1000 (max. 500000)
+ 158 PDF objects out of 1000 (max. 8388607)
+ 30 named destinations out of 1000 (max. 500000)
  41 words of extra memory for PDF output out of 10000 (max. 10000000)
 
