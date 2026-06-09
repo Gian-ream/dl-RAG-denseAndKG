@@ -1,0 +1,135 @@
+\documentclass{article}
+
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{overpic}
+\usepackage{graphicx}
+\usepackage{amssymb}
+
+\usepackage[accepted]{dlai2025}
+
+\dlaititlerunning{KG Concept Proximity for Dense RAG}
+
+\begin{document}
+
+\twocolumn[
+\dlaititle{Distractor Filtering Through Open Knowledge Graph Concept Proximity for Dense RAG Systems}
+
+\begin{center}\today\end{center}
+
+\begin{dlaiauthorlist}
+\dlaiauthor{Gianluca Como (1605533)}{}
+\end{dlaiauthorlist}
+
+\dlaicorrespondingauthor{Gianluca Como}{comogianluca@gmail.com}
+
+\vskip 0.3in
+]
+
+\printAffiliationsAndNotice{}
+
+\begin{abstract}
+%
+Dense retrieval can surface \emph{distractors}: passages semantically close to the query that do not contain the answer, degrading RAG accuracy~\cite{cuconasu2024power}. We test whether \emph{pure graph topology} on Wikidata can filter them, without using relation semantics. We build a 661.5M-edge entity graph from a local HDT dump, score query--document pairs by topological reachability (\texttt{connected\,$\times$\,purity}), and fuse this with the dense score across a grid of hop-distance, hub-threshold and mixing weight $\alpha$, evaluated on 1000 NQ-open queries with an LLM judge. The result is a clean \emph{negative}: the KG signal never beats the dense baseline (0.364) beyond noise (best 0.372) and actively degrades accuracy as its weight grows (down to 0.290); 13/90 conditions are significant under McNemar+Bonferroni, all of them worse. We explain the mechanism (reachability saturates on a dense graph) and document the engineering and the methodological departures from~\cite{cuconasu2024power}.
+%
+\end{abstract}
+
+% ------------------------------------------------------------------------------
+\section{Introduction}
+
+Retrieval-Augmented Generation (RAG) grounds LLMs~\cite{naveed2023llm} in external text, but \cite{cuconasu2024power} show that high-scoring retrieved passages are often \emph{distractors} --- semantically similar to the query yet answer-free --- and hurt the reader. We ask whether the topology of an open knowledge graph (Wikidata) can separate relevant passages from distractors. The hypothesis: a passage whose entities are \emph{graph-close} to the query entities is less likely to be a distractor than one chosen by semantic similarity alone. Unlike approaches that exploit the graph's full relation semantics, we test the weakest signal --- bare proximity within $k$ hops --- to isolate its contribution.
+
+Our contributions are: (i) a pipeline that navigates the \emph{entire} Wikidata graph from a local HDT dump and tests $\le 3$-hop reachability meet-in-the-middle, without ever expanding a high-degree hub's neighbour list; (ii) a clean negative result, supported by exact McNemar tests and a mechanistic explanation; (iii) three deliberate deviations from the evaluation setup of~\cite{cuconasu2024power} (passage padding, an extraction prompt for the base model, an LLM judge), documented for reproducibility. Code: \url{https://github.com/<USER>/dl-RAG-denseAndKG}.
+
+% ------------------------------------------------------------------------------
+\section{Related work}
+
+We adopt the corpus, retriever and reader of~\cite{cuconasu2024power}, who characterise the distractor problem in RAG. Retrieval uses Contriever over the DPR Wikipedia corpus; entity linking uses ReFinED~\cite{ayoola2022refined}, one of the end-to-end systems evaluated by~\cite{bast2023fair}. Knowledge-graph approaches to RAG use the graph's relations and semantics; we instead use only its topology. The graph is stored as HDT over a Wikidata dump.
+
+% ------------------------------------------------------------------------------
+\section{Method}
+
+\paragraph*{Data and retrieval.} The corpus is the Dec-2018 Wikipedia release of~\cite{cuconasu2024power}, Contriever-encoded and indexed with FAISS (\texttt{IndexFlatIP}, $\sim$42M passages). From NQ-open we keep queries with $\le 5$-token answers where the question and \emph{all} answer variants link to Wikidata entities (ReFinED), and evaluate on a curated 1000-query subset.
+
+\paragraph*{Passage segmentation (departure 1).} DPR/\cite{cuconasu2024power} use raw 100-word passages with ragged, unpadded tails. We instead cut on sentence boundaries and pad each segment back to exactly 100 words using the article's opening words. This avoids subject-less chunks (e.g.\ a passage starting mid-sentence) that break entity linking and reader comprehension, keeps passage length uniform, and incidentally anchors every passage to the article subject. Contriever mean-pools, so fixed length is a consistency choice, not a model requirement.
+
+\paragraph*{Graph construction (engineering).} We query Wikidata from a local HDT dump (Jan 2022, $\sim$166\,GB) via \texttt{pyHDT}. The public SPARQL endpoint was abandoned after even minimal \texttt{COUNT} queries on hubs (e.g.\ \texttt{Q5}, \emph{human}) timed out. We export all entity-to-entity \texttt{wdt:*} triples per predicate, yielding $6.61\times10^8$ edges. For a pair $(q,d)$ we decide $\mathrm{dist}(q,d)\le 3$ meet-in-the-middle: distance~1 is a set lookup, distance~2 an intersection of 1-hop neighbourhoods $N_1$, distance~3 an indexed edge-probe between $N_1(q)$ and $N_1(d)$. We never materialise the neighbourhood of a hub (\texttt{Q30}, \emph{USA}, has 2.35M edges); we only test membership. A degree threshold $t$ optionally drops high-degree bridge nodes.
+
+\paragraph*{Scoring and fusion.} Following the proposal, $\texttt{kg\_score} = \texttt{connected\_ratio}\times\texttt{purity\_ratio}$, where \texttt{connected\_ratio} is the fraction of query entities reaching $\ge 1$ document entity within $k$ hops and \texttt{purity\_ratio} the fraction of document entities reached by any query entity. We fuse with the dense score as
+\begin{equation}\label{eq:fuse}
+\texttt{final} = (1-\alpha)\,\texttt{dense\_norm} + \alpha\,\texttt{kg\_score},
+\end{equation}
+with $\alpha$ the \emph{KG weight} and \texttt{dense\_norm} a per-query max-only rescaling ($s/\max_q s$) that caps the dense score at~1 without stretching its narrow band (min--max would). We sweep a grid of distance $k\in\{1,2,3\}$, threshold $t\in\{500,1\text{k},2\text{k},5\text{k},10\text{k},\infty\}$ and $\alpha\in\{0.1,0.3,0.5,0.7,0.9\}$: $90$ rerank cells plus the dense baseline.
+
+\paragraph*{Generation and evaluation (departures 2--3).} The top-5 passages feed Llama-2-7B (base). The prompt is derived from~\cite{cuconasu2024power} with two deviations: a one-shot exemplar (the base, non-instruct model otherwise continues ``Answer:'' with Wikipedia-style prose) and the question placed \emph{above} the documents (the paper places it after). Correctness is decided by an \emph{LLM judge} (Qwen2.5-7B-Instruct, a different model to avoid self-preference) that checks whether the response contains a gold answer. This replaces the brittle substring exact-match of~\cite{cuconasu2024power}, which misses paraphrases, formatting and preambles.
+
+% ------------------------------------------------------------------------------
+\section{Results}
+
+\begin{table}[t]
+\caption{LLM-judge accuracy, all 90 rerank settings (1000 NQ-open queries). Dense baseline $=0.364$. Columns: KG weight $\alpha$; rows: hop-distance $k$, hub-threshold $t$ ($\infty$=no filter; distance~1 has no bridge, so it is threshold-invariant). Best \textbf{bold}, worst \underline{underlined}.}
+\label{tab:results}
+\begin{center}
+\begin{scriptsize}
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{cc | ccccc}
+\toprule
+$k$ & $t$ & $\alpha{=}.1$ & .3 & .5 & .7 & .9\\
+\midrule
+1 & any & .353 & .344 & .343 & .316 & .322\\
+2 & 500 & .362 & .358 & .361 & .348 & .354\\
+2 & 1{,}000 & .364 & .361 & .358 & .343 & .350\\
+2 & 2{,}000 & .360 & .371 & .357 & .337 & .341\\
+2 & 5{,}000 & .357 & \textbf{.372} & .362 & .337 & .337\\
+2 & 10{,}000 & .364 & .365 & .357 & .334 & .329\\
+2 & $\infty$ & .354 & .343 & .311 & .298 & .295\\
+3 & 500 & .354 & .344 & .341 & .329 & .335\\
+3 & 1{,}000 & .346 & .355 & .342 & .322 & .310\\
+3 & 2{,}000 & .354 & .349 & .316 & .303 & .293\\
+3 & 5{,}000 & .366 & .351 & .310 & .292 & \underline{.290}\\
+3 & 10{,}000 & .361 & .362 & .321 & .306 & .304\\
+3 & $\infty$ & .347 & .333 & .314 & .314 & .318\\
+\bottomrule
+\end{tabular}
+\end{scriptsize}
+\end{center}
+\vspace{-0.3cm}
+\end{table}
+
+\paragraph*{Baseline is sound.} Dense retrieval scores $0.364$, in line with the $\approx$0.36 that~\cite{cuconasu2024power} report for Llama-2 with Contriever-retrieved documents on NQ-open --- the harness is healthy and the comparison valid.
+
+\paragraph*{No gain, then harm.} The best cell ($\alpha{=}0.3$, dist~2, $t{=}5\text{k}$) reaches $0.372$: $+0.8$pp $\approx 8$ queries, i.e.\ noise (Table~\ref{tab:results}). As $\alpha$ grows the KG signal dominates and accuracy falls monotonically, bottoming at $0.290$ ($\alpha{=}0.9$, dist~3, $t{=}5\text{k}$).
+
+\paragraph*{Threshold gradient is the mechanism.} Holding $\alpha{=}0.9$, dist~2, accuracy decays monotonically as the hub filter loosens, from $0.354$ ($t{=}500$) to $0.295$ ($t{=}\infty$): admitting high-degree nodes as bridges connects everything to everything and destroys the signal. (At dist~1 the threshold is inert --- all cells coincide, a passed sanity check.)
+
+\paragraph*{Significance.} Exact McNemar tests against the baseline, Bonferroni-corrected for the 90 comparisons (significance threshold $0.05/90\approx5.6\times10^{-4}$), flag 13 of the 90 conditions as significant --- \emph{all} worse, none better; each flips $\approx$200/1000 answers yet nets negative.
+
+% ---------------------------------------------------------------------------
+% OPTIONAL FIGURE (disabled to keep the body within 2 pages).
+% To re-enable: export the alpha-sweep plot from 09_llm_judge.ipynb (section 7)
+% as alpha_sweep.png, uncomment this block, and restore the Figure~\ref sentence
+% in section 4. Trade-off: needs ~100 words trimmed elsewhere.
+% \begin{figure}[t]
+%     \centering
+%     \includegraphics[width=\linewidth,height=3.4cm]{alpha_sweep.png}
+%     \caption{Accuracy vs.\ KG weight $\alpha$ for representative cells; dashed
+%     line: dense baseline ($0.364$). Heavier KG weight lowers accuracy.}
+%     \label{fig:sweep}
+% \end{figure}
+
+% ------------------------------------------------------------------------------
+\section{Discussion and conclusions}
+
+\paragraph*{Why it fails.} On a graph as dense as Wikidata, $2$--$3$-hop reachability \emph{saturates}: almost every document entity is reachable from almost every query entity, so \texttt{connected\_ratio}$\approx 1$ and the score stops discriminating; the hub filter limits the damage but recovers no signal. For about 17\% of queries the question entity is itself a very high-degree node (a country, a religion), where any passage is graph-close and the KG score is uninformative.
+
+\paragraph*{Limitations and future work.} Binary reachability collapses relation semantics (\texttt{P31}, \emph{instance-of}, and \texttt{P19}, \emph{born-in}, count alike) and the set-overlap metric ignores edge weights. The honest next step is to use the graph's relations and semantics --- not just its bare topology.
+
+\paragraph*{Conclusion.} Pure topological proximity does not filter distractors for dense RAG on NQ-open; the value is the explained negative result and the reusable Wikidata tooling.
+
+\nocite{peng2024graphrag}
+\bibliography{references.bib}
+\bibliographystyle{dlai2025}
+
+\end{document}

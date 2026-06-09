@@ -1,0 +1,45 @@
+\begin{thebibliography}{5}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Ayoola et~al.(2022)Ayoola, Tyagi, Fisher, Christodoulopoulos, and
+  Pierleoni]{ayoola2022refined}
+Ayoola, T., Tyagi, S., Fisher, J., Christodoulopoulos, C., and Pierleoni, A.
+\newblock {ReFinED}: An efficient zero-shot-capable approach to end-to-end
+  entity linking.
+\newblock In \emph{Proceedings of the 2022 Conference of the North American
+  Chapter of the Association for Computational Linguistics (NAACL): Industry
+  Track}, 2022.
+
+\bibitem[Bast et~al.(2023)Bast, Hertel, and Prange]{bast2023fair}
+Bast, H., Hertel, M., and Prange, N.
+\newblock A fair and in-depth evaluation of existing end-to-end entity linking
+  systems.
+\newblock In \emph{Proceedings of the 2023 Conference on Empirical Methods in
+  Natural Language Processing (EMNLP)}, 2023.
+
+\bibitem[Cuconasu et~al.(2024)Cuconasu, Trappolini, Siciliano, Filice,
+  Campagnano, Maarek, Tonellotto, and Silvestri]{cuconasu2024power}
+Cuconasu, F., Trappolini, G., Siciliano, F., Filice, S., Campagnano, C.,
+  Maarek, Y., Tonellotto, N., and Silvestri, F.
+\newblock The power of noise: Redefining retrieval for {RAG} systems.
+\newblock In \emph{Proceedings of the 47th International ACM SIGIR Conference
+  on Research and Development in Information Retrieval (SIGIR)}, 2024.
+
+\bibitem[Naveed et~al.(2023)Naveed, Khan, Qiu, Saqib, Anwar, Usman, Akhtar,
+  Barnes, and Mian]{naveed2023llm}
+Naveed, H., Khan, A.~U., Qiu, S., Saqib, M., Anwar, S., Usman, M., Akhtar, N.,
+  Barnes, N., and Mian, A.
+\newblock A comprehensive overview of large language models.
+\newblock \emph{arXiv preprint arXiv:2307.06435}, 2023.
+
+\bibitem[Peng et~al.(2024)Peng, Zhu, Liu, Bo, Shi, Hong, Zhang, and
+  Tang]{peng2024graphrag}
+Peng, B., Zhu, Y., Liu, Y., Bo, X., Shi, H., Hong, C., Zhang, Y., and Tang, S.
+\newblock Graph retrieval-augmented generation: A survey.
+\newblock \emph{arXiv preprint arXiv:2408.08921}, 2024.
+
+\end{thebibliography}
