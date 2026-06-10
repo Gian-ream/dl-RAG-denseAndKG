@@ -5,44 +5,47 @@ Reallocating 'name_of_file' (item size: 1) to 15 items.
 Reallocating 'name_of_file' (item size: 1) to 9 items.
 The style file: dlai2025.bst
 Database file #1: references.bib
+Warning--string name "july" is undefined
+--line 19 of file references.bib
 You've used 5 entries,
             2773 wiz_defined-function locations,
-            616 strings with 6251 characters,
-and the built_in function-call counts, 3088 in all, are:
-= -- 224
+            622 strings with 6267 characters,
+and the built_in function-call counts, 3270 in all, are:
+= -- 264
 > -- 312
-< -- 0
+< -- 1
 + -- 104
 - -- 99
-* -- 283
-:= -- 507
-add.period$ -- 15
+* -- 290
+:= -- 513
+add.period$ -- 18
 call.type$ -- 5
 change.case$ -- 48
 chr.to.int$ -- 5
 cite$ -- 10
-duplicate$ -- 112
-empty$ -- 186
+duplicate$ -- 107
+empty$ -- 184
 format.name$ -- 104
-if$ -- 613
+if$ -- 673
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 5
-newline$ -- 33
+missing$ -- 1
+newline$ -- 35
 num.names$ -- 20
-pop$ -- 108
+pop$ -- 107
 preamble$ -- 1
 purify$ -- 43
 quote$ -- 0
-skip$ -- 94
+skip$ -- 125
 stack$ -- 0
-substring$ -- 10
-swap$ -- 8
-text.length$ -- 0
+substring$ -- 28
+swap$ -- 25
+text.length$ -- 1
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 55
 warning$ -- 0
-while$ -- 15
+while$ -- 16
 width$ -- 0
-write$ -- 67
+write$ -- 74
+(There was 1 warning)

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.6.7)  9 JUN 2026 11:49
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.6.7)  10 JUN 2026 15:57
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -558,13 +558,8 @@ pdfTeX warning (ext4): destination with the same identifier (name{table.1}) has
  been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.17 ...23)Bast, Hertel, and Prange]{bast2023fair}
-                                                  ]
-Underfull \hbox (badness 2229) in paragraph at lines 41--44
-\OT1/ptm/m/n/10 C., Zhang, Y., and Tang, S.  Graph retrieval-
- []
-
-)
+l.21 
+     ])
 Underfull \hbox (badness 2012) in paragraph at lines 152--153
 []\OT1/pcr/m/n/10 04[]answer[]preparation \OT1/ptm/m/n/10 --- top-100 re-trieva
 l
@@ -622,13 +617,13 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: B99B450708FE9BF7D0E5B936130A4D32;983.
  ) 
 Here is how much of TeX's memory you used:
- 11358 strings out of 467683
- 175188 string characters out of 5414238
- 608328 words of memory out of 5000000
- 40187 multiletter control sequences out of 15000+600000
+ 11360 strings out of 467683
+ 175670 string characters out of 5414238
+ 609328 words of memory out of 5000000
+ 40189 multiletter control sequences out of 15000+600000
  654304 words of font info for 93 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,11n,79p,1275b,611s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,11n,79p,1263b,611s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/Utente/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm
 /cmmi10.pfb><C:/Users/Utente/AppData/Local/Programs/MiKTeX/fonts/type1/public/a
 msfonts/cm/cmmi7.pfb><C:/Users/Utente/AppData/Local/Programs/MiKTeX/fonts/type1
@@ -646,9 +641,9 @@ utmb8a.pfb><C:/Users/Utente/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times
 /utmr8a.pfb><C:/Users/Utente/AppData/Local/Programs/MiKTeX/fonts/type1/urw/time
 s/utmr8a.pfb><C:/Users/Utente/AppData/Local/Programs/MiKTeX/fonts/type1/urw/tim
 es/utmri8a.pfb>
-Output written on main.pdf (4 pages, 217325 bytes).
+Output written on main.pdf (4 pages, 216633 bytes).
 PDF statistics:
- 188 PDF objects out of 1000 (max. 8388607)
+ 197 PDF objects out of 1000 (max. 8388607)
  43 named destinations out of 1000 (max. 500000)
  57 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -6,40 +6,41 @@
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
 
 \bibitem[Ayoola et~al.(2022)Ayoola, Tyagi, Fisher, Christodoulopoulos, and
-  Pierleoni]{ayoola2022refined}
+  Pierleoni]{ayoola2022refinedefficientzeroshotcapableapproach}
 Ayoola, T., Tyagi, S., Fisher, J., Christodoulopoulos, C., and Pierleoni, A.
 \newblock {ReFinED}: An efficient zero-shot-capable approach to end-to-end
-  entity linking.
-\newblock In \emph{Proceedings of the 2022 Conference of the North American
-  Chapter of the Association for Computational Linguistics (NAACL): Industry
-  Track}, 2022.
+  entity linking, 2022.
+\newblock URL \url{https://arxiv.org/abs/2207.04108}.
 
-\bibitem[Bast et~al.(2023)Bast, Hertel, and Prange]{bast2023fair}
+\bibitem[Bast et~al.(2023)Bast, Hertel, and
+  Prange]{bast2023fairindepthevaluationexisting}
 Bast, H., Hertel, M., and Prange, N.
 \newblock A fair and in-depth evaluation of existing end-to-end entity linking
-  systems.
-\newblock In \emph{Proceedings of the 2023 Conference on Empirical Methods in
-  Natural Language Processing (EMNLP)}, 2023.
+  systems, 2023.
+\newblock URL \url{https://arxiv.org/abs/2305.14937}.
 
 \bibitem[Cuconasu et~al.(2024)Cuconasu, Trappolini, Siciliano, Filice,
-  Campagnano, Maarek, Tonellotto, and Silvestri]{cuconasu2024power}
+  Campagnano, Maarek, Tonellotto, and Silvestri]{Cuconasu_2024}
 Cuconasu, F., Trappolini, G., Siciliano, F., Filice, S., Campagnano, C.,
   Maarek, Y., Tonellotto, N., and Silvestri, F.
 \newblock The power of noise: Redefining retrieval for {RAG} systems.
 \newblock In \emph{Proceedings of the 47th International ACM SIGIR Conference
-  on Research and Development in Information Retrieval (SIGIR)}, 2024.
+  on Research and Development in Information Retrieval}, SIGIR 2024, pp.\
+  719–729. ACM, 2024.
+\newblock \doi{10.1145/3626772.3657834}.
+\newblock URL \url{http://dx.doi.org/10.1145/3626772.3657834}.
 
-\bibitem[Naveed et~al.(2023)Naveed, Khan, Qiu, Saqib, Anwar, Usman, Akhtar,
-  Barnes, and Mian]{naveed2023llm}
+\bibitem[Naveed et~al.(2024)Naveed, Khan, Qiu, Saqib, Anwar, Usman, Akhtar,
+  Barnes, and Mian]{naveed2024comprehensiveoverviewlargelanguage}
 Naveed, H., Khan, A.~U., Qiu, S., Saqib, M., Anwar, S., Usman, M., Akhtar, N.,
   Barnes, N., and Mian, A.
-\newblock A comprehensive overview of large language models.
-\newblock \emph{arXiv preprint arXiv:2307.06435}, 2023.
+\newblock A comprehensive overview of large language models, 2024.
+\newblock URL \url{https://arxiv.org/abs/2307.06435}.
 
 \bibitem[Peng et~al.(2024)Peng, Zhu, Liu, Bo, Shi, Hong, Zhang, and
-  Tang]{peng2024graphrag}
+  Tang]{peng2024graphretrievalaugmentedgenerationsurvey}
 Peng, B., Zhu, Y., Liu, Y., Bo, X., Shi, H., Hong, C., Zhang, Y., and Tang, S.
-\newblock Graph retrieval-augmented generation: A survey.
-\newblock \emph{arXiv preprint arXiv:2408.08921}, 2024.
+\newblock Graph retrieval-augmented generation: A survey, 2024.
+\newblock URL \url{https://arxiv.org/abs/2408.08921}.
 
 \end{thebibliography}
