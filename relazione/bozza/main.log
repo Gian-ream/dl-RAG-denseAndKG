@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.6.7)  10 JUN 2026 15:57
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.6.7)  10 JUN 2026 16:33
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -506,13 +506,9 @@ LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 5
 (C:\Users\Utente\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
-Underfull \hbox (badness 1147) in paragraph at lines 57--58
-\OT1/ptm/m/n/10 cor-pus is its gold-augmented Dec-2018 Wikipedia re-
- []
-
-
-Underfull \hbox (badness 1515) in paragraph at lines 57--58
-\OT1/ptm/m/n/10 pas-sages have ragged, subject-less tails that hurt en-
+Underfull \hbox (badness 1783) in paragraph at lines 57--58
+\OT1/ptm/m/n/10 Wikipedia re-lease\OMS/cmsy/m/n/10 f\OT1/ptm/m/n/10 1\OMS/cmsy/
+m/n/10 g\OT1/ptm/m/n/10 ; we re-segment it on sen-tence
  []
 
 
@@ -558,8 +554,8 @@ pdfTeX warning (ext4): destination with the same identifier (name{table.1}) has
  been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.21 
-     ])
+l.16 ...ge]{bast2023fairindepthevaluationexisting}
+                                                  ])
 Underfull \hbox (badness 2012) in paragraph at lines 152--153
 []\OT1/pcr/m/n/10 04[]answer[]preparation \OT1/ptm/m/n/10 --- top-100 re-trieva
 l
@@ -606,7 +602,11 @@ Underfull \hbox (badness 1946) in paragraph at lines 166--167
 \OT1/pcr/m/n/10 scripts/tooling/patch[]refined.py \OT1/ptm/m/n/10 fixes
  []
 
-[3] [4
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [3]
+[4
 
 ] (main.aux)
  ***********
@@ -623,7 +623,7 @@ Here is how much of TeX's memory you used:
  40189 multiletter control sequences out of 15000+600000
  654304 words of font info for 93 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,11n,79p,1263b,611s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,12n,79p,1180b,611s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/Utente/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm
 /cmmi10.pfb><C:/Users/Utente/AppData/Local/Programs/MiKTeX/fonts/type1/public/a
 msfonts/cm/cmmi7.pfb><C:/Users/Utente/AppData/Local/Programs/MiKTeX/fonts/type1
@@ -641,7 +641,7 @@ utmb8a.pfb><C:/Users/Utente/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times
 /utmr8a.pfb><C:/Users/Utente/AppData/Local/Programs/MiKTeX/fonts/type1/urw/time
 s/utmr8a.pfb><C:/Users/Utente/AppData/Local/Programs/MiKTeX/fonts/type1/urw/tim
 es/utmri8a.pfb>
-Output written on main.pdf (4 pages, 216633 bytes).
+Output written on main.pdf (4 pages, 216313 bytes).
 PDF statistics:
  197 PDF objects out of 1000 (max. 8388607)
  43 named destinations out of 1000 (max. 500000)
