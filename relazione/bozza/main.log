@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.6.7)  10 JUN 2026 16:33
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.6.7)  10 JUN 2026 17:56
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -554,17 +554,23 @@ pdfTeX warning (ext4): destination with the same identifier (name{table.1}) has
  been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.16 ...ge]{bast2023fairindepthevaluationexisting}
-                                                  ])
-Underfull \hbox (badness 2012) in paragraph at lines 152--153
-[]\OT1/pcr/m/n/10 04[]answer[]preparation \OT1/ptm/m/n/10 --- top-100 re-trieva
-l
+l.14 
+     ])
+Underfull \hbox (badness 1253) in paragraph at lines 150--151
+[]\OT1/pcr/m/n/10 02[]nq[]filtering \OT1/ptm/m/n/10 --- fil-ters NQ-open down t
+o
  []
 
 
-Underfull \hbox (badness 1270) in paragraph at lines 153--154
-[]\OT1/pcr/m/n/10 05[]answer[]curation \OT1/ptm/m/n/10 --- find the 344 queries
+Underfull \hbox (badness 10000) in paragraph at lines 153--154
+[]\OT1/pcr/m/n/10 05[]answer[]curation \OT1/ptm/m/n/10 --- iden-ti-fies the 344
 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 155--156
+[]\OT1/pcr/m/n/10 07[]kg[]rerank \OT1/ptm/m/n/10 --- com-putes KG reach-a-bil-i
+ty
  []
 
 LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 1
@@ -572,41 +578,48 @@ LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 1
 (C:\Users\Utente\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 )
-Underfull \hbox (badness 1454) in paragraph at lines 165--166
-\OT1/ptm/m/n/10 so it is in-stalled in mini-conda and bridged into
+Underfull \hbox (badness 5050) in paragraph at lines 166--167
+\OT1/ptm/m/n/10 passed as a tokenizer-loading kwarg (an er-ror
  []
 
 
-Underfull \hbox (badness 1796) in paragraph at lines 165--166
-\OT1/pcr/m/n/10 sys.path.insert\OT1/ptm/m/n/10 ; conda paths are machine-
+Underfull \hbox (badness 1226) in paragraph at lines 166--167
+\OT1/ptm/m/n/10 on re-cent trans-form-ers), and regex pat-terns writ-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 166--167
-[]\OT1/ptm/b/n/10 ReFiNed patch \OT1/ptm/m/n/10 --- Re-FiNed V1 breaks
+Underfull \hbox (badness 4108) in paragraph at lines 166--167
+\OT1/ptm/m/n/10 ten with-out raw strings (a Python 3.12 warn-
+ []
+
+[3]
+Underfull \hbox (badness 10000) in paragraph at lines 169--170
+\OT1/ptm/m/n/10 All num-bers re-ported in this doc-u-ment are re-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 166--167
-\OT1/ptm/m/n/10 on Win-dows + Python 3.12 + trans-form-
+Underfull \hbox (badness 10000) in paragraph at lines 169--170
+\OT1/ptm/m/n/10 com-puted from the raw per-query out-puts by
  []
 
 
-Underfull \hbox (badness 1831) in paragraph at lines 166--167
-\OT1/ptm/m/n/10 ers 4.48 (a Unix-only \OT1/pcr/m/n/10 strftime("%s") \OT1/ptm/m
-/n/10 call);
+Underfull \hbox (badness 10000) in paragraph at lines 169--170
+\OT1/pcr/m/n/10 documents/verify[]report[]numbers.py\OT1/ptm/m/n/10 , and
  []
 
 
-Underfull \hbox (badness 1946) in paragraph at lines 166--167
-\OT1/pcr/m/n/10 scripts/tooling/patch[]refined.py \OT1/ptm/m/n/10 fixes
+Underfull \hbox (badness 3668) in paragraph at lines 169--170
+\OT1/ptm/m/n/10 the schema of ev-ery data ar-ti-fact is cat-a-logued in
  []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [3]
-[4
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [4]
+[5
 
 ] (main.aux)
  ***********
@@ -617,13 +630,13 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: B99B450708FE9BF7D0E5B936130A4D32;983.
  ) 
 Here is how much of TeX's memory you used:
- 11360 strings out of 467683
- 175670 string characters out of 5414238
+ 11361 strings out of 467683
+ 175676 string characters out of 5414238
  609328 words of memory out of 5000000
  40189 multiletter control sequences out of 15000+600000
  654304 words of font info for 93 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,12n,79p,1180b,611s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,11n,79p,1225b,611s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/Utente/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm
 /cmmi10.pfb><C:/Users/Utente/AppData/Local/Programs/MiKTeX/fonts/type1/public/a
 msfonts/cm/cmmi7.pfb><C:/Users/Utente/AppData/Local/Programs/MiKTeX/fonts/type1
@@ -641,9 +654,9 @@ utmb8a.pfb><C:/Users/Utente/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times
 /utmr8a.pfb><C:/Users/Utente/AppData/Local/Programs/MiKTeX/fonts/type1/urw/time
 s/utmr8a.pfb><C:/Users/Utente/AppData/Local/Programs/MiKTeX/fonts/type1/urw/tim
 es/utmri8a.pfb>
-Output written on main.pdf (4 pages, 216313 bytes).
+Output written on main.pdf (5 pages, 221860 bytes).
 PDF statistics:
- 197 PDF objects out of 1000 (max. 8388607)
- 43 named destinations out of 1000 (max. 500000)
+ 203 PDF objects out of 1000 (max. 8388607)
+ 44 named destinations out of 1000 (max. 500000)
  57 words of extra memory for PDF output out of 10000 (max. 10000000)
 
