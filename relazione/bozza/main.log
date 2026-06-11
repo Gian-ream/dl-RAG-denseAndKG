@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.6.7)  11 JUN 2026 21:01
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.6.7)  11 JUN 2026 23:29
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -526,8 +526,8 @@ LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 5
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
 Underfull \hbox (badness 1783) in paragraph at lines 57--58
-\OT1/ptm/m/n/10 Wikipedia re-lease\OMS/cmsy/m/n/10 f\OT1/ptm/m/n/10 1\OMS/cmsy/
-m/n/10 g\OT1/ptm/m/n/10 ; we re-segment it on sen-tence
+\OT1/ptm/m/n/10 Wikipedia re-lease[][]\OMS/cmsy/m/n/10 f\OT1/ptm/m/n/10 1\OMS/c
+msy/m/n/10 g[][]\OT1/ptm/m/n/10 ; we re-segment it on sen-tence
  []
 
 
@@ -539,16 +539,6 @@ Utente/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}
 
 
 ]
-Underfull \hbox (badness 1102) in paragraph at lines 63--65
-\OML/cmm/m/it/10 k \OMS/cmsy/m/n/10 2 f\OT1/cmr/m/n/10 1\OML/cmm/m/it/10 ; \OT1
-/cmr/m/n/10 2\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 3\OMS/cmsy/m/n/10 g$\OT1/ptm/m/
-n/10 , $\OML/cmm/m/it/10 t \OMS/cmsy/m/n/10 2 f\OT1/cmr/m/n/10 500\OML/cmm/m/it
-/10 ; \OT1/cmr/m/n/10 1[]\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 2[]\OML/cmm/m/it/10
- ; \OT1/cmr/m/n/10 5[]\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 10[]\OML/cmm/m/it/10 ;
- \OMS/cmsy/m/n/10 1g$\OT1/ptm/m/n/10 , $\OML/cmm/m/it/10  \OMS/cmsy/m/n/10 2
- []
-
-
 Underfull \hbox (badness 1043) in paragraph at lines 97--98
 \OT1/ptm/m/n/10 weighted set-overlap, fused lin-early with a max-only-
  []
@@ -566,8 +556,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 107--108
 \OT1/pcr/m/n/9 https : / / drive . google . com / drive /
  []
 
-(main.bbl [2])
-Underfull \hbox (badness 2707) in paragraph at lines 126--126
+[2] (main.bbl)
+Underfull \hbox (badness 2707) in paragraph at lines 124--124
 [][][]\OT1/ptm/m/n/9 LLM-judge ac-cu-racy, all 90 rerank set-tings (1000
  []
 
@@ -575,19 +565,24 @@ Underfull \hbox (badness 2707) in paragraph at lines 126--126
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-Underfull \hbox (badness 1253) in paragraph at lines 158--159
+Underfull \hbox (badness 1253) in paragraph at lines 156--157
 []\OT1/pcr/m/n/10 02[]nq[]filtering \OT1/ptm/m/n/10 --- fil-ters NQ-open down t
 o
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 161--162
+Underfull \hbox (badness 10000) in paragraph at lines 159--160
 []\OT1/pcr/m/n/10 05[]answer[]curation \OT1/ptm/m/n/10 --- iden-ti-fies the 344
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 163--164
+Underfull \hbox (badness 2418) in paragraph at lines 159--160
+\OT1/ptm/m/n/10 top-100 and se-lects re-place-ment queries from a
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 161--162
 []\OT1/pcr/m/n/10 07[]kg[]rerank \OT1/ptm/m/n/10 --- com-putes KG reach-a-bil-i
 ty
  []
@@ -597,41 +592,41 @@ pdfTeX warning (ext4): destination with the same identifier (name{table.1}) has
  been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.169 
+l.167 
       ]
 LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 1
-73.
+71.
 
 (C:\Users\Utente\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 )
-Underfull \hbox (badness 3439) in paragraph at lines 174--175
+Underfull \hbox (badness 3439) in paragraph at lines 172--173
 \OT1/ptm/m/n/10 on na-tive Win-dows, so the three HDT scripts
  []
 
 
-Underfull \hbox (badness 1895) in paragraph at lines 174--175
+Underfull \hbox (badness 1895) in paragraph at lines 172--173
 \OT1/ptm/m/n/10 (edge ex-port, la-bel lookup, com-plete-ness check)
  []
 
 
-Underfull \hbox (badness 4556) in paragraph at lines 174--175
+Underfull \hbox (badness 4556) in paragraph at lines 172--173
 \OT1/ptm/m/n/10 dump through \OT1/pcr/m/n/10 /mnt/c\OT1/ptm/m/n/10 . The pre-bu
 ilt in-dex
  []
 
 
-Underfull \hbox (badness 5050) in paragraph at lines 176--177
+Underfull \hbox (badness 5050) in paragraph at lines 174--175
 \OT1/ptm/m/n/10 passed as a tokenizer-loading kwarg (an er-ror
  []
 
 
-Underfull \hbox (badness 1226) in paragraph at lines 176--177
+Underfull \hbox (badness 1226) in paragraph at lines 174--175
 \OT1/ptm/m/n/10 on re-cent trans-form-ers), and regex pat-terns writ-
  []
 
 
-Underfull \hbox (badness 4108) in paragraph at lines 176--177
+Underfull \hbox (badness 4108) in paragraph at lines 174--175
 \OT1/ptm/m/n/10 ten with-out raw strings (a Python 3.12 warn-
  []
 
@@ -639,99 +634,99 @@ Underfull \hbox (badness 4108) in paragraph at lines 176--177
 Underfull \vbox (badness 3396) has occurred while \output is active []
 
 
-Underfull \hbox (badness 2818) in paragraph at lines 179--180
+Underfull \hbox (badness 2818) in paragraph at lines 177--178
 \OT1/ptm/m/n/10 The schema of ev-ery data ar-ti-fact is cat-a-logued in
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 179--180
+Underfull \hbox (badness 10000) in paragraph at lines 177--178
 \OT1/pcr/m/n/10 documents/DATA[]DICTIONARY.md\OT1/ptm/m/n/10 ; the ar-ti-facts
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 186--198
+Underfull \hbox (badness 10000) in paragraph at lines 184--196
 []\OT1/pcr/m/n/9 You are given a question and you
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 186--198
+Underfull \hbox (badness 10000) in paragraph at lines 184--196
 \OT1/pcr/m/n/9 MUST respond by EXTRACTING the
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 186--198
+Underfull \hbox (badness 10000) in paragraph at lines 184--196
 \OT1/pcr/m/n/9 answer (max 5 tokens) from one of
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 186--198
+Underfull \hbox (badness 10000) in paragraph at lines 184--196
 \OT1/pcr/m/n/9 the provided documents. If none of
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 186--198
+Underfull \hbox (badness 10000) in paragraph at lines 184--196
 \OT1/pcr/m/n/9 the documents contain the answer,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 186--198
+Underfull \hbox (badness 10000) in paragraph at lines 184--196
 \OT1/pcr/m/n/9 Document [5] (Title: Hamlet)
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 186--198
+Underfull \hbox (badness 10000) in paragraph at lines 184--196
 \OT1/pcr/m/n/9 Document [1] (Title: ...) $\OMS/cmsy/m/n/9 h$\OT1/ptm/m/n/9 rank
 -5
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 186--198
+Underfull \hbox (badness 10000) in paragraph at lines 184--196
 \OT1/pcr/m/n/9 Document [5] (Title: ...) $\OMS/cmsy/m/n/9 h$\OT1/ptm/m/n/9 rank
 -1
  []
 
 [4]
-Underfull \hbox (badness 10000) in paragraph at lines 202--207
+Underfull \hbox (badness 10000) in paragraph at lines 200--205
 []\OT1/ptm/b/n/9 system: \OT1/pcr/m/n/9 You are a strict judge.
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 202--207
+Underfull \hbox (badness 10000) in paragraph at lines 200--205
 \OT1/pcr/m/n/9 Given a question, a list of
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 202--207
+Underfull \hbox (badness 10000) in paragraph at lines 200--205
 \OT1/pcr/m/n/9 acceptable answers, and a model
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 202--207
+Underfull \hbox (badness 10000) in paragraph at lines 200--205
 \OT1/pcr/m/n/9 response, decide whether the
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 202--207
+Underfull \hbox (badness 10000) in paragraph at lines 200--205
 \OT1/pcr/m/n/9 response contains at least one of
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 202--207
+Underfull \hbox (badness 10000) in paragraph at lines 200--205
 \OT1/pcr/m/n/9 the acceptable answers (verbatim or
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 202--207
+Underfull \hbox (badness 10000) in paragraph at lines 200--205
 \OT1/pcr/m/n/9 as a clear paraphrase). Reply with
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 202--207
+Underfull \hbox (badness 10000) in paragraph at lines 200--205
 \OT1/pcr/m/n/9 Does the response contain at least
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 202--207
+Underfull \hbox (badness 10000) in paragraph at lines 200--205
 \OT1/pcr/m/n/9 one of the acceptable answers?
  []
 
@@ -768,9 +763,9 @@ utmb8a.pfb><C:/Users/Utente/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times
 /utmr8a.pfb><C:/Users/Utente/AppData/Local/Programs/MiKTeX/fonts/type1/urw/time
 s/utmr8a.pfb><C:/Users/Utente/AppData/Local/Programs/MiKTeX/fonts/type1/urw/tim
 es/utmri8a.pfb>
-Output written on main.pdf (5 pages, 228364 bytes).
+Output written on main.pdf (5 pages, 231043 bytes).
 PDF statistics:
- 210 PDF objects out of 1000 (max. 8388607)
+ 217 PDF objects out of 1000 (max. 8388607)
  46 named destinations out of 1000 (max. 500000)
  57 words of extra memory for PDF output out of 10000 (max. 10000000)
 
