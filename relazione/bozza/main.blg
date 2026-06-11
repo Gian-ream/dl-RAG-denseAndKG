@@ -2,14 +2,14 @@ This is BibTeX, Version 0.99e
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: main.aux
 Reallocating 'name_of_file' (item size: 1) to 15 items.
-Reallocating 'name_of_file' (item size: 1) to 9 items.
-The style file: dlai2025.bst
+Reallocating 'name_of_file' (item size: 1) to 11 items.
+The style file: dlaiml2026.bst
 Database file #1: references.bib
 Warning--string name "july" is undefined
 --line 19 of file references.bib
 You've used 5 entries,
             2773 wiz_defined-function locations,
-            622 strings with 6267 characters,
+            622 strings with 6269 characters,
 and the built_in function-call counts, 3270 in all, are:
 = -- 264
 > -- 312

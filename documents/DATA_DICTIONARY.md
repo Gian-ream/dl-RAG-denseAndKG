@@ -6,13 +6,16 @@ schema (columns + type + meaning), what produces it and what consumes it.
 Meant as a **quick reference**: when you don't remember what a file
 contains (e.g. "what's in `n1`?"), look here instead of opening the code.
 
-`data/` is gitignored (~14.7 GB). The schemas described here are derived
-from the code that PRODUCES each file, not from manual inspection.
+`data/` is gitignored (~660 GB on disk: HDT dump+index 293 GB, FAISS
+shards `.npy`+`.faiss` 258 GB, Wikipedia TSVs 81 GB, KG parquet/DuckDB
+~18 GB, ReFinED cache ~9 GB; the "~14.7 GB" quoted in CLAUDE.md is only
+the initial kagglehub download). Schemas verified against the real files
+(pyarrow/duckdb audit, 2026-06-11), not only against the producing code.
 
 Type convention: parquet/DuckDB types are given where relevant;
 `str`/`int`/`float`/`list` for JSONL and Python structures.
 
-Snapshot: **2026-05-20**.
+Snapshot: **2026-06-11**.
 
 ---
 
@@ -20,9 +23,10 @@ Snapshot: **2026-05-20**.
 
 ```
 01_corpus    → psgs_w100_sentence.tsv
-03_embedding → faiss_index/shard_XX.npy + shard_XX_ids.npy
-02_filtering → qa_all_entities.jsonl
-04_answer    → top100_subset.parquet, passage_entities_subset.parquet
+03_embedding → faiss_index/shard_XX.npy + shard_XX_ids.npy + shard_XX.faiss
+02_filtering → qa_entities_general.jsonl, qa_all_entities.jsonl
+04_answer    → top100_merged.parquet, passage_entities.parquet,
+               queries_subset.jsonl, query_embeddings.npy
 05_curation  → top100_candidates.parquet, curation_chunks/*.parquet,
                curation_results.jsonl
 06_apply     → queries_curated.jsonl, top100_curated.parquet,
@@ -53,22 +57,23 @@ utils/kg.py (KGScorer)  → kg.duckdb (tables n1 + edges)
 | `text` | str | passage content (~100 words, sentence-aligned) |
 | `title` | str | source Wikipedia article title |
 
-**Consumed by**: `03_embedding.ipynb` (Contriever encoding).
-**Notes**: sentence-aligned variant of the standard DPR `psgs_w100` corpus.
+**Consumed by**: `03_embedding.ipynb` (Contriever encoding), `04_answer_preparation.ipynb` and `05_answer_curation.ipynb` (passage text for ReFinED entity linking).
+**Notes**: sentence-aligned variant of the standard DPR `psgs_w100` corpus. Intermediates of 01 also on disk: `wikipedia_2018_clean/articles_clean.tsv` (13.5 GB) and `ordered_fragments/frag_0-99.tsv` under both wikipedia dirs.
 
 ---
 
-### FAISS shards — `shard_XX.npy` + `shard_XX_ids.npy`
-**Path**: `data/faiss_index/shard_XX.npy`, `data/faiss_index/shard_XX_ids.npy`
-**Produced by**: `03_embedding.ipynb`  |  **Shard**: ~5M vectors each
+### FAISS shards — `shard_XX.npy` + `shard_XX_ids.npy` + `shard_XX.faiss`
+**Path**: `data/faiss_index/shard_XX.{npy,faiss}`, `data/faiss_index/shard_XX_ids.npy`
+**Produced by**: `03_embedding.ipynb`  |  **Shards**: 00..08, 5M vectors each (shard_08: 1,995,761) = 41,995,761 total
 
 | file | content |
 |---|---|
 | `shard_XX.npy` | embedding matrix `(N, 768)` float32 — one Contriever vector per passage |
-| `shard_XX_ids.npy` | array `(N,)` of the corresponding `passage_id`s, **same order** as the rows of `shard_XX.npy` |
+| `shard_XX_ids.npy` | array `(N,)` int64 of the corresponding `passage_id`s, **same order** as the rows of `shard_XX.npy` |
+| `shard_XX.faiss` | serialized `IndexFlatIP` of the same vectors — loaded to GPU by 04 for the top-100 search; 04 rebuilds it from the `.npy` if missing |
 
-**Consumed by**: `04_answer_preparation.ipynb` (retrieval), `07_kg_rerank.ipynb` (binding validation §2.4).
-**Notes**: FAISS holds ONLY vectors — the row→passage_id mapping lives in `shard_XX_ids.npy`. Loaded with `mmap_mode="r"` to avoid saturating RAM (see GLOSSARIO → mmap).
+**Consumed by**: `04_answer_preparation.ipynb` (retrieval via `.faiss` on GPU), `07_kg_rerank.ipynb` (binding validation §2.4 reads `.npy` + `_ids.npy`).
+**Notes**: the FAISS index holds ONLY vectors — the row→passage_id mapping lives in `shard_XX_ids.npy`. The `.npy` files are loaded with `mmap_mode="r"` to avoid saturating RAM (see GLOSSARIO → mmap).
 
 ---
 
@@ -84,6 +89,27 @@ utils/kg.py (KGScorer)  → kg.duckdb (tables n1 + edges)
 | `answer_variant_qids` | list[list[str]] | QIDs for each answer variant |
 
 **Consumed by**: `04_answer_preparation.ipynb` (1000-query subset selection).
+**Notes**: 02 also writes the intermediate `qa_entities_general.jsonl` (76,406 rows, same schema — token filter only; `qa_all_entities` is the subset that also passed the entity-linking filter).
+
+---
+
+### Pre-curation retrieval outputs (notebook 04)
+
+The outputs of `04_answer_preparation.ipynb`, later superseded by the
+`*_curated.*` files of 06 — kept on disk because 05/06 read them.
+**Do not mix** with the curated versions (see GLOSSARIO → curated).
+All in `data/NQ_answer/`:
+
+| file | rows | content |
+|---|---|---|
+| `queries_subset.jsonl` | 1000 | pre-curation query subset — same schema as `queries_curated.jsonl` minus the `curated` flag |
+| `top100_merged.parquet` | 100,000 | pre-curation top-100 — same schema as `top100_curated.parquet` |
+| `passage_entities.parquet` | 91,770 | pre-curation passage pool — same schema as `passage_entities_curated.parquet` |
+| `query_embeddings.npy` | (1000, 768) | pre-curation Contriever query embeddings, float32 |
+
+Resumability intermediates of 04, also on disk: `shard_XX/top100_shard.parquet`
+(9 files — per-shard top-100, same schema as `top100_merged` but without
+`shard_id`) and `passage_entities/chunk_000-009.parquet` (ReFinED chunks).
 
 ---
 
@@ -152,7 +178,7 @@ get replaced by which candidates.
 | `shard_id` | int8 | FAISS shard (0..8) that held this passage's embedding |
 
 **Consumed by**: `07_kg_rerank.ipynb`, `08_llm_eval.ipynb`.
-**Notes**: `query_id` is a positional binding, verified by §2.4 of 07 (dot-product recompute, max|Δ|=2.15e-6). A `top100_subset.parquet` (pre-curation) also exists — **do not mix** (see GLOSSARIO → curated).
+**Notes**: `query_id` is a positional binding, verified by §2.4 of 07 (dot-product recompute, max|Δ|=2.15e-6). The pre-curation version is `top100_merged.parquet` (same schema) — **do not mix** (see GLOSSARIO → curated).
 
 ---
 
@@ -167,7 +193,7 @@ get replaced by which candidates.
 | `text` | str | passage content (used for the LLM prompt in 08) |
 | `qids` | list[str] | Wikidata QIDs of the entities in the passage (ReFiNed) |
 
-**Consumed by**: `07_kg_rerank.ipynb` (loads `id, qids`), `08_llm_eval.ipynb` (loads `id, title, text`).
+**Consumed by**: `07_kg_rerank.ipynb` (loads `id, qids`), `08_llm_eval.ipynb` (loads `id, title, text`), `scripts/pipeline/build_n1.py` + `build_labels.py` (QID universe for Layers 1.6/3).
 
 ---
 
@@ -181,10 +207,10 @@ get replaced by which candidates.
 | `answers` | list[str] | gold answers (variants) — used as gold by the judge in 09 |
 | `question_qids` | list[str] | QIDs of the entities in the question |
 | `answer_variant_qids` | list[list[str]] | QIDs per answer variant |
-| `original_query_id` | str | original NQ id (join key for pre/post-curation) |
+| `original_query_id` | int | original NQ id (join key for pre/post-curation) |
 | `curated` | bool | True if this query is a substitute introduced by curation |
 
-**Consumed by**: `07_kg_rerank.ipynb` (question_qids = seed entities), `08_llm_eval.ipynb` (question text), `09_llm_judge.ipynb` (answers = gold).
+**Consumed by**: `07_kg_rerank.ipynb` (question_qids = seed entities), `08_llm_eval.ipynb` (question text), `09_llm_judge.ipynb` (answers = gold), `scripts/pipeline/build_n1.py` + `build_labels.py` (seed QIDs).
 **Notes**: curation SUBSTITUTED 344/1000 queries (not just filtered). Positionally indexed 0..999 = `query_id` in `top100_curated`.
 
 ---
@@ -239,15 +265,16 @@ Rows sorted by `total_degree` DESC (hubs first).
 | column | type | meaning |
 |---|---|---|
 | `qid` | str | Wikidata entity |
-| `label` | str | `rdfs:label@en` (human-readable name) |
+| `label_en` | str | `rdfs:label@en` (human-readable name; null if the QID has no English label) |
 
+**Rows**: 138,339 — only the project's QID universe (seeds + passage entities), not all of Wikidata.
 For human-readable inspection only (e.g. Q42 → "Douglas Adams"). NOT in the scoring critical path.
 
 ---
 
 ### n1.parquet  →  DuckDB table `n1`
 **Path**: `data/n1/n1.parquet`
-**Produced by**: `scripts/pipeline/build_n1.py` (Layer 3, DuckDB)  |  **Rows**: ~93M
+**Produced by**: `scripts/pipeline/build_n1.py` (Layer 3, DuckDB)  |  **Rows**: 93,547,217 (~93.5M)
 
 | column | type | meaning |
 |---|---|---|
@@ -273,7 +300,7 @@ DuckDB database persisted on disk, holds 2 tables: **`n1`** (see above, + index 
 
 ### kg_pairs_raw.parquet  (Phase A)
 **Path**: `data/NQ_answer/kg_pairs_raw.parquet`
-**Produced by**: `07_kg_rerank.ipynb` (Phase A full run)  |  **Rows**: ~1.8M (1000 queries × 100 passages × 18 cells, minus unreachable pairs)
+**Produced by**: `07_kg_rerank.ipynb` (Phase A full run)  |  **Rows**: 1,800,000 exactly (1000 queries × 100 passages × 18 cells — unreachable pairs are KEPT with `kg_score = 0`: 346,753 such rows)
 
 | column | type | meaning |
 |---|---|---|
@@ -299,8 +326,8 @@ DuckDB database persisted on disk, holds 2 tables: **`n1`** (see above, + index 
 | `distance` | int | distance of the cell |
 | `threshold` | int | threshold of the cell (0 = ∞) |
 | `pct_jacc_at_5_lt_1` | float | % of queries with Jaccard@5 < 1 (rerank changed the top-5) |
-| `pct_jacc_at_10_lt_1` | float | % of queries with Jaccard@10 < 1 |
 | `mean_jacc_at_5` | float | mean Jaccard@5 (retrieval vs rerank top-5) |
+| `pct_jacc_at_10_lt_1` | float | % of queries with Jaccard@10 < 1 |
 | `mean_jacc_at_10` | float | mean Jaccard@10 |
 
 Diagnostic of "how much" each cell reshuffles the top-K vs pure retrieval (α=0.5).
@@ -363,7 +390,7 @@ Diagnostic of "how much" each cell reshuffles the top-K vs pure retrieval (α=0.
 
 ### judgments_summary.parquet
 **Path**: `data/NQ_answer/llm_eval/judgments_summary.parquet`
-**Produced by**: `09_llm_judge.ipynb`  |  **Rows**: 91 (index = condition)
+**Produced by**: `09_llm_judge.ipynb`  |  **Rows**: 91 (`condition` is a regular column, not the index)
 
 | column | type | meaning |
 |---|---|---|
@@ -372,12 +399,44 @@ Diagnostic of "how much" each cell reshuffles the top-K vs pure retrieval (α=0.
 | `accuracy` | float | `n_true / n_total` |
 | `retrieval_baseline_acc` | float | accuracy of the `retrieval` condition (constant) |
 | `delta_vs_retrieval` | float | `accuracy − retrieval_baseline_acc` |
-| `chi2` | float | McNemar statistic vs retrieval (NaN for the retrieval row) |
-| `p_value` | float | McNemar p-value |
-| `sig@.05` | bool | True if `p_value < 0.05` |
+| `retrieval_only (b)` | float | # queries correct under retrieval only (McNemar discordant cell b) |
+| `condition_only (c)` | float | # queries correct under the condition only (discordant cell c) |
+| `n_movers (b+c)` | float | # queries whose verdict changed at all between the two conditions |
+| `p_exact` | float | **exact binomial** McNemar p-value vs retrieval (NaN for the retrieval row) |
+| `sig@.05 (raw)` | bool | `p_exact < 0.05`, uncorrected |
+| `sig (Bonferroni)` | bool | `p_exact < 0.05/90`, corrected for the 90 non-retrieval tests |
+| `condition` | str | condition name |
 
-Final analysis output: per-condition accuracy comparison + significance.
+Final analysis output: per-condition accuracy + exact-McNemar significance
+(raw and Bonferroni-corrected). An earlier draft of 09 used the chi-square
+McNemar (`chi2`/`p_value` columns) — superseded by the exact test.
 
 ---
 
-*Last updated: 2026-05-20*
+## 5 · Legacy & out-of-scope artifacts
+
+On disk but NOT in the active pipeline — listed so nobody mistakes them
+for missing documentation.
+
+### n3/ (legacy Layer 3, superseded by n1 + DuckDB)
+**Produced by**: `scripts/legacy/build_n3.py` (BFS with on-the-fly hub ban).
+
+| file | rows | columns |
+|---|---|---|
+| `data/n3/hop_sets_t5000.parquet` | 28,735 | `qid, neighbor_qid, min_distance (uint8)` |
+| `data/n3/banned_hubs_t5000.parquet` | 37 | `origin_qid, hub_qid, hub_label, hub_degree, first_seen_dist` |
+
+### Orphans
+- `data/db/edges_v1_wildcard_partial.parquet` (4.65 GB) — partial export
+  from an earlier Layer-1 run; referenced by NO code, safe to delete.
+
+### Infrastructure (intentionally not cataloged)
+- `data/Wikidata_service/` — Wikidata HDT dump + index (293 GB),
+  `queryPredicati.csv`, `test_queries/*.sparql` (from
+  `scripts/legacy/build_test_queries.py`). Source for Layer 1.
+- `data/refined_cache/` (~9 GB) — ReFinED model cache (auto-downloaded),
+  not a data artifact.
+
+---
+
+*Last updated: 2026-06-11 (full audit vs real files: schemas, row counts, producers/consumers)*

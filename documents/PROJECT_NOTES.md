@@ -252,6 +252,8 @@ Verifica empirica del nuovo parquet (DuckDB) sui 3 predicati sanity-checked: 1, 
 
 **Lesson learned**. Le API "wildcard scan" su dump grandi possono fallire silenziosamente. Quando un index permette di restringere via predicate/type, **preferire l'iterazione vincolata e validare con header counts**.
 
+**Verifica post-hoc (2026-06-11, fact-check relazione)**. Confronto per-predicato completo tra i due parquet (`scripts/diagnostic/_compare_wildcard_vs_perpredicate.py`): il wildcard parziale è un sottoinsieme stretto del canonico (zero surplus), deficit totale **esattamente 471.158 righe** sparse su **539 predicati**; su P2860 mancano **15.781 righe**, identico al valore registrato nel docstring di `hdt_export_per_predicate.py` all'epoca. Nota di onestà: 471.158 < 999.999 (capienza del buffer non flushato al Ctrl+C), quindi il meccanismo preciso (drop dell'iteratore vs buffer perso) non è dimostrabile post-hoc; nella relazione il claim è formulato come "righe mancanti dall'output", senza attribuzione causale.
+
 ### 4.9 Layer 3 — gestione seed-hub: option A1 (degree-threshold seed-skip) (decisione 2026-04-28)
 
 **Sintomo**. Primo dry-run di `scripts/build_n3.py` con threshold=5000, 100 seed sampled, 12 worker: tutti i seed hub-popolari (Q21=England, Q145=UK, …) andavano in `TIMEOUT` a 60s con `reach=0 ban=0`. Il guard `total_degree > threshold` esistente nel BFS si applicava ai *vicini* incontrati durante l'espansione, ma il seed *stesso* veniva sempre espanso → wave 1 di un seed mega-hub (es. Q30=USA, 2.3M edges) da sola supera 60s prima ancora di hit-tare il primo guard.
@@ -385,6 +387,24 @@ Prima init: ~5 min, ~10-15 GB su disco. Init successive: ~1s (skip rebuild). I w
 **Nota interpretativa**. A `distance=1` la threshold è inerte (no bridge, endpoint sempre preservati): tutte le righe `distance=1` saranno identiche al variare del threshold. A `distance=2` un solo bridge è soggetto a filtro; a `distance=3` due bridge → effetto threshold più pronunciato.
 
 **File `scripts/kg.py` e `scripts/kg_advanced.py`**: rimossi. Storia preservata in git.
+
+---
+
+### 4.12 Audit DATA_DICTIONARY vs dati reali (2026-06-11)
+
+**Contesto**. Verifica sistematica di `documents/DATA_DICTIONARY.md` contro gli schemi reali dei file (pyarrow/duckdb), i conteggi righe e l'uso effettivo nei notebook/script. Il grosso era fedele (row count esatti, tipi di `top100_curated`, proiezione 2-colonne di `edges` in kg.duckdb, threshold 0=∞, limite 4081 token, α=0.5 Phase B, node_stats DESC). Divergenze trovate e corrette nel dizionario:
+
+1. **`judgments_summary.parquet`**: lo schema documentato (`chi2`/`p_value`/`sig@.05`) era quello del draft chi-quadro; lo schema reale usa il McNemar **esatto binomiale** (`retrieval_only (b)`, `condition_only (c)`, `n_movers (b+c)`, `p_exact`, `sig@.05 (raw)`, `sig (Bonferroni)`, `condition` come colonna).
+2. **Nomi `*_subset` inesistenti**: gli output di 04 si chiamano `top100_merged.parquet` e `passage_entities.parquet` (91.770 righe) — `top100_subset.parquet`/`passage_entities_subset.parquet` non sono mai esistiti nel codice. Aggiunta sezione dedicata "Pre-curation retrieval outputs".
+3. **`labels.parquet`**: colonna `label_en`, non `label` (138.339 righe — solo l'universo QID del progetto).
+4. **`kg_pairs_raw.parquet`**: 1.800.000 righe esatte = griglia completa; le coppie irraggiungibili sono MANTENUTE con `kg_score=0` (346.753 righe), non escluse.
+5. **Dimensione `data/`**: ~660 GB reali (HDT 293 + FAISS 258 + TSV 81 + KG 18 + ReFinED 9), non i ~14.7 GB del solo download kagglehub iniziale.
+6. **`queries_curated.original_query_id`**: tipo `int`, non `str`.
+7. **`shard_XX.faiss` non catalogati**: 9 indici `IndexFlatIP` serializzati (~129 GB), prodotti da 03, ricostruiti da 04 se mancanti e usati su GPU per la retrieval (i `.npy` servono a 07 §2.4 via mmap).
+8. **Consumer mancanti**: `psgs_w100_sentence.tsv` letto anche da 04/05 (testo per entity linking); `queries_curated.jsonl` e `passage_entities_curated.parquet` letti anche da `build_n1.py`/`build_labels.py` (seed QIDs).
+9. **Artefatti non catalogati**: aggiunta sezione §5 al dizionario per legacy (`n3/hop_sets_t5000`, `n3/banned_hubs_t5000` da `build_n3.py`), orfani (`db/edges_v1_wildcard_partial.parquet`, 4.65 GB, referenziato da nessun codice — candidato a cancellazione) e infrastruttura fuori scope (`Wikidata_service/`, `refined_cache/`, intermedi di 01/02/04).
+
+**Nota operativa**: anche CLAUDE.md riportava "~14.7 GB" per `data/` — corretto nello stesso intervento (~660 GB con breakdown; il 14.7 GB resta citato come dimensione del solo download kagglehub iniziale). Aggiunta inoltre la riga `DATA_DICTIONARY.md` alla tabella "Conoscenza di Progetto" di CLAUDE.md.
 
 ---
 
@@ -556,6 +576,8 @@ dl-RAG-denseAndKG/
 │   │   ├── seed_degree_stats.py        # Distribuzione degree dei seed + classificazione clean/mixed/all-hub (Windows venv)
 │   │   ├── verify_completeness.py      # Sanity check + comparison HDT counts vs parquet (WSL only)
 │   │   ├── check_qids.py               # Pre-flight regex QID matching (Windows venv)
+│   │   ├── check_table1_vs_nb09.py     # Fact-check relazione: Tabella 1 di main.tex vs output accuracy di 09_llm_judge.ipynb (Windows venv)
+│   │   ├── _compare_wildcard_vs_perpredicate.py # Fact-check relazione: diff per-predicato wildcard parquet vs canonico (vedi §4.8 verifica post-hoc)
 │   │   └── hdt_query_test.py           # Smoke test HDT (jupytext .py)
 │   ├── tooling/                        # Supporto runtime (chiamato da subprocess dai notebook)
 │   │   └── patch_refined.py            # Patch sorgente per ReFiNed V1 (Windows + Python 3.12+ + transformers 4.x)

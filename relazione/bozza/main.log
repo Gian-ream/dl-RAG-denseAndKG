@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.6.7)  10 JUN 2026 17:56
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.6.7)  11 JUN 2026 20:13
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -315,8 +315,8 @@ Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
-)) (dlai2025.sty
-Package: dlai2025 2020/11/18 v2.0 DLAI Project Style File
+)) (dlaiml2026.sty
+Package: dlaiml2026 2020/11/18 v2.0 DLAI/ML Project Style File
 
 (C:\Users\Utente\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\times.sty
 Package: times 2020/03/25 PSNFSS-v9.3 (SPQR) 
@@ -492,9 +492,23 @@ File: omlptm.fd
 )
 LaTeX Font Info:    Font shape `OML/ptm/m/n' in size <9> not available
 (Font)              Font shape `OML/cmm/m/it' tried instead on input line 35.
+
+Underfull \hbox (badness 1024) in paragraph at lines 39--41
+\OT1/ptm/m/n/10 sages close to the query but answer-free ---
+ []
+
+
+Underfull \hbox (badness 1406) in paragraph at lines 39--41
+\OT1/ptm/m/n/10 can fil-ter them. From a lo-cal HDT dump
+ []
+
+
+Underfull \hbox (badness 1067) in paragraph at lines 39--41
+\OT1/ptm/m/n/10 we build a 661.5M-edge en-tity graph, score
+ []
+
 LaTeX Font Info:    Trying to load font information for OMS+ptm on input line 4
 6.
-
 (C:\Users\Utente\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\omsptm.fd
 File: omsptm.fd 
 )
@@ -529,99 +543,194 @@ n/10 , $\OML/cmm/m/it/10 t \OMS/cmsy/m/n/10 2 f\OT1/cmr/m/n/10 500\OML/cmm/m/it
  \OMS/cmsy/m/n/10 1g$\OT1/ptm/m/n/10 , $\OML/cmm/m/it/10  \OMS/cmsy/m/n/10 2
  []
 
+
+Underfull \hbox (badness 1043) in paragraph at lines 97--98
+\OT1/ptm/m/n/10 weighted set-overlap, fused lin-early with a max-only-
+ []
+
+
+Underfull \hbox (badness 1436) in paragraph at lines 97--98
+\OT1/ptm/m/n/10 ing bridges by in-verse de-gree (which di-rectly tar-gets
+ []
+
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <9> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 133.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 103.
 
-Underfull \hbox (badness 4859) in paragraph at lines 132--137
-\OMS/cmsy/m/n/9 f\OT1/ptm/m/n/9 1\OMS/cmsy/m/n/9 g \OT1/ptm/m/n/9 Cor-pus: [][]
-$\OT1/pcr/m/n/9 https : / / huggingface . co / datasets /
+Underfull \hbox (badness 10000) in paragraph at lines 107--108
+[]\OMS/cmsy/m/n/9 f\OT1/ptm/m/n/9 5\OMS/cmsy/m/n/9 g \OT1/ptm/m/n/9 Data: [][]$
+\OT1/pcr/m/n/9 https : / / drive . google . com / drive /
+ []
+
+(main.bbl [2])
+Underfull \hbox (badness 2707) in paragraph at lines 126--126
+[][][]\OT1/ptm/m/n/9 LLM-judge ac-cu-racy, all 90 rerank set-tings (1000
  []
 
 
-Underfull \hbox (badness 3148) in paragraph at lines 132--137
-\OMS/cmsy/m/n/9 f\OT1/ptm/m/n/9 2\OMS/cmsy/m/n/9 g \OT1/ptm/m/n/9 Queries: [][]
-$\OT1/pcr/m/n/9 https : / / huggingface . co / datasets /
- []
+LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 132--137
-\OMS/cmsy/m/n/9 f\OT1/ptm/m/n/9 3\OMS/cmsy/m/n/9 g \OT1/ptm/m/n/9 Wiki-data HDT
- dump: [][]$\OT1/pcr/m/n/9 https : / / hdt-[]dumps .
- []
-
-(main.bbl [2
-pdfTeX warning (ext4): destination with the same identifier (name{table.1}) has
- been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.14 
-     ])
-Underfull \hbox (badness 1253) in paragraph at lines 150--151
+Underfull \hbox (badness 1253) in paragraph at lines 158--159
 []\OT1/pcr/m/n/10 02[]nq[]filtering \OT1/ptm/m/n/10 --- fil-ters NQ-open down t
 o
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 153--154
+Underfull \hbox (badness 10000) in paragraph at lines 161--162
 []\OT1/pcr/m/n/10 05[]answer[]curation \OT1/ptm/m/n/10 --- iden-ti-fies the 344
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 155--156
+Underfull \hbox (badness 10000) in paragraph at lines 163--164
 []\OT1/pcr/m/n/10 07[]kg[]rerank \OT1/ptm/m/n/10 --- com-putes KG reach-a-bil-i
 ty
  []
 
+[3
+pdfTeX warning (ext4): destination with the same identifier (name{table.1}) has
+ been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.169 
+      ]
 LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 1
-63.
+73.
+
 (C:\Users\Utente\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 )
-Underfull \hbox (badness 5050) in paragraph at lines 166--167
+Underfull \hbox (badness 3439) in paragraph at lines 174--175
+\OT1/ptm/m/n/10 on na-tive Win-dows, so the three HDT scripts
+ []
+
+
+Underfull \hbox (badness 1895) in paragraph at lines 174--175
+\OT1/ptm/m/n/10 (edge ex-port, la-bel lookup, com-plete-ness check)
+ []
+
+
+Underfull \hbox (badness 4556) in paragraph at lines 174--175
+\OT1/ptm/m/n/10 dump through \OT1/pcr/m/n/10 /mnt/c\OT1/ptm/m/n/10 . The pre-bu
+ilt in-dex
+ []
+
+
+Underfull \hbox (badness 5050) in paragraph at lines 176--177
 \OT1/ptm/m/n/10 passed as a tokenizer-loading kwarg (an er-ror
  []
 
 
-Underfull \hbox (badness 1226) in paragraph at lines 166--167
+Underfull \hbox (badness 1226) in paragraph at lines 176--177
 \OT1/ptm/m/n/10 on re-cent trans-form-ers), and regex pat-terns writ-
  []
 
 
-Underfull \hbox (badness 4108) in paragraph at lines 166--167
+Underfull \hbox (badness 4108) in paragraph at lines 176--177
 \OT1/ptm/m/n/10 ten with-out raw strings (a Python 3.12 warn-
  []
 
-[3]
-Underfull \hbox (badness 10000) in paragraph at lines 169--170
-\OT1/ptm/m/n/10 All num-bers re-ported in this doc-u-ment are re-
+
+Underfull \vbox (badness 3396) has occurred while \output is active []
+
+
+Underfull \hbox (badness 2818) in paragraph at lines 179--180
+\OT1/ptm/m/n/10 The schema of ev-ery data ar-ti-fact is cat-a-logued in
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 169--170
-\OT1/ptm/m/n/10 com-puted from the raw per-query out-puts by
+Underfull \hbox (badness 10000) in paragraph at lines 179--180
+\OT1/pcr/m/n/10 documents/DATA[]DICTIONARY.md\OT1/ptm/m/n/10 ; the ar-ti-facts
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 169--170
-\OT1/pcr/m/n/10 documents/verify[]report[]numbers.py\OT1/ptm/m/n/10 , and
+Underfull \hbox (badness 10000) in paragraph at lines 186--198
+[]\OT1/pcr/m/n/9 You are given a question and you
  []
 
 
-Underfull \hbox (badness 3668) in paragraph at lines 169--170
-\OT1/ptm/m/n/10 the schema of ev-ery data ar-ti-fact is cat-a-logued in
+Underfull \hbox (badness 10000) in paragraph at lines 186--198
+\OT1/pcr/m/n/9 MUST respond by EXTRACTING the
  []
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \hbox (badness 10000) in paragraph at lines 186--198
+\OT1/pcr/m/n/9 answer (max 5 tokens) from one of
+ []
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \hbox (badness 10000) in paragraph at lines 186--198
+\OT1/pcr/m/n/9 the provided documents. If none of
+ []
 
- [4]
-[5
 
-] (main.aux)
+Underfull \hbox (badness 10000) in paragraph at lines 186--198
+\OT1/pcr/m/n/9 the documents contain the answer,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 186--198
+\OT1/pcr/m/n/9 Document [5] (Title: Hamlet)
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 186--198
+\OT1/pcr/m/n/9 Document [1] (Title: ...) $\OMS/cmsy/m/n/9 h$\OT1/ptm/m/n/9 rank
+-5
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 186--198
+\OT1/pcr/m/n/9 Document [5] (Title: ...) $\OMS/cmsy/m/n/9 h$\OT1/ptm/m/n/9 rank
+-1
+ []
+
+[4]
+Underfull \hbox (badness 10000) in paragraph at lines 202--207
+[]\OT1/ptm/b/n/9 system: \OT1/pcr/m/n/9 You are a strict judge.
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 202--207
+\OT1/pcr/m/n/9 Given a question, a list of
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 202--207
+\OT1/pcr/m/n/9 acceptable answers, and a model
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 202--207
+\OT1/pcr/m/n/9 response, decide whether the
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 202--207
+\OT1/pcr/m/n/9 response contains at least one of
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 202--207
+\OT1/pcr/m/n/9 the acceptable answers (verbatim or
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 202--207
+\OT1/pcr/m/n/9 as a clear paraphrase). Reply with
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 202--207
+\OT1/pcr/m/n/9 Does the response contain at least
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 202--207
+\OT1/pcr/m/n/9 one of the acceptable answers?
+ []
+
+[5] (main.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-04-28>
@@ -630,13 +739,13 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: B99B450708FE9BF7D0E5B936130A4D32;983.
  ) 
 Here is how much of TeX's memory you used:
- 11361 strings out of 467683
- 175676 string characters out of 5414238
- 609328 words of memory out of 5000000
- 40189 multiletter control sequences out of 15000+600000
- 654304 words of font info for 93 fonts, out of 8000000 for 9000
+ 11360 strings out of 467683
+ 175698 string characters out of 5414238
+ 610285 words of memory out of 5000000
+ 40188 multiletter control sequences out of 15000+600000
+ 651600 words of font info for 90 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,11n,79p,1225b,611s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,11n,79p,1358b,611s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/Utente/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm
 /cmmi10.pfb><C:/Users/Utente/AppData/Local/Programs/MiKTeX/fonts/type1/public/a
 msfonts/cm/cmmi7.pfb><C:/Users/Utente/AppData/Local/Programs/MiKTeX/fonts/type1
@@ -654,9 +763,9 @@ utmb8a.pfb><C:/Users/Utente/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times
 /utmr8a.pfb><C:/Users/Utente/AppData/Local/Programs/MiKTeX/fonts/type1/urw/time
 s/utmr8a.pfb><C:/Users/Utente/AppData/Local/Programs/MiKTeX/fonts/type1/urw/tim
 es/utmri8a.pfb>
-Output written on main.pdf (5 pages, 221860 bytes).
+Output written on main.pdf (5 pages, 228341 bytes).
 PDF statistics:
- 203 PDF objects out of 1000 (max. 8388607)
- 44 named destinations out of 1000 (max. 500000)
+ 210 PDF objects out of 1000 (max. 8388607)
+ 46 named destinations out of 1000 (max. 500000)
  57 words of extra memory for PDF output out of 10000 (max. 10000000)
 

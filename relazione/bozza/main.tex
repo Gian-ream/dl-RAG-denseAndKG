@@ -8,7 +8,7 @@
 \usepackage{graphicx}
 \usepackage{amssymb}
 
-\usepackage[accepted]{dlai2025}
+\usepackage[accepted]{dlaiml2026}
 
 % Override the template's author-year citations with numbered [n] citations
 % (compact; the data/code links use a separate {n} scheme in the Resources section).
@@ -36,7 +36,7 @@
 
 \begin{abstract}
 %
-Dense retrieval can surface \emph{distractors} --- passages close to the query but answer-free --- that degrade RAG accuracy, as \citet{Cuconasu_2024} show. We test whether \emph{pure graph topology} on Wikidata can filter them, without using relation semantics. We build a 661.5M-edge entity graph from a local HDT dump, score query--document pairs by topological reachability (connected $\times$ purity), and fuse this with the dense score across a grid of hop-distance, hub-threshold and mixing weight $\alpha$, evaluated on 1000 NQ-open queries with an LLM judge. The result is a clean \emph{negative}: the KG signal never beats the dense baseline (0.364) beyond noise (best 0.372) and actively degrades accuracy as its weight grows (down to 0.290); 13/90 conditions are significant under McNemar+Bonferroni, all of them worse. We explain the mechanism (reachability saturates on a dense graph) and document the engineering and the methodological departures from~\citet{Cuconasu_2024}.
+Dense retrieval can surface \emph{distractors} --- passages close to the query but answer-free --- that degrade RAG accuracy, as \citet{Cuconasu_2024} show. We test whether \emph{pure graph topology} on Wikidata, with no relation semantics, can filter them. From a local HDT dump we build a 661.5M-edge entity graph, score query--document pairs by topological reachability (connected $\times$ purity), and fuse this with the dense score across a grid of hop-distance, hub-threshold and mixing weight $\alpha$, evaluating on 1000 NQ-open queries with an LLM judge. The result is a clean \emph{negative}: the KG signal never beats the dense baseline (0.364) beyond noise (best 0.372) and actively degrades accuracy as its weight grows (down to 0.290); 13/90 conditions are significant under McNemar+Bonferroni, all worse. We explain why and document the engineering and the departures from~\citet{Cuconasu_2024}.
 %
 \end{abstract}
 
@@ -48,7 +48,7 @@ Dense retrieval can surface \emph{distractors} --- passages close to the query b
 % ------------------------------------------------------------------------------
 \section{Related work}
 
-We adopt the corpus, retriever and reader of~\citet{Cuconasu_2024}, who characterise the distractor problem in RAG. Retrieval uses Contriever over the gold-augmented Wikipedia corpus of~\citet{Cuconasu_2024}; entity linking uses the ReFinED linker of~\citet{ayoola2022refinedefficientzeroshotcapableapproach}, the best-performing system in the independent evaluation of~\citet{bast2023fairindepthevaluationexisting}. Knowledge-graph approaches to RAG use the graph's relations and semantics; we instead use only its topology. The graph is stored as HDT over a Wikidata dump.
+We adopt the corpus, retriever and reader of~\citet{Cuconasu_2024}, who characterise the distractor problem in RAG. Retrieval uses Contriever over the gold-augmented Wikipedia corpus of~\citet{Cuconasu_2024}; entity linking uses the ReFinED linker of~\citet{ayoola2022refinedefficientzeroshotcapableapproach}, the best-performing system in the independent evaluation of~\citet{bast2023fairindepthevaluationexisting}. Knowledge-graph approaches to RAG use the graph's relations and semantics; we instead use only its topology.
 
 % ------------------------------------------------------------------------------
 \section{Method}
@@ -66,41 +66,11 @@ with $\alpha$ the \emph{KG weight} and $s_{\mathrm{dense}}=\sigma/\max_q\sigma$ 
 % ------------------------------------------------------------------------------
 \section{Results}
 
-\paragraph*{Baseline is sound.} Dense retrieval scores $0.364$, in line with the $\approx$0.36 that~\citet{Cuconasu_2024} report for Llama-2 with Contriever-retrieved documents on NQ-open --- the harness is healthy and the comparison valid.
+\paragraph*{Baseline is sound.} Dense retrieval scores $0.364$, in line with the $\approx$0.36 that~\citet{Cuconasu_2024} report for Llama-2 with Contriever-retrieved documents on NQ-open --- the harness is healthy.
 
-\begin{table}[h!]
-\caption{LLM-judge accuracy, all 90 rerank settings (1000 NQ-open queries). Dense baseline $=0.364$. Columns: KG weight $\alpha$; rows: hop-distance $k$, hub-threshold $t$ ($\infty$=no filter; distance~1 has no bridge, so it is threshold-invariant). Best \textbf{bold}, worst \underline{underlined}.}
-\label{tab:results}
-\begin{center}
-\begin{scriptsize}
-\setlength{\tabcolsep}{4pt}
-\begin{tabular}{cc | ccccc}
-\toprule
-$k$ & $t$ & $\alpha{=}.1$ & .3 & .5 & .7 & .9\\
-\midrule
-1 & any & .353 & .344 & .343 & .316 & .322\\
-2 & 500 & .362 & .358 & .361 & .348 & .354\\
-2 & 1{,}000 & .364 & .361 & .358 & .343 & .350\\
-2 & 2{,}000 & .360 & .371 & .357 & .337 & .341\\
-2 & 5{,}000 & .357 & \textbf{.372} & .362 & .337 & .337\\
-2 & 10{,}000 & .364 & .365 & .357 & .334 & .329\\
-2 & $\infty$ & .354 & .343 & .311 & .298 & .295\\
-3 & 500 & .354 & .344 & .341 & .329 & .335\\
-3 & 1{,}000 & .346 & .355 & .342 & .322 & .310\\
-3 & 2{,}000 & .354 & .349 & .316 & .303 & .293\\
-3 & 5{,}000 & .366 & .351 & .310 & .292 & \underline{.290}\\
-3 & 10{,}000 & .361 & .362 & .321 & .306 & .304\\
-3 & $\infty$ & .347 & .333 & .314 & .314 & .318\\
-\bottomrule
-\end{tabular}
-\end{scriptsize}
-\end{center}
-\vspace{-0.3cm}
-\end{table}
+\paragraph*{No gain, then harm.} The best cell ($\alpha{=}0.3$, dist~2, $t{=}5\text{k}$) reaches $0.372$: $+0.8$pp $\approx 8$ queries, i.e.\ noise (full grid in Table~\ref{tab:results}, Appendix). As $\alpha$ grows the KG signal dominates and accuracy falls monotonically, bottoming at $0.290$ ($\alpha{=}0.9$, dist~3, $t{=}5\text{k}$).
 
-\paragraph*{No gain, then harm.} The best cell ($\alpha{=}0.3$, dist~2, $t{=}5\text{k}$) reaches $0.372$: $+0.8$pp $\approx 8$ queries, i.e.\ noise (Table~\ref{tab:results}). As $\alpha$ grows the KG signal dominates and accuracy falls monotonically, bottoming at $0.290$ ($\alpha{=}0.9$, dist~3, $t{=}5\text{k}$).
-
-\paragraph*{It reshuffles, but does not help.} The rerank is far from inert: at $\alpha{=}0.5$ it rewrites the top-5 for $84$--$99.5\%$ of queries depending on the cell (mean Jaccard@5 $0.11$--$0.30$ vs.\ pure retrieval --- typically barely one of five passages survives), yet accuracy stays at the baseline. It reorders aggressively without adding signal.
+\paragraph*{It reshuffles, but does not help.} The rerank is far from inert: at $\alpha{=}0.5$ it rewrites the top-5 for $84$--$99.5\%$ of queries (mean Jaccard@5 $0.11$--$0.30$ --- typically barely one of five passages survives), yet accuracy stays at the baseline.
 
 \paragraph*{Threshold gradient is the mechanism.} Holding $\alpha{=}0.9$, dist~2, accuracy decays monotonically as the hub filter loosens, from $0.354$ ($t{=}500$) to $0.295$ ($t{=}\infty$): admitting high-degree nodes as bridges connects everything to everything and destroys the signal.
 
@@ -124,66 +94,127 @@ $k$ & $t$ & $\alpha{=}.1$ & .3 & .5 & .7 & .9\\
 
 \paragraph*{Why it fails.} On a graph as dense as Wikidata, $2$--$3$-hop reachability \emph{saturates}: almost every document entity is reachable from almost every query entity, so $\mathrm{cr}\approx 1$, the score collapses onto $\mathrm{pr}$ alone, and discrimination is lost; the hub filter limits the damage but recovers no signal. For about 17\% of queries the question entity is itself a very high-degree node (a country, a religion), where any passage is graph-close and the KG score is uninformative.
 
-\paragraph*{Limitations and future work.} Our metric collapses relation semantics (\texttt{P31} \emph{instance-of} and \texttt{P19} \emph{place-of-birth} count alike), so it cannot screen out semantically irrelevant links. The honest next step is to use the graph's relations and semantics --- not just its bare topology.
+\paragraph*{Limitations and future work.} Our negative result is scoped to one operationalisation of topology: binary, unweighted set-overlap, fused linearly with a max-only-scaled dense score. Two variants remain untested: weighting bridges by inverse degree (which directly targets the hub mechanism we diagnosed) and rank-based fusion (which removes the scale mismatch between the two scores). The deeper limitation, however, is that the metric collapses relation semantics (\texttt{P31} \emph{instance-of} and \texttt{P19} \emph{place-of-birth} count alike), so it cannot screen out semantically irrelevant links: more than any reweighting, it is the graph's relations and semantics that the next iteration should exploit.
 
 \paragraph*{Conclusion.} Pure topological proximity does not filter distractors for dense RAG on NQ-open; the value is the explained negative result and the reusable Wikidata tooling.
 
 \section*{Data and code}
-{\footnotesize\noindent
+{\footnotesize\raggedright\noindent
 \{1\}~Corpus: \url{https://huggingface.co/datasets/florin-hf/wiki_dump2018_nq_open}.\\
 \{2\}~Queries: \url{https://huggingface.co/datasets/florin-hf/nq_open_gold}.\\
 \{3\}~Wikidata HDT dump: \url{https://hdt-dumps.cluster.ai.wu.ac.at/dumps/}.\\
-\{4\}~Code: delivery repository (to be created).}
+\{4\}~Code: \url{https://github.com/Gian-ream/dl-RAG-denseAndKG}.\\
+\{5\}~Data: \url{https://drive.google.com/drive/folders/1RlQuowaWmVF0fe2fcAqVBBaT4dmsnU7s}.}
+
+\section*{Statement on the use of AI}
+{\small
+This project was developed in close collaboration with Claude (Anthropic). Claude wrote most of the notebook and script code under the author's step-by-step direction and review (explain-then-approve), patched the environment issues documented in the Appendix, suggested literature, kept the project log of every design decision and change of direction, helped polish the original proposal, and drafted the LaTeX of this report, then reshaped by the author. Key ideas came from both sides: the boolean-reachability reformulation and the max-only argument are the author's, their implementation Claude's. Hypothesis, methodological decisions, experimental runs are the author's; every reported number was re-verified against the raw outputs, with corrections flowing in both directions.
+}
 
 \nocite{naveed2024comprehensiveoverviewlargelanguage,peng2024graphretrievalaugmentedgenerationsurvey}
 \bibliography{references.bib}
-\bibliographystyle{dlai2025}
+\bibliographystyle{dlaiml2026}
 
 \appendix
 
 \section*{Appendix}
 
+\subsection*{Accuracy of all rerank settings}
+Table~\ref{tab:results} reports the LLM-judge accuracy of every rerank setting in the sweep --- all 90 $(k, t, \alpha)$ cells --- against the dense baseline discussed in the Results section.
+
+\begin{table}[h!]
+\caption{LLM-judge accuracy, all 90 rerank settings (1000 queries); dense baseline $=0.364$; $t{=}\infty$ means no hub filter. Distance~1 has no bridge node, hence threshold-invariant. Best \textbf{bold}, worst \underline{underlined}.}
+\label{tab:results}
+\begin{center}
+\begin{small}
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{cc | ccccc}
+\toprule
+$k$ & $t$ & $\alpha{=}.1$ & .3 & .5 & .7 & .9\\
+\midrule
+1 & any & .353 & .344 & .343 & .316 & .322\\
+2 & 500 & .362 & .358 & .361 & .348 & .354\\
+2 & 1{,}000 & .364 & .361 & .358 & .343 & .350\\
+2 & 2{,}000 & .360 & .371 & .357 & .337 & .341\\
+2 & 5{,}000 & .357 & \textbf{.372} & .362 & .337 & .337\\
+2 & 10{,}000 & .364 & .365 & .357 & .334 & .329\\
+2 & $\infty$ & .354 & .343 & .311 & .298 & .295\\
+3 & 500 & .354 & .344 & .341 & .329 & .335\\
+3 & 1{,}000 & .346 & .355 & .342 & .322 & .310\\
+3 & 2{,}000 & .354 & .349 & .316 & .303 & .293\\
+3 & 5{,}000 & .366 & .351 & .310 & .292 & \underline{.290}\\
+3 & 10{,}000 & .361 & .362 & .321 & .306 & .304\\
+3 & $\infty$ & .347 & .333 & .314 & .314 & .318\\
+\bottomrule
+\end{tabular}
+\end{small}
+\end{center}
+\end{table}
+
 \subsection*{Pipeline: notebook flow}
-The project is organised as nine notebooks, numbered in execution order. Each notebook reads the artifacts written by the previous ones under \texttt{data/} and writes its own, so every stage is independently resumable and inspectable. The Wikidata graph itself is built separately by the scripts in \texttt{scripts/pipeline/} (Layers~1--3), which run under WSL2 and produce the edge list, the per-node degree statistics and the precomputed 1-hop neighbourhoods that notebook \texttt{07} consumes.
+The project is organised as nine notebooks, numbered in execution order. Each notebook reads the artifacts written by the previous ones under \texttt{data/} and writes its own, so every stage is independently resumable and inspectable. The Wikidata graph itself is built separately by the scripts in \texttt{scripts/pipeline/}, which produce the edge list, the per-node degree statistics and the precomputed 1-hop neighbourhoods that notebook \texttt{07} consumes; the \texttt{pyHDT}-based ones run under WSL2, the rest natively on Windows (see Environment).
 \begin{enumerate}\itemsep 0pt \parskip 0pt
 \item \texttt{01\_corpus\_preparation} --- downloads the corpus and segments every article into sentence-aligned, 100-word passages, producing the $\sim$42M-passage retrieval corpus.
-\item \texttt{02\_nq\_filtering} --- filters NQ-open down to the queries whose answers are short ($\le$5 tokens) and whose question and answers all carry ReFinED-linkable entities; 31{,}372 queries survive.
+\item \texttt{02\_nq\_filtering} --- filters NQ-open down to the queries whose answers are short ($\le$5 tokens) and whose question and answers all carry ReFinED-linkable entities.
 \item \texttt{03\_embedding} --- encodes every passage with Contriever and builds nine FAISS shards (the full index does not fit in memory as a single block).
-\item \texttt{04\_answer\_preparation} --- runs top-100 dense retrieval for the 1000-query subset and entity-links every retrieved passage.
+\item \texttt{04\_answer\_preparation} --- retrieves the top-100 passages for each query of the 1000-query subset and entity-links every retrieved passage.
 \item \texttt{05\_answer\_curation} --- identifies the 344 queries whose entire top-100 carries no linkable entities and selects replacement queries from a candidate pool.
 \item \texttt{06\_apply\_curation} --- applies the substitution, producing the \texttt{*\_curated} files used by everything downstream.
 \item \texttt{07\_kg\_rerank} --- computes KG reachability ($\mathrm{cr}/\mathrm{pr}$) for every query--passage pair over the full $k \times t$ grid, plus the Jaccard reshuffle diagnostics.
 \item \texttt{08\_llm\_eval} --- has Llama-2-7B generate an answer for each query under all 91 conditions (one baseline + 90 rerank cells).
-\item \texttt{09\_llm\_judge} --- has Qwen2.5 judge every answer against the NQ gold answers and aggregates accuracy and the McNemar tests.
+\item \texttt{09\_llm\_judge} --- has Qwen2.5 judge every answer against the NQ gold answers and aggregates accuracy and the McNemar tests with Bonferroni correction.
 \end{enumerate}
+
+\noindent A note on reproducibility: to work with the pipeline's data directly, download the full \texttt{data/} folder from~\{5\} ($\sim$614\,GB in total; it also includes the smaller artifacts already versioned in the code repository). Alternatively, every artifact except the HDT dump and its index --- which must be fetched manually from~\{3\} --- can be re-created by the notebooks themselves, which download their own sources on first run. We advise against this route, however: the overall computational cost is high and, depending on the stage and the machine, a full rerun of a single notebook can take several days. One exception: notebook \texttt{09} is re-runnable out of the box --- its inputs are versioned in the code repository and the judge model is downloaded automatically --- although it performs 91{,}000 Qwen judgments, so a full pass still takes time.
 
 \subsection*{Environment}
 Exact reproduction requires \emph{two} environments, because no single platform runs the whole pipeline. The requirements are:
 \begin{itemize}\itemsep 0pt \parskip 0pt
 \item \textbf{Windows + \texttt{uv}.} The main environment: every notebook runs here, with dependencies pinned in \texttt{pyproject.toml} and installed via \texttt{uv sync}.
-\item \textbf{WSL2/Ubuntu for the graph build.} \texttt{pyHDT} requires a C++ build that does not compile cleanly on native Windows, so the three HDT scripts (edge export, label lookup, completeness check) run in a Linux environment that reads the 166\,GB dump through \texttt{/mnt/c}.
+\item \textbf{WSL2/Ubuntu for the graph build.} \texttt{pyHDT} requires a C++ build that does not compile cleanly on native Windows, so the three HDT scripts (edge export, label lookup, completeness check) run in a Linux environment that reads the 166\,GB dump through \texttt{/mnt/c}. The pre-built index file (\texttt{.hdt.index.v1-1}, 107\,GB, from the same source) must sit next to the dump: without it \texttt{pyHDT} attempts to build the index in RAM, which exceeds WSL2's memory cap.
 \item \textbf{\texttt{faiss-gpu} via \texttt{conda}.} There is no Windows pip wheel for the GPU build of FAISS, so it lives in a separate miniconda installation and is bridged into the \texttt{uv} venv at runtime (\texttt{add\_dll\_directory} for the DLLs plus a \texttt{sys.path} insert for the package); the conda paths are machine-specific and must be adapted in notebook \texttt{04}.
-\item \textbf{ReFinED patch.} ReFinED~V1 breaks on Windows + Python~3.12 + transformers~4.48 through three distinct bugs: a Unix-only \texttt{strftime("\%s")} call in its model downloader, \texttt{add\_special\_tokens} passed as a tokenizer-loading kwarg (an error on recent transformers), and regex patterns written without raw strings (a Python~3.12 warning). \texttt{scripts/tooling/patch\_refined.py} patches the installed package in place and is invoked automatically by the notebooks that load the model; it must be re-run after every \texttt{uv sync}.
-\item \textbf{HuggingFace token.} Llama-2 is licence-gated, so a personal token must be placed in \texttt{.hf\_token} at the repo root (gitignored); the notebooks read it from there.
+\item \textbf{ReFinED patch.} ReFinED~V1 breaks on Windows + Python~3.12 + transformers~4.48 through three distinct bugs: a Unix-only \texttt{strftime("\%s")} call in its model downloader, \texttt{add\_special\_tokens} passed as a tokenizer-loading kwarg (an error on recent transformers), and regex patterns written without raw strings (a Python~3.12 warning). \texttt{scripts/tooling/patch\_refined.py} patches the installed package in place; it is idempotent and the notebooks that load the model invoke it automatically at every run, so even a fresh reinstall is re-patched on the next execution.
+\item \textbf{HuggingFace token.} A personal token must be placed in the \texttt{.hf\_token} file at the repo root (gitignored). It is strictly required only for the licence-gated Llama-2; the other notebooks also read it, but merely for faster downloads (Qwen2.5 is ungated).
 \end{itemize}
-All numbers reported in this document are recomputed from the raw per-query outputs by \texttt{documents/verify\_report\_numbers.py}, and the schema of every data artifact is catalogued in \texttt{documents/DATA\_DICTIONARY.md}.
+The schema of every data artifact is catalogued in \texttt{documents/DATA\_DICTIONARY.md}; the artifacts themselves can be downloaded from~\{5\}.
 
 \subsection*{Design choices}
-\textbf{Dense normalization: max-only, not min--max.} The raw Contriever score $\sigma$ is an inner product over embeddings that are not L2-normalised, so within a query its top-100 values sit in a narrow band (roughly $[0.5,1]$ after rescaling). Before fusing it with the KG score we rescale it by the per-query maximum only, $s_{\mathrm{dense}}=\sigma/\max_q\sigma$. The obvious alternative, min--max normalisation, would stretch that narrow band to the full $[0,1]$ interval --- and in doing so it would change the \emph{philosophy} of the ranking, not just its scale. A concrete example makes the point: take passages A$(\sigma{=}1.05,\,s_{\mathrm{kg}}{=}0.2)$ and B$(\sigma{=}1.00,\,s_{\mathrm{kg}}{=}0.4)$ at $\alpha{=}0.5$. Under max-only scaling, A's dense advantage is what it really is --- about $5\%$ --- so the much larger KG gap dominates and B wins. Under min--max, that same $5\%$ gap can be inflated up to the whole $[0,1]$ range, and the ranking flips to A on the strength of a dense difference that is in fact negligible. Max-only preserves the relative geometry of the dense scores and merely caps them at~1, which is what the fusion in Eq.~\eqref{eq:fuse} assumes.
+\textbf{Dense normalization: max-only, not min--max.} The raw Contriever score $\sigma$ is an inner product over embeddings that are not L2-normalised, so it is not bounded by 1 (within a query, top-100 values can exceed it) and sits in a narrow per-query band. Before fusing it with the KG score we rescale it by the per-query maximum only, $s_{\mathrm{dense}}=\sigma/\max_q\sigma$, which caps it at~1 --- as the fusion in Eq.~\eqref{eq:fuse} assumes --- without touching the relative gaps. The obvious alternative, min--max normalisation, would stretch the narrow band to the full $[0,1]$ interval, and in doing so it would change the \emph{philosophy} of the ranking, not just its scale. A worked example: passages A$(\sigma{=}1.05,\,s_{\mathrm{kg}}{=}0.2)$ and B$(\sigma{=}1.00,\,s_{\mathrm{kg}}{=}0.4)$, fused at $\alpha{=}0.5$. Max-only divides by $1.05$, so $s_{\mathrm{dense}}^A=1.0$ and $s_{\mathrm{dense}}^B=0.95$, and the fused scores are $s^A=0.5\cdot1.0+0.5\cdot0.2=0.60$ versus $s^B=0.5\cdot0.95+0.5\cdot0.4=0.68$: \textbf{B wins}. Min--max instead maps the two dense scores to the extremes, $s_{\mathrm{dense}}^A=1$ and $s_{\mathrm{dense}}^B=0$, giving $s^A=0.60$ versus $s^B=0.5\cdot0+0.5\cdot0.4=0.20$: the ranking flips to \textbf{A} on the strength of a dense difference that is in fact negligible.
 
-\textbf{Reader prompt.} We use Llama-2-7B \emph{base}, not the chat variant, so the model is a pure next-token completer with no instruction tuning: prompted naively, it continues ``Answer:'' with Wikipedia-style prose rather than a short extracted span. We therefore prepend a one-shot extraction example that demonstrates both the task and the output format. We also place the question \emph{above} the documents, where \citet{Cuconasu_2024} place it after them: the model reads the question first and can attend back to it while scanning the passages. Following the paper's own finding on position bias, the top-ranked passage is placed last in the context, immediately above the ``Answer:'' slot where the model attends most.
+\textbf{Reader prompt.} We use Llama-2-7B \emph{base}, not the chat variant, so the model is a pure next-token completer with no instruction tuning: prompted naively, it continues ``Answer:'' with Wikipedia-style prose rather than a short extracted span. We therefore prepend a one-shot extraction example that demonstrates both the task and the output format. We also place the question \emph{above} the documents, where \citet{Cuconasu_2024} place it after them: the model reads the question first and can attend back to it while scanning the passages. Following the paper's own finding on position bias, the top-ranked passage is placed last in the context, immediately above the ``Answer:'' slot where the model attends most. The full template:
+\begin{quote}\footnotesize\ttfamily
+You are given a question and you MUST respond by EXTRACTING the answer (max 5 tokens) from one of the provided documents. If none of the documents contain the answer, respond with NO-RES.\\[3pt]
+Example:\\
+Question: who wrote hamlet\\
+Document [1] (Title: Macbeth) ...\\
+\textrm{\emph{...documents [2]--[4]...}}\\
+Document [5] (Title: Hamlet) ...written by William Shakespeare...\\
+Answer: William Shakespeare\\[3pt]
+Question: \textrm{$\langle$question$\rangle$}\\
+Document [1] (Title: ...) \textrm{$\langle$rank-5 passage$\rangle$}\\
+\textrm{\emph{...}}\\
+Document [5] (Title: ...) \textrm{$\langle$rank-1 passage$\rangle$}\\
+Answer:
+\end{quote}
 
-\textbf{Judge.} Substring exact-match --- the metric used by \citet{Cuconasu_2024} --- misses answers that are correct but paraphrased, reformatted, or wrapped in a preamble. We therefore score with an LLM judge that answers YES/NO to ``does the response contain one of the gold answers?''. The judge must be a \emph{different} model from the generator to avoid self-preference bias, so we use Qwen2.5-7B-Instruct (Apache-2.0, ungated): strong enough to absorb paraphrase and formatting, cheap enough to judge all 91{,}000 responses locally.
+\textbf{Judge.} Substring exact-match --- the metric used by \citet{Cuconasu_2024} --- misses answers that are correct but paraphrased, reformatted, or wrapped in a preamble. We therefore score with an LLM judge that answers YES/NO to ``does the response contain one of the gold answers?''. The judge must be a \emph{different} model from the generator to avoid self-preference bias, so we use Qwen2.5-7B-Instruct (Apache-2.0, ungated): strong enough to absorb paraphrase and formatting, cheap enough to judge all 91{,}000 responses locally. We manually spot-checked random samples of TRUE and FALSE verdicts (notebook \texttt{09}) to confirm the judge behaves as intended. The judge prompt:
+\begin{quote}\footnotesize\ttfamily
+\textrm{\textbf{system:}} You are a strict judge. Given a question, a list of acceptable answers, and a model response, decide whether the response contains at least one of the acceptable answers (verbatim or as a clear paraphrase). Reply with exactly YES or NO, nothing else.\\[3pt]
+\textrm{\textbf{user:}} Question: \textrm{$\langle$question$\rangle$}\\
+Acceptable answers: \textrm{$\langle$gold answers$\rangle$}\\
+Response: \textrm{$\langle$Llama-2 response$\rangle$}\\[3pt]
+Does the response contain at least one of the acceptable answers? Reply YES or NO.
+\end{quote}
 
 \subsection*{What we tried first}
-The reachability machinery described in the report is the result of a sequence of failed attempts; each predecessor failed for an instructive reason.
-
-\textbf{Local triple store $\to$ SPARQL $\to$ local HDT.} Our first attempt at graph access was to download Wikidata and host it locally in a Java triple store (Blazegraph), so we could navigate it without network limits. Ingestion never completed: the working space needed to build the indices blew past the 5\,TB of disk we had available. We fell back to the public Wikidata SPARQL endpoint, which collapsed immediately on popular entities: even a minimal \texttt{COUNT} over a single hub (\texttt{?x wdt:P31 wd:Q5}, ``instances of \emph{human}'') exceeded the server's 60-second limit, and with it fell the whole fallback scheme we had designed around it. We finally switched to a pre-built HDT dump of Wikidata queried locally with \texttt{pyHDT}, where the same predicate-restricted counts go straight to a precomputed index and return in well under a millisecond, with no rate limits.
-
-\textbf{Wildcard $\to$ per-predicate export.} Our first edge exporter walked the whole dump with a wildcard triple iterator and filtered entity-to-entity statements in the loop. On a dump this size the iterator misbehaved in two ways at once: it \emph{over}-iterated (yielding far more triples than the file header declares) while \emph{silently dropping} genuine Q--Q edges --- an inflated traversal with missing data and no error raised. Restricting the iteration to one predicate at a time turned out to be exact: per-predicate counts match the HDT header, the run is deterministic and verifiable, and it recovered $\sim$471k edges the wildcard run had lost, for a final count of $661{,}471{,}158$.
-
-\textbf{BFS-N3 $\to$ meet-in-the-middle.} The proposal's natural reading --- precompute the full 3-hop neighbourhood of every seed by BFS --- timed out on 89\% of seeds in a dry run, including perfectly ordinary, low-degree entities. The diagnosis is the cumulative wave explosion: even when the seed itself is small, its second wave reaches tens of thousands of nodes and the third has to iterate millions of triples. The fix came from noticing that the metric never needs the full neighbourhood, only the \emph{boolean} question ``is this document entity within 3 hops of this query entity?''. That question can be answered by precomputing 1-hop neighbourhoods alone ($\sim$93M rows) and meeting in the middle: distance~1 is a set lookup, distance~2 a set intersection, distance~3 a single indexed edge-probe between the two 1-hop sets. A hub's neighbour list is never enumerated --- we only test membership in it.
+Several pieces of the final pipeline replaced a first attempt that failed for an instructive reason.
 
 \textbf{Query curation.} Once retrieval was in place we found that 344 of the 1000 subset queries had a top-100 with no linkable entities at all, leaving the KG score undefined exactly where it was supposed to act. We replaced those queries with entity-bearing ones drawn from a larger candidate pool. Note the direction of the bias this introduces: the evaluation set is tilted \emph{in favour} of the KG signal, so the negative result should be read as ``even on KG-favourable queries, topological proximity does not help''.
+
+\textbf{Local triple store $\to$ SPARQL $\to$ local HDT.} Our first attempt at graph access was to download Wikidata and host it locally in a Java triple store (Blazegraph), so we could navigate it without network limits. Ingestion never completed: the working space needed to build the indices blew past the 5\,TB of disk we had available. We fell back to the public Wikidata SPARQL endpoint, which collapsed immediately on popular entities: even a minimal \texttt{COUNT} over a single hub (\texttt{?x wdt:P31 wd:Q5}, ``instances of \emph{human}'') exceeded the server's limit, and with it fell the whole fallback scheme we had designed around it. We finally switched to a pre-built HDT dump of Wikidata queried locally with \texttt{pyHDT}, where the same predicate-restricted counts go straight to a precomputed index and return in well under a millisecond, with no rate limits.
+
+\textbf{Wildcard $\to$ per-predicate export.} Our first edge exporter walked the whole dump with a wildcard triple iterator and filtered entity-to-entity statements in the loop. On a dump this size the iterator misbehaved in two ways at once: it \emph{over}-iterated (yielding far more triples than the file header declares) while genuine Q--Q edges were still \emph{missing} from its output --- an inflated traversal with missing data and no error raised. Restricting the iteration to one predicate at a time turned out to be exact: per-predicate counts match the HDT header, the run is deterministic and verifiable, and it yielded $\sim$471k more edges than the aborted wildcard run had written, for a final count of $661{,}471{,}158$.
+
+\textbf{BFS-N3 $\to$ meet-in-the-middle.} The proposal's natural reading --- precompute the full 3-hop neighbourhood of every seed by BFS --- timed out on 89\% of seeds in a dry run, including perfectly ordinary, low-degree entities. The cause is the cumulative wave explosion --- even when the seed is small, the second wave reaches tens of thousands of nodes and the third has to iterate millions of triples --- aggravated by the fact that our reachability is direction-agnostic, so the BFS walks the directed graph \emph{ignoring edge direction} and every wave can also flow backwards into popular targets. The fix came from noticing that the metric never needs the full neighbourhood, only the \emph{boolean} question ``is this document entity within 3 hops of this query entity?''. That question can be answered by precomputing 1-hop neighbourhoods alone ($\sim$93.5M rows) and meeting in the middle: distance~1 is a set lookup, distance~2 a set intersection, distance~3 a single indexed edge-probe between the two 1-hop sets. A hub's neighbour list is never enumerated --- we only test membership in it.
 
 \end{document}

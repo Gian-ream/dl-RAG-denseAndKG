@@ -26,3 +26,5 @@ __pycache__/
 
 # Local scratch / temporary work
 .tmp/
+# Local archive staged for Drive upload
+data.zip
