@@ -114,7 +114,7 @@
 | Libreria | Uso | Note |
 |----------|-----|------|
 | **Contriever** (facebook/contriever) | Embedding dei passaggi e delle query | Modello unsupervised dense retriever di Meta |
-| **FAISS** (faiss-cpu / faiss-gpu) | Indicizzazione e ricerca nearest-neighbor | Usato per retrieval efficiente sui vettori Contriever |
+| **FAISS** (faiss-cpu / faiss-gpu) | Indicizzazione e ricerca nearest-neighbor | Usato per retrieval efficiente sui vettori Contriever. La build GPU non ha wheel pip per Windows: vive in una miniconda separata e viene "bridgata" nella venv uv a runtime (`os.add_dll_directory` per le DLL + insert in `sys.path` per il package) nei notebook 03–05; i path conda sono machine-specific |
 
 ### 3.2 Entity Linking
 | Libreria | Uso | Note |
@@ -190,12 +190,12 @@
 
 ### 4.5 ReFiNed V1 — problemi di compatibilità e workaround
 - **Installazione**: ReFiNed non è su PyPI. Si installa da GitHub: `pip install https://github.com/amazon-science/ReFinED/archive/refs/tags/V1.zip`
-- **Bug 1 — `strftime("%s")` su Windows**: il downloader S3 (`refined/resource_management/aws.py`) usa `strftime("%s")` che è un'estensione Unix-only. Su Windows causa `ValueError: Invalid format string`. **Fix**: monkey-patch a runtime che sovrascrive `S3Manager.download_file_if_needed` usando `.timestamp()` (cross-platform).
+- **Bug 1 — `strftime("%s")` su Windows**: il downloader S3 (`refined/resource_management/aws.py`) usa `strftime("%s")` che è un'estensione Unix-only e su Windows rompe il download (osservato `ValueError: Invalid format string`; la docstring di `patch_refined.py` e il notebook 02 documentano anche file scaricati a 0 byte). **Fix finale**: patch a livello sorgente via `patch_refined.py` — `strftime("%s")` → `.timestamp()` (cross-platform). La prima iterazione era un monkey-patch a runtime di `S3Manager.download_file_if_needed`, poi sostituita dalla patch a sorgente.
 - **Bug 2 — `add_special_tokens` con transformers recenti**: ReFiNed passa `add_special_tokens=False` come kwarg a `AutoTokenizer.from_pretrained()` in più punti (`general_utils.py:127`, `data_lookups.py:80`). Nelle versioni recenti di `transformers` (≥4.x), `add_special_tokens` è un metodo del tokenizer e passarlo come kwarg causa `AttributeError`. **Fix**: patch sorgente che rimuove il kwarg.
 - **Bug 3 — `re.compile()` senza raw string**: `loaders.py` usa escape sequences in pattern regex senza `r"..."`, causando `SyntaxWarning` in Python 3.12+. **Fix**: patch sorgente che aggiunge il prefisso `r`.
 - **Entity set `wikidata` vs `wikipedia`**: `entity_set="wikidata"` scarica ~20 GB di embeddings pre-calcolati per 33M entità. `entity_set="wikipedia"` (~6M entità) è molto più leggero (~9 GB totali) e sufficiente per NQ-open (tutte le risposte provengono da Wikipedia). Restituisce comunque QID Wikidata.
 - **Cache locale**: i dati del modello vengono salvati in `data/refined_cache/` (gitignored) per evitare re-download.
-- **Patch applicati a livello sorgente** tramite `scripts/tooling/patch_refined.py` — lo script modifica direttamente i file installati nella venv. Va ri-eseguito dopo `uv sync` o reinstallazione del pacchetto. I notebook `02_nq_filtering.ipynb` e `04_answer_preparation.ipynb` invocano lo script automaticamente prima del caricamento del modello.
+- **Patch applicati a livello sorgente** tramite `scripts/tooling/patch_refined.py` — lo script modifica direttamente i file installati nella venv. Va ri-eseguito dopo `uv sync` o reinstallazione del pacchetto. I notebook `02_nq_filtering.ipynb`, `04_answer_preparation.ipynb` e `05_answer_curation.ipynb` (aggiunto il 2026-06-11) invocano lo script automaticamente prima del caricamento del modello — così ogni notebook che carica ReFinED è self-healing dopo un reinstall.
 
 ### 4.6 Rate limiting SPARQL
 - L'endpoint Wikidata ha limiti di rate. Sara necessario:
@@ -405,6 +405,29 @@ Prima init: ~5 min, ~10-15 GB su disco. Init successive: ~1s (skip rebuild). I w
 9. **Artefatti non catalogati**: aggiunta sezione §5 al dizionario per legacy (`n3/hop_sets_t5000`, `n3/banned_hubs_t5000` da `build_n3.py`), orfani (`db/edges_v1_wildcard_partial.parquet`, 4.65 GB, referenziato da nessun codice — candidato a cancellazione) e infrastruttura fuori scope (`Wikidata_service/`, `refined_cache/`, intermedi di 01/02/04).
 
 **Nota operativa**: anche CLAUDE.md riportava "~14.7 GB" per `data/` — corretto nello stesso intervento (~660 GB con breakdown; il 14.7 GB resta citato come dimensione del solo download kagglehub iniziale). Aggiunta inoltre la riga `DATA_DICTIONARY.md` alla tabella "Conoscenza di Progetto" di CLAUDE.md.
+
+---
+
+### 4.13 Verifica bug/patch dell'appendice della relazione: note, codice, tracce web (2026-06-11)
+
+**Contesto**. Verifica incrociata di tutti i bug e workaround citati nell'appendice della relazione (Environment + What we tried first) su tre piani: registrazione in queste note, corrispondenza con il codice (`patch_refined.py`, notebook), tracce pubbliche sul web.
+
+**Esito**: tutti i claim sono backed dalle note e dal codice. Tracce pubbliche trovate:
+- `add_special_tokens` kwarg: **traccia esatta** su ReFinED stesso (issue #31, RobertaTokenizer, aperta) + transformers #36032 (stesso meccanismo, regression dichiarata).
+- `strftime("%s")` Unix-only: classe ben documentata (bpo-12750, TensorBoard #1895); nessuna issue specifica sul repo ReFinED.
+- regex senza raw string: classe documentata (Python 3.12 promuove invalid escape a `SyntaxWarning`); nessuna issue ReFinED.
+- pyHDT su Windows: README upstream richiede gcc/clang + python-dev (toolchain Unix); repo **archiviato da aprile 2020**.
+- Auto-build indice HDT: documentato nel README pyHDT ("missing indexes are generated automatically"); il fatto che avvenga in RAM (OOM su cap 32 GB WSL2) è osservazione nostra (§6.1).
+- faiss-gpu: binari GPU su PyPI discontinuati, GPU solo via conda (INSTALL.md ufficiale) — conferma "no Windows pip wheel".
+- Timeout SPARQL: deadline 60 s ufficiale (Wikidata query limits; Phabricator T179879 chiede timeout estesi — pain point noto).
+- Blazegraph: journal WDQS ~1.1 TB a 15B triple, load multi-giorno e corruzioni documentate (liste Wikimedia, thread bigdata).
+- **Bug wildcard iterator (§4.8): nessuna traccia pubblica esatta** — la più vicina è pyHDT issue #5 (conteggi errati/triple mancanti su HDT da 28B triple, chiusa senza risoluzione). Resta un finding originale del progetto, correttamente presentato come tale in relazione.
+
+**Discrepanze trovate e corrette**:
+1. Il notebook 05 caricava ReFinED **senza** invocare `patch_refined.py` (lo facevano solo 02 e 04) — il claim della relazione "the notebooks that load the model invoke it automatically" era impreciso. Fix (dell'utente): invocazione del patch script aggiunta alla cella di caricamento di 05. Ora il claim è vero.
+2. Relazione: i path conda machine-specific del bridge faiss-gpu vanno adattati nei notebook **03–05**, non solo in 04 (corretto in `main.tex`).
+3. §4.5 Bug 1 descriveva il fix come "monkey-patch a runtime" — residuo della prima iterazione; allineato alla patch a sorgente effettiva.
+4. Il bridge miniconda/faiss-gpu non era documentato in queste note — aggiunto alla riga FAISS di §3.1.
 
 ---
 
