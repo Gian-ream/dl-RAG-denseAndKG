@@ -1,0 +1,14 @@
+PREFIX wd:  <http://www.wikidata.org/entity/>
+PREFIX wdt: <http://www.wikidata.org/prop/direct/>
+
+# Test query: count neighbours of Q5 per predicate.
+# Predicates: first 100 from queryPredicati.csv.
+# Direction: outgoing UNION incoming (non-directional graph).
+# Target filter: only Wikidata items (Q...), no literals.
+
+SELECT ?p (COUNT(?n) AS ?cnt) WHERE {
+  VALUES ?p { wdt:P6 wdt:P10 wdt:P14 wdt:P15 wdt:P16 wdt:P17 wdt:P18 wdt:P19 wdt:P20 wdt:P21 wdt:P22 wdt:P25 wdt:P26 wdt:P27 wdt:P30 wdt:P31 wdt:P35 wdt:P36 wdt:P37 wdt:P38 wdt:P39 wdt:P40 wdt:P41 wdt:P47 wdt:P50 wdt:P51 wdt:P53 wdt:P54 wdt:P57 wdt:P58 wdt:P59 wdt:P61 wdt:P65 wdt:P66 wdt:P69 wdt:P78 wdt:P81 wdt:P84 wdt:P85 wdt:P86 wdt:P87 wdt:P88 wdt:P91 wdt:P92 wdt:P94 wdt:P97 wdt:P98 wdt:P101 wdt:P102 wdt:P103 wdt:P105 wdt:P106 wdt:P108 wdt:P109 wdt:P110 wdt:P111 wdt:P112 wdt:P113 wdt:P114 wdt:P115 wdt:P117 wdt:P118 wdt:P119 wdt:P121 wdt:P122 wdt:P123 wdt:P126 wdt:P127 wdt:P128 wdt:P129 wdt:P131 wdt:P135 wdt:P136 wdt:P137 wdt:P138 wdt:P140 wdt:P141 wdt:P143 wdt:P144 wdt:P149 wdt:P150 wdt:P154 wdt:P155 wdt:P156 wdt:P157 wdt:P158 wdt:P159 wdt:P161 wdt:P162 wdt:P163 wdt:P166 wdt:P167 wdt:P169 wdt:P170 wdt:P171 wdt:P172 wdt:P175 wdt:P176 wdt:P177 wdt:P178 }
+  { wd:Q5 ?p ?n . } UNION { ?n ?p wd:Q5 . }
+  FILTER(STRSTARTS(STR(?n), "http://www.wikidata.org/entity/Q"))
+}
+GROUP BY ?p

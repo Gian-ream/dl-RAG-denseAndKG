@@ -1,0 +1,1000 @@
+{"query_id": "0", "condition": "retrieval", "response": "Ray Charles", "gold_answers": ["Ray Charles"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "1", "condition": "retrieval", "response": "Meredith Grey", "gold_answers": ["Miranda Bailey"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "2", "condition": "retrieval", "response": "Catholicism", "gold_answers": ["Christianity"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "3", "condition": "retrieval", "response": "Kelli Berglund", "gold_answers": ["Paris Berelc"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "4", "condition": "retrieval", "response": "Moscow", "gold_answers": ["Trans - Siberian Railway"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "5", "condition": "retrieval", "response": "Amy Poehler", "gold_answers": ["Danielle Bisutti"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "6", "condition": "retrieval", "response": "Bruce Springsteen", "gold_answers": ["Bruce Springsteen"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "7", "condition": "retrieval", "response": "Cullen Bohannon", "gold_answers": ["Anson Adams Mount IV"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "8", "condition": "retrieval", "response": "Cronulla Sharks", "gold_answers": ["North Queensland Cowboys"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "9", "condition": "retrieval", "response": "Brian Steele", "gold_answers": ["Brian Steele"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "10", "condition": "retrieval", "response": "Paul Potts", "gold_answers": ["Simon Cowell"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "11", "condition": "retrieval", "response": "Ichiro Suzuki", "gold_answers": ["Fernando Valenzuela"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "12", "condition": "retrieval", "response": "Lotso", "gold_answers": ["Ned Beatty"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "13", "condition": "retrieval", "response": "Dermot Morgan", "gold_answers": ["Trevor Howard"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "14", "condition": "retrieval", "response": "James Brown", "gold_answers": ["James Brown"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "15", "condition": "retrieval", "response": "Sean Bean", "gold_answers": ["Harry Lloyd"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "16", "condition": "retrieval", "response": "Nina Simone", "gold_answers": ["Cy Grant"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "17", "condition": "retrieval", "response": "Mary Jane Watson", "gold_answers": ["Ororo Munroe"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "18", "condition": "retrieval", "response": "H.R. Bhardwaj", "gold_answers": ["The Attorney General for India"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "19", "condition": "retrieval", "response": "Alex Borstein", "gold_answers": ["Alex Borstein"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "20", "condition": "retrieval", "response": "Frank D'Souza", "gold_answers": ["John Mathai"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "21", "condition": "retrieval", "response": "First Sunday in May", "gold_answers": ["the second Sunday in May"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "22", "condition": "retrieval", "response": "Sheridan Smith", "gold_answers": ["Sheridan Smith"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "23", "condition": "retrieval", "response": "Steven Hill", "gold_answers": ["Steven Hill"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "24", "condition": "retrieval", "response": "John Adams", "gold_answers": ["John Adams"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "25", "condition": "retrieval", "response": "Jerry Lee Lewis", "gold_answers": ["Waylon Malloy Payne"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "26", "condition": "retrieval", "response": "Christianity", "gold_answers": ["Orthodoxy"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "27", "condition": "retrieval", "response": "Pam Beasley", "gold_answers": ["Holly Flax"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "28", "condition": "retrieval", "response": "Odie", "gold_answers": ["Odie"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "29", "condition": "retrieval", "response": "Franklin Delano Roosevelt", "gold_answers": ["President Franklin D. Roosevelt"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "30", "condition": "retrieval", "response": "International Committee of the Red Cross", "gold_answers": ["The Geneva Convention"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "31", "condition": "retrieval", "response": "Althea Gibson", "gold_answers": ["Althea Gibson"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "32", "condition": "retrieval", "response": "Thomas Jefferson", "gold_answers": ["Spain"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "33", "condition": "retrieval", "response": "David Rothkopf", "gold_answers": ["Richard N. Haass"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "34", "condition": "retrieval", "response": "James R Schlesinger", "gold_answers": ["Audie Leon Murphy"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "35", "condition": "retrieval", "response": "Jake T. Austin", "gold_answers": ["Samonas"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "36", "condition": "retrieval", "response": "Caroline Wozniacki", "gold_answers": ["Angelique Kerber"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "37", "condition": "retrieval", "response": "Central America", "gold_answers": ["central Mexico"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "38", "condition": "retrieval", "response": "Sarah Chalke", "gold_answers": ["Beth Smith"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "39", "condition": "retrieval", "response": "Emma Watson", "gold_answers": ["Emma Watson"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "40", "condition": "retrieval", "response": "Poussey Washington", "gold_answers": ["Samira Wiley"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "41", "condition": "retrieval", "response": "Gender, Suling, Rebab, Siter/Celemp", "gold_answers": ["percussive"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "42", "condition": "retrieval", "response": "Germany", "gold_answers": ["Invasion of Poland"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "43", "condition": "retrieval", "response": "Nicolaus Copernicus", "gold_answers": ["Anaximander"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "44", "condition": "retrieval", "response": "Catherine Earnshaw", "gold_answers": ["Hareton Earnshaw"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "45", "condition": "retrieval", "response": "The Inbetweeners Movie", "gold_answers": ["Malia"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "46", "condition": "retrieval", "response": "Kaley Cuoco", "gold_answers": ["Melissa Ivy Rauch"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "47", "condition": "retrieval", "response": "Nat King Cole", "gold_answers": ["Nat King Cole"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "48", "condition": "retrieval", "response": "Ontario got rid of grade 13 in 2003", "gold_answers": ["1988"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "49", "condition": "retrieval", "response": "1957", "gold_answers": ["beginning of 1957"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "50", "condition": "retrieval", "response": "Easter Island", "gold_answers": ["encountered it on Easter Sunday"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "51", "condition": "retrieval", "response": "Lionel Barrymore", "gold_answers": ["Lionel Barrymore"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "52", "condition": "retrieval", "response": "Artaxerxes I of Persia", "gold_answers": ["Cyrus the Great"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "53", "condition": "retrieval", "response": "Some Enchanted Evening", "gold_answers": ["Ezio Pinza"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "54", "condition": "retrieval", "response": "Whitney Houston", "gold_answers": ["crossover"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "55", "condition": "retrieval", "response": "Robin Williams", "gold_answers": ["Mara Elizabeth Wilson"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "56", "condition": "retrieval", "response": "Andy Bernard", "gold_answers": ["Stephen Collins"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "57", "condition": "retrieval", "response": "Pachacuti", "gold_answers": ["Inca rulers"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "58", "condition": "retrieval", "response": "1600 Pennsylvania Avenue NW", "gold_answers": ["1600 Pennsylvania Avenue NW"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "59", "condition": "retrieval", "response": "Rockhampton", "gold_answers": ["The Fitzroy River Barrage"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "60", "condition": "retrieval", "response": "Hollie Webb", "gold_answers": ["United States"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "61", "condition": "retrieval", "response": "Lily Winters", "gold_answers": ["Christel Khalil"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "62", "condition": "retrieval", "response": "Tom Felton", "gold_answers": ["Jason Isaacs"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "63", "condition": "retrieval", "response": "Will Kemp", "gold_answers": ["Warren Christie"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "64", "condition": "retrieval", "response": "Robert", "gold_answers": ["Peter MacDougall"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "65", "condition": "retrieval", "response": "Tokyo", "gold_answers": ["Tokyo"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "66", "condition": "retrieval", "response": "Mexica", "gold_answers": ["The Aztec"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "67", "condition": "retrieval", "response": "Lucy Jordan", "gold_answers": ["Shel Silverstein"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "68", "condition": "retrieval", "response": "One Day University", "gold_answers": ["Matisyahu"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "69", "condition": "retrieval", "response": "1939", "gold_answers": ["At the 12th Academy Awards"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "70", "condition": "retrieval", "response": "Tokyo", "gold_answers": ["Paris"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "71", "condition": "retrieval", "response": "Northern Italy", "gold_answers": ["northern Italy"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "72", "condition": "retrieval", "response": "Harold Faltermeyer", "gold_answers": ["Harold Faltermeyer"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "73", "condition": "retrieval", "response": "Harris County Toll Road Authority", "gold_answers": ["Harris County"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "74", "condition": "retrieval", "response": "Tua Tagovailoa", "gold_answers": ["Alabama Crimson Tide"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "75", "condition": "retrieval", "response": "Kobe Bryant", "gold_answers": ["Vlade Divac"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "76", "condition": "retrieval", "response": "Togolese franc", "gold_answers": ["West African CFA franc"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "77", "condition": "retrieval", "response": "Tina Turner", "gold_answers": ["Creedence Clearwater Revival"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "78", "condition": "retrieval", "response": "Birmingham", "gold_answers": ["TBD"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "79", "condition": "retrieval", "response": "The Tin Woodman", "gold_answers": ["the Tin Man"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "80", "condition": "retrieval", "response": "Spain", "gold_answers": ["Federal Republic of Central America"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "81", "condition": "retrieval", "response": "Josh Dallas", "gold_answers": ["James Dornan"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "82", "condition": "retrieval", "response": "Muhammadu Buhari", "gold_answers": ["Muhammadu Buhari"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "83", "condition": "retrieval", "response": "Carbon Dioxide", "gold_answers": ["Oxygen"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "84", "condition": "retrieval", "response": "Jim Croce", "gold_answers": ["Jim Croce"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "85", "condition": "retrieval", "response": "Ghana", "gold_answers": ["England"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "86", "condition": "retrieval", "response": "Tokyo", "gold_answers": ["Tokyo"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "87", "condition": "retrieval", "response": "Ben Affleck", "gold_answers": ["Jon Voight"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "88", "condition": "retrieval", "response": "David Beckham", "gold_answers": ["Andy Murray"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "89", "condition": "retrieval", "response": "Jabba the Hutt", "gold_answers": ["Larry Ward"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "90", "condition": "retrieval", "response": "Mikhail Kolyada", "gold_answers": ["Yuzuru Hanyu"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "91", "condition": "retrieval", "response": "UKIP", "gold_answers": ["Valerie Vaz"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "92", "condition": "retrieval", "response": "Germany women's national football team", "gold_answers": ["United States"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "93", "condition": "retrieval", "response": "Burnley F.C.", "gold_answers": ["West Ham United"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "94", "condition": "retrieval", "response": "George H.W. Bush", "gold_answers": ["George Herbert Walker Bush"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "95", "condition": "retrieval", "response": "Rubén Amaro Jr.", "gold_answers": ["Niko Guardado"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "96", "condition": "retrieval", "response": "James Meredith", "gold_answers": ["James Howard Meredith"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "97", "condition": "retrieval", "response": "Leif Garrett", "gold_answers": ["Joe Don Baker"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "98", "condition": "retrieval", "response": "Raj Chandra Das", "gold_answers": ["Babughat"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "99", "condition": "retrieval", "response": "Plato", "gold_answers": ["Karl Marx"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "100", "condition": "retrieval", "response": "Albert Hague", "gold_answers": ["Dr. Seuss"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "101", "condition": "retrieval", "response": "Selina Meyer", "gold_answers": ["Vice President"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "102", "condition": "retrieval", "response": "Giles Matthey", "gold_answers": ["Giles Matthey"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "103", "condition": "retrieval", "response": "Congress", "gold_answers": ["the legislature"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "104", "condition": "retrieval", "response": "Benedict Cumberbatch", "gold_answers": ["Benedict Cumberbatch"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "105", "condition": "retrieval", "response": "Stan and Jan Berenstain", "gold_answers": ["Mike Berenstain"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "106", "condition": "retrieval", "response": "1918", "gold_answers": ["September 11 attacks"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "107", "condition": "retrieval", "response": "Resident Evil: Retribution", "gold_answers": ["Resident Evil ( 2002 )"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "108", "condition": "retrieval", "response": "Paul Wesley", "gold_answers": ["Paul Wesley"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "109", "condition": "retrieval", "response": "Charlemagne", "gold_answers": ["Theodosius I"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "110", "condition": "retrieval", "response": "Ricky Martin", "gold_answers": ["Terry Sweeney"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "111", "condition": "retrieval", "response": "Michael Phelps", "gold_answers": ["Michael Phelps"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "112", "condition": "retrieval", "response": "Robert Hertzberg", "gold_answers": ["Dianne Feinstein"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "113", "condition": "retrieval", "response": "Michael Bellusci", "gold_answers": ["Stuart Elliott"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "114", "condition": "retrieval", "response": "Jess Smith", "gold_answers": ["Jess Smith"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "115", "condition": "retrieval", "response": "Neil Patrick Harris", "gold_answers": ["Joe Nieves"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "116", "condition": "retrieval", "response": "Macy Gray", "gold_answers": ["Macy Gray"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "117", "condition": "retrieval", "response": "10 miles", "gold_answers": ["10 miles"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "118", "condition": "retrieval", "response": "Enceladus", "gold_answers": ["Enceladus"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "119", "condition": "retrieval", "response": "Emma Thompson", "gold_answers": ["Emma Thompson"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "120", "condition": "retrieval", "response": "San Francisco", "gold_answers": ["San Francisco , California"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "121", "condition": "retrieval", "response": "1994", "gold_answers": ["Super Bowl XXIX"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "122", "condition": "retrieval", "response": "Orson Welles", "gold_answers": ["Orson Welles"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "123", "condition": "retrieval", "response": "Karolyn Grimes", "gold_answers": ["Karolyn Grimes"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "124", "condition": "retrieval", "response": "The Graduate", "gold_answers": ["The Graduate"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "125", "condition": "retrieval", "response": "Luxembourg", "gold_answers": ["Luxembourg"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "126", "condition": "retrieval", "response": "Atomic Bomb", "gold_answers": ["the atomic bomb"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "127", "condition": "retrieval", "response": "Audrey Hepburn", "gold_answers": ["Marilyn Monroe"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "128", "condition": "retrieval", "response": "Governor Thomas Hutchinson", "gold_answers": ["Adams"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "129", "condition": "retrieval", "response": "The Penguins", "gold_answers": ["the Penguins"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "130", "condition": "retrieval", "response": "Lexie Grey", "gold_answers": ["Lexie"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "131", "condition": "retrieval", "response": "St. Louis", "gold_answers": ["Roger Dean Stadium"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "132", "condition": "retrieval", "response": "2.0L", "gold_answers": ["2.0 - litre"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "133", "condition": "retrieval", "response": "Ken Jennings", "gold_answers": ["Ken Jennings"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "134", "condition": "retrieval", "response": "Nickel-Metal Hydride", "gold_answers": ["AA Battery"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "135", "condition": "retrieval", "response": "George Michael", "gold_answers": ["`` Vogue ''"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "136", "condition": "retrieval", "response": "13\" MacBook Pro, 15\" MacBook Pro", "gold_answers": ["17 - inch", "13 - inch", "15 - inch"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "137", "condition": "retrieval", "response": "India", "gold_answers": ["Pakistan"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "138", "condition": "retrieval", "response": "Xander Cook", "gold_answers": ["Paul Telfer"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "139", "condition": "retrieval", "response": "Duke", "gold_answers": ["Maryland"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "140", "condition": "retrieval", "response": "Maroon 5", "gold_answers": ["Maroon 5"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "141", "condition": "retrieval", "response": "Tom Selleck", "gold_answers": ["Lorraine Bracco"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "142", "condition": "retrieval", "response": "Dave Rennie", "gold_answers": ["Ivan Cleary"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "143", "condition": "retrieval", "response": "New England Patriots", "gold_answers": ["the Patriots"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "144", "condition": "retrieval", "response": "Matt Bryant", "gold_answers": ["Matt Prater"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "145", "condition": "retrieval", "response": "George Smiley", "gold_answers": ["Haydon"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "146", "condition": "retrieval", "response": "Greenland's Grand Canyon", "gold_answers": ["Hells Canyon"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "147", "condition": "retrieval", "response": "Judy Garland", "gold_answers": ["Judy Garland"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "148", "condition": "retrieval", "response": "Maine", "gold_answers": ["Maine"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "149", "condition": "retrieval", "response": "Naomi Watts", "gold_answers": ["Naomi Watts"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "150", "condition": "retrieval", "response": "Mike Modano", "gold_answers": ["Neal Broten"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "151", "condition": "retrieval", "response": "US Airways", "gold_answers": ["American Airlines"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "152", "condition": "retrieval", "response": "Anna Kendrick", "gold_answers": ["Hailee Steinfeld"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "153", "condition": "retrieval", "response": "Carly Manning", "gold_answers": ["Crystal Chappell"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "154", "condition": "retrieval", "response": "Samuel Pepys", "gold_answers": ["Samuel Pepys"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "155", "condition": "retrieval", "response": "New Delhi railway station", "gold_answers": ["Delhi Junction"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "156", "condition": "retrieval", "response": "Warner Bros.", "gold_answers": ["Warner Bros."], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "157", "condition": "retrieval", "response": "Gupta dynasty", "gold_answers": ["Buddhism"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "158", "condition": "retrieval", "response": "Ortolan bunting", "gold_answers": ["Ortolan"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "159", "condition": "retrieval", "response": "Lofty", "gold_answers": ["Jasmine Burrows"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "160", "condition": "retrieval", "response": "Marsha P. Johnson", "gold_answers": ["Johnson"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "161", "condition": "retrieval", "response": "Dutch oven", "gold_answers": ["Dutch process"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "162", "condition": "retrieval", "response": "1978", "gold_answers": ["1978"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "163", "condition": "retrieval", "response": "Jennifer Aniston", "gold_answers": ["June Gable"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "164", "condition": "retrieval", "response": "Keala Settle", "gold_answers": ["Gayle Rankin"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "165", "condition": "retrieval", "response": "Jackie Earle Haley", "gold_answers": ["Robert Barton Englund"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "166", "condition": "retrieval", "response": "San Francisco 49ers", "gold_answers": ["San Francisco 49ers"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "167", "condition": "retrieval", "response": "England", "gold_answers": ["West Germany"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "168", "condition": "retrieval", "response": "John Pope", "gold_answers": ["Confederate"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "169", "condition": "retrieval", "response": "Peter Cullen", "gold_answers": ["Peter Claver Cullen"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "170", "condition": "retrieval", "response": "French", "gold_answers": ["France"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "171", "condition": "retrieval", "response": "It's a Mad, Mad, Mad, Mad World", "gold_answers": ["British band Tears for Fears"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "172", "condition": "retrieval", "response": "Richard Harris", "gold_answers": ["Richard St John Harris"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "173", "condition": "retrieval", "response": "Benedict Cumberbatch", "gold_answers": ["Benedict Cumberbatch"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "174", "condition": "retrieval", "response": "League of Nations", "gold_answers": ["maintain world peace"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "175", "condition": "retrieval", "response": "Channel 4's the state", "gold_answers": ["Spain"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "176", "condition": "retrieval", "response": "Stuart Binny", "gold_answers": ["Shane Warne"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "177", "condition": "retrieval", "response": "Radio City Music Hall", "gold_answers": ["Dolby Theatre"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "178", "condition": "retrieval", "response": "Charlie Hunnam", "gold_answers": ["Tommy Flanagan"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "179", "condition": "retrieval", "response": "Marian Keyes", "gold_answers": ["The Break ( 2017 )"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "180", "condition": "retrieval", "response": "2011", "gold_answers": ["2016 NFC Wild Card Playoffs"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "181", "condition": "retrieval", "response": "Liam Neeson", "gold_answers": ["Liam Neeson"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "182", "condition": "retrieval", "response": "Sissy Spacek", "gold_answers": ["Sissy Spacek"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "183", "condition": "retrieval", "response": "Germany", "gold_answers": ["Germany"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "184", "condition": "retrieval", "response": "Thomas Jefferson", "gold_answers": ["Thomas Jefferson"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "185", "condition": "retrieval", "response": "Alfred Wegener", "gold_answers": ["Alfred Wegener"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "186", "condition": "retrieval", "response": "Versailles", "gold_answers": ["the Tuileries Palace"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "187", "condition": "retrieval", "response": "Irish", "gold_answers": ["Scottish"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "188", "condition": "retrieval", "response": "Matt Milne", "gold_answers": ["Iain Glen"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "189", "condition": "retrieval", "response": "Mila Kunis", "gold_answers": ["Lacey Chabert"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "190", "condition": "retrieval", "response": "Julia Ward Howe", "gold_answers": ["Julia Ward Howe"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "191", "condition": "retrieval", "response": "Clive Dunn", "gold_answers": ["Sam Elliott"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "192", "condition": "retrieval", "response": "Nandan Nilekani", "gold_answers": ["Nandan Nilekani"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "193", "condition": "retrieval", "response": "Love Is All Around", "gold_answers": ["Sonny Curtis"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "194", "condition": "retrieval", "response": "The Black Shield represents Nigeria’s fertile soil, while the", "gold_answers": ["Nigeria 's fertile soil"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "195", "condition": "retrieval", "response": "Dusty Springfield", "gold_answers": ["Noel Harrison"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "196", "condition": "retrieval", "response": "Lorraine Hansberry", "gold_answers": ["Lorraine Hansberry"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "197", "condition": "retrieval", "response": "Hector Elizondo", "gold_answers": ["Robert Forster"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "198", "condition": "retrieval", "response": "Aaron Staton", "gold_answers": ["Aaron Staton"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "199", "condition": "retrieval", "response": "Downtown Phoenix", "gold_answers": ["downtown Phoenix"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "200", "condition": "retrieval", "response": "Nile River", "gold_answers": ["northeastern Africa"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "201", "condition": "retrieval", "response": "Ray Romano", "gold_answers": ["Sherri Shepherd"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "202", "condition": "retrieval", "response": "Ted Ross", "gold_answers": ["Bert Lahr"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "203", "condition": "retrieval", "response": "Chris Atkinson", "gold_answers": ["Lewis Hamilton"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "204", "condition": "retrieval", "response": "Aristocrats", "gold_answers": ["Plato"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "205", "condition": "retrieval", "response": "China", "gold_answers": ["The Palatine Hill"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "206", "condition": "retrieval", "response": "Marla Adams", "gold_answers": ["Marla Adams"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "207", "condition": "retrieval", "response": "Bobby Sherman", "gold_answers": ["Curt Massey"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "208", "condition": "retrieval", "response": "Maurice LaMarche", "gold_answers": ["Rob Paulsen"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "209", "condition": "retrieval", "response": "Wreck-it Ralph", "gold_answers": ["Henry Jackman"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "210", "condition": "retrieval", "response": "Sally", "gold_answers": ["Rachel Blanchard"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "211", "condition": "retrieval", "response": "Reserved powers doctrine", "gold_answers": ["the Tenth Amendment"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "212", "condition": "retrieval", "response": "Johnny Storm", "gold_answers": ["Christopher Robert Evans"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "213", "condition": "retrieval", "response": "Olivia Dunham", "gold_answers": ["Selena Gomez"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "214", "condition": "retrieval", "response": "Idina Menzel", "gold_answers": ["Idina Menzel"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "215", "condition": "retrieval", "response": "2008", "gold_answers": ["Super Bowl XXXVI"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "216", "condition": "retrieval", "response": "Both Sides", "gold_answers": ["Great Britain"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "217", "condition": "retrieval", "response": "University of Nigeria, Nsukka", "gold_answers": ["The University of Nigeria"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "218", "condition": "retrieval", "response": "Maddie Poppe", "gold_answers": ["Trent Harmon"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "219", "condition": "retrieval", "response": "Green Bay Packers", "gold_answers": ["the Indian Packing Company"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "220", "condition": "retrieval", "response": "One Tree Hill", "gold_answers": ["Gavin DeGraw"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "221", "condition": "retrieval", "response": "Susan Banks", "gold_answers": ["Stacy Haiduk"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "222", "condition": "retrieval", "response": "Virginia Dalbeck", "gold_answers": ["Heather West"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "223", "condition": "retrieval", "response": "Belgrade", "gold_answers": ["Yugoslavia"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "224", "condition": "retrieval", "response": "Avery LeClaire", "gold_answers": ["Michelle Williams"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "225", "condition": "retrieval", "response": "Prajnesh Gunneswaran", "gold_answers": ["Gilles Simon"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "226", "condition": "retrieval", "response": "Robert Pattinson", "gold_answers": ["Peter Facinelli"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "227", "condition": "retrieval", "response": "Roy Plomley", "gold_answers": ["Roy Plomley"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "228", "condition": "retrieval", "response": "London", "gold_answers": ["Metropolitan Wharf in London"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "229", "condition": "retrieval", "response": "Holly Hunter", "gold_answers": ["Holly Hunter"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "230", "condition": "retrieval", "response": "Quebec", "gold_answers": ["Province of Quebec"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "231", "condition": "retrieval", "response": "Patty", "gold_answers": ["Laine MacNeil"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "232", "condition": "retrieval", "response": "Stephen Paddock", "gold_answers": ["Stephen Paddock"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "233", "condition": "retrieval", "response": "Jill Abbott", "gold_answers": ["Jess Walton"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "234", "condition": "retrieval", "response": "Britain's Got Talent", "gold_answers": ["Essex"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "235", "condition": "retrieval", "response": "Moira Kelly", "gold_answers": ["Lara Flynn Boyle"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "236", "condition": "retrieval", "response": "Uttar Pradesh", "gold_answers": ["Nepal"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "237", "condition": "retrieval", "response": "Emma Lazarus", "gold_answers": ["Emma Lazarus"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "238", "condition": "retrieval", "response": "Fiji", "gold_answers": ["96 years of British rule"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "239", "condition": "retrieval", "response": "The In-Laws (1979 film)", "gold_answers": ["Chicago"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "240", "condition": "retrieval", "response": "Abigail Deveraux", "gold_answers": ["Marci Miller"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "241", "condition": "retrieval", "response": "Green Acres", "gold_answers": ["Petticoat Junction"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "242", "condition": "retrieval", "response": "Coptic language", "gold_answers": ["Egyptian language"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "243", "condition": "retrieval", "response": "Bob Newhart", "gold_answers": ["George Robert Newhart"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "244", "condition": "retrieval", "response": "Mindy Kaling", "gold_answers": ["Disgust"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "245", "condition": "retrieval", "response": "Jared S. Gilmore", "gold_answers": ["Andrew J. West"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "246", "condition": "retrieval", "response": "Martin Sensmeier", "gold_answers": ["Martin Sensmeier"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "247", "condition": "retrieval", "response": "Chloe Hall", "gold_answers": ["Leven Alice Rambin"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "248", "condition": "retrieval", "response": "Hardanger fiddle", "gold_answers": ["sitar"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "249", "condition": "retrieval", "response": "Barry Miller", "gold_answers": ["Barry Miller"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "250", "condition": "retrieval", "response": "Union Army", "gold_answers": ["the Union"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "251", "condition": "retrieval", "response": "The Wreck of the Edmund Fitzgerald", "gold_answers": ["Gordon Lightfoot"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "252", "condition": "retrieval", "response": "George H. W. Bush", "gold_answers": ["Ronald Reagan"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "253", "condition": "retrieval", "response": "Gandalf", "gold_answers": ["the Balrog"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "254", "condition": "retrieval", "response": "Robert E. Lee", "gold_answers": ["Union victory"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "255", "condition": "retrieval", "response": "Golden State Warriors", "gold_answers": ["Golden State Warriors"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "256", "condition": "retrieval", "response": "Mount Washington", "gold_answers": ["Mount Mitchell"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "257", "condition": "retrieval", "response": "Pittsburgh Steelers", "gold_answers": ["Philadelphia Eagles"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "258", "condition": "retrieval", "response": "Robert Lee Scott Jr.", "gold_answers": ["Corporal Frank S. Scott"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "259", "condition": "retrieval", "response": "Cheryl Ladd", "gold_answers": ["Cheryl Ladd"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "260", "condition": "retrieval", "response": "Roo'ra", "gold_answers": ["Seo Taiji and Boys"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "261", "condition": "retrieval", "response": "Chennai", "gold_answers": ["Greater Chennai Corporation"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "262", "condition": "retrieval", "response": "New England Patriots", "gold_answers": ["The Giants"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "263", "condition": "retrieval", "response": "Saint Brendan the Navigator", "gold_answers": ["Saint Nicholas"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "264", "condition": "retrieval", "response": "Kuwait", "gold_answers": ["Kuwait"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "265", "condition": "retrieval", "response": "Napoleon III", "gold_answers": ["National Convention of France"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "266", "condition": "retrieval", "response": "Vernon Dalhart", "gold_answers": ["classical music"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "267", "condition": "retrieval", "response": "Mr. Krabs", "gold_answers": ["Antonio Banderas"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "268", "condition": "retrieval", "response": "March 22nd", "gold_answers": ["4th Sunday in Lent"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "269", "condition": "retrieval", "response": "Robert Englund", "gold_answers": ["Robert Barton Englund"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "270", "condition": "retrieval", "response": "Farooq Abdullah", "gold_answers": ["Satya Pal Malik"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "271", "condition": "retrieval", "response": "Russia", "gold_answers": ["Russia"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "272", "condition": "retrieval", "response": "Laldanmawia Ralte", "gold_answers": ["Lionel Messi"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "273", "condition": "retrieval", "response": "George Washington", "gold_answers": ["the Americans"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "274", "condition": "retrieval", "response": "1787", "gold_answers": ["1787 during the Philadelphia Convention"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "275", "condition": "retrieval", "response": "George Michael", "gold_answers": ["George Michael"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "276", "condition": "retrieval", "response": "Winston Churchill", "gold_answers": ["Winston Churchill"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "277", "condition": "retrieval", "response": "Lorraine Crosby", "gold_answers": ["Lorraine Crosby"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "278", "condition": "retrieval", "response": "Queens College, City University of New York", "gold_answers": ["Columbia University"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "279", "condition": "retrieval", "response": "Helena Bonham Carter", "gold_answers": ["Helena Bonham Carter"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "280", "condition": "retrieval", "response": "Charles Murphy", "gold_answers": ["William Magear Tweed"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "281", "condition": "retrieval", "response": "The president can be impeached by the House of Representatives but must be", "gold_answers": ["Congress"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "282", "condition": "retrieval", "response": "Portsmouth", "gold_answers": ["Portsmouth"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "283", "condition": "retrieval", "response": "Gus Bradley", "gold_answers": ["Doug Marrone"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "284", "condition": "retrieval", "response": "Liam Gallagher", "gold_answers": ["Noel Gallagher"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "285", "condition": "retrieval", "response": "Matt Stone and Trey Parker", "gold_answers": ["Robert Lopez"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "286", "condition": "retrieval", "response": "Amelia Sheppard", "gold_answers": ["Megan Hunt"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "287", "condition": "retrieval", "response": "Deo Vindice", "gold_answers": ["American poet Emma Lazarus"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "288", "condition": "retrieval", "response": "Panther De Ville", "gold_answers": ["Panther De Ville"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "289", "condition": "retrieval", "response": "Chief Justice Roberts", "gold_answers": ["the Chief Justice"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "290", "condition": "retrieval", "response": "Liverpool", "gold_answers": ["Liverpool"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "291", "condition": "retrieval", "response": "Saina Nehwal", "gold_answers": ["Saina Nehwal"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "292", "condition": "retrieval", "response": "Glastonbury", "gold_answers": ["Glastonbury"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "293", "condition": "retrieval", "response": "Israel", "gold_answers": ["Jacob"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "294", "condition": "retrieval", "response": "Eric Dane", "gold_answers": ["Eric Dane"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "295", "condition": "retrieval", "response": "Verne Troyer", "gold_answers": ["Fabiana Udenio"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "296", "condition": "retrieval", "response": "Bahamas", "gold_answers": ["Paradise Island"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "297", "condition": "retrieval", "response": "Ireland", "gold_answers": ["Port Logan"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "298", "condition": "retrieval", "response": "Steve Carlisle", "gold_answers": ["Steve Carlisle"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "299", "condition": "retrieval", "response": "Alex Polizzi", "gold_answers": ["Alex Polizzi"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "300", "condition": "retrieval", "response": "Selena Gomez", "gold_answers": ["Cristiano Ronaldo"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "301", "condition": "retrieval", "response": "Phillis Wheatley", "gold_answers": ["Anne Hutchinson"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "302", "condition": "retrieval", "response": "Chandler Massey", "gold_answers": ["Chandler Massey"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "303", "condition": "retrieval", "response": "Indian Institute of Science", "gold_answers": ["1909"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "304", "condition": "retrieval", "response": "Red Sea", "gold_answers": ["Egypt"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "305", "condition": "retrieval", "response": "Phillip Paley", "gold_answers": ["Jorma Taccone"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "306", "condition": "retrieval", "response": "Noah Centineo", "gold_answers": ["Annie Potts"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "307", "condition": "retrieval", "response": "The Director of the Federal Bureau of Investigation", "gold_answers": ["Director of the FBI"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "308", "condition": "retrieval", "response": "Han shot first", "gold_answers": ["Han Solo"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "309", "condition": "retrieval", "response": "Rorschach", "gold_answers": ["the Mighty Crusaders"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "310", "condition": "retrieval", "response": "Mao Zedong", "gold_answers": ["Mao Zedong"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "311", "condition": "retrieval", "response": "Zinedine Zidane", "gold_answers": ["Fabio Grosso"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "312", "condition": "retrieval", "response": "Maxwell Jenkins", "gold_answers": ["Maxwell Jenkins"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "313", "condition": "retrieval", "response": "General Assembly", "gold_answers": ["the North Carolina Senate"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "314", "condition": "retrieval", "response": "James Hong", "gold_answers": ["Jet Li"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "315", "condition": "retrieval", "response": "Lake Las Vegas", "gold_answers": ["the Las Vegas Wash"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "316", "condition": "retrieval", "response": "Lauren Conrad", "gold_answers": ["herself"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "317", "condition": "retrieval", "response": "John Hurt", "gold_answers": ["John Hurt"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "318", "condition": "retrieval", "response": "Mainland China", "gold_answers": ["in East Asia"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "319", "condition": "retrieval", "response": "John DiMaggio", "gold_answers": ["John William DiMaggio"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "320", "condition": "retrieval", "response": "Ben Affleck", "gold_answers": ["Ben Affleck"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "321", "condition": "retrieval", "response": "Bernard Hinault", "gold_answers": ["Bernard Hinault"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "322", "condition": "retrieval", "response": "Nobuo Uematsu", "gold_answers": ["Koji Kondo"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "323", "condition": "retrieval", "response": "Mary Austin", "gold_answers": ["Mary Austin"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "324", "condition": "retrieval", "response": "Kyle's mom is Christine Elise", "gold_answers": ["Mare Winningham"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "325", "condition": "retrieval", "response": "Bill Bixby", "gold_answers": ["Lou Ferrigno"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "326", "condition": "retrieval", "response": "Malavath Purna", "gold_answers": ["Malavath Purna"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "327", "condition": "retrieval", "response": "Jim Brown", "gold_answers": ["LaDainian Tomlinson"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "328", "condition": "retrieval", "response": "Donald May", "gold_answers": ["Poppy Montgomery"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "329", "condition": "retrieval", "response": "Elvira Bradshaw", "gold_answers": ["Elvia Allman"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "330", "condition": "retrieval", "response": "Melissa Joan Hart", "gold_answers": ["Stefanie Powers"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "331", "condition": "retrieval", "response": "Biecz", "gold_answers": ["India"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "332", "condition": "retrieval", "response": "Tom Kenny", "gold_answers": ["Thomas James Kenny"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "333", "condition": "retrieval", "response": "Emma Watson", "gold_answers": ["Kevin Kline"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "334", "condition": "retrieval", "response": "Clark Gable", "gold_answers": ["Frank Capra"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "335", "condition": "retrieval", "response": "Denise Crosby", "gold_answers": ["Kim Rhodes"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "336", "condition": "retrieval", "response": "Frederick Brownell", "gold_answers": ["Frederick Brownell"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "337", "condition": "retrieval", "response": "Paul Walker", "gold_answers": ["Paul William Walker IV"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "338", "condition": "retrieval", "response": "Joseph Cari Jr.", "gold_answers": ["Organization of American States"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "339", "condition": "retrieval", "response": "Shivaji", "gold_answers": ["Parliament of India"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "340", "condition": "retrieval", "response": "The monkeys in the lazy song are Bruno Mars and his friends.", "gold_answers": ["Poreotics"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "341", "condition": "retrieval", "response": "47", "gold_answers": ["38"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "342", "condition": "retrieval", "response": "Diana Taurasi", "gold_answers": ["Simone Biles"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "343", "condition": "retrieval", "response": "Harriet Beecher Stowe", "gold_answers": ["Harriet Beecher Stowe"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "344", "condition": "retrieval", "response": "Robert Yelverton Tyrrell", "gold_answers": ["Joseph Burr Tyrrell"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "345", "condition": "retrieval", "response": "Paul Daniels", "gold_answers": ["Irish"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "346", "condition": "retrieval", "response": "Tommy Djilas", "gold_answers": ["Danny Carroll"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "347", "condition": "retrieval", "response": "Black Panther", "gold_answers": ["Bucky Barnes"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "348", "condition": "retrieval", "response": "David Hewlett", "gold_answers": ["Teryl Rothery"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "349", "condition": "retrieval", "response": "Don Knotts", "gold_answers": ["Jesse Donald Knotts"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "350", "condition": "retrieval", "response": "Minnesota Vikings", "gold_answers": ["1972 Miami Dolphins"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "351", "condition": "retrieval", "response": "Southern American English", "gold_answers": ["immigrants from the British Isles"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "352", "condition": "retrieval", "response": "4.031 ±0.003 billion years", "gold_answers": ["northwestern Canada"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "353", "condition": "retrieval", "response": "Tammy Beaumont", "gold_answers": ["England"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "354", "condition": "retrieval", "response": "It's All Coming Back to Me Now", "gold_answers": ["Marion Raven"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "355", "condition": "retrieval", "response": "Pacific Ocean", "gold_answers": ["the North Pacific Ocean"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "356", "condition": "retrieval", "response": "New Orleans", "gold_answers": ["Lake Itasca"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "357", "condition": "retrieval", "response": "Chloe Bridges", "gold_answers": ["Chloe Bridges"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "358", "condition": "retrieval", "response": "Aurora", "gold_answers": ["Princess Aurora"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "359", "condition": "retrieval", "response": "Jeri Ryan", "gold_answers": ["Jeri Lynn Ryan"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "360", "condition": "retrieval", "response": "Eileen Davidson", "gold_answers": ["Stacy Haiduk"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "361", "condition": "retrieval", "response": "Clair Huxtable", "gold_answers": ["Phylicia Rashad"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "362", "condition": "retrieval", "response": "Bailey", "gold_answers": ["Jenna Boyd"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "363", "condition": "retrieval", "response": "Michael Bolton", "gold_answers": ["The Guess Who"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "364", "condition": "retrieval", "response": "San Diego", "gold_answers": ["the StubHub Center"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "365", "condition": "retrieval", "response": "Quincy Jones", "gold_answers": ["Quincy Jones"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "366", "condition": "retrieval", "response": "Kylian Mbappe", "gold_answers": ["France"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "367", "condition": "retrieval", "response": "Battle of San Jacinto", "gold_answers": ["Battle of the Alamo"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "368", "condition": "retrieval", "response": "Stubbs", "gold_answers": ["Talkeetna"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "369", "condition": "retrieval", "response": "Michael McElhatton", "gold_answers": ["Michael McElhatton"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "370", "condition": "retrieval", "response": "Grant Gustin", "gold_answers": ["Thomas Grant Gustin"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "371", "condition": "retrieval", "response": "Students for a Democratic Society", "gold_answers": ["Students for a Democratic Society"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "372", "condition": "retrieval", "response": "Thierry Henry", "gold_answers": ["Thierry Henry"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "373", "condition": "retrieval", "response": "Chris Montez", "gold_answers": ["Wilbert Harrison"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "374", "condition": "retrieval", "response": "John Hemphill", "gold_answers": ["Stephen Fuller Austin"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "375", "condition": "retrieval", "response": "Ted Levine", "gold_answers": ["Ted Levine"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "376", "condition": "retrieval", "response": "Dylan McDermott", "gold_answers": ["Dylan McDermott"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "377", "condition": "retrieval", "response": "Aidan Brosnan", "gold_answers": ["Patrick Connolly Bergin"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "378", "condition": "retrieval", "response": "Tilda Swinton", "gold_answers": ["Ezra Miller"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "379", "condition": "retrieval", "response": "Marble", "gold_answers": ["Makrana marble"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "380", "condition": "retrieval", "response": "Lindsay Lohan", "gold_answers": ["Lindsay Lohan"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "381", "condition": "retrieval", "response": "Mammootty", "gold_answers": ["Amitabh Bachchan"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "382", "condition": "retrieval", "response": "Off with their heads", "gold_answers": ["The Queen of Hearts"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "383", "condition": "retrieval", "response": "Christopher Meloni", "gold_answers": ["Lou Taylor Pucci"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "384", "condition": "retrieval", "response": "Godavari", "gold_answers": ["Godavari"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "385", "condition": "retrieval", "response": "Billy Crudup", "gold_answers": ["Jason Lee"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "386", "condition": "retrieval", "response": "Belgium", "gold_answers": ["Japan"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "387", "condition": "retrieval", "response": "The Band", "gold_answers": ["Robbie Robertson"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "388", "condition": "retrieval", "response": "Billie Jean King", "gold_answers": ["Billie Jean King"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "389", "condition": "retrieval", "response": "Thomas", "gold_answers": ["Teresa"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "390", "condition": "retrieval", "response": "Will Smith", "gold_answers": ["Tyra Banks"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "391", "condition": "retrieval", "response": "Robin Hood", "gold_answers": ["Michael Kamen"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "392", "condition": "retrieval", "response": "10000 BC", "gold_answers": ["mid-Cretaceous period"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "393", "condition": "retrieval", "response": "Daya Diaz", "gold_answers": ["Laura Gómez"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "394", "condition": "retrieval", "response": "Mr. Gold", "gold_answers": ["Robert Carlyle"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "395", "condition": "retrieval", "response": "South Africa", "gold_answers": ["South Africa"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "396", "condition": "retrieval", "response": "Virbhadra Singh", "gold_answers": ["Jai Ram Thakur"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "397", "condition": "retrieval", "response": "Gael Garcia Bernal", "gold_answers": ["Lola Kirke"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "398", "condition": "retrieval", "response": "North Dakota", "gold_answers": ["western North Dakota"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "399", "condition": "retrieval", "response": "Quebec", "gold_answers": ["Lower Canada"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "400", "condition": "retrieval", "response": "Hydroelectricity", "gold_answers": ["Hydroelectricity"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "401", "condition": "retrieval", "response": "Zoroastrianism", "gold_answers": ["Zoroastrians"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "402", "condition": "retrieval", "response": "Brian Cashman", "gold_answers": ["Brian McGuire Cashman"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "403", "condition": "retrieval", "response": "India", "gold_answers": ["Kisan Kanya"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "404", "condition": "retrieval", "response": "Kevin Pietersen", "gold_answers": ["Melbourne Stars"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "405", "condition": "retrieval", "response": "2008", "gold_answers": ["Following the 2007 season"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "406", "condition": "retrieval", "response": "Arsenal F.C.", "gold_answers": ["the Royal Arsenal complex"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "407", "condition": "retrieval", "response": "Jax Teller", "gold_answers": ["Agent June Stahl"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "408", "condition": "retrieval", "response": "Ray Wise", "gold_answers": ["Jonathan Breck"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "409", "condition": "retrieval", "response": "Harold Faltermeyer", "gold_answers": ["MCA Records"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "410", "condition": "retrieval", "response": "God", "gold_answers": ["exilic returnees"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "411", "condition": "retrieval", "response": "Simon Bradstreet", "gold_answers": ["Continental Congress"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "412", "condition": "retrieval", "response": "Kristen Johnston", "gold_answers": ["Kristen Johnston"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "413", "condition": "retrieval", "response": "James McAvoy", "gold_answers": ["Ashley Jensen"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "414", "condition": "retrieval", "response": "Kate Melton", "gold_answers": ["Hayley Kiyoko"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "415", "condition": "retrieval", "response": "Taylor Lautner", "gold_answers": ["Taylor Dooley"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "416", "condition": "retrieval", "response": "Josh Gad", "gold_answers": ["Ian McKellen"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "417", "condition": "retrieval", "response": "Philip Don Estridge", "gold_answers": ["Don Estridge"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "418", "condition": "retrieval", "response": "Don Shula", "gold_answers": ["Don Shula"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "419", "condition": "retrieval", "response": "Goodfellas", "gold_answers": ["Driving Miss Daisy"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "420", "condition": "retrieval", "response": "George \"Bugs\" Moran", "gold_answers": ["Irish American gang"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "421", "condition": "retrieval", "response": "Steve Smith", "gold_answers": ["Donovan Patton"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "422", "condition": "retrieval", "response": "Gal Gadot", "gold_answers": ["Gal Gadot"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "423", "condition": "retrieval", "response": "Aaron Copland", "gold_answers": ["Stephen Collins Foster"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "424", "condition": "retrieval", "response": "Barbara Gordon", "gold_answers": ["Yvonne Joyce Craig"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "425", "condition": "retrieval", "response": "Staples Center", "gold_answers": ["Downtown Los Angeles"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "426", "condition": "retrieval", "response": "Uzo Aduba", "gold_answers": ["John Singleton"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "427", "condition": "retrieval", "response": "Deadpool", "gold_answers": ["Wade Wilson"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "428", "condition": "retrieval", "response": "Capitalism", "gold_answers": ["the sixteenth century"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "429", "condition": "retrieval", "response": "Monasteries", "gold_answers": ["Cathedral schools"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "430", "condition": "retrieval", "response": "USA", "gold_answers": ["Germany"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "431", "condition": "retrieval", "response": "Arisa Cox", "gold_answers": ["Nick & Philippe Paquette"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "432", "condition": "retrieval", "response": "Lionel Messi", "gold_answers": ["James Rodríguez"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "433", "condition": "retrieval", "response": "Lily", "gold_answers": ["Audrey Marie Anderson"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "434", "condition": "retrieval", "response": "Sean Connery", "gold_answers": ["David Niven"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "435", "condition": "retrieval", "response": "2014", "gold_answers": ["after the 2013 model year"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "436", "condition": "retrieval", "response": "John Adams", "gold_answers": ["Donald Trump"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "437", "condition": "retrieval", "response": "Antonio Davis", "gold_answers": ["North Carolina"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "438", "condition": "retrieval", "response": "Hugh Brannum", "gold_answers": ["Hugh Brannum"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "439", "condition": "retrieval", "response": "Second Red Scare", "gold_answers": ["the United States"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "440", "condition": "retrieval", "response": "Chad Michael Murray", "gold_answers": ["Jackson Brundage"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "441", "condition": "retrieval", "response": "Hangeul", "gold_answers": ["Hangul"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "442", "condition": "retrieval", "response": "St. Jerome", "gold_answers": ["St Jerome"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "443", "condition": "retrieval", "response": "Hiram Bingham III", "gold_answers": ["Hiram Bingham"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "444", "condition": "retrieval", "response": "Usha Mehta", "gold_answers": ["Aruna Asaf Ali"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "445", "condition": "retrieval", "response": "atomic bomb", "gold_answers": ["Little Boy"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "446", "condition": "retrieval", "response": "18", "gold_answers": ["18 , Manchester City"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "447", "condition": "retrieval", "response": "France", "gold_answers": ["Real Madrid"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "448", "condition": "retrieval", "response": "macOS", "gold_answers": ["macOS Mojave"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "449", "condition": "retrieval", "response": "Thomas Jefferson", "gold_answers": ["George Washington"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "450", "condition": "retrieval", "response": "Smith", "gold_answers": ["England"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "451", "condition": "retrieval", "response": "Richard Harris", "gold_answers": ["Richard St John Harris"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "452", "condition": "retrieval", "response": "San Gabriel Arcangelo", "gold_answers": ["named after the Archangel Gabriel"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "453", "condition": "retrieval", "response": "Hilary Swank", "gold_answers": ["Hilary Swank"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "454", "condition": "retrieval", "response": "Sally", "gold_answers": ["Dakota Fanning"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "455", "condition": "retrieval", "response": "Harriet Dart", "gold_answers": ["Angelique Kerber"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "456", "condition": "retrieval", "response": "Eve Plumb", "gold_answers": ["Christine Taylor"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "457", "condition": "retrieval", "response": "Movie", "gold_answers": ["Lucas 's original screenplay"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "458", "condition": "retrieval", "response": "University of Pennsylvania", "gold_answers": ["Harvard University"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "459", "condition": "retrieval", "response": "Pounds Sterling", "gold_answers": ["pound sterling"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "460", "condition": "retrieval", "response": "Jessica Alba", "gold_answers": ["Alanna Ubach"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "461", "condition": "retrieval", "response": "Derek Shepherd", "gold_answers": ["Henry Burton"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "462", "condition": "retrieval", "response": "Rosalind Cash", "gold_answers": ["Rosalind Cash"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "463", "condition": "retrieval", "response": "Mark", "gold_answers": ["Glenn Martin Christopher Francis Quinn"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "464", "condition": "retrieval", "response": "Maine", "gold_answers": ["New Westminster , British Columbia"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "465", "condition": "retrieval", "response": "Phillis Wheatley", "gold_answers": ["Phillis Wheatley"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "466", "condition": "retrieval", "response": "Dez Bryant", "gold_answers": ["Sherman Williams"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "467", "condition": "retrieval", "response": "Max Martini", "gold_answers": ["Max Martini"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "468", "condition": "retrieval", "response": "House of Representatives", "gold_answers": ["House of Representatives"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "469", "condition": "retrieval", "response": "Waldo", "gold_answers": ["Blake McIver Ewing"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "470", "condition": "retrieval", "response": "Adam Smith", "gold_answers": ["Adam Smith"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "471", "condition": "retrieval", "response": "South Africa", "gold_answers": ["South Africa"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "472", "condition": "retrieval", "response": "Will Smith", "gold_answers": ["James LaRue Avery"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "473", "condition": "retrieval", "response": "Joan Paul Schaghen", "gold_answers": ["Phil Harris"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "474", "condition": "retrieval", "response": "Benjamin Harrison", "gold_answers": ["Benjamin Harrison"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "475", "condition": "retrieval", "response": "Andrew Garfield", "gold_answers": ["Thomas Stanley Holland"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "476", "condition": "retrieval", "response": "Vanessa Carlton", "gold_answers": ["Brother Ernie Isley"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "477", "condition": "retrieval", "response": "Jacques Anquetil", "gold_answers": ["Geraint Thomas"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "478", "condition": "retrieval", "response": "Maddie Ziegler", "gold_answers": ["Madison Nicole Ziegler"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "479", "condition": "retrieval", "response": "David Shulkin", "gold_answers": ["David Shulkin"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "480", "condition": "retrieval", "response": "Germany", "gold_answers": ["Brazil"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "481", "condition": "retrieval", "response": "Ray Harroun", "gold_answers": ["Ray Harroun"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "482", "condition": "retrieval", "response": "1967", "gold_answers": ["George Frederick Ives"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "483", "condition": "retrieval", "response": "Balwant Rai Mehta", "gold_answers": ["Nagar palikas"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "484", "condition": "retrieval", "response": "Pope Innocent III", "gold_answers": ["the pope"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "485", "condition": "retrieval", "response": "Alison Brie", "gold_answers": ["Alison Brie"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "486", "condition": "retrieval", "response": "Kevin Costner", "gold_answers": ["Bruce Greenwood"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "487", "condition": "retrieval", "response": "Donald Trump", "gold_answers": ["Congress"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "488", "condition": "retrieval", "response": "Tenochtitlan", "gold_answers": ["Tenochtitlan"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "489", "condition": "retrieval", "response": "LaDainian Tomlinson", "gold_answers": ["208 , Jerry Rice"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "490", "condition": "retrieval", "response": "Badlands", "gold_answers": ["the former state of Oklahoma"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "491", "condition": "retrieval", "response": "Louis XVI", "gold_answers": ["Louis XVI"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "492", "condition": "retrieval", "response": "Ellen Pompeo", "gold_answers": ["Kate Walsh"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "493", "condition": "retrieval", "response": "The Patriots", "gold_answers": ["New England Patriots"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "494", "condition": "retrieval", "response": "Lebron James", "gold_answers": ["Team LeBron"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "495", "condition": "retrieval", "response": "Archibald Cox", "gold_answers": ["Archibald Cox"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "496", "condition": "retrieval", "response": "Walt Disney", "gold_answers": ["Walt Disney"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "497", "condition": "retrieval", "response": "Victor Espinoza", "gold_answers": ["Victor Espinoza"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "498", "condition": "retrieval", "response": "Arturo Rosales", "gold_answers": ["Jason Canela"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "499", "condition": "retrieval", "response": "Leonard Bernstein", "gold_answers": ["Leonard Bernstein"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "500", "condition": "retrieval", "response": "Darin Erstad", "gold_answers": ["Greg Maddux"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "501", "condition": "retrieval", "response": "Tom Sawyer", "gold_answers": ["Tom Sawyer"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "502", "condition": "retrieval", "response": "New Zealand Warriors", "gold_answers": ["Cleveland Cavaliers"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "503", "condition": "retrieval", "response": "TRD", "gold_answers": ["Toyota Racing Development"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "504", "condition": "retrieval", "response": "Missouri", "gold_answers": ["Missouri"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "505", "condition": "retrieval", "response": "Marcano", "gold_answers": ["Spain"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "506", "condition": "retrieval", "response": "Geoffrey Chaucer", "gold_answers": ["Geoffrey Chaucer"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "507", "condition": "retrieval", "response": "Arizona", "gold_answers": ["New York"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "508", "condition": "retrieval", "response": "Shay Johnson", "gold_answers": ["Chandra Davis"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "509", "condition": "retrieval", "response": "John Wesley Hardin", "gold_answers": ["Robert McAlpin Williamson"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "510", "condition": "retrieval", "response": "Bryce Walker", "gold_answers": ["Brenda Strong"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "511", "condition": "retrieval", "response": "Katie", "gold_answers": ["Lucy Hale"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "512", "condition": "retrieval", "response": "Sahara", "gold_answers": ["the Great Desert"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "513", "condition": "retrieval", "response": "Bruce Springsteen", "gold_answers": ["Bruce Springsteen"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "514", "condition": "retrieval", "response": "Julia Roberts", "gold_answers": ["Hannah Dakota Fanning"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "515", "condition": "retrieval", "response": "London", "gold_answers": ["London"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "516", "condition": "retrieval", "response": "Steven Gerrard", "gold_answers": ["Ian Callaghan"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "517", "condition": "retrieval", "response": "Kelsey Grammer", "gold_answers": ["Kelsey Grammer"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "518", "condition": "retrieval", "response": "Gal Gadot", "gold_answers": ["Gal Gadot"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "519", "condition": "retrieval", "response": "John Bassette", "gold_answers": ["Alex Bevan"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "520", "condition": "retrieval", "response": "Brian O'Connor (bassist)", "gold_answers": ["Timothy Bruce Schmit"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "521", "condition": "retrieval", "response": "Miranda Sings", "gold_answers": ["Angela Kinsey"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "522", "condition": "retrieval", "response": "Gautam Gambhir", "gold_answers": ["Dinesh Karthik"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "523", "condition": "retrieval", "response": "Mila Kunis", "gold_answers": ["Patrick John Warburton"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "524", "condition": "retrieval", "response": "Jazz", "gold_answers": ["ragtime"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "525", "condition": "retrieval", "response": "The Great British Bake Off", "gold_answers": ["Welford Park"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "526", "condition": "retrieval", "response": "Dominican Republic", "gold_answers": ["Haiti"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "527", "condition": "retrieval", "response": "Daveed Diggs", "gold_answers": ["Daveed Diggs"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "528", "condition": "retrieval", "response": "Mesopotamia", "gold_answers": ["Mesopotamia"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "529", "condition": "retrieval", "response": "Mr. Big", "gold_answers": ["Christopher David Noth"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "530", "condition": "retrieval", "response": "Dean Martin", "gold_answers": ["Jim Reeves"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "531", "condition": "retrieval", "response": "House of Representatives", "gold_answers": ["Virginia"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "532", "condition": "retrieval", "response": "Monkey's uncle", "gold_answers": ["Scopes Trial"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "533", "condition": "retrieval", "response": "Alex Borstein", "gold_answers": ["Alex Borstein"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "534", "condition": "retrieval", "response": "France", "gold_answers": ["France"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "535", "condition": "retrieval", "response": "Manchester United", "gold_answers": ["Arsenal"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "536", "condition": "retrieval", "response": "Star Wars: Battlefront (2004 video game)", "gold_answers": ["Iden Versio"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "537", "condition": "retrieval", "response": "Australia", "gold_answers": ["Australia"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "538", "condition": "retrieval", "response": "George Boswell", "gold_answers": ["Jason"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "539", "condition": "retrieval", "response": "John Munch", "gold_answers": ["Richard Jay Belzer"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "540", "condition": "retrieval", "response": "Colin O'Donoghue", "gold_answers": ["Agnes Bruckner"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "541", "condition": "retrieval", "response": "Thomas Nast", "gold_answers": ["Thomas Nast"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "542", "condition": "retrieval", "response": "Tokyo", "gold_answers": ["Tokyo"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "543", "condition": "retrieval", "response": "Nathan Riggs", "gold_answers": ["Martin Henderson"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "544", "condition": "retrieval", "response": "E.L.James", "gold_answers": ["Kelly Marcel"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "545", "condition": "retrieval", "response": "England", "gold_answers": ["Calais"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "546", "condition": "retrieval", "response": "Anne Marie DeLuise", "gold_answers": ["Drew Van Acker"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "547", "condition": "retrieval", "response": "Kristen Wiig", "gold_answers": ["Elsie Fisher"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "548", "condition": "retrieval", "response": "Christopher Meloni", "gold_answers": ["Harry Jon Benjamin"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "549", "condition": "retrieval", "response": "Jennifer Hawkins", "gold_answers": ["Jennifer Hawkins"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "550", "condition": "retrieval", "response": "Jennifer Coolidge", "gold_answers": ["Jennifer Audrey Coolidge"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "551", "condition": "retrieval", "response": "George Washington", "gold_answers": ["David Morse"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "552", "condition": "retrieval", "response": "Casper the friendly ghost", "gold_answers": ["Sawa"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "553", "condition": "retrieval", "response": "Orthodox Church", "gold_answers": ["Christianity"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "554", "condition": "retrieval", "response": "The Fast and the Furious took place in the United States.", "gold_answers": ["Los Angeles"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "555", "condition": "retrieval", "response": "Henry Adams", "gold_answers": ["Gomez Addams"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "556", "condition": "retrieval", "response": "Sarah", "gold_answers": ["Kirsten Dunst"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "557", "condition": "retrieval", "response": "Georgetown University", "gold_answers": ["Georgetown"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "558", "condition": "retrieval", "response": "Eliza Taylor", "gold_answers": ["Asia Kate Dillon"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "559", "condition": "retrieval", "response": "Edward Scissorhands", "gold_answers": ["childhood upbringing"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "560", "condition": "retrieval", "response": "Jordan", "gold_answers": ["On the Arabian Peninsula"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "561", "condition": "retrieval", "response": "Tipu Sultan", "gold_answers": ["Song dynasty China"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "562", "condition": "retrieval", "response": "Dumbledore", "gold_answers": ["Cuthbert Binns"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "563", "condition": "retrieval", "response": "Chadwick Boseman", "gold_answers": ["Chadwick Boseman"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "564", "condition": "retrieval", "response": "Harry Truman", "gold_answers": ["Dwight D. Eisenhower"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "565", "condition": "retrieval", "response": "Wayne Gretzky", "gold_answers": ["Wayne Gretzky"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "566", "condition": "retrieval", "response": "Rachel Bilson", "gold_answers": ["Cress Williams"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "567", "condition": "retrieval", "response": "Paul Scholes", "gold_answers": ["Ryan Giggs"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "568", "condition": "retrieval", "response": "Stephen Curry", "gold_answers": ["the Philadelphia Warriors"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "569", "condition": "retrieval", "response": "The Undertaker", "gold_answers": ["The Undertaker"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "570", "condition": "retrieval", "response": "Victor Sen Yung", "gold_answers": ["Keye Luke"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "571", "condition": "retrieval", "response": "Cecil Baldwin", "gold_answers": ["Cecil Baldwin"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "572", "condition": "retrieval", "response": "The Warsaw Pact", "gold_answers": ["North Atlantic Alliance"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "573", "condition": "retrieval", "response": "Dari", "gold_answers": ["Kabul"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "574", "condition": "retrieval", "response": "Calvin Harris", "gold_answers": ["Calvin Harris"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "575", "condition": "retrieval", "response": "Union", "gold_answers": ["Confederate"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "576", "condition": "retrieval", "response": "1787", "gold_answers": ["Tenerife"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "577", "condition": "retrieval", "response": "Martin Freeman", "gold_answers": ["Evangeline Lilly"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "578", "condition": "retrieval", "response": "Piper Chapman", "gold_answers": ["Regina Spektor"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "579", "condition": "retrieval", "response": "lawyer", "gold_answers": ["a lawyer"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "580", "condition": "retrieval", "response": "Alyssa Milano", "gold_answers": ["Savannah Nix"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "581", "condition": "retrieval", "response": "Ronald Hynd", "gold_answers": ["Tchaikovsky"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "582", "condition": "retrieval", "response": "Dhivehi", "gold_answers": ["Maldivian"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "583", "condition": "retrieval", "response": "Rugrats", "gold_answers": ["Mark Rivers"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "584", "condition": "retrieval", "response": "San Francisco Giants", "gold_answers": ["The San Francisco Giants"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "585", "condition": "retrieval", "response": "Yocheved", "gold_answers": ["María Valverde"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "586", "condition": "retrieval", "response": "Sean McVay", "gold_answers": ["Sean McVay"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "587", "condition": "retrieval", "response": "drowned valley forming and inlet of the sea", "gold_answers": ["ria"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "588", "condition": "retrieval", "response": "Chile", "gold_answers": ["Chile"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "589", "condition": "retrieval", "response": "Kuwaiti", "gold_answers": ["Kuwaiti"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "590", "condition": "retrieval", "response": "Hima Das", "gold_answers": ["Australia"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "591", "condition": "retrieval", "response": "Iron Man", "gold_answers": ["Iron Man"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "592", "condition": "retrieval", "response": "Buddhism", "gold_answers": ["Christianity"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "593", "condition": "retrieval", "response": "Star Wars", "gold_answers": ["Star Wars"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "594", "condition": "retrieval", "response": "Nina Dobrev", "gold_answers": ["Nina Dobrev"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "595", "condition": "retrieval", "response": "Logan Lerman", "gold_answers": ["Logan Wade Lerman"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "596", "condition": "retrieval", "response": "Utter Pradesh", "gold_answers": ["Yogi Adityanath"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "597", "condition": "retrieval", "response": "I don't know", "gold_answers": ["visa policy of Australia"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "598", "condition": "retrieval", "response": "Sean Lowe", "gold_answers": ["Jef Holm"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "599", "condition": "retrieval", "response": "Mine Creek", "gold_answers": ["Kansas"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "600", "condition": "retrieval", "response": "British Chinese", "gold_answers": ["White or White British"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "601", "condition": "retrieval", "response": "Michael Jackson", "gold_answers": ["Michael Jackson"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "602", "condition": "retrieval", "response": "Bart Millard", "gold_answers": ["J. Michael Finley"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "603", "condition": "retrieval", "response": "Margaret Hamilton", "gold_answers": ["Margaret Brainard Hamilton"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "604", "condition": "retrieval", "response": "New England Patriots", "gold_answers": ["Boston Patriots"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "605", "condition": "retrieval", "response": "Tony Sampson", "gold_answers": ["Peter Kelamis"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "606", "condition": "retrieval", "response": "Burj Khalifa", "gold_answers": ["Burj Dubai"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "607", "condition": "retrieval", "response": "Steelers", "gold_answers": ["Steelers"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "608", "condition": "retrieval", "response": "David Bowie", "gold_answers": ["David Bowie"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "609", "condition": "retrieval", "response": "Willie Lopez", "gold_answers": ["Rick Aviles"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "610", "condition": "retrieval", "response": "Joan Jett", "gold_answers": ["Joan Jett"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "611", "condition": "retrieval", "response": "Russia", "gold_answers": ["the western part of Russia"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "612", "condition": "retrieval", "response": "Michelle Stafford", "gold_answers": ["Gina Tognoni"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "613", "condition": "retrieval", "response": "Barbados", "gold_answers": ["Bajans", "Barbadians"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "614", "condition": "retrieval", "response": "Czech Republic", "gold_answers": ["Czechia"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "615", "condition": "retrieval", "response": "Moses", "gold_answers": ["Moses"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "616", "condition": "retrieval", "response": "IPad (1st generation)", "gold_answers": ["iPad ( 2018 )"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "617", "condition": "retrieval", "response": "Jeffrey Lebowski", "gold_answers": ["Lebowski"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "618", "condition": "retrieval", "response": "Kenny Chesney", "gold_answers": ["When the Sun Goes Down"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "619", "condition": "retrieval", "response": "Madonna", "gold_answers": ["Madonna"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "620", "condition": "retrieval", "response": "Ben Reilly", "gold_answers": ["Peter Parker"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "621", "condition": "retrieval", "response": "Green Bay Packers", "gold_answers": ["Packers"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "622", "condition": "retrieval", "response": "Toph", "gold_answers": ["Jessie Flower"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "623", "condition": "retrieval", "response": "Simon", "gold_answers": ["Art Garfunkel"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "624", "condition": "retrieval", "response": "Blue Oyster Cult", "gold_answers": ["Blue Öyster Cult"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "625", "condition": "retrieval", "response": "Sare Jahan se Achha", "gold_answers": ["Muhammad Iqbal"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "626", "condition": "retrieval", "response": "Himalayas", "gold_answers": ["Andes"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "627", "condition": "retrieval", "response": "Portugal", "gold_answers": ["South Africa"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "628", "condition": "retrieval", "response": "Bob Dylan", "gold_answers": ["Bob Dylan"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "629", "condition": "retrieval", "response": "Ken Jennings", "gold_answers": ["Kenneth Wayne Jennings III"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "630", "condition": "retrieval", "response": "Victor Frankenstein", "gold_answers": ["Victor Frankenstein"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "631", "condition": "retrieval", "response": "Meryl Streep", "gold_answers": ["Robin Weigert"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "632", "condition": "retrieval", "response": "General Colin Powell", "gold_answers": ["Colin Luther Powell"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "633", "condition": "retrieval", "response": "Selena Gomez", "gold_answers": ["Instagram"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "634", "condition": "retrieval", "response": "District of Columbia", "gold_answers": ["District of Columbia"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "635", "condition": "retrieval", "response": "Damon Salvatore", "gold_answers": ["Damon"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "636", "condition": "retrieval", "response": "Genevieve Goings", "gold_answers": ["Genevieve Goings"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "637", "condition": "retrieval", "response": "Dunkirk", "gold_answers": ["the beach of Dunkirk"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "638", "condition": "retrieval", "response": "New York", "gold_answers": ["New York City"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "639", "condition": "retrieval", "response": "Tree Hill Farm", "gold_answers": ["James and Nancy Bennett"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "640", "condition": "retrieval", "response": "World War II", "gold_answers": ["Second World War"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "641", "condition": "retrieval", "response": "Russia", "gold_answers": ["Russia"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "642", "condition": "retrieval", "response": "Drowning Pool", "gold_answers": ["Jasen Moreno"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "643", "condition": "retrieval", "response": "Peter Griffin", "gold_answers": ["Seth MacFarlane"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "644", "condition": "retrieval", "response": "R. Kelly", "gold_answers": ["R. Kelly"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "645", "condition": "retrieval", "response": "Atlanta Falcons", "gold_answers": ["Atlanta Falcons"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "646", "condition": "retrieval", "response": "Scott Grimes", "gold_answers": ["Scott Grimes"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "647", "condition": "retrieval", "response": "Red Sea", "gold_answers": ["Erythraean Sea"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "648", "condition": "retrieval", "response": "Genevieve Goings", "gold_answers": ["Genevieve Goings"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "649", "condition": "retrieval", "response": "Chevy Colorado", "gold_answers": ["the GMC Canyon"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "650", "condition": "retrieval", "response": "Game of Thrones", "gold_answers": ["A Game of Thrones"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "651", "condition": "retrieval", "response": "Hottentots came from Southern Africa", "gold_answers": ["southwestern Africa"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "652", "condition": "retrieval", "response": "Serena Williams", "gold_answers": ["Margaret Court"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "653", "condition": "retrieval", "response": "Reba McEntire", "gold_answers": ["JoAnna García"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "654", "condition": "retrieval", "response": "Oscar De La Hoya", "gold_answers": ["De La Hoya"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "655", "condition": "retrieval", "response": "Canadian royal symbols", "gold_answers": ["flag of Canada"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "656", "condition": "retrieval", "response": "Pete Seeger", "gold_answers": ["Lucille Simmons"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "657", "condition": "retrieval", "response": "Paris", "gold_answers": ["Source - Seine"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "658", "condition": "retrieval", "response": "Poseidon", "gold_answers": ["Hades"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "659", "condition": "retrieval", "response": "Hawaii", "gold_answers": ["Sandwich Islands"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "660", "condition": "retrieval", "response": "California", "gold_answers": ["in northeastern and Northern California"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "661", "condition": "retrieval", "response": "Venus appears as a morning star", "gold_answers": ["in the east before sunrise"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "662", "condition": "retrieval", "response": "Nick Drake", "gold_answers": ["the City Girls"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "663", "condition": "retrieval", "response": "Valiyaveetil Diju", "gold_answers": ["Nehwal"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "664", "condition": "retrieval", "response": "Frankie Laine", "gold_answers": ["Tex Ritter"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "665", "condition": "retrieval", "response": "Chile", "gold_answers": ["Chile"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "666", "condition": "retrieval", "response": "Puerto Rico", "gold_answers": ["Borikén"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "667", "condition": "retrieval", "response": "Iran", "gold_answers": ["Iran"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "668", "condition": "retrieval", "response": "Venezuela", "gold_answers": ["Nueva Esparta", "Federal Dependencies of Venezuela"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "669", "condition": "retrieval", "response": "Vaishnavi Sundar", "gold_answers": ["Alia Bhatt"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "670", "condition": "retrieval", "response": "Manny Pacquiao", "gold_answers": ["Manny Pacquiao"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "671", "condition": "retrieval", "response": "Thai", "gold_answers": ["Thai"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "672", "condition": "retrieval", "response": "Mary Poppins", "gold_answers": ["Mary Poppins"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "673", "condition": "retrieval", "response": "Green", "gold_answers": ["Nigeria 's natural wealth"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "674", "condition": "retrieval", "response": "Toyota", "gold_answers": ["Toyota Motor Corporation"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "675", "condition": "retrieval", "response": "The Dance", "gold_answers": ["Garth Brooks"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "676", "condition": "retrieval", "response": "Napoleon", "gold_answers": ["Napoleon Bonaparte"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "677", "condition": "retrieval", "response": "Kentucky Derby Trophy", "gold_answers": ["The Kroger Company"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "678", "condition": "retrieval", "response": "India", "gold_answers": ["England"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "679", "condition": "retrieval", "response": "Joey Tribbiani", "gold_answers": ["James Lastovic"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "680", "condition": "retrieval", "response": "Cyril Knowles", "gold_answers": ["Cockerel Chorus"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "681", "condition": "retrieval", "response": "Aragog", "gold_answers": ["Aragog"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "682", "condition": "retrieval", "response": "Lok Sabha", "gold_answers": ["Lok Sabha"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "683", "condition": "retrieval", "response": "Harishankar Brahma", "gold_answers": ["Om Prakash Rawat"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "684", "condition": "retrieval", "response": "Toni Michelle Braxton", "gold_answers": ["Toni Braxton"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "685", "condition": "retrieval", "response": "Judi Denton", "gold_answers": ["Eddie Murphy"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "686", "condition": "retrieval", "response": "Mike Pence", "gold_answers": ["Vice President"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "687", "condition": "retrieval", "response": "Marlene", "gold_answers": ["Merle Dandridge"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "688", "condition": "retrieval", "response": "Brad Arnold", "gold_answers": ["Greg Upchurch"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "689", "condition": "retrieval", "response": "Province No. 2", "gold_answers": ["Province No. 3"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "690", "condition": "retrieval", "response": "Bryan Callen", "gold_answers": ["Bryan Callen"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "691", "condition": "retrieval", "response": "Florence L. Crawford", "gold_answers": ["Florence L. Crawford"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "692", "condition": "retrieval", "response": "Canadian citizen", "gold_answers": ["Canadian"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "693", "condition": "retrieval", "response": "Jupiter", "gold_answers": ["Jupiter"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "694", "condition": "retrieval", "response": "Ivan L. Moody", "gold_answers": ["Five Finger Death Punch"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "695", "condition": "retrieval", "response": "Joey Tribbiani", "gold_answers": ["James Lastovic"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "696", "condition": "retrieval", "response": "Paul McCartney", "gold_answers": ["McCartney"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "697", "condition": "retrieval", "response": "Netherlands", "gold_answers": ["Netherlands"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "698", "condition": "retrieval", "response": "Isle of Man", "gold_answers": ["Isle of Man"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "699", "condition": "retrieval", "response": "Canada's Wonderland", "gold_answers": ["Canada 's Wonderland"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "700", "condition": "retrieval", "response": "Florida Georgia Line", "gold_answers": ["Black Stone Cherry"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "701", "condition": "retrieval", "response": "Cincinnati Reds", "gold_answers": ["Cincinnati Reds"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "702", "condition": "retrieval", "response": "Michigan State", "gold_answers": ["Michigan"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "703", "condition": "retrieval", "response": "Qatar", "gold_answers": ["Qatar"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "704", "condition": "retrieval", "response": "Maya Sita", "gold_answers": ["Maricha"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "705", "condition": "retrieval", "response": "Jonathan Swift", "gold_answers": ["Captain Pedro de Mendez"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "706", "condition": "retrieval", "response": "Mediterranean climate", "gold_answers": ["dry summer climate"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "707", "condition": "retrieval", "response": "Dead Sea", "gold_answers": ["Salt Sea"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "708", "condition": "retrieval", "response": "Francis Scott Key", "gold_answers": ["John Stafford Smith"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "709", "condition": "retrieval", "response": "2000", "gold_answers": ["2010 NRL Grand Final"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "710", "condition": "retrieval", "response": "Lucian Boz", "gold_answers": ["Charles Dickens"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "711", "condition": "retrieval", "response": "District of Columbia National Guard", "gold_answers": ["District of Columbia"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "712", "condition": "retrieval", "response": "Operation Desert Storm", "gold_answers": ["Operation Desert Shield"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "713", "condition": "retrieval", "response": "Jed Clampett", "gold_answers": ["Milburn Drysdale"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "714", "condition": "retrieval", "response": "Persian", "gold_answers": ["Iran"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "715", "condition": "retrieval", "response": "Public Sector", "gold_answers": ["public sector"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "716", "condition": "retrieval", "response": "Nancy Pelosi", "gold_answers": ["Tom Perez"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "717", "condition": "retrieval", "response": "Mind Stone", "gold_answers": ["Mind Stone"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "718", "condition": "retrieval", "response": "Maharashtra", "gold_answers": ["Government of Maharashtra"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "719", "condition": "retrieval", "response": "James Crawford", "gold_answers": ["agitprop theatre"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "720", "condition": "retrieval", "response": "1935", "gold_answers": ["in 1912"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "721", "condition": "retrieval", "response": "The Rolling Stones", "gold_answers": ["Merry Clayton"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "722", "condition": "retrieval", "response": "Hawaii", "gold_answers": ["Hawaiʻi"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "723", "condition": "retrieval", "response": "Clare Torry", "gold_answers": ["Clare Torry"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "724", "condition": "retrieval", "response": "Yes", "gold_answers": ["Hong Kong"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "725", "condition": "retrieval", "response": "Star Wars", "gold_answers": ["Star Wars"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "726", "condition": "retrieval", "response": "Roxann Dawson", "gold_answers": ["Roxann Dawson"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "727", "condition": "retrieval", "response": "Dwarkanath Ganguly", "gold_answers": ["Annette Akroyd"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "728", "condition": "retrieval", "response": "Person from Sweden", "gold_answers": ["Swedes"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "729", "condition": "retrieval", "response": "Jayaprakash Narayan", "gold_answers": ["Jayaprakash Narayan"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "730", "condition": "retrieval", "response": "Rag'n'Bone Man", "gold_answers": ["Rory Charles Graham"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "731", "condition": "retrieval", "response": "New Hampshire", "gold_answers": ["The Granite State"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "732", "condition": "retrieval", "response": "The cabin in the woods was filmed in Georgia, USA", "gold_answers": ["in Vancouver"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "733", "condition": "retrieval", "response": "Neil Young", "gold_answers": ["Pegi Young"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "734", "condition": "retrieval", "response": "Crazy Train", "gold_answers": ["Ghost Rider"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "735", "condition": "retrieval", "response": "Paul the Apostle", "gold_answers": ["Apostle Paul"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "736", "condition": "retrieval", "response": "Burt Reynolds", "gold_answers": ["Jackie Gleason"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "737", "condition": "retrieval", "response": "Natalie Dormer", "gold_answers": ["Dormer"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "738", "condition": "retrieval", "response": "Wembley", "gold_answers": ["Wembley Stadium"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "739", "condition": "retrieval", "response": "Russia", "gold_answers": ["Russia"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "740", "condition": "retrieval", "response": "Strait of Magellan", "gold_answers": ["southern Chile"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "741", "condition": "retrieval", "response": "Kansas City", "gold_answers": ["St. Louis"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "742", "condition": "retrieval", "response": "Africa", "gold_answers": ["Asia"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "743", "condition": "retrieval", "response": "Euclid", "gold_answers": ["Euclid of Alexandria"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "744", "condition": "retrieval", "response": "Bert", "gold_answers": ["Leslie Feist"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "745", "condition": "retrieval", "response": "Mount McKinley", "gold_answers": ["Denali"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "746", "condition": "retrieval", "response": "Bob Saget", "gold_answers": ["Bob Saget"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "747", "condition": "retrieval", "response": "Hindi", "gold_answers": ["tahr"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "748", "condition": "retrieval", "response": "Josh Kiszka", "gold_answers": ["Josh Kiszka"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "749", "condition": "retrieval", "response": "United States Congress", "gold_answers": ["Congress"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "750", "condition": "retrieval", "response": "Captain America", "gold_answers": ["Captain America # 25"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "751", "condition": "retrieval", "response": "All India Services Act, 1951 empowers the government", "gold_answers": ["government of India"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "752", "condition": "retrieval", "response": "Swiss", "gold_answers": ["Swiss"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "753", "condition": "retrieval", "response": "Andy Serkis", "gold_answers": ["Andy Serkis"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "754", "condition": "retrieval", "response": "Sameer", "gold_answers": ["Randeep Rai"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "755", "condition": "retrieval", "response": "Richard Wagner", "gold_answers": ["Wilhelm Richard Wagner"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "756", "condition": "retrieval", "response": "Babur", "gold_answers": ["Babur"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "757", "condition": "retrieval", "response": "D-Day", "gold_answers": ["Operation Neptune"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "758", "condition": "retrieval", "response": "Caribbean", "gold_answers": ["Caribbean"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "759", "condition": "retrieval", "response": "Federer", "gold_answers": ["Federer"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "760", "condition": "retrieval", "response": "Janet Hubert-Whitten", "gold_answers": ["Kim Victoria Fields"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "761", "condition": "retrieval", "response": "Czech", "gold_answers": ["Czech"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "762", "condition": "retrieval", "response": "Queen Elizabeth II", "gold_answers": ["Elizabeth II"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "763", "condition": "retrieval", "response": "Adam Devine", "gold_answers": ["Keegan - Michael Key"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "764", "condition": "retrieval", "response": "The Grinch", "gold_answers": ["the Grinch"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "765", "condition": "retrieval", "response": "Portland Steel", "gold_answers": ["Seattle SuperSonics"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "766", "condition": "retrieval", "response": "Black shield in Nigeria coat of arm represent the fertility of the land", "gold_answers": ["Nigeria 's fertile soil"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "767", "condition": "retrieval", "response": "Bob Barker", "gold_answers": ["George Gray"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "768", "condition": "retrieval", "response": "Zooey Deschanel", "gold_answers": ["Tricia Marie McMillan"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "769", "condition": "retrieval", "response": "Danny Elfman", "gold_answers": ["American composer Danny Elfman"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "770", "condition": "retrieval", "response": "Queen Elizabeth II", "gold_answers": ["Queen Elizabeth II"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "771", "condition": "retrieval", "response": "St. Peter's Square", "gold_answers": ["Roman Forum"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "772", "condition": "retrieval", "response": "Manhattan", "gold_answers": ["Queens"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "773", "condition": "retrieval", "response": "Bone Thugs n Harmony", "gold_answers": ["eOne Entertainment"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "774", "condition": "retrieval", "response": "Jeff Gold", "gold_answers": ["James Henke"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "775", "condition": "retrieval", "response": "Roman Abramovich", "gold_answers": ["Roman Abramovich"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "776", "condition": "retrieval", "response": "Vega", "gold_answers": ["' the Teapot"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "777", "condition": "retrieval", "response": "Switzerland", "gold_answers": ["the Swiss Confederation"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "778", "condition": "retrieval", "response": "Revenue Marine", "gold_answers": ["the Revenue Cutter Service"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "779", "condition": "retrieval", "response": "Gbehzohngar Milton Findley", "gold_answers": ["Jewel Taylor"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "780", "condition": "retrieval", "response": "Taarak Mehta", "gold_answers": ["Shailesh Lodha"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "781", "condition": "retrieval", "response": "Cardinals", "gold_answers": ["Cubs"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "782", "condition": "retrieval", "response": "Jean Grey", "gold_answers": ["Cody Robbins"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "783", "condition": "retrieval", "response": "Nikolaj Coster-Waldau", "gold_answers": ["Ross Mullan"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "784", "condition": "retrieval", "response": "Peter Gabriel", "gold_answers": ["Peter Gabriel"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "785", "condition": "retrieval", "response": "Bay of Pigs Invasion", "gold_answers": ["Bay of Pigs Invasion"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "786", "condition": "retrieval", "response": "1%", "gold_answers": ["Hong Kong dollar"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "787", "condition": "retrieval", "response": "Atlantic Ocean", "gold_answers": ["the North Atlantic Ocean"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "788", "condition": "retrieval", "response": "Thailand", "gold_answers": ["Thailand"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "789", "condition": "retrieval", "response": "DJ Kool Herc", "gold_answers": ["DJ Kool Herc"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "790", "condition": "retrieval", "response": "Ferdinand Magellan", "gold_answers": ["Juan Sebastián Elcano"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "791", "condition": "retrieval", "response": "Colin Morgan", "gold_answers": ["Charlie Hunnam"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "792", "condition": "retrieval", "response": "Nato", "gold_answers": ["North Atlantic Treaty Organization"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "793", "condition": "retrieval", "response": "Paris", "gold_answers": ["Paris"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "794", "condition": "retrieval", "response": "Kathleen Merrigan", "gold_answers": ["Sonny Perdue"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "795", "condition": "retrieval", "response": "Ed Sheeran", "gold_answers": ["Sheeran"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "796", "condition": "retrieval", "response": "Green", "gold_answers": ["Nigeria 's natural wealth"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "797", "condition": "retrieval", "response": "Tirupati", "gold_answers": ["Tirupati railway station"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "798", "condition": "retrieval", "response": "Gal Gadot", "gold_answers": ["Gal Gadot"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "799", "condition": "retrieval", "response": "Jeopardy!", "gold_answers": ["Jeopardy !"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "800", "condition": "retrieval", "response": "Paddy's Pub", "gold_answers": ["South Philadelphia"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "801", "condition": "retrieval", "response": "Costa Rican", "gold_answers": ["Costa Ricans"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "802", "condition": "retrieval", "response": "Luke Beveridge", "gold_answers": ["all AFL coaches"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "803", "condition": "retrieval", "response": "Morning Star", "gold_answers": ["Morning star"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "804", "condition": "retrieval", "response": "Rafael dos Anjos", "gold_answers": ["Anthony Pettis"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "805", "condition": "retrieval", "response": "Bank of America", "gold_answers": ["Bank of America"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "806", "condition": "retrieval", "response": "Paul Hays", "gold_answers": ["Congress"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "807", "condition": "retrieval", "response": "Alton, Illinois", "gold_answers": ["Lake Itasca"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "808", "condition": "retrieval", "response": "Temuera Morrison", "gold_answers": ["Leeanna Walsman"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "809", "condition": "retrieval", "response": "Fidia", "gold_answers": ["Phidias"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "810", "condition": "retrieval", "response": "Hiroshima", "gold_answers": ["Enola Gay"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "811", "condition": "retrieval", "response": "Aaron Judge", "gold_answers": ["Yankees"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "812", "condition": "retrieval", "response": "Tenth Amendment", "gold_answers": ["Amendment X"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "813", "condition": "retrieval", "response": "Kumasi", "gold_answers": ["Kumasi"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "814", "condition": "retrieval", "response": "Eddie the Eagle", "gold_answers": ["Taron Egerton"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "815", "condition": "retrieval", "response": "Josh Kiszka", "gold_answers": ["Josh Kiszka"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "816", "condition": "retrieval", "response": "Czech", "gold_answers": ["Czech"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "817", "condition": "retrieval", "response": "Mike Protich", "gold_answers": ["Mike Protich"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "818", "condition": "retrieval", "response": "Czech", "gold_answers": ["Czech"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "819", "condition": "retrieval", "response": "French Guiana", "gold_answers": ["French Guiana"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "820", "condition": "retrieval", "response": "Dundee", "gold_answers": ["Dundonians"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "821", "condition": "retrieval", "response": "Apollo Creed", "gold_answers": ["Apollo"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "822", "condition": "retrieval", "response": "Persia", "gold_answers": ["Iran"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "823", "condition": "retrieval", "response": "New York Yankees", "gold_answers": ["Philadelphia Phillies"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "824", "condition": "retrieval", "response": "Ronnie Van Zant", "gold_answers": ["Gary Rossington"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "825", "condition": "retrieval", "response": "Saint Petersburg", "gold_answers": ["Leningrad"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "826", "condition": "retrieval", "response": "Peter Dinklage", "gold_answers": ["Peter Hayden Dinklage"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "827", "condition": "retrieval", "response": "Skeeter Davis", "gold_answers": ["Skeeter Davis"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "828", "condition": "retrieval", "response": "Lao", "gold_answers": ["Lao"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "829", "condition": "retrieval", "response": "Hong Kong Dollar", "gold_answers": ["Hong Kong dollar"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "830", "condition": "retrieval", "response": "Pretty Little Liars", "gold_answers": ["Pretty Little Liars"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "831", "condition": "retrieval", "response": "Kudankulam Nuclear Power Plant", "gold_answers": ["Kudankulam"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "832", "condition": "retrieval", "response": "Annie Lennox", "gold_answers": ["Annie Lennox"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "833", "condition": "retrieval", "response": "Cape Hatteras", "gold_answers": ["the Atlantic Ocean"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "834", "condition": "retrieval", "response": "Orlando Bloom", "gold_answers": ["Orlando Bloom"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "835", "condition": "retrieval", "response": "Rafael Nadal", "gold_answers": ["Rafael Nadal"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "836", "condition": "retrieval", "response": "Cincinnati Reds", "gold_answers": ["Cincinnati Red Stockings"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "837", "condition": "retrieval", "response": "Julie Andrews", "gold_answers": ["Mary Poppins"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "838", "condition": "retrieval", "response": "Canada", "gold_answers": ["Canada"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "839", "condition": "retrieval", "response": "Harivansh Narayan Singh", "gold_answers": ["Rajya Sabha"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "840", "condition": "retrieval", "response": "Susan Olsen", "gold_answers": ["Susan Olsen"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "841", "condition": "retrieval", "response": "Linkin Park", "gold_answers": ["Linkin Park"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "842", "condition": "retrieval", "response": "Alice Cooper", "gold_answers": ["Alice Cooper"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "843", "condition": "retrieval", "response": "Chris Pratt", "gold_answers": ["Ellie Kemper"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "844", "condition": "retrieval", "response": "Sumer", "gold_answers": ["Sumer"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "845", "condition": "retrieval", "response": "Evangeline Lilly", "gold_answers": ["Cate Blanchett"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "846", "condition": "retrieval", "response": "Union", "gold_answers": ["Confederate"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "847", "condition": "retrieval", "response": "Atticus Mitchell", "gold_answers": ["Atticus Dean Mitchell"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "848", "condition": "retrieval", "response": "British Virgin Islands", "gold_answers": ["in the Caribbean"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "849", "condition": "retrieval", "response": "Saskatchewan", "gold_answers": ["Newfoundland"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "850", "condition": "retrieval", "response": "Jason Dunstall", "gold_answers": ["Fred Fanning"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "851", "condition": "retrieval", "response": "Nicholas Lyndhurst", "gold_answers": ["Michael Jayston"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "852", "condition": "retrieval", "response": "Dodd-Frank Wall Street Reform and Consumer Protection Act", "gold_answers": ["the subsequent Great Recession"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "853", "condition": "retrieval", "response": "Mila Kunis", "gold_answers": ["Patrick Warburton"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "854", "condition": "retrieval", "response": "Red Hot Chili Peppers", "gold_answers": ["The Red Hot Chili Peppers"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "855", "condition": "retrieval", "response": "Planet of the Apes", "gold_answers": ["Planet of the Apes"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "856", "condition": "retrieval", "response": "Bruno Mars", "gold_answers": ["Bruno Mars"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "857", "condition": "retrieval", "response": "Piper Curda", "gold_answers": ["Piper Curda"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "858", "condition": "retrieval", "response": "The Recording Academy", "gold_answers": ["NARAS"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "859", "condition": "retrieval", "response": "Green", "gold_answers": ["Nigeria 's natural wealth"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "860", "condition": "retrieval", "response": "Cascade Range", "gold_answers": ["Cascades"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "861", "condition": "retrieval", "response": "Achilles", "gold_answers": ["Achilles"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "862", "condition": "retrieval", "response": "Isle of Man", "gold_answers": ["Isle of Man"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "863", "condition": "retrieval", "response": "Church of England", "gold_answers": ["Church of England"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "864", "condition": "retrieval", "response": "Royal Birkdale", "gold_answers": ["Royal Birkdale"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "865", "condition": "retrieval", "response": "Blair Waldorf", "gold_answers": ["Bart Bass"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "866", "condition": "retrieval", "response": "New Zealand Dollar", "gold_answers": ["The New Zealand dollar"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "867", "condition": "retrieval", "response": "New Zealand Dollar", "gold_answers": ["New Zealand dollar"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "868", "condition": "retrieval", "response": "Czechia", "gold_answers": ["Czechs"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "869", "condition": "retrieval", "response": "Star Wars", "gold_answers": ["The Star Wars"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "870", "condition": "retrieval", "response": "20th Century Fox", "gold_answers": ["Constantin Film"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "871", "condition": "retrieval", "response": "Charles Darwin", "gold_answers": ["Charles Darwin"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "872", "condition": "retrieval", "response": "King Arthur", "gold_answers": ["Roger Lancelyn Green"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "873", "condition": "retrieval", "response": "Muscle Shoals Rhythm Section", "gold_answers": ["The Swampers"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "874", "condition": "retrieval", "response": "Mexico City", "gold_answers": ["Central Mexico"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "875", "condition": "retrieval", "response": "Ashoka Chakra", "gold_answers": ["all Indian currency"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "876", "condition": "retrieval", "response": "Cristiano Ronaldo", "gold_answers": ["Cristiano Ronaldo"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "877", "condition": "retrieval", "response": "Jude Law", "gold_answers": ["Michael Gambon"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "878", "condition": "retrieval", "response": "Fontevraud Abbey", "gold_answers": ["Basilica of Saint Denis"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "879", "condition": "retrieval", "response": "Sean Bean", "gold_answers": ["Nolan North"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "880", "condition": "retrieval", "response": "Tea", "gold_answers": ["tea"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "881", "condition": "retrieval", "response": "2014", "gold_answers": ["The Lego Movie"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "882", "condition": "retrieval", "response": "Jaden Smith", "gold_answers": ["Wenwen Han"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "883", "condition": "retrieval", "response": "Republican Party", "gold_answers": ["Grand Old Party"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "884", "condition": "retrieval", "response": "NFL", "gold_answers": ["The National Football League"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "885", "condition": "retrieval", "response": "Blackboard Jungle", "gold_answers": ["Rock Around the Clock"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "886", "condition": "retrieval", "response": "Peso", "gold_answers": ["Puerto Rican peso"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "887", "condition": "retrieval", "response": "Living in a Box", "gold_answers": ["Living in a Box"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "888", "condition": "retrieval", "response": "Jacqueline MacInnes Wood", "gold_answers": ["Jacqueline MacInnes Wood"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "889", "condition": "retrieval", "response": "Daniel Day-Lewis", "gold_answers": ["Daniel Day - Lewis"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "890", "condition": "retrieval", "response": "Santo Domingo", "gold_answers": ["in honor of Saint Dominic"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "891", "condition": "retrieval", "response": "Dia de los muertos", "gold_answers": ["Día de Muertos"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "892", "condition": "retrieval", "response": "Empire State Building", "gold_answers": ["Empire State Realty Trust"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "893", "condition": "retrieval", "response": "John Hancock", "gold_answers": ["John Hancock"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "894", "condition": "retrieval", "response": "District of Columbia National Guard", "gold_answers": ["District of Columbia"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "895", "condition": "retrieval", "response": "Thailand", "gold_answers": ["Thailand"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "896", "condition": "retrieval", "response": "Eric Clapton", "gold_answers": ["Ernie Isley"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "897", "condition": "retrieval", "response": "Fay Wray", "gold_answers": ["Fay Wray"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "898", "condition": "retrieval", "response": "Gordon Lightfoot", "gold_answers": ["SS Edmund Fitzgerald"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "899", "condition": "retrieval", "response": "Indonesian", "gold_answers": ["Indonesian"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "900", "condition": "retrieval", "response": "Superman", "gold_answers": ["Superman 's family crest"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "901", "condition": "retrieval", "response": "Miami Heat", "gold_answers": ["Dallas Mavericks"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "902", "condition": "retrieval", "response": "Freakshow's Wife", "gold_answers": ["Malin Åkerman"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "903", "condition": "retrieval", "response": "Hollywood Walk of Fame", "gold_answers": ["Hollywood Historic Trust"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "904", "condition": "retrieval", "response": "Mike", "gold_answers": ["ex-girlfriend"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "905", "condition": "retrieval", "response": "Robin Gibb", "gold_answers": ["The Bee Gees"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "906", "condition": "retrieval", "response": "Ricardo Rossello", "gold_answers": ["Donald Trump"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "907", "condition": "retrieval", "response": "United Nations", "gold_answers": ["United Nations"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "908", "condition": "retrieval", "response": "Richard Keith", "gold_answers": ["Keith Thibodeaux"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "909", "condition": "retrieval", "response": "Santa Claus, Indiana", "gold_answers": ["Koch Development Corporation"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "910", "condition": "retrieval", "response": "Ganga", "gold_answers": ["Ganges"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "911", "condition": "retrieval", "response": "Dominik Hašek", "gold_answers": ["Martin Brodeur"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "912", "condition": "retrieval", "response": "Viper", "gold_answers": ["Dorne"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "913", "condition": "retrieval", "response": "Dil Se..", "gold_answers": ["Dil Se ..."], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "914", "condition": "retrieval", "response": "Gingerbread Man Records", "gold_answers": ["Gingerbread Man Records"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "915", "condition": "retrieval", "response": "Queen Latifah", "gold_answers": ["Queen Latifah"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "916", "condition": "retrieval", "response": "Jain", "gold_answers": ["Jains"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "917", "condition": "retrieval", "response": "Intel", "gold_answers": ["an Intel 8088"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "918", "condition": "retrieval", "response": "Cornelius Fudge", "gold_answers": ["Rufus Scrimgeour"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "919", "condition": "retrieval", "response": "Anuj Sachdeva", "gold_answers": ["Jibraan Khan"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "920", "condition": "retrieval", "response": "Aman Verma", "gold_answers": ["Jibraan Khan"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "921", "condition": "retrieval", "response": "Federal Reserve", "gold_answers": ["the Federal Reserve"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "922", "condition": "retrieval", "response": "Robert Downey Jr.", "gold_answers": ["Scarlett Johansson"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "923", "condition": "retrieval", "response": "James Goodale", "gold_answers": ["The New York Times"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "924", "condition": "retrieval", "response": "Hawaii", "gold_answers": ["near the namesake Hawaiian Islands"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "925", "condition": "retrieval", "response": "Nepal", "gold_answers": ["Nepal"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "926", "condition": "retrieval", "response": "Manhattan", "gold_answers": ["New York City"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "927", "condition": "retrieval", "response": "Alaska", "gold_answers": ["11 miles outside of Homer"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "928", "condition": "retrieval", "response": "Like a Stone", "gold_answers": ["Audioslave"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "929", "condition": "retrieval", "response": "2020", "gold_answers": ["Tokyo"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "930", "condition": "retrieval", "response": "Hannibal Lecter", "gold_answers": ["Alfredo Ballí Treviño"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "931", "condition": "retrieval", "response": "Czech Republic", "gold_answers": ["Czechia"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "932", "condition": "retrieval", "response": "Zoroastrianism", "gold_answers": ["Zoroastrians"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "933", "condition": "retrieval", "response": "Bristol Rovers", "gold_answers": ["Bristol Rugby"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "934", "condition": "retrieval", "response": "Ronda Rousey", "gold_answers": ["Rousey"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "935", "condition": "retrieval", "response": "Carrie Underwood", "gold_answers": ["Pentatonix"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "936", "condition": "retrieval", "response": "Brian McKnight", "gold_answers": ["Brian McKnight"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "937", "condition": "retrieval", "response": "Greg Kroah-Hartman", "gold_answers": ["Linus Torvalds"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "938", "condition": "retrieval", "response": "Uriah Phillips Levy", "gold_answers": ["the British"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "939", "condition": "retrieval", "response": "The X-Files Movies", "gold_answers": ["The X-Files"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "940", "condition": "retrieval", "response": "Peter O'Toole", "gold_answers": ["Walt Disney"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "941", "condition": "retrieval", "response": "European Recovery Program", "gold_answers": ["The Marshall Plan"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "942", "condition": "retrieval", "response": "Jeffrey Dean Morgan", "gold_answers": ["Jeffrey Dean Morgan"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "943", "condition": "retrieval", "response": "Denali", "gold_answers": ["William McKinley"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "944", "condition": "retrieval", "response": "Iron Curtain", "gold_answers": ["Germany"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "945", "condition": "retrieval", "response": "Bart Millard", "gold_answers": ["J. Michael Finley"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "946", "condition": "retrieval", "response": "Barack Obama", "gold_answers": ["Obama"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "947", "condition": "retrieval", "response": "Greg Lake", "gold_answers": ["Greg Lake"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "948", "condition": "retrieval", "response": "Adam Lanza", "gold_answers": ["Adam Lanza"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "949", "condition": "retrieval", "response": "Sammie Armstrong", "gold_answers": ["Freaks and Geeks"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "950", "condition": "retrieval", "response": "Washington DC", "gold_answers": ["Southeast D.C."], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "951", "condition": "retrieval", "response": "Telugu", "gold_answers": ["Telugu"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "952", "condition": "retrieval", "response": "Philadelphia", "gold_answers": ["Philadelphia"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "953", "condition": "retrieval", "response": "The Marshall Tucker Band", "gold_answers": ["The Marshall Tucker Band"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "954", "condition": "retrieval", "response": "Suzanne Somers", "gold_answers": ["Suzanne Somers"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "955", "condition": "retrieval", "response": "New Zealand National Party", "gold_answers": ["The New Zealand National Party"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "956", "condition": "retrieval", "response": "Charles E. Samuels Jr.", "gold_answers": ["Hugh Hurwitz"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "957", "condition": "retrieval", "response": "Eight Days a Week", "gold_answers": ["Beatles for Sale"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "958", "condition": "retrieval", "response": "Kashyyyk", "gold_answers": ["Kashyyyk"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "959", "condition": "retrieval", "response": "UCO Bank", "gold_answers": ["UTI Bank"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "960", "condition": "retrieval", "response": "None of these", "gold_answers": ["Massachusetts"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "961", "condition": "retrieval", "response": "Delta Tau Chi", "gold_answers": ["Delta Tau Chi"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "962", "condition": "retrieval", "response": "Jason Sudeikis", "gold_answers": ["Jason Sudeikis"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "963", "condition": "retrieval", "response": "Big Ben", "gold_answers": ["Elizabeth Tower"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "964", "condition": "retrieval", "response": "Ryan Reynolds", "gold_answers": ["Ryan Reynolds"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "965", "condition": "retrieval", "response": "Saint Patrick's Day", "gold_answers": ["Saint Patrick"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "966", "condition": "retrieval", "response": "Czech", "gold_answers": ["Czech"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "967", "condition": "retrieval", "response": "Pontiac Trans Am", "gold_answers": ["1977 Pontiac Trans Am"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "968", "condition": "retrieval", "response": "Buckingham Palace", "gold_answers": ["Buckingham House"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "969", "condition": "retrieval", "response": "Amitava Roy", "gold_answers": ["Ajit Singh"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "970", "condition": "retrieval", "response": "Ben & Jerry's", "gold_answers": ["Ben & Jerry 's"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "971", "condition": "retrieval", "response": "Qatar", "gold_answers": ["Qatar"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "972", "condition": "retrieval", "response": "Isle of Man TT", "gold_answers": ["Isle of Man"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "973", "condition": "retrieval", "response": "Oscar Nominations", "gold_answers": ["eight Oscars"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "974", "condition": "retrieval", "response": "Rise of the Planet of the Apes, Dawn of the Planet", "gold_answers": ["Planet of the Apes"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "975", "condition": "retrieval", "response": "Andy Serkis", "gold_answers": ["Maurice Evans"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "976", "condition": "retrieval", "response": "Jamaica", "gold_answers": ["Cuba"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "977", "condition": "retrieval", "response": "Persia", "gold_answers": ["Iran"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "978", "condition": "retrieval", "response": "Cameron Crestani", "gold_answers": ["Vincenzo Montella"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "979", "condition": "retrieval", "response": "Enid Lyons", "gold_answers": ["Edith Cowan"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "980", "condition": "retrieval", "response": "Annabelle: Creation", "gold_answers": ["Annabelle", "Annabelle : Creation"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "981", "condition": "retrieval", "response": "Leland Stanford", "gold_answers": ["Leland Stanford"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "982", "condition": "retrieval", "response": "Genevieve Goings", "gold_answers": ["Genevieve Goings"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "983", "condition": "retrieval", "response": "Phillip Schofield", "gold_answers": ["Jason Donovan"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "984", "condition": "retrieval", "response": "Elias Janssen", "gold_answers": ["Elias Janssen"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "985", "condition": "retrieval", "response": "Pat Boone", "gold_answers": ["Die Travellers"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "986", "condition": "retrieval", "response": "Julia (Beatles song)", "gold_answers": ["The Beatles"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "987", "condition": "retrieval", "response": "Ubuntu", "gold_answers": ["Ubuntu"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "988", "condition": "retrieval", "response": "Czech", "gold_answers": ["the Czech people", "The Czechs"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "989", "condition": "retrieval", "response": "Doctor of Medicine", "gold_answers": ["A Doctor of Medicine"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "990", "condition": "retrieval", "response": "Russell Watson", "gold_answers": ["Russell Watson"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "991", "condition": "retrieval", "response": "George W. Bush", "gold_answers": ["the United States Supreme Court"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "992", "condition": "retrieval", "response": "Rochester", "gold_answers": ["The Seneca Falls Convention"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "993", "condition": "retrieval", "response": "Green Bay Packers", "gold_answers": ["Kansas City Chiefs"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "994", "condition": "retrieval", "response": "Judaism", "gold_answers": ["Judaism"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "995", "condition": "retrieval", "response": "Beijing", "gold_answers": ["Peking"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "996", "condition": "retrieval", "response": "Juan Francisco Ochoa", "gold_answers": ["Juan Francisco Ochoa"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "997", "condition": "retrieval", "response": "Hit the Road Jack", "gold_answers": ["Ray Charles Greatest Hits"], "judge_raw": "NO", "verdict_bool": false}
+{"query_id": "998", "condition": "retrieval", "response": "Sam Smith", "gold_answers": ["Jimmy Napes", "Sam Smith"], "judge_raw": "YES", "verdict_bool": true}
+{"query_id": "999", "condition": "retrieval", "response": "Helen McCrory", "gold_answers": ["Polly Gray"], "judge_raw": "NO", "verdict_bool": false}

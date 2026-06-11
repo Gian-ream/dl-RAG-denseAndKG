@@ -1,0 +1,14 @@
+PREFIX wd:  <http://www.wikidata.org/entity/>
+PREFIX wdt: <http://www.wikidata.org/prop/direct/>
+
+# Test query: count neighbours of Q5 per predicate.
+# Predicates: first 200 from queryPredicati.csv.
+# Direction: outgoing UNION incoming (non-directional graph).
+# Target filter: only Wikidata items (Q...), no literals.
+
+SELECT ?p (COUNT(?n) AS ?cnt) WHERE {
+  VALUES ?p { wdt:P6 wdt:P10 wdt:P14 wdt:P15 wdt:P16 wdt:P17 wdt:P18 wdt:P19 wdt:P20 wdt:P21 wdt:P22 wdt:P25 wdt:P26 wdt:P27 wdt:P30 wdt:P31 wdt:P35 wdt:P36 wdt:P37 wdt:P38 wdt:P39 wdt:P40 wdt:P41 wdt:P47 wdt:P50 wdt:P51 wdt:P53 wdt:P54 wdt:P57 wdt:P58 wdt:P59 wdt:P61 wdt:P65 wdt:P66 wdt:P69 wdt:P78 wdt:P81 wdt:P84 wdt:P85 wdt:P86 wdt:P87 wdt:P88 wdt:P91 wdt:P92 wdt:P94 wdt:P97 wdt:P98 wdt:P101 wdt:P102 wdt:P103 wdt:P105 wdt:P106 wdt:P108 wdt:P109 wdt:P110 wdt:P111 wdt:P112 wdt:P113 wdt:P114 wdt:P115 wdt:P117 wdt:P118 wdt:P119 wdt:P121 wdt:P122 wdt:P123 wdt:P126 wdt:P127 wdt:P128 wdt:P129 wdt:P131 wdt:P135 wdt:P136 wdt:P137 wdt:P138 wdt:P140 wdt:P141 wdt:P143 wdt:P144 wdt:P149 wdt:P150 wdt:P154 wdt:P155 wdt:P156 wdt:P157 wdt:P158 wdt:P159 wdt:P161 wdt:P162 wdt:P163 wdt:P166 wdt:P167 wdt:P169 wdt:P170 wdt:P171 wdt:P172 wdt:P175 wdt:P176 wdt:P177 wdt:P178 wdt:P179 wdt:P180 wdt:P181 wdt:P183 wdt:P184 wdt:P185 wdt:P186 wdt:P189 wdt:P190 wdt:P193 wdt:P194 wdt:P195 wdt:P196 wdt:P197 wdt:P199 wdt:P200 wdt:P201 wdt:P205 wdt:P206 wdt:P207 wdt:P208 wdt:P209 wdt:P210 wdt:P212 wdt:P213 wdt:P214 wdt:P215 wdt:P217 wdt:P218 wdt:P219 wdt:P220 wdt:P221 wdt:P223 wdt:P225 wdt:P227 wdt:P229 wdt:P230 wdt:P231 wdt:P232 wdt:P233 wdt:P234 wdt:P235 wdt:P236 wdt:P237 wdt:P238 wdt:P239 wdt:P240 wdt:P241 wdt:P242 wdt:P243 wdt:P244 wdt:P245 wdt:P246 wdt:P247 wdt:P248 wdt:P249 wdt:P263 wdt:P264 wdt:P267 wdt:P268 wdt:P269 wdt:P270 wdt:P271 wdt:P272 wdt:P274 wdt:P275 wdt:P276 wdt:P277 wdt:P278 wdt:P279 wdt:P281 wdt:P282 wdt:P286 wdt:P287 wdt:P289 wdt:P291 wdt:P296 wdt:P297 wdt:P298 wdt:P299 wdt:P300 wdt:P301 wdt:P303 wdt:P304 wdt:P305 wdt:P306 wdt:P344 wdt:P345 wdt:P347 wdt:P348 wdt:P349 wdt:P350 wdt:P351 wdt:P352 wdt:P353 wdt:P354 wdt:P355 wdt:P356 wdt:P358 wdt:P359 }
+  { wd:Q5 ?p ?n . } UNION { ?n ?p wd:Q5 . }
+  FILTER(STRSTARTS(STR(?n), "http://www.wikidata.org/entity/Q"))
+}
+GROUP BY ?p
