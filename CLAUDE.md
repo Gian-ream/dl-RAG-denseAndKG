@@ -33,6 +33,7 @@ La conoscenza del progetto NON sta in questo file. Consulta:
 | File | Contenuto |
 |------|-----------|
 | `documents/PROJECT_NOTES.md` | Pipeline, architettura, stato avanzamento, decisioni, note operative |
+| `documents/DATA_DICTIONARY.md` | Catalogo degli artefatti dati: schema, produttore, consumatori |
 | `documents/GLOSSARIO.md` | Terminologia tecnica del progetto |
 | `base/preprocessing.ipynb` | Vecchio notebook Colab — **solo riferimento, non eseguire** |
 
@@ -40,7 +41,7 @@ La conoscenza del progetto NON sta in questo file. Consulta:
 
 - **Package manager**: `uv` — `uv sync` per installare, `uv add <pkg>` per aggiungere dipendenze
 - **Python**: >=3.8 (venv in `.venv/`)
-- **Dati**: `data/` è gitignored (~14.7 GB); auto-download via `kagglehub` nel notebook
+- **Dati**: `data/` è gitignored (~660 GB su disco: HDT+indice 293, shard FAISS 258, TSV Wikipedia 81, KG ~18, cache ReFinED ~9); il download iniziale via `kagglehub` nel notebook 01 è ~14.7 GB — catalogo completo in `documents/DATA_DICTIONARY.md`
 - **Notebook principale**: `01_corpus_preparation.ipynb`
 
 ## Tavola Rotonda Python AI

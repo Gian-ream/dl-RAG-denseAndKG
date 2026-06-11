@@ -1,0 +1,1000 @@
+{"query_id": "0", "question": "this artist was signed in 1952 by atlantic and brought a string of hits", "passage_ids": ["41894427", "41894428", "13899100", "13899101", "1398900"], "response": "Ray Charles"}
+{"query_id": "1", "question": "who is chief in grey's anatomy season 13", "passage_ids": ["37404846", "38920291", "9607263", "37404845", "37404842"], "response": "Meredith Grey"}
+{"query_id": "2", "question": "what is the dominant religion in puerto rico", "passage_ids": ["1740640", "1740642", "631598", "39457431", "1740641"], "response": "Roman Catholicism"}
+{"query_id": "3", "question": "who plays skyler on lab rats elite force", "passage_ids": ["37891644", "41946969", "35121199", "37891645", "31357144"], "response": "Bradley Steven Perry"}
+{"query_id": "4", "question": "what railroad links moscow with russia eastern coast", "passage_ids": ["39660697", "39660698", "16126068", "503428", "5590837"], "response": "Moscow"}
+{"query_id": "5", "question": "who plays andy's teacher in parks and rec", "passage_ids": ["6678816", "28225934", "28344166", "25584731", "28062904"], "response": "Rashida Jones"}
+{"query_id": "6", "question": "who sang the original blinded by the light", "passage_ids": ["9608560", "1932393", "9608564", "9608565", "1932394"], "response": "Bruce Springsteen"}
+{"query_id": "7", "question": "who plays cullen bohannon in hell on wheels", "passage_ids": ["29752767", "33321278", "33653840", "33321274", "34897753"], "response": "Cullen Bohannon"}
+{"query_id": "8", "question": "who won the nrl grand final in 2015", "passage_ids": ["16245740", "39741168", "16245741", "37657845", "38568854"], "response": "Cronulla Sharks"}
+{"query_id": "9", "question": "who played the robot on lost in space 2018", "passage_ids": ["41994173", "41906920", "41933588", "27349222", "2631678"], "response": "Brian Steele"}
+{"query_id": "10", "question": "who came up with britain's got talent", "passage_ids": ["29129191", "18667103", "18667104", "24693642", "29129190"], "response": "Paul O'Grady"}
+{"query_id": "11", "question": "who won rookie of the year and cy young award in the same year", "passage_ids": ["1853302", "1853301", "1517129", "704958", "2529675"], "response": "Roger Clemens"}
+{"query_id": "12", "question": "who plays the bear on toy story 3", "passage_ids": ["28566616", "41931638", "28566615", "41896190", "41917463"], "response": "Lotso"}
+{"query_id": "13", "question": "who played the priest in ryan's daughter", "passage_ids": ["13744338", "3419448", "5991703", "13173500", "12969140"], "response": "Mitchell Ryan"}
+{"query_id": "14", "question": "who recorded it's a man's world", "passage_ids": ["16977376", "16977384", "16977371", "16977383", "16977380"], "response": "James Brown"}
+{"query_id": "15", "question": "who played daenerys targaryen brother in game of thrones", "passage_ids": ["41904118", "34180274", "34180273", "38843171", "25534199"], "response": "Jason Momoa"}
+{"query_id": "16", "question": "who sings the original version of feeling good", "passage_ids": ["14740132", "14740098", "14740097", "14740131", "14740103"], "response": "Nina Simone"}
+{"query_id": "17", "question": "who does black panther marry in the comics", "passage_ids": ["7863205", "12343846", "12343845", "3935914", "35496160"], "response": "T'Challa"}
+{"query_id": "18", "question": "who is the chief law officer of the government of india", "passage_ids": ["14196351", "34511468", "41943809", "35394822", "31146144"], "response": "Sharad Arvind Bobde"}
+{"query_id": "19", "question": "who voices lois in family guy season 1", "passage_ids": ["7227767", "7227771", "7227765", "3126434", "7227766"], "response": "Lois Griffin"}
+{"query_id": "20", "question": "who is the first rail minister of india", "passage_ids": ["34159077", "15890685", "15890684", "16541851", "34159078"], "response": "Lalit Narayan Mishra"}
+{"query_id": "21", "question": "what day of the year is mothers day always celebrated", "passage_ids": ["1134317", "1134315", "1134373", "38869695", "1134350"], "response": "Second Sunday in May"}
+{"query_id": "22", "question": "who plays smithys sister in gavin and stacey", "passage_ids": ["41890654", "20417490", "20417498", "20417497", "20417489"], "response": "Nessa"}
+{"query_id": "23", "question": "who played adam schiff on law & order", "passage_ids": ["11214646", "11214645", "11214644", "11214643", "19604202"], "response": "Steven Hill"}
+{"query_id": "24", "question": "who was president when the white house was built", "passage_ids": ["909071", "26117654", "26117653", "909075", "909070"], "response": "George Washington"}
+{"query_id": "25", "question": "who played jerry lee lewis on walk the line", "passage_ids": ["14502406", "14502407", "1920286", "1920333", "1920334"], "response": "Jerry Lee Lewis"}
+{"query_id": "26", "question": "what is the predominant religion in the ukraine", "passage_ids": ["6395908", "6395909", "866832", "866831", "866767"], "response": "Christianity"}
+{"query_id": "27", "question": "who does michael scott end up with on the office", "passage_ids": ["14349477", "13273079", "14329700", "12603286", "14349476"], "response": "Pam Beesly"}
+{"query_id": "28", "question": "what's the dog's name on garfield", "passage_ids": ["12250301", "12250302", "7400134", "7400163", "7400135"], "response": "Odie"}
+{"query_id": "29", "question": "who was president during attack on pearl harbor", "passage_ids": ["41267641", "8026866", "19767350", "8026867", "3957869"], "response": "Franklin Delano Roosevelt"}
+{"query_id": "30", "question": "convention relative to the treatment of prisoners of war", "passage_ids": ["23402914", "15449680", "15449681", "7353591", "25653815"], "response": "Geneva Conventions"}
+{"query_id": "31", "question": "first black tennis player to win a grand slam", "passage_ids": ["2889719", "41894547", "4322542", "2889720", "19525252"], "response": "Althea Gibson"}
+{"query_id": "32", "question": "who owned the louisiana territory when the constitution was signed", "passage_ids": ["464324", "18085496", "10747029", "10783498", "10747030"], "response": "United States"}
+{"query_id": "33", "question": "who heads the u.s. intelligence community science forum", "passage_ids": ["10799123", "10799122", "30336170", "25987910", "30336168"], "response": "Mark M. Lowenthal"}
+{"query_id": "34", "question": "who is the most decorated veteran in us history", "passage_ids": ["14676518", "14553403", "4262322", "25677793", "30097186"], "response": "Chuck Norris"}
+{"query_id": "35", "question": "who played dean on wizards of waverly place", "passage_ids": ["29112343", "20567801", "22037031", "19258562", "29112396"], "response": "Jake T. Austin"}
+{"query_id": "36", "question": "who won the women's wimbledon title in 2018", "passage_ids": ["41815233", "41815234", "41621694", "41621695", "11167545"], "response": "Naomi Osaka"}
+{"query_id": "37", "question": "where was the aztec civilization located on a map", "passage_ids": ["15291919", "19959383", "36169613", "14691824", "4565755"], "response": "Mexico"}
+{"query_id": "38", "question": "who does sarah chalke voice in rick and morty", "passage_ids": ["6508037", "6508027", "41954520", "36427416", "6508026"], "response": "Sarah Chalke"}
+{"query_id": "39", "question": "who plays belle in beauty and the beast movie", "passage_ids": ["41991050", "14822673", "10546203", "14822758", "14822757"], "response": "Emma Watson"}
+{"query_id": "40", "question": "who plays poussey on orange is the new black", "passage_ids": ["34935243", "34935244", "35897955", "41896680", "41907454"], "response": "Poussey Washington"}
+{"query_id": "41", "question": "in javanese gamelan music typical elaborating instruments are", "passage_ids": ["15235418", "11056395", "16898597", "11056387", "5557766"], "response": "Undir, Kuntung, Gendèr, Cak,"}
+{"query_id": "42", "question": "what was the first attack in world war 2", "passage_ids": ["11874250", "20691761", "27402954", "37271031", "38544868"], "response": "Pearl Harbour"}
+{"query_id": "43", "question": "who is first on record as proposing a geocentric universe", "passage_ids": ["12158211", "12158210", "9019920", "12158166", "3653117"], "response": "Nicolaus Copernicus"}
+{"query_id": "44", "question": "who does young catherine marry in wuthering heights", "passage_ids": ["21202855", "21202854", "25086167", "1334599", "1334600"], "response": "Catherine Linton"}
+{"query_id": "45", "question": "where did they go in the inbetweeners movie", "passage_ids": ["34828177", "29740895", "34828176", "29740877", "29740874"], "response": "Malia, Greece"}
+{"query_id": "46", "question": "who plays bernadette in the big bang theory", "passage_ids": ["26215247", "20448597", "20448598", "26215250", "26215299"], "response": "Kaley Cuoco"}
+{"query_id": "47", "question": "who sings l.o.v.e in the movie the parent trap", "passage_ids": ["17604797", "41890842", "11075788", "841341", "17955562"], "response": "Hayley Mills"}
+{"query_id": "48", "question": "when did ontario get rid of grade 13", "passage_ids": ["7795152", "3677738", "7795151", "4057982", "3557880"], "response": "Ontario got rid of grade 13 in 2003"}
+{"query_id": "49", "question": "when was how the grinch stole christmas written", "passage_ids": ["41993646", "41986656", "26775514", "26775513", "15771008"], "response": "1957"}
+{"query_id": "50", "question": "why do they call easter island easter island", "passage_ids": ["21797929", "367860", "1280256", "374308", "21797928"], "response": "Easter Island"}
+{"query_id": "51", "question": "who played the banker in it's a wonderful life", "passage_ids": ["1415198", "1415110", "1415109", "1415202", "1415197"], "response": "Donna Reed"}
+{"query_id": "52", "question": "who led the rebuilding of the temple in jerusalem", "passage_ids": ["7934806", "21847058", "1547680", "18039384", "1547679"], "response": "Nehemiah"}
+{"query_id": "53", "question": "who sang some enchanted evening in the film south pacific", "passage_ids": ["41955298", "41955299", "10506058", "10506059", "20315342"], "response": "Bing Crosby"}
+{"query_id": "54", "question": "what kind of music did whitney houston sing", "passage_ids": ["10923342", "918324", "918320", "918264", "918310"], "response": "Pop"}
+{"query_id": "55", "question": "who played the little girl on mrs doubtfire", "passage_ids": ["4457034", "4457032", "16650519", "24555207", "26246877"], "response": "Robin Williams"}
+{"query_id": "56", "question": "who plays andy's dad in the office", "passage_ids": ["23887881", "23887882", "33049328", "26660260", "23301354"], "response": "Rainn Wilson"}
+{"query_id": "57", "question": "who controlled the economy of the incan empire", "passage_ids": ["629827", "629592", "629591", "629587", "629588"], "response": "Pachacuti"}
+{"query_id": "58", "question": "what is the street address to the white house", "passage_ids": ["15462499", "22564768", "22564769", "34898139", "34898138"], "response": "1600 Pennsylvania Avenue NW"}
+{"query_id": "59", "question": "where does the water in rockhampton come from", "passage_ids": ["23175057", "3704192", "3704193", "23175058", "3704054"], "response": "Rockhampton"}
+{"query_id": "60", "question": "who won olympic gold in womens hockey 2018", "passage_ids": ["37641877", "25578726", "37641876", "29907079", "36462990"], "response": "Savita Punia"}
+{"query_id": "61", "question": "who plays lilly on the young and the restless", "passage_ids": ["32316781", "35005243", "32316805", "39753085", "6464915"], "response": "Eileen Davidson"}
+{"query_id": "62", "question": "who is the actor that plays lucius malfoy", "passage_ids": ["17994689", "31423767", "17994690", "1094550", "4943492"], "response": "Tom Felton"}
+{"query_id": "63", "question": "who played will on girlfriends guide to divorce", "passage_ids": ["35636901", "35636900", "41937780", "41890932", "41890931"], "response": "Will Kemp"}
+{"query_id": "64", "question": "who plays amys brother on everybody loves raymond", "passage_ids": ["41890943", "41890944", "41890942", "10242081", "10242080"], "response": "Peter MacDougall"}
+{"query_id": "65", "question": "where are the olympics being held in 2020", "passage_ids": ["736379", "21391484", "31588508", "9481054", "9480997"], "response": "Tokyo"}
+{"query_id": "66", "question": "what people group established an empire in the valley of mexico", "passage_ids": ["3454643", "516731", "3454644", "29887917", "24997078"], "response": "Aztecs"}
+{"query_id": "67", "question": "who wrote the song the ballad of lucy jordan", "passage_ids": ["18962033", "18962036", "18962032", "18962037", "41890953"], "response": "Shel Silverstein"}
+{"query_id": "68", "question": "who is the original singer of one day", "passage_ids": ["9599685", "19628711", "31153405", "40388738", "6882616"], "response": "Inaya Day"}
+{"query_id": "69", "question": "when did gone with the wind won 10 academy awards", "passage_ids": ["10784769", "12240937", "12240936", "12240827", "41985276"], "response": "1939"}
+{"query_id": "70", "question": "where is the 2024 olympics gonna be held", "passage_ids": ["10036094", "18544381", "18544380", "31588507", "41943962"], "response": "Paris"}
+{"query_id": "71", "question": "where are the italian alps located in italy", "passage_ids": ["10863665", "10863664", "22359", "22487", "22360"], "response": "Italy"}
+{"query_id": "72", "question": "who wrote the theme song to beverly hills cop", "passage_ids": ["6363877", "41891027", "37881975", "6363862", "6363863"], "response": "Harold Faltermeyer"}
+{"query_id": "73", "question": "who owns the harris county toll road authority", "passage_ids": ["41894628", "13063772", "13063798", "11026956", "13063797"], "response": "Harris County Toll Road Authority"}
+{"query_id": "74", "question": "who won the national college football championship 2018", "passage_ids": ["1618865", "38396573", "41818876", "41988137", "40911340"], "response": "Alabama"}
+{"query_id": "75", "question": "who was traded for kobe bryant in 1996", "passage_ids": ["11735146", "1606490", "41910653", "1606489", "10332111"], "response": "Kobe Bryant"}
+{"query_id": "76", "question": "what is the name of the currency used in togo", "passage_ids": ["40306127", "40306125", "5595547", "829280", "40306126"], "response": "CFA Franc"}
+{"query_id": "77", "question": "who sang proud mary first tina turner or ccr", "passage_ids": ["13035055", "13035054", "2591151", "2591152", "13035044"], "response": "Tina Turner"}
+{"query_id": "78", "question": "where is the next commonwealth games being held 2026", "passage_ids": ["37766794", "1015516", "37766793", "1015490", "1015517"], "response": "Birmingham"}
+{"query_id": "79", "question": "which wizard of oz character didn't have a heart", "passage_ids": ["41943115", "41943116", "5518340", "4598029", "14250740"], "response": "The Tin Woodman"}
+{"query_id": "80", "question": "who did el salvador get their independence from", "passage_ids": ["20565165", "40600663", "20565164", "1270524", "1270523"], "response": "Spain"}
+{"query_id": "81", "question": "who plays graham on once upon a time", "passage_ids": ["31941760", "31941761", "31941779", "36530658", "15095333"], "response": "Graham"}
+{"query_id": "82", "question": "what is the full name of nigerian president", "passage_ids": ["37485505", "38293030", "11782651", "5556829", "19501887"], "response": "Muhammadu Buhari"}
+{"query_id": "83", "question": "which gas most likely was not part of earth's early atmosphere", "passage_ids": ["1229370", "11855381", "20428019", "41891101", "1229372"], "response": "Nitrogen"}
+{"query_id": "84", "question": "who wrote you don't mess around with jim", "passage_ids": ["7948820", "7948815", "7948814", "41894655", "26296851"], "response": "Jim Croce"}
+{"query_id": "85", "question": "who win the under 17 fifa world cup", "passage_ids": ["8390660", "20944664", "8390665", "22113433", "8390675"], "response": "Ghana"}
+{"query_id": "86", "question": "where will the summer olympics be held in 2020", "passage_ids": ["736379", "9481054", "31588508", "9480997", "21391484"], "response": "Tokyo"}
+{"query_id": "87", "question": "who played fdr in the movie pearl harbor", "passage_ids": ["1922562", "1922572", "970353", "970352", "12422837"], "response": "Ben Affleck"}
+{"query_id": "88", "question": "who has won bbc sports personality of the year the most", "passage_ids": ["25738219", "25738171", "40797396", "5881422", "5888868"], "response": "David Beckham"}
+{"query_id": "89", "question": "who played the voice of jabba the hutt", "passage_ids": ["32541558", "10352285", "10352273", "25066738", "25066748"], "response": "Erik Bauersfeld"}
+{"query_id": "90", "question": "who won men's figure skating in olympics 2018", "passage_ids": ["34156817", "34156816", "19370792", "19370791", "34156815"], "response": "Denis Ten"}
+{"query_id": "91", "question": "the leader of the party with the second largest membership in the house of commons is the", "passage_ids": ["1775076", "360512", "1775075", "650045", "37438209"], "response": "Conservative Party"}
+{"query_id": "92", "question": "who won the women's fifa world cup", "passage_ids": ["2796921", "5440973", "2796922", "6281249", "32252183"], "response": "Germany"}
+{"query_id": "93", "question": "last team to win fa cup not in top division", "passage_ids": ["19151890", "4667871", "22543464", "284537", "284541"], "response": "West Bromwich"}
+{"query_id": "94", "question": "who was the 41st president of the united states of america", "passage_ids": ["41974508", "4233705", "410696", "41891153", "301386"], "response": "George H.W. Bush"}
+{"query_id": "95", "question": "who plays ruben amaro jr on the goldbergs", "passage_ids": ["16061343", "16061342", "41891157", "16061278", "16061279"], "response": "Rubén Amaro Jr."}
+{"query_id": "96", "question": "who was the first black student admitted to the university of mississippi", "passage_ids": ["1497382", "1497317", "37042431", "26968877", "26968876"], "response": "James Meredith"}
+{"query_id": "97", "question": "who played the son in walking tall 1973", "passage_ids": ["41931648", "6274227", "7395923", "11060509", "3051168"], "response": "Leonard Stone"}
+{"query_id": "98", "question": "real name of raj chandra in rani rashmoni", "passage_ids": ["21413107", "14185908", "14185907", "21413108", "41891201"], "response": "Raj Chandra Das"}
+{"query_id": "99", "question": "who came up with the idea of communism", "passage_ids": ["27666182", "37314454", "9818443", "5122387", "27666181"], "response": "Karl Marx"}
+{"query_id": "100", "question": "who wrote the music for how the grinch stole christmas", "passage_ids": ["25749495", "25749496", "41993646", "41986656", "15382498"], "response": "Jim Carrey"}
+{"query_id": "101", "question": "who becomes the president after the president is impeached", "passage_ids": ["41950740", "3216739", "12771337", "39571460", "39571466"], "response": "Hillary Clinton"}
+{"query_id": "102", "question": "who plays young gideon in once upon a time", "passage_ids": ["31941760", "36366533", "31941761", "36366534", "40176529"], "response": "Giles Matthey"}
+{"query_id": "103", "question": "who has power to remove president from office", "passage_ids": ["855069", "3311427", "31940180", "3337501", "552407"], "response": "congress"}
+{"query_id": "104", "question": "who played the title role in 2016 doctor strange", "passage_ids": ["35484435", "41913426", "41913424", "35484556", "35484483"], "response": "Benedict Cumberbatch"}
+{"query_id": "105", "question": "who is the author of the berenstain bears books", "passage_ids": ["3603715", "3603723", "3603713", "3603662", "3603673"], "response": "Stan and Jan Berenstain"}
+{"query_id": "106", "question": "when did they start singing god bless america at baseball games", "passage_ids": ["7146552", "7146553", "7333061", "2695350", "2695344"], "response": "1918"}
+{"query_id": "107", "question": "what order do the resident evil films go in", "passage_ids": ["31156716", "22867276", "22867275", "22867286", "7344984"], "response": "Resident Evil: Afterlife"}
+{"query_id": "108", "question": "who is the actor that plays stefan salvatore", "passage_ids": ["27552389", "27552334", "27552335", "27552338", "27552322"], "response": "Paul Wesley"}
+{"query_id": "109", "question": "the ruler of the holy roman empire that split his empire in half between his two sons was who", "passage_ids": ["5062808", "12886644", "12886643", "5062807", "1018623"], "response": "Frederick I, Holy Roman Emperor"}
+{"query_id": "110", "question": "who played david in the assassination of versace", "passage_ids": ["40727648", "41891284", "40727649", "40727625", "41958314"], "response": "Ricky Martin"}
+{"query_id": "111", "question": "who won the most olympic medals in history", "passage_ids": ["938292", "24741284", "938291", "1621290", "24636096"], "response": "Michael Phelps"}
+{"query_id": "112", "question": "who is one of the california senators now", "passage_ids": ["12475367", "12475375", "12475366", "18489269", "33007902"], "response": "Robert Hertzberg"}
+{"query_id": "113", "question": "who played drums on here comes the sun", "passage_ids": ["31023640", "18002556", "17978223", "31023641", "18002557"], "response": "Michael Bellusci"}
+{"query_id": "114", "question": "who played the sun baby in the original run of teletubbies", "passage_ids": ["41891310", "837373", "837372", "837407", "837406"], "response": "Jess Smith"}
+{"query_id": "115", "question": "who plays the bartender in how i met your mother", "passage_ids": ["41903920", "12096177", "41891332", "41949643", "41984593"], "response": "Carl"}
+{"query_id": "116", "question": "who sang the theme song for as told by ginger", "passage_ids": ["4354431", "4354427", "4354426", "41993452", "4354404"], "response": "Macy Gray"}
+{"query_id": "117", "question": "how far is paradise ca from chico ca", "passage_ids": ["41891344", "2016743", "2016745", "15100938", "2016729"], "response": "10 miles"}
+{"query_id": "118", "question": "which one of saturn's moons has water", "passage_ids": ["24691882", "183549", "60720", "183550", "5860958"], "response": "Enceladus"}
+{"query_id": "119", "question": "who plays mrs. potts in the new beauty and the beast movie", "passage_ids": ["41898052", "41891356", "41926493", "13804686", "5351671"], "response": "Emma Thompson"}
+{"query_id": "120", "question": "where was the streets of san francisco filmed", "passage_ids": ["4389714", "4389713", "4389727", "30299747", "4389697"], "response": "San Francisco"}
+{"query_id": "121", "question": "when did the chargers make the super bowl", "passage_ids": ["8993416", "788526", "8993417", "8613895", "8613898"], "response": "1994"}
+{"query_id": "122", "question": "who narrated the war of the worlds radio broadcast", "passage_ids": ["5656053", "38512683", "31556061", "2568123", "594223"], "response": "Orson Welles"}
+{"query_id": "123", "question": "who played zuzu in it's a wonderful life", "passage_ids": ["1415202", "13078929", "1415119", "1415201", "13078928"], "response": "Karolyn Grimes"}
+{"query_id": "124", "question": "what movies is the song mrs robinson in", "passage_ids": ["816681", "816682", "17759479", "1535671", "816660"], "response": "The Graduate"}
+{"query_id": "125", "question": "where is the judicial branch of the eu located", "passage_ids": ["19338553", "28726833", "168696", "168695", "19338541"], "response": "Luxembourg"}
+{"query_id": "126", "question": "what new technology helped win the war in the pacific", "passage_ids": ["31606597", "3896508", "3950072", "3555585", "35650041"], "response": "Atomic Bomb"}
+{"query_id": "127", "question": "who sang the song in the movie the river of no return", "passage_ids": ["10102931", "25989665", "5646614", "10319020", "25989666"], "response": "Marilyn Monroe"}
+{"query_id": "128", "question": "who gave the signal for the boston tea party", "passage_ids": ["41891438", "14966662", "9286139", "38437332", "14966682"], "response": "Paul Revere"}
+{"query_id": "129", "question": "who sang the original version of earth angel", "passage_ids": ["6686017", "41930087", "6686003", "6685974", "6686016"], "response": "The Penguins"}
+{"query_id": "130", "question": "who dies in the plane crash in grey's anatomy season 8", "passage_ids": ["41963518", "41926425", "35932377", "41931824", "32963302"], "response": "Mark Sloan"}
+{"query_id": "131", "question": "where do the st louis cardinals have spring training", "passage_ids": ["39402919", "39402918", "40557137", "40557136", "39402921"], "response": "Jupiter Florida"}
+{"query_id": "132", "question": "what size engine does a subaru brz have", "passage_ids": ["27261297", "32131651", "41891514", "7250333", "41957334"], "response": "1.6L"}
+{"query_id": "133", "question": "who has the most consecutive wins on jeopardy", "passage_ids": ["41895850", "41973810", "10299012", "41906498", "41891526"], "response": "Brad Rutter"}
+{"query_id": "134", "question": "what type of battery does a wii remote use", "passage_ids": ["15530296", "15530265", "15530243", "15530295", "15530297"], "response": "NiCd"}
+{"query_id": "135", "question": "what was the number 1 hit single in the us on may 26 1990", "passage_ids": ["4712838", "4712837", "41943215", "5859599", "12098464"], "response": "George Michael"}
+{"query_id": "136", "question": "what are the different sizes of macbook pro", "passage_ids": ["13733749", "13733835", "41890757", "22798621", "15758321"], "response": "13.3 inches"}
+{"query_id": "137", "question": "who won more matches between india and pakistan till now", "passage_ids": ["38968455", "22892799", "26864160", "6412801", "6674283"], "response": "India"}
+{"query_id": "138", "question": "who played xander on days of our lives", "passage_ids": ["37457689", "37457690", "37457688", "37457691", "37457675"], "response": "Paul Telfer"}
+{"query_id": "139", "question": "who won the ncaa lacrosse championship last year", "passage_ids": ["26630556", "26630548", "35537010", "7805151", "11528130"], "response": "Duke Blue Devils"}
+{"query_id": "140", "question": "who sings i've got the moves like jagger", "passage_ids": ["36678762", "36678768", "36678788", "36678760", "36678767"], "response": "Mick Jagger"}
+{"query_id": "141", "question": "who plays mayor in blue bloods season 8", "passage_ids": ["41954912", "41992130", "29063514", "29063515", "40596664"], "response": "Margaret Dutton"}
+{"query_id": "142", "question": "who is the longest serving coach of the nz warriors", "passage_ids": ["13712818", "12469453", "19695869", "32886769", "8374107"], "response": "Dave Rennie"}
+{"query_id": "143", "question": "who has won the afc east the most", "passage_ids": ["10384318", "10384392", "10384333", "6220163", "10384393"], "response": "New England Patriots"}
+{"query_id": "144", "question": "who has longest field goal in nfl history", "passage_ids": ["7966327", "5262510", "7966328", "38269742", "13627870"], "response": "Jake Elliot"}
+{"query_id": "145", "question": "who was the double agent in tinker tailor soldier spy", "passage_ids": ["30871047", "30871057", "30871063", "30871046", "6171935"], "response": "George Smiley"}
+{"query_id": "146", "question": "what is the deepest canyon in north america", "passage_ids": ["24066552", "34944780", "41950538", "1148906", "1148888"], "response": "Grand Canyon"}
+{"query_id": "147", "question": "who plays dorthy in the wizard of oz", "passage_ids": ["25187819", "14448997", "2322919", "25187818", "14448998"], "response": "Judy Garland"}
+{"query_id": "148", "question": "rewards quiz10 points acadia national park is a famous landmark in which us state", "passage_ids": ["1457701", "1457700", "16518188", "1457613", "1457584"], "response": "Maine"}
+{"query_id": "149", "question": "what is the name of the actress in king kong", "passage_ids": ["17686597", "21169309", "5313677", "9806993", "12668402"], "response": "Naomi Watts"}
+{"query_id": "150", "question": "who scored the first goal in dallas stars history", "passage_ids": ["41894796", "1627450", "1627357", "6990063", "1627372"], "response": "Mike Modano"}
+{"query_id": "151", "question": "what airline has its hub in charlotte nc", "passage_ids": ["30600549", "11579366", "12188108", "3826754", "3826739"], "response": "Charlotte Douglas International Airport"}
+{"query_id": "152", "question": "who plays the legacy in pitch perfect 2", "passage_ids": ["35589351", "41899244", "41891610", "35589353", "41899245"], "response": "Hailee Steinfeld"}
+{"query_id": "153", "question": "who played carly on days of our lives", "passage_ids": ["21157282", "31240417", "21157283", "16850190", "16850217"], "response": "Carly Manning"}
+{"query_id": "154", "question": "who wrote a diary about the great fire of london", "passage_ids": ["1118134", "18023317", "18023325", "18023319", "18023324"], "response": "Samuel Pepys"}
+{"query_id": "155", "question": "what is the name of old delhi railway station", "passage_ids": ["19426519", "20201884", "41891632", "32797941", "40876250"], "response": "Delhi Junction"}
+{"query_id": "156", "question": "who owns the movie rights to harry potter", "passage_ids": ["24706229", "24706249", "24706250", "40344462", "7198383"], "response": "Warner Bros."}
+{"query_id": "157", "question": "mathura school of art flourished during the reign of", "passage_ids": ["39668706", "39668709", "39668735", "31641203", "39668707"], "response": "Gupta dynasty"}
+{"query_id": "158", "question": "bird that is illegal to eat in france", "passage_ids": ["985140", "27388260", "13635667", "1426307", "1426308"], "response": "Ortolan bunting"}
+{"query_id": "159", "question": "who plays the new f1 in holby city", "passage_ids": ["28393280", "28393330", "28393186", "28393329", "28393185"], "response": "Lofty"}
+{"query_id": "160", "question": "who threw the first brick in the stonewall riots", "passage_ids": ["10532771", "10532770", "36752289", "796142", "36752290"], "response": "Marsha P. Johnson"}
+{"query_id": "161", "question": "where did the phrase dutch oven come from", "passage_ids": ["4372919", "4372920", "4372916", "4372915", "3795904"], "response": "Dutch oven"}
+{"query_id": "162", "question": "when did the movie harper valley pta come out", "passage_ids": ["27918686", "10147499", "10147500", "21462240", "10147494"], "response": "1978"}
+{"query_id": "163", "question": "who is the actress who plays estelle on friends", "passage_ids": ["11363464", "25918283", "25918281", "24106097", "25918280"], "response": "Julia Louis-Dreyfus"}
+{"query_id": "164", "question": "who plays the queen in the greatest showman", "passage_ids": ["36707048", "41923056", "41983944", "36707097", "36707072"], "response": "Rebecca Ferguson"}
+{"query_id": "165", "question": "who's the actor that plays freddy krueger", "passage_ids": ["26910886", "8383186", "4448356", "12662595", "12662596"], "response": "Robert Englund"}
+{"query_id": "166", "question": "who did the bengals play in the super bowl", "passage_ids": ["14848865", "788749", "159931", "7408260", "787927"], "response": "Cincinnati Bengals"}
+{"query_id": "167", "question": "who did england get knocked out by in 1990", "passage_ids": ["2646952", "15794323", "15794324", "15794325", "5990282"], "response": "Germany"}
+{"query_id": "168", "question": "who won the first battle of the civil war", "passage_ids": ["24201852", "24826340", "1962866", "1962865", "1308656"], "response": "P. G. T. Beauregard"}
+{"query_id": "169", "question": "who did the voice of optimus prime in transformers", "passage_ids": ["24486645", "41960216", "41944207", "19721444", "41961098"], "response": "Peter Cullen"}
+{"query_id": "170", "question": "the first group that tried but failed to dig a canal across panama in the late 1800s was from", "passage_ids": ["628545", "628546", "4194635", "26502102", "8881212"], "response": "French"}
+{"query_id": "171", "question": "who sang it's a mad world original", "passage_ids": ["24668825", "9495849", "24668824", "24668836", "24668764"], "response": "It's a Mad, Mad, Mad, Mad World"}
+{"query_id": "172", "question": "who played dumbledore in the first two movies", "passage_ids": ["41923652", "40344472", "40344473", "7198383", "1113832"], "response": "Richard Harris"}
+{"query_id": "173", "question": "who played khan in the new star trek movie", "passage_ids": ["32054351", "27450197", "746041", "36288298", "13235505"], "response": "Benedict Cumberbatch"}
+{"query_id": "174", "question": "what is the main purpose of the league of nations", "passage_ids": ["1325912", "475200", "666166", "475203", "1325913"], "response": "League of Nations"}
+{"query_id": "175", "question": "where was channel 4's the state filmed", "passage_ids": ["40801562", "40376584", "14457039", "40376583", "16969904"], "response": "Channel 4's the state"}
+{"query_id": "176", "question": "who was the first captain of rajasthan royals", "passage_ids": ["33502686", "23882436", "23135078", "23882437", "22546525"], "response": "Stuart Binny"}
+{"query_id": "177", "question": "where does america's got talent take place in 2017", "passage_ids": ["15235883", "15235876", "15235875", "41930109", "26593787"], "response": "America's Got Talent"}
+{"query_id": "178", "question": "who plays the irish guy on sons of anarchy", "passage_ids": ["36757829", "36757828", "28586846", "28586847", "7880343"], "response": "Ron Perlman"}
+{"query_id": "179", "question": "what is the name of marian keyes new book", "passage_ids": ["7565768", "7565774", "7565773", "41891798", "7565767"], "response": "The Break"}
+{"query_id": "180", "question": "when was the last time the lions made it to the playoffs", "passage_ids": ["17946092", "19678049", "7231621", "19678095", "19678051"], "response": "2016"}
+{"query_id": "181", "question": "who played schindler in the movie schindler's list", "passage_ids": ["1506496", "1506620", "1506619", "9916547", "1506495"], "response": "Liam Neeson"}
+{"query_id": "182", "question": "who played loretta lynn in coal miners daughter", "passage_ids": ["1997909", "1997929", "1997928", "1997935", "1997923"], "response": "Sissy Spacek"}
+{"query_id": "183", "question": "where is euro 2024 going to be held", "passage_ids": ["35145869", "40486392", "41505665", "35145870", "41505666"], "response": "Germany"}
+{"query_id": "184", "question": "who wrote first draft of declaration of independence", "passage_ids": ["27769357", "27769358", "4667643", "34077455", "4667597"], "response": "Thomas Jefferson"}
+{"query_id": "185", "question": "who proposed the first comprehensive theory of continental drift", "passage_ids": ["8673111", "23931612", "41900787", "23931611", "19208635"], "response": "Alfred Wegener"}
+{"query_id": "186", "question": "where did the french king live before versailles", "passage_ids": ["1284234", "25268203", "13865581", "13865582", "1409694"], "response": "Versailles"}
+{"query_id": "187", "question": "is the last name scott irish or scottish", "passage_ids": ["20635660", "9492340", "20635658", "7850953", "7850952"], "response": "Irish"}
+{"query_id": "188", "question": "who plays sir richard carlisle in downton abbey", "passage_ids": ["29773503", "33672643", "29773504", "11588776", "33672644"], "response": "Matt Milne"}
+{"query_id": "189", "question": "who did the original voice of meg griffin", "passage_ids": ["24866722", "24866721", "41942949", "3126437", "41900655"], "response": "Mila Kunis"}
+{"query_id": "190", "question": "who wrote the words to the battle hymn of the republic", "passage_ids": ["4186323", "4186322", "25088241", "4186297", "4186331"], "response": "Julia Ward Howe"}
+{"query_id": "191", "question": "who played the sergeant major in we were soldiers", "passage_ids": ["7585329", "7585330", "7585293", "41970987", "7585328"], "response": "Mel Gibson"}
+{"query_id": "192", "question": "who is the chairman of infosys at present", "passage_ids": ["3642582", "39835092", "3642583", "3642584", "3642585"], "response": "Nandan Nilekani"}
+{"query_id": "193", "question": "who sang the theme song to mary tyler moore show", "passage_ids": ["1696179", "29572036", "1696181", "1696180", "29572035"], "response": "Mary Tyler Moore"}
+{"query_id": "194", "question": "black shield in nigerian coat of arm represent", "passage_ids": ["12681987", "12681990", "41891873", "12681989", "12681988"], "response": "Black shield represent fertility of the land"}
+{"query_id": "195", "question": "who sang the original song windmills of your mind", "passage_ids": ["18838671", "41891877", "18838672", "18838644", "41891878"], "response": "Noel Harrison"}
+{"query_id": "196", "question": "who wrote the play a raisin in the sun", "passage_ids": ["30636859", "30636854", "30636860", "30636861", "21508287"], "response": "Lorraine Hansberry"}
+{"query_id": "197", "question": "who played mike baxter's father on last man standing", "passage_ids": ["41983217", "41983218", "41985068", "41973562", "41956185"], "response": "Tim Allen"}
+{"query_id": "198", "question": "who plays jd on girlfriends guide to divorce", "passage_ids": ["35636901", "35636900", "41891904", "26223397", "41919917"], "response": "Aaron Staton"}
+{"query_id": "199", "question": "where does the fiesta bowl parade take place", "passage_ids": ["3500010", "41891906", "3500009", "40355729", "18479669"], "response": "Downtown Phoenix"}
+{"query_id": "200", "question": "where is the nile river located in the world", "passage_ids": ["18347875", "6713145", "24378541", "461839", "41949820"], "response": "Nile river"}
+{"query_id": "201", "question": "who played roberts partner on everybody loves raymond", "passage_ids": ["3497586", "18821619", "5303758", "4550353", "4550352"], "response": "Doris Roberts"}
+{"query_id": "202", "question": "who played the lion on the wizard of oz", "passage_ids": ["41980764", "41939163", "41918377", "36038211", "2322919"], "response": "Ted Ross"}
+{"query_id": "203", "question": "who won the 2017 chinese grand pix held in shanghai china", "passage_ids": ["41557634", "39371902", "40147729", "39720115", "39602907"], "response": "Guangzhou Evergrande"}
+{"query_id": "204", "question": "wrote the republic which describes an ideal society", "passage_ids": ["967424", "967425", "695436", "615274", "695434"], "response": "Plato"}
+{"query_id": "205", "question": "where did the emperor live in ancient rome", "passage_ids": ["319564", "15156601", "43946", "15156602", "25130595"], "response": "Nero"}
+{"query_id": "206", "question": "who plays dina bergeron on the young and the restless", "passage_ids": ["32637486", "41892020", "41973297", "32637483", "16887840"], "response": "Marla Adams"}
+{"query_id": "207", "question": "who sang the theme song to petticoat junction", "passage_ids": ["6616132", "6616131", "6616164", "6616198", "6616104"], "response": "Bobby Sherman"}
+{"query_id": "208", "question": "who played the brain in pinky and the brain", "passage_ids": ["26069668", "41958272", "26069653", "26069667", "41959006"], "response": "Pinky and the Brain"}
+{"query_id": "209", "question": "who did the music for wreck it ralph", "passage_ids": ["41891194", "33021317", "41788918", "33021316", "33812349"], "response": "Alan Menken"}
+{"query_id": "210", "question": "who plays sally on flight of the conchords", "passage_ids": ["20821436", "20821419", "20821410", "20821432", "20821420"], "response": "Rachel Blanchard"}
+{"query_id": "211", "question": "where did the reserved powers find their constitutional mandate", "passage_ids": ["11751375", "11751360", "11751374", "6787651", "39583422"], "response": "Reserved powers doctrine"}
+{"query_id": "212", "question": "who played the human torch in fantastic four", "passage_ids": ["308127", "308128", "3566971", "3566982", "308144"], "response": "Chris Evans"}
+{"query_id": "213", "question": "who won favorite television actress at the 2011 kids' choice awards", "passage_ids": ["28474831", "41892062", "28474832", "25072405", "35499604"], "response": "Olivia Dunham"}
+{"query_id": "214", "question": "girl who sings let it go in frozen", "passage_ids": ["35298805", "35328821", "35376291", "35298768", "35298791"], "response": "Idina Menzel"}
+{"query_id": "215", "question": "when was the first super bowl the patriots won", "passage_ids": ["8473460", "41949658", "6220147", "34454314", "13977388"], "response": "2008"}
+{"query_id": "216", "question": "what were the two sides of the american revolution", "passage_ids": ["8087685", "8087686", "25201133", "8174332", "5721"], "response": "American Revolutionary War"}
+{"query_id": "217", "question": "what is the name of the first state university in nigeria", "passage_ids": ["34730224", "41949049", "41905070", "11052383", "29933306"], "response": "Chukwuemeka Odumegwu Ojukw"}
+{"query_id": "218", "question": "who won the 15th season of american idol", "passage_ids": ["40801068", "40801069", "41995369", "35011002", "40801049"], "response": "Maddie Poppe"}
+{"query_id": "219", "question": "where did green bay packers get their name", "passage_ids": ["325110", "325109", "24868155", "41930096", "17791910"], "response": "Green Bay"}
+{"query_id": "220", "question": "who sings the theme song to one tree hill", "passage_ids": ["41940441", "7552165", "18437953", "7552137", "18437951"], "response": "Gavin Degraw"}
+{"query_id": "221", "question": "who's playing susan banks on days of our lives", "passage_ids": ["18297207", "18297206", "18297241", "18297201", "18297240"], "response": "Susan Banks"}
+{"query_id": "222", "question": "who won season 2 of hell's kitchen", "passage_ids": ["19088744", "19088650", "19088748", "29613376", "41910175"], "response": "Virginia Dalbeck"}
+{"query_id": "223", "question": "where was the first summit of non aligned movement held", "passage_ids": ["9778751", "940696", "940708", "940686", "940683"], "response": "Venezuela"}
+{"query_id": "224", "question": "who plays avery leclaire in i feel pretty", "passage_ids": ["41940566", "40365267", "40365276", "41979239", "41892118"], "response": "Aidy Bryant"}
+{"query_id": "225", "question": "who has won the 2018 men’s singles tata open maharashtra tennis tournament", "passage_ids": ["40893749", "40057898", "40057899", "35135158", "40679524"], "response": "Prajnesh Gunneswaran"}
+{"query_id": "226", "question": "who is the actor that plays carlisle in twilight", "passage_ids": ["27956453", "41958654", "22318652", "19352780", "27956454"], "response": "Robert Pattinson"}
+{"query_id": "227", "question": "who was the first presenter of desert island discs", "passage_ids": ["9119393", "3145384", "9119394", "3145385", "3145364"], "response": "Roy Plomley"}
+{"query_id": "228", "question": "where is the great british sewing bee filmed", "passage_ids": ["34365348", "41921303", "34365349", "34365342", "34365346"], "response": "London"}
+{"query_id": "229", "question": "who plays the mom in the big sick", "passage_ids": ["39042665", "39042666", "39042664", "39042682", "39042646"], "response": "Holly Hunter"}
+{"query_id": "230", "question": "where did most settlements exist in new france", "passage_ids": ["23622398", "15466624", "30824674", "18141603", "21463410"], "response": "New France"}
+{"query_id": "231", "question": "who played patty in diary of a wimpy kid", "passage_ids": ["27721880", "27721882", "20435366", "41898347", "41951776"], "response": "Patty"}
+{"query_id": "232", "question": "who was the guy who shoot in las vegas", "passage_ids": ["35225424", "37981278", "16382967", "16382968", "31221711"], "response": "Stephen Paddock"}
+{"query_id": "233", "question": "who plays jill on young and the restless", "passage_ids": ["32637454", "32316853", "32316852", "32640262", "16197195"], "response": "Jill Abbott"}
+{"query_id": "234", "question": "where are jonathan and charlotte britains got talent from", "passage_ids": ["32926427", "32926434", "32926433", "32926425", "32926428"], "response": "Britain's Got Talent"}
+{"query_id": "235", "question": "who plays donna in fire walk with me", "passage_ids": ["3662530", "41903024", "11452256", "3662529", "11452255"], "response": "Moira Kelly"}
+{"query_id": "236", "question": "which country is the north of uttar pradesh", "passage_ids": ["9288431", "9288423", "9288429", "9288489", "9288488"], "response": "Uttar Pradesh"}
+{"query_id": "237", "question": "who wrote the plaque on the statue of liberty", "passage_ids": ["39206697", "14742028", "4944500", "4479553", "4944534"], "response": "Emma Lazarus"}
+{"query_id": "238", "question": "why was the deed of cession important to fijis history", "passage_ids": ["20531561", "20531562", "31289914", "11043346", "31289913"], "response": "Taveuni"}
+{"query_id": "239", "question": "where was the movie the in laws filmed", "passage_ids": ["652245", "6883069", "11882877", "20917949", "6883056"], "response": "The In-Laws (1979 film)"}
+{"query_id": "240", "question": "actress who played abigail on days of our lives", "passage_ids": ["41976164", "18784234", "18784296", "36121189", "36121188"], "response": "Kate Mansi"}
+{"query_id": "241", "question": "which came first petticoat junction or green acres", "passage_ids": ["6616092", "6616184", "6616183", "41892222", "5849303"], "response": "Green Acres"}
+{"query_id": "242", "question": "what is the origin of the coptic language", "passage_ids": ["3271245", "3271243", "3271242", "1174434", "14738144"], "response": "Coptic language"}
+{"query_id": "243", "question": "who plays professor proton in the big bang theory", "passage_ids": ["2572312", "41936125", "41941922", "26612221", "41951597"], "response": "Bob Newhart"}
+{"query_id": "244", "question": "who does mindy kaling play in inside out", "passage_ids": ["17558009", "17558007", "17558008", "17557985", "32925008"], "response": "Mindy Kaling"}
+{"query_id": "245", "question": "who plays grown up henry in once upon a time", "passage_ids": ["41969030", "41922359", "34772373", "31941760", "34772313"], "response": "Jared S. Gilmore"}
+{"query_id": "246", "question": "who played red harvest in the magnificent seven", "passage_ids": ["36456138", "41892258", "12086587", "12086586", "3507990"], "response": "Charles Bronson"}
+{"query_id": "247", "question": "who plays chloe hall on one tree hill", "passage_ids": ["29106006", "30583356", "7552196", "15181911", "20812273"], "response": "Bethany Joy Lenz"}
+{"query_id": "248", "question": "norwegian wood features which unusual (for popular music) instrument", "passage_ids": ["3071985", "26831904", "3809997", "5272435", "25452993"], "response": "Hardanger fiddle"}
+{"query_id": "249", "question": "who played bobby c in saturday night fever", "passage_ids": ["1296185", "1296184", "41892273", "1296142", "10607873"], "response": "John Travolta"}
+{"query_id": "250", "question": "who attacked first in the battle of cold harbor", "passage_ids": ["28688266", "1185633", "26503676", "28688267", "1185634"], "response": "Joseph H. Allen"}
+{"query_id": "251", "question": "who sings the wreck of the edmund fitzgerald", "passage_ids": ["9923020", "4335130", "4335124", "3420692", "3420690"], "response": "The Wreck of the Edmund Fitzgerald"}
+{"query_id": "252", "question": "who was the first president to pardon the turkey", "passage_ids": ["4719835", "8034671", "41892291", "16489251", "16489252"], "response": "George H. W. Bush"}
+{"query_id": "253", "question": "who does gandalf fight in the fellowship of the ring", "passage_ids": ["41954371", "10501046", "2975700", "26840208", "26840209"], "response": "Gandalf"}
+{"query_id": "254", "question": "who won the battle of sayler's creek", "passage_ids": ["23688960", "23688959", "24426216", "24426217", "23688952"], "response": "Union Army"}
+{"query_id": "255", "question": "who did golden state play in the conference finals last year", "passage_ids": ["38721082", "35882162", "40590537", "40202352", "15279581"], "response": "Golden State Warriors"}
+{"query_id": "256", "question": "what is the highest peak in the eastern us", "passage_ids": ["10860282", "25995121", "9619440", "12482966", "9619441"], "response": "Mount Washington"}
+{"query_id": "257", "question": "who do the pittsburgh steelers play in the first playoff game", "passage_ids": ["25685441", "5049087", "14084972", "22630518", "39697634"], "response": "Pittsburgh Steelers"}
+{"query_id": "258", "question": "who is scott air force base named after", "passage_ids": ["13844461", "14288022", "13844462", "13844463", "4762005"], "response": "Robert Lee Scott Jr."}
+{"query_id": "259", "question": "who plays mrs claus in santa paws 2", "passage_ids": ["41892330", "8473618", "30284215", "30284216", "33873164"], "response": "Cheryl Ladd"}
+{"query_id": "260", "question": "the k-pop band that in 1992 was the first to be successful was", "passage_ids": ["26026978", "18543245", "41628759", "26026977", "19325862"], "response": "Sechskies"}
+{"query_id": "261", "question": "which is the oldest municipal corporation in india", "passage_ids": ["3499125", "9271485", "5707770", "13880138", "5707769"], "response": "Surat"}
+{"query_id": "262", "question": "who did the patriots lose to in the super bowl", "passage_ids": ["788749", "806877", "806876", "788748", "39486200"], "response": "New England Patriots"}
+{"query_id": "263", "question": "who is the patron saint of the navy", "passage_ids": ["33249904", "11442139", "11442138", "23059276", "6546798"], "response": "Saint Elmo"}
+{"query_id": "264", "question": "during the persian gulf war allied forces pushed forces out of", "passage_ids": ["1346211", "20817008", "14646180", "16257720", "3266270"], "response": "Iraq"}
+{"query_id": "265", "question": "who abolished monarchy in france and declared it a republic", "passage_ids": ["30148362", "503789", "695504", "1103678", "30148361"], "response": "Louis-Napoleon Bonaparte"}
+{"query_id": "266", "question": "what type of music did vernon dalhart sing before switching to country music", "passage_ids": ["7938619", "7938626", "7938620", "1997272", "7938625"], "response": "Country Music"}
+{"query_id": "267", "question": "who played the pirate in the spongebob movie", "passage_ids": ["32654600", "3178228", "41939379", "3178229", "41918281"], "response": "Mr. Krabs"}
+{"query_id": "268", "question": "when is it mothering sunday in the uk", "passage_ids": ["5676687", "5676686", "5676702", "41885309", "5676688"], "response": "4th Sunday in Lent"}
+{"query_id": "269", "question": "who played freddy krueger on nightmare on elm street", "passage_ids": ["4448356", "12662580", "12662637", "4448355", "12662602"], "response": "Johnny Depp"}
+{"query_id": "270", "question": "who is the governer of jammu and kashmir", "passage_ids": ["22156996", "7356584", "9541357", "36615959", "5704404"], "response": "Mehbooba Mufti"}
+{"query_id": "271", "question": "where is the world cup going to be at", "passage_ids": ["8078854", "22145240", "22145239", "11305937", "11305936"], "response": "Brazil"}
+{"query_id": "272", "question": "who has scored the most goals in laliga", "passage_ids": ["39758935", "30159746", "38340649", "39758936", "30159745"], "response": "Lionel Messi"}
+{"query_id": "273", "question": "who won the battle of trenton in 1776", "passage_ids": ["10107351", "24030772", "20908694", "586107", "10107350"], "response": "George Washington"}
+{"query_id": "274", "question": "where and when did the colonists meet to write the constitution", "passage_ids": ["1477690", "11714367", "40684", "1477691", "31399543"], "response": "Philadelphia"}
+{"query_id": "275", "question": "who is the original singer of careless whisper", "passage_ids": ["11105451", "11105427", "11105450", "41895012", "11105425"], "response": "George Michael"}
+{"query_id": "276", "question": "who is widely credited with coining the term iron curtain", "passage_ids": ["24669291", "3417389", "24669292", "41892437", "24669312"], "response": "Winston Churchill"}
+{"query_id": "277", "question": "who sang id do anything for love with meatloaf", "passage_ids": ["10224907", "10224906", "41893386", "41943341", "10224885"], "response": "Lorraine Crosby"}
+{"query_id": "278", "question": "what is the biggest college in new york", "passage_ids": ["31028649", "9490127", "5528414", "20859101", "35013196"], "response": "College in New York"}
+{"query_id": "279", "question": "who plays the fairy godmother in cinderella 2015", "passage_ids": ["14450020", "30048017", "41895022", "41973362", "41906309"], "response": "Lily James"}
+{"query_id": "280", "question": "the political boss of new york city in the early 1870s was", "passage_ids": ["4861124", "10252403", "23861248", "10348357", "4861123"], "response": "Thomas C. Platt"}
+{"query_id": "281", "question": "who has the power to convict the president upon impeachment", "passage_ids": ["402725", "3216739", "402731", "41912161", "11238540"], "response": "The President"}
+{"query_id": "282", "question": "towns in rhode island that begin with p", "passage_ids": ["683434", "41892475", "13285861", "2436016", "27840198"], "response": "Providence"}
+{"query_id": "283", "question": "who's the head coach of the jacksonville jaguars", "passage_ids": ["19691606", "428641", "428640", "18285010", "428642"], "response": "Gus Bradley"}
+{"query_id": "284", "question": "who sang lead vocals on don't look back in anger", "passage_ids": ["30619534", "30619541", "41892485", "30619512", "30619525"], "response": "Noel Gallagher"}
+{"query_id": "285", "question": "who wrote avenue q and the book of mormon", "passage_ids": ["28867117", "28867118", "28867115", "4588827", "9442552"], "response": "Robert Lopez"}
+{"query_id": "286", "question": "who comes back in season 14 of grey's anatomy", "passage_ids": ["41901972", "20323042", "20323041", "38920291", "41901970"], "response": "Meredith Grey"}
+{"query_id": "287", "question": "who wrote the motto on the statue of liberty", "passage_ids": ["3563125", "4410741", "3563126", "4281368", "11563430"], "response": "In God We Trust"}
+{"query_id": "288", "question": "what kind of car does cruella deville drive in 101 dalmatians", "passage_ids": ["3036962", "3037426", "9266482", "16560311", "3036967"], "response": "Cruella Deville drives a Rolls Royce"}
+{"query_id": "289", "question": "what us supreme court justice presides over presidential impeachment proceedings", "passage_ids": ["854850", "39682145", "39682144", "3266212", "402731"], "response": "John Roberts"}
+{"query_id": "290", "question": "who has won more champions league titles man u or liverpool", "passage_ids": ["39342481", "32795311", "15704104", "16894755", "25766615"], "response": "Liverpool"}
+{"query_id": "291", "question": "who won gold medal in badminton in commonwealth games 2018", "passage_ids": ["15797770", "39697728", "15797769", "40605379", "33485703"], "response": "Saina Nehwal"}
+{"query_id": "292", "question": "what is the biggest festival in the uk", "passage_ids": ["32386459", "27015574", "21511798", "19492069", "18704578"], "response": "UK"}
+{"query_id": "293", "question": "who was known as israel in the bible", "passage_ids": ["23755619", "23755618", "1267662", "19224879", "31975995"], "response": "Israel"}
+{"query_id": "294", "question": "who is the actor who plays mark sloan on grey anatomy", "passage_ids": ["41963518", "41931824", "16758560", "20323048", "19825858"], "response": "Eric Dane"}
+{"query_id": "295", "question": "who played alotta fagina in austin powers movie", "passage_ids": ["2679983", "2679982", "2679985", "12502350", "12502349"], "response": "Verne Troyer"}
+{"query_id": "296", "question": "what island is atlantis on in the bahamas", "passage_ids": ["47670", "7800570", "47669", "12110677", "14905328"], "response": "Bahamas"}
+{"query_id": "297", "question": "where was two thousand acres of sky filmed", "passage_ids": ["19567592", "19567598", "19567591", "6459279", "19567597"], "response": "Far and Away"}
+{"query_id": "298", "question": "who sang the opening theme song for wkrp in cincinnati", "passage_ids": ["3815946", "3815943", "3815947", "7371672", "7371690"], "response": "Gary Sandy"}
+{"query_id": "299", "question": "businesswoman who is the presenter of the hotel inspector", "passage_ids": ["41892553", "16763833", "16763844", "16763837", "16763845"], "response": "Alex Polizzi"}
+{"query_id": "300", "question": "who is the first most followed person on instagram 2018", "passage_ids": ["41934912", "41061292", "41937624", "41935427", "13827368"], "response": "Selena Gomez"}
+{"query_id": "301", "question": "who was the first published american female writer", "passage_ids": ["4753614", "1010420", "1010419", "29065067", "29065065"], "response": "Phillis Wheatley"}
+{"query_id": "302", "question": "who plays will horton on days of our lives", "passage_ids": ["29035565", "41892938", "31240417", "41892575", "29035706"], "response": "Chandler Massey"}
+{"query_id": "303", "question": "when was iisc named to its current name", "passage_ids": ["959828", "959829", "959793", "41892578", "959782"], "response": "Indian Institute of Science"}
+{"query_id": "304", "question": "where did the parting of the red sea take place", "passage_ids": ["22876793", "27511732", "22945218", "41895043", "1563905"], "response": "Red Sea"}
+{"query_id": "305", "question": "actor who plays chaka in land of the lost", "passage_ids": ["22085353", "22085352", "41914325", "41895045", "6037456"], "response": "Phillip Paley"}
+{"query_id": "306", "question": "who plays steph's mom on the fosters", "passage_ids": ["21190908", "40306388", "40306389", "21190907", "40306263"], "response": "Noah Centineo"}
+{"query_id": "307", "question": "who appoints the deputy director of the fbi", "passage_ids": ["281557", "281519", "281558", "281556", "281559"], "response": "The FBI director"}
+{"query_id": "308", "question": "who shot first in the original star wars a new hope", "passage_ids": ["17568980", "10397620", "10397621", "25066678", "25066677"], "response": "Greedo"}
+{"query_id": "309", "question": "who are the watchmen characters based off of", "passage_ids": ["27302326", "922396", "922416", "25249088", "27302327"], "response": "Rorschach"}
+{"query_id": "310", "question": "who established the peoples republic of china in 1949", "passage_ids": ["34576161", "34576162", "4148796", "30809648", "2726438"], "response": "Mao Zedong"}
+{"query_id": "311", "question": "who scored the winning goal in 2006 world cup final", "passage_ids": ["3265540", "2747865", "2747864", "6235349", "6235348"], "response": "Zinedine Zidane"}
+{"query_id": "312", "question": "who plays will in netflix lost in space", "passage_ids": ["41895151", "41892663", "41944794", "41933586", "41890607"], "response": "Maxwell Jenkins"}
+{"query_id": "313", "question": "what are the names of the 2 parts of nc's legislatures called", "passage_ids": ["41936247", "41899693", "6454209", "6454208", "6454217"], "response": "North Carolina General Assembly"}
+{"query_id": "314", "question": "who played the monkey king in forbidden kingdom", "passage_ids": ["30119269", "17189002", "17189011", "17189016", "30119270"], "response": "Jackie Chan"}
+{"query_id": "315", "question": "where does the water for lake las vegas come from", "passage_ids": ["11679346", "11082825", "41892675", "11082826", "11679345"], "response": "Lake Las Vegas"}
+{"query_id": "316", "question": "who does lauren conrad voice on family guy", "passage_ids": ["11962342", "11962343", "41957102", "41958590", "3126463"], "response": "Lauren Conrad"}
+{"query_id": "317", "question": "who played the elephant man in the 1980 movie", "passage_ids": ["1998050", "29290160", "1998092", "1998093", "1998051"], "response": "John Hurt"}
+{"query_id": "318", "question": "where was the people's republic of china located", "passage_ids": ["32407252", "32407253", "14432243", "5999921", "3726689"], "response": "People's Republic of China"}
+{"query_id": "319", "question": "who does the voice of jake the dog", "passage_ids": ["36240849", "33832817", "36240850", "40026328", "33832816"], "response": "Jake the Dog"}
+{"query_id": "320", "question": "who is playing batman in the new justice league movie", "passage_ids": ["15261263", "15261262", "23228281", "23228282", "15473918"], "response": "Ben Affleck"}
+{"query_id": "321", "question": "who won the tour de france in 1985", "passage_ids": ["14813771", "21987662", "7119133", "14813775", "24364995"], "response": "Eric Vanderaerden"}
+{"query_id": "322", "question": "who made the super mario bros theme song", "passage_ids": ["25987617", "25987607", "41944553", "25987626", "15707844"], "response": "Nobuo Uematsu"}
+{"query_id": "323", "question": "who did freddie mercury write love of my life about", "passage_ids": ["1045904", "37126036", "41939216", "31318527", "40488624"], "response": "Mary Austin"}
+{"query_id": "324", "question": "who is kyle's mom in american horror story", "passage_ids": ["41895088", "39731546", "39731545", "39731548", "39731551"], "response": "Kyle's mom is Alicia Spencer"}
+{"query_id": "325", "question": "who played the incredible hulk in the 70s", "passage_ids": ["8074316", "8074306", "41986591", "41902953", "8074293"], "response": "Bill Bixby"}
+{"query_id": "326", "question": "youngest girl to climb mount everest at the age of 13", "passage_ids": ["38522994", "36014100", "38522993", "36014096", "38522996"], "response": "Malavath Purna"}
+{"query_id": "327", "question": "who has the most touchdowns in an nfl season", "passage_ids": ["8187992", "10000870", "8374663", "36679275", "14253545"], "response": "Peyton Manning"}
+{"query_id": "328", "question": "who played may rose in the movie life", "passage_ids": ["22282658", "18577588", "4920097", "4338950", "39666944"], "response": "Billy Rose"}
+{"query_id": "329", "question": "who played elverna bradshaw on the beverly hillbillies", "passage_ids": ["41939702", "19755515", "69004", "41939701", "7600177"], "response": "Donna Douglas"}
+{"query_id": "330", "question": "who played jennifer hart on hart to hart", "passage_ids": ["2622597", "2622598", "21127633", "2622604", "2622590"], "response": "Melissa Joan Hart"}
+{"query_id": "331", "question": "where was the first hospital built in the world", "passage_ids": ["12588101", "33795152", "22303978", "10776588", "22303977"], "response": "Spain"}
+{"query_id": "332", "question": "who is the guy that does spongebob's voice", "passage_ids": ["41929422", "41929421", "11994836", "41939379", "41892381"], "response": "Tom Kenny"}
+{"query_id": "333", "question": "who plays the dad in beauty and the beast 2017", "passage_ids": ["36989969", "34312768", "36989968", "36989979", "36989952"], "response": "Dan Stevens"}
+{"query_id": "334", "question": "who directed the screwball comedy classis it happened one night/", "passage_ids": ["714178", "714168", "1103447", "714179", "1103446"], "response": "Clark Gable"}
+{"query_id": "335", "question": "who played lindsay ballard on star trek voyager", "passage_ids": ["746266", "715599", "1287411", "5904955", "746245"], "response": "Kate Mulgrew"}
+{"query_id": "336", "question": "who designed the national flag of south africa", "passage_ids": ["24321678", "24321679", "24321680", "24321681", "1801001"], "response": "Frederick Brownell"}
+{"query_id": "337", "question": "the guy who died in fast and furious 7", "passage_ids": ["41909155", "41965398", "41900199", "41900200", "26797518"], "response": "Han Lue"}
+{"query_id": "338", "question": "who created the inter-american court of human rights in 1978", "passage_ids": ["4263411", "4395658", "4263410", "4395662", "4395661"], "response": "Inter-American Court of Human Rights"}
+{"query_id": "339", "question": "who inagurated the maharashtra state ceremony 1 may 1960", "passage_ids": ["15391702", "15391703", "15391699", "15391698", "41892817"], "response": "Shivaji"}
+{"query_id": "340", "question": "who were the monkeys in the lazy song", "passage_ids": ["29711908", "29711907", "41892819", "29711882", "29711881"], "response": "The monkeys in the lazy song are Bruno Mars and his friends."}
+{"query_id": "341", "question": "how many emmys did game of thrones win", "passage_ids": ["32149248", "314915", "25534329", "314914", "41897142"], "response": "15"}
+{"query_id": "342", "question": "who won the espy for best female athlete", "passage_ids": ["19996209", "20009055", "19996208", "20253263", "20009047"], "response": "Serena Williams"}
+{"query_id": "343", "question": "who wrote the book uncle toms cabin which highlighted the horrors of slave life", "passage_ids": ["8080989", "1581475", "1581402", "1581401", "1581364"], "response": "Harriet Beecher Stowe"}
+{"query_id": "344", "question": "who is the royal tyrrell museum named after", "passage_ids": ["11651578", "11651577", "11651572", "18012462", "8189792"], "response": "Joseph Burr Tyrrell"}
+{"query_id": "345", "question": "where did the last name daniels come from", "passage_ids": ["9571636", "28005299", "5244246", "5244247", "9898991"], "response": "Billy Daniels"}
+{"query_id": "346", "question": "who plays tommy djilas in the music man", "passage_ids": ["15262144", "15262145", "25601896", "15806428", "12430829"], "response": "Tommy Djilas"}
+{"query_id": "347", "question": "who is the super hero at the end of black panther", "passage_ids": ["37228897", "41894402", "41913072", "12343845", "41894400"], "response": "T'Challa"}
+{"query_id": "348", "question": "who played the doctor in stargate sg 1", "passage_ids": ["8123563", "8123564", "7589611", "7589610", "988809"], "response": "David Hewlett"}
+{"query_id": "349", "question": "who played barney on the andy griffith show", "passage_ids": ["9736956", "9736955", "2133979", "10025911", "10025892"], "response": "Andy Griffith"}
+{"query_id": "350", "question": "what nfl team has the most wins in a season", "passage_ids": ["13430368", "17946092", "4193130", "4193129", "39697633"], "response": "New England Patriots"}
+{"query_id": "351", "question": "where does the american southern accent come from", "passage_ids": ["6103537", "8833692", "37660", "6103505", "6103491"], "response": "Southern American English"}
+{"query_id": "352", "question": "where are the oldest rocks in north america", "passage_ids": ["14289983", "14289982", "41892899", "25000046", "25000047"], "response": "4.031 ±0.003 billion years"}
+{"query_id": "353", "question": "who won the women's world cup cricket", "passage_ids": ["27811465", "12026814", "6683275", "18642068", "26186812"], "response": "England"}
+{"query_id": "354", "question": "meatloaf duet it's all coming back to me now", "passage_ids": ["17239809", "41911087", "41892924", "41892925", "17239797"], "response": "Marion Raven"}
+{"query_id": "355", "question": "what is the ocean to the west of the u.s.a", "passage_ids": ["33891310", "33891309", "18874140", "1413750", "10817515"], "response": "Pacific Ocean"}
+{"query_id": "356", "question": "what is the starting point of the mississippi river", "passage_ids": ["2297154", "12000558", "33013194", "30481895", "2297153"], "response": "Mississippi River"}
+{"query_id": "357", "question": "who plays sydney driscoll in pretty little liars", "passage_ids": ["40152975", "40152976", "40152974", "40322925", "40322926"], "response": "Chloe Bridges"}
+{"query_id": "358", "question": "who is the main character in sleeping beauty", "passage_ids": ["41081670", "41081671", "11191451", "41081672", "41081674"], "response": "Aurora"}
+{"query_id": "359", "question": "who plays seven of nine in star trek", "passage_ids": ["1902457", "1902456", "41942194", "1902442", "41968987"], "response": "Jeri Ryan"}
+{"query_id": "360", "question": "who is playing susan banks on days of our lives august 2018", "passage_ids": ["18297201", "18297241", "18297207", "18297240", "18297215"], "response": "Eileen Davidson"}
+{"query_id": "361", "question": "who played clair huxtable on the cosby show", "passage_ids": ["37268944", "37703405", "37703404", "37898289", "37703449"], "response": "Claire Huxtable"}
+{"query_id": "362", "question": "who is bailey in sisterhood of the traveling pants", "passage_ids": ["15518679", "15518678", "15518677", "19714739", "15518680"], "response": "Bailey"}
+{"query_id": "363", "question": "who sang the song these eyes are crying", "passage_ids": ["21216089", "21216085", "21216088", "36068126", "21216084"], "response": "Michael Bolton"}
+{"query_id": "364", "question": "where are the san diego chargers playing football", "passage_ids": ["18250428", "18265405", "6153658", "6153657", "748962"], "response": "San Diego"}
+{"query_id": "365", "question": "who produced michael jackson thriller album in 1982", "passage_ids": ["22692899", "22692898", "3306196", "41893001", "22692905"], "response": "Quincy Jones"}
+{"query_id": "366", "question": "who is won the 2018 fifa world cup", "passage_ids": ["40748302", "40748099", "40748303", "3700920", "40748098"], "response": "France"}
+{"query_id": "367", "question": "what battle occurred in response to texas declaring its independence", "passage_ids": ["41923398", "28335616", "41956820", "28335615", "10959374"], "response": "Battle of San Jacinto"}
+{"query_id": "368", "question": "town in alaska that has a cat as a mayor", "passage_ids": ["33207940", "33207943", "1991142", "33207944", "33207947"], "response": "Talkeetna, Alaska"}
+{"query_id": "369", "question": "who plays roose bolton on game of thrones", "passage_ids": ["8578772", "8578771", "8578754", "8578790", "8578758"], "response": "Roose Bolton"}
+{"query_id": "370", "question": "who plays barry allen in the flash tv show", "passage_ids": ["21809104", "21809170", "8468131", "21809169", "37204556"], "response": "Grant Gustin"}
+{"query_id": "371", "question": "which was the organization that crafted the port huron statement", "passage_ids": ["4548644", "4548637", "4548645", "4548636", "38949832"], "response": "Students for a Democratic Society"}
+{"query_id": "372", "question": "who has scored the most goals for arsenal", "passage_ids": ["24484794", "47046", "3437794", "47045", "11780229"], "response": "Pierre-Emerick Aubameyang"}
+{"query_id": "373", "question": "who sang let's get together come on come on", "passage_ids": ["17863479", "16520311", "17803802", "12352934", "23524953"], "response": "The Youngbloods"}
+{"query_id": "374", "question": "who is known as the father of texas", "passage_ids": ["30584579", "24237330", "2457710", "7616151", "10298560"], "response": "Lorenzo de Zavala"}
+{"query_id": "375", "question": "who played the murderer in silence of the lambs", "passage_ids": ["808903", "808959", "808936", "808935", "41992939"], "response": "Ted Levine"}
+{"query_id": "376", "question": "who played shelby's husband in steel magnolias", "passage_ids": ["29530636", "41893063", "29530655", "41893062", "5966426"], "response": "Dylan McDermott"}
+{"query_id": "377", "question": "who is the actor who plays aidan in eastenders", "passage_ids": ["15064742", "20081535", "15064741", "20081536", "15064750"], "response": "Sean Maguire"}
+{"query_id": "378", "question": "who played kevin in we need to talk about kevin", "passage_ids": ["23775785", "15204517", "23775784", "15204518", "23775802"], "response": "Tilda Swinton"}
+{"query_id": "379", "question": "which type of marble used in taj mahal", "passage_ids": ["21783427", "1740939", "21783492", "41018290", "21783452"], "response": "White Marble"}
+{"query_id": "380", "question": "who plays hallie and annie in the parent trap", "passage_ids": ["40531489", "41903823", "40531490", "11075794", "41903822"], "response": "Lindsay Lohan"}
+{"query_id": "381", "question": "which indian actor has won the most national awards", "passage_ids": ["13822569", "13822571", "4825798", "13822570", "41893100"], "response": "Mammootty"}
+{"query_id": "382", "question": "who said off with their heads in alice in wonderland", "passage_ids": ["20135518", "3364945", "1265641", "1265642", "23123470"], "response": "The Queen of Hearts"}
+{"query_id": "383", "question": "who plays teddy on law and order svu", "passage_ids": ["5903753", "5903752", "32310334", "32310352", "20380098"], "response": "Ted Danson"}
+{"query_id": "384", "question": "nashik is situated on the bank of which river", "passage_ids": ["6618820", "6618798", "6618821", "6618799", "6618797"], "response": "Godavari"}
+{"query_id": "385", "question": "who played the lead singer of stillwater in almost famous", "passage_ids": ["5047352", "5047354", "5047351", "5047376", "2954113"], "response": "Peter Frampton"}
+{"query_id": "386", "question": "who do the winners of group g play in the world cup 2018", "passage_ids": ["40748286", "41893129", "40748287", "41966967", "41905292"], "response": "Belgium"}
+{"query_id": "387", "question": "who wrote the day they drove old dixie down", "passage_ids": ["3988938", "3988936", "3988937", "3988934", "3988933"], "response": "The Band"}
+{"query_id": "388", "question": "who won the 1973 battle of the sexes tennis match", "passage_ids": ["17059743", "5293597", "17059744", "17059709", "2133135"], "response": "Billie Jean King"}
+{"query_id": "389", "question": "who dies in the maze runner death cure", "passage_ids": ["28136726", "41967751", "32029803", "41944105", "37484302"], "response": "Thomas"}
+{"query_id": "390", "question": "who played jackie in fresh prince of bel air", "passage_ids": ["41893157", "41893156", "41989064", "41913748", "41983069"], "response": "Jackie"}
+{"query_id": "391", "question": "who sings the theme song from robin hood prince of thieves", "passage_ids": ["41893169", "3921041", "3921044", "3921037", "3797472"], "response": "Robin Hood"}
+{"query_id": "392", "question": "when did north america arrive at the location it is in today", "passage_ids": ["1806158", "34664253", "38200738", "24789590", "12110703"], "response": "10,000 BC"}
+{"query_id": "393", "question": "who plays blanca in orange is the new black", "passage_ids": ["41981282", "41896680", "41981284", "41896681", "41907456"], "response": "Daya Diaz"}
+{"query_id": "394", "question": "who plays mr gold on once upon a time", "passage_ids": ["35167176", "35167058", "35167175", "31941760", "31941761"], "response": "Robert Carlyle"}
+{"query_id": "395", "question": "cape town is the capital of what country", "passage_ids": ["171487", "171458", "171488", "41961961", "171356"], "response": "South Africa"}
+{"query_id": "396", "question": "who is newly elected chief minister of himachal pradesh", "passage_ids": ["19187262", "19187263", "36258030", "32608567", "38939164"], "response": "Virbhadra Singh"}
+{"query_id": "397", "question": "who plays haley in mozart in the jungle", "passage_ids": ["35514964", "41971903", "41971901", "41971902", "35514957"], "response": "Gael Garcia Bernal"}
+{"query_id": "398", "question": "where are the badlands located in north dakota", "passage_ids": ["3596448", "3596447", "3596443", "3596444", "3596442"], "response": "North Dakota"}
+{"query_id": "399", "question": "where did the most serious canadian revolt against british rule take place", "passage_ids": ["14588611", "25920069", "7514577", "3665964", "18241077"], "response": "Montreal"}
+{"query_id": "400", "question": "where does most of canada's electricity come from", "passage_ids": ["10702637", "24283978", "24283979", "10702636", "26118552"], "response": "Hydroelectricity"}
+{"query_id": "401", "question": "tower of silence is associated with which religion", "passage_ids": ["6554636", "6554652", "6554659", "6554635", "6554660"], "response": "Zoroastrianism"}
+{"query_id": "402", "question": "who is the general manager of the new york yankees", "passage_ids": ["8460727", "8460726", "15252629", "26317013", "8460715"], "response": "Brian Cashman"}
+{"query_id": "403", "question": "which is the first colour movie in india", "passage_ids": ["40798024", "35920732", "41895264", "40798066", "40798032"], "response": "Aaraadhana"}
+{"query_id": "404", "question": "who does kp play for in the big bash", "passage_ids": ["9109574", "9109573", "30441141", "30441140", "15159176"], "response": "Kevin Pietersen"}
+{"query_id": "405", "question": "when did the tampa bay devil rays change their name", "passage_ids": ["14095154", "24996190", "14095153", "21185685", "21185686"], "response": "2008"}
+{"query_id": "406", "question": "where did the name arsenal fc come from", "passage_ids": ["11780221", "6535522", "47058", "31316057", "46981"], "response": "Arsenal Football Club"}
+{"query_id": "407", "question": "who is the detective in sons of anarchy", "passage_ids": ["35265703", "41963457", "26760469", "36757829", "24303678"], "response": "Jax Teller"}
+{"query_id": "408", "question": "who plays the creeper in jeepers creepers 1", "passage_ids": ["26815246", "26815245", "26815230", "8826646", "26815228"], "response": "The Creeper"}
+{"query_id": "409", "question": "who did the soundtrack for beverly hills cop", "passage_ids": ["6363877", "37881975", "37881971", "41891027", "6830223"], "response": "Harold Faltermeyer"}
+{"query_id": "410", "question": "who wrote the first 4 books of the old testament", "passage_ids": ["26737931", "610908", "16563812", "26737721", "14978896"], "response": "Moses"}
+{"query_id": "411", "question": "who petitioned the king of england to recognize the rights of colonists", "passage_ids": ["6917800", "6917801", "6207391", "35832117", "17356663"], "response": "Thomas Hutchinson"}
+{"query_id": "412", "question": "who plays sally in 3rd rock from the sun", "passage_ids": ["9976241", "41982828", "9976240", "11660576", "3746406"], "response": "Kristen Johnston"}
+{"query_id": "413", "question": "who plays the frog on gnomeo and juliet", "passage_ids": ["29165876", "29165877", "29165860", "41991793", "29165861"], "response": "James McAvoy"}
+{"query_id": "414", "question": "who played velma in scooby doo the mystery begins", "passage_ids": ["24385369", "28366983", "27332687", "24385368", "27332686"], "response": "Sarah Michelle Gellar"}
+{"query_id": "415", "question": "who plays lava girl in shark boy and lava girl", "passage_ids": ["41971288", "41893422", "41952611", "10496689", "41952612"], "response": "Taylor Lautner"}
+{"query_id": "416", "question": "who plays the clock on beauty and the beast", "passage_ids": ["41918290", "31941760", "10546206", "31941761", "16124277"], "response": "Adam Horne"}
+{"query_id": "417", "question": "who led the development of the ibm personal computer", "passage_ids": ["6762232", "6762224", "6762225", "8508656", "25691547"], "response": "Philip Don Estridge"}
+{"query_id": "418", "question": "who has the most wins as a head coach in the nfl", "passage_ids": ["35018145", "6220126", "23771386", "41926673", "17782005"], "response": "Bill Belichick"}
+{"query_id": "419", "question": "film that won the oscar for best picture in 1989", "passage_ids": ["2602723", "27236597", "27236598", "8785784", "1236067"], "response": "Driving Miss Daisy"}
+{"query_id": "420", "question": "who was involved in the valentine's day massacre", "passage_ids": ["41895080", "1046982", "41984301", "19974378", "11073561"], "response": "Fred \"Killer\" Burke"}
+{"query_id": "421", "question": "who took steve's place on blues clues", "passage_ids": ["33417968", "33417969", "24095363", "5610770", "24095362"], "response": "Steve Burns"}
+{"query_id": "422", "question": "who played wonder woman in the 2017 movie", "passage_ids": ["38188864", "41954844", "38188952", "38188863", "2102650"], "response": "Gal Gadot"}
+{"query_id": "423", "question": "who is often considered america's most prolific composer", "passage_ids": ["6011933", "1692345", "38545939", "6011934", "16064089"], "response": "Samuel Barber"}
+{"query_id": "424", "question": "who played batgirl in the 1966 tv series", "passage_ids": ["22344294", "6990176", "6982255", "6627619", "6982248"], "response": "Yvonne Craig"}
+{"query_id": "425", "question": "what part of la is staples center in", "passage_ids": ["41921460", "9384501", "27546928", "5540885", "32031709"], "response": "Staples Center"}
+{"query_id": "426", "question": "who was the first african-american and the youngest person ever to be nominated for best director", "passage_ids": ["1129289", "20090596", "20090597", "16262352", "38502541"], "response": "Barry Jenkins"}
+{"query_id": "427", "question": "what is deadpool's name in the movie", "passage_ids": ["21349925", "37800714", "36457712", "36457744", "37800811"], "response": "Deadpool"}
+{"query_id": "428", "question": "when was the social class system in latin america created", "passage_ids": ["10122095", "10122096", "10122097", "40744986", "33306979"], "response": "Capitalism"}
+{"query_id": "429", "question": "during the middle ages what part of the ancient catholic church served as a center of learning", "passage_ids": ["223129", "41893500", "28430206", "35934467", "223130"], "response": "Catholic Church"}
+{"query_id": "430", "question": "who won the women's soccer olympics 2016", "passage_ids": ["39193358", "26533418", "25765538", "41946714", "24523441"], "response": "USA"}
+{"query_id": "431", "question": "who won season 4 of big brother canada", "passage_ids": ["37531495", "37531494", "37531587", "40557793", "39508412"], "response": "Jon Pardy"}
+{"query_id": "432", "question": "golden boot winner in fifa world cup 2014", "passage_ids": ["10857421", "18135968", "41913639", "29491355", "3265540"], "response": "Lionel Messi"}
+{"query_id": "433", "question": "who plays lily in walking dead season 4", "passage_ids": ["32614027", "32614026", "41916124", "36627784", "29201818"], "response": "Lilly Chambler"}
+{"query_id": "434", "question": "who played james bond in the first casino royale", "passage_ids": ["32659109", "33917486", "415901", "720728", "41951084"], "response": "Sean Connery"}
+{"query_id": "435", "question": "when did they stop making cadillac escalade ext", "passage_ids": ["4960429", "4960430", "4960481", "4960427", "4960482"], "response": "2014"}
+{"query_id": "436", "question": "who was the oldest elected president of the united states of america", "passage_ids": ["29220607", "29220573", "41959720", "41922363", "41906973"], "response": "John Adams"}
+{"query_id": "437", "question": "who won the 2017 national championship in basketball", "passage_ids": ["3149039", "19595091", "10437458", "3149038", "8482996"], "response": "Gonzaga University"}
+{"query_id": "438", "question": "who played mr. green jeans on captain kangaroo", "passage_ids": ["7957678", "7957679", "7957680", "7957677", "1303771"], "response": "Hugh Brannum"}
+{"query_id": "439", "question": "where did the second red scare take place", "passage_ids": ["4588104", "8261582", "41893566", "4588103", "41912558"], "response": "Second Red Scare"}
+{"query_id": "440", "question": "who plays teenage jamie in one tree hill", "passage_ids": ["7552182", "7552183", "7552136", "7552196", "7552175"], "response": "Chad Michael Murray"}
+{"query_id": "441", "question": "what is the name of the korean alphabet", "passage_ids": ["1488142", "35874458", "35874457", "16626552", "23891800"], "response": "Korean alphabet"}
+{"query_id": "442", "question": "the first person to do a complete translation of the bible into latin", "passage_ids": ["26903810", "410883", "26738238", "26738237", "4900785"], "response": "Jerome"}
+{"query_id": "443", "question": "who discovered the ancient city of machu pichu", "passage_ids": ["1683825", "6579152", "21759424", "6579153", "41895351"], "response": "Hiram Bingham III"}
+{"query_id": "444", "question": "who was the heroine of the 1942 quit india movement", "passage_ids": ["33841616", "13621068", "40774858", "13621069", "21009961"], "response": "Usha Mehta"}
+{"query_id": "445", "question": "the atomic bomb that was dropped on hiroshima", "passage_ids": ["10307776", "6895978", "12689537", "21121479", "13984310"], "response": "Hiroshima"}
+{"query_id": "446", "question": "premier league record for most wins in a row", "passage_ids": ["39845155", "6591633", "16045851", "6591632", "36858412"], "response": "18"}
+{"query_id": "447", "question": "who won the world cup last year 2016", "passage_ids": ["40748172", "41918618", "40748236", "20960688", "40156523"], "response": "Brazil"}
+{"query_id": "448", "question": "what is apple's latest operating system called", "passage_ids": ["23275198", "41992493", "41899724", "41893636", "24360249"], "response": "macOS"}
+{"query_id": "449", "question": "what u.s. president established the precedent of not seeking more than two terms in office", "passage_ids": ["643917", "17838051", "643916", "5556929", "3833939"], "response": "George Washington"}
+{"query_id": "450", "question": "where did the last name smith originate from", "passage_ids": ["9668182", "41893640", "3114648", "9668177", "9668178"], "response": "Smith"}
+{"query_id": "451", "question": "who was the first person to play dumbledore", "passage_ids": ["41923652", "17994657", "1113828", "37616156", "23679646"], "response": "JK Rowling"}
+{"query_id": "452", "question": "how did mission san gabriel arcangel get its name", "passage_ids": ["1410471", "2021485", "2021486", "2037273", "1410473"], "response": "San Gabriel Arcangel"}
+{"query_id": "453", "question": "who played the female boxer in million dollar baby", "passage_ids": ["8558332", "41895376", "41895374", "1835395", "8558371"], "response": "Hilary Swank"}
+{"query_id": "454", "question": "who plays sally in the cat in the hat", "passage_ids": ["41962489", "41891482", "41893661", "2626754", "41936829"], "response": "Sally"}
+{"query_id": "455", "question": "who won the womens singles at wimbledon 2018", "passage_ids": ["39402365", "37501258", "41156644", "37501259", "41156643"], "response": "Gabriella Taylor"}
+{"query_id": "456", "question": "who played marsha in the brady bunch movie", "passage_ids": ["41896748", "41896747", "13667730", "13697198", "10867739"], "response": "Marsha"}
+{"query_id": "457", "question": "which came first in star wars the book or the movie", "passage_ids": ["15349812", "15349811", "15349810", "15349808", "4693031"], "response": "Movie"}
+{"query_id": "458", "question": "which is the oldest university in the usa", "passage_ids": ["3368915", "15370144", "10648444", "26407925", "9551211"], "response": "University of Pennsylvania"}
+{"query_id": "459", "question": "what is the unit of currency in northern ireland", "passage_ids": ["13730560", "13180671", "6358814", "13180672", "13730578"], "response": "Pound Sterling"}
+{"query_id": "460", "question": "who plays the maid in meet the fockers", "passage_ids": ["7404120", "7404121", "7404097", "7404096", "26797296"], "response": "Jessica Alba"}
+{"query_id": "461", "question": "who dies in season 8 of greys anatomy", "passage_ids": ["9607287", "9607286", "35932377", "41963518", "27039102"], "response": "Derek Shepherd"}
+{"query_id": "462", "question": "who played mary mae ward on general hospital", "passage_ids": ["21388155", "21388154", "21388156", "21388157", "41893692"], "response": "Rosalind Cash"}
+{"query_id": "463", "question": "who played mark in the original roseanne series", "passage_ids": ["1867209", "1867217", "1867210", "1867208", "1867179"], "response": "Mark"}
+{"query_id": "464", "question": "where was the original stephen king's it filmed", "passage_ids": ["36791097", "1479643", "1479642", "36791096", "24165750"], "response": "Maine"}
+{"query_id": "465", "question": "who was the first african american female writer", "passage_ids": ["1010418", "1010417", "4753614", "4603833", "18555918"], "response": "Phillis Wheatley"}
+{"query_id": "466", "question": "who is number 20 for the dallas cowboys", "passage_ids": ["22319237", "25255982", "19731246", "25594217", "22739508"], "response": "Martellus Bennett"}
+{"query_id": "467", "question": "who played taylor in 50 shades of grey", "passage_ids": ["34864560", "34864481", "41992636", "36155142", "34864486"], "response": "Jamie Dornan"}
+{"query_id": "468", "question": "who is the speaker of the house elected by", "passage_ids": ["6517735", "5009898", "35693874", "4002944", "37618005"], "response": "The speaker of the house is elected by the majority party caucus"}
+{"query_id": "469", "question": "who played the rich boy in little rascals", "passage_ids": ["35811479", "11533597", "41893754", "8298035", "11533589"], "response": "Spanky"}
+{"query_id": "470", "question": "who wrote the wealth of nations and claimed that a laissez-faire economic policy is the best", "passage_ids": ["4957399", "2868391", "23203615", "8801519", "8801520"], "response": "Adam Smith"}
+{"query_id": "471", "question": "where was the world cup in 2010 held", "passage_ids": ["32602065", "38497277", "35835505", "38497273", "32431502"], "response": "South Africa"}
+{"query_id": "472", "question": "who played the father on fresh prince of bel-air", "passage_ids": ["2875306", "41945257", "41989064", "41913748", "41983069"], "response": "James Avery"}
+{"query_id": "473", "question": "who was the captain of the cornelia marie", "passage_ids": ["34168603", "41915972", "6862513", "37470302", "28363939"], "response": "Joan Paul Schaghen"}
+{"query_id": "474", "question": "who was president during the sherman anti-trust act", "passage_ids": ["1142230", "22403507", "1142231", "13237365", "13237364"], "response": "Benjamin Harrison"}
+{"query_id": "475", "question": "who is the actor that plays the new spiderman", "passage_ids": ["28325219", "10607591", "15044907", "15044873", "41976317"], "response": "Tom Holland"}
+{"query_id": "476", "question": "who plays guitar on who's that lady", "passage_ids": ["27405253", "19144888", "10484971", "31604741", "10484972"], "response": "Koko Jones"}
+{"query_id": "477", "question": "who won the tour de france bicycle race", "passage_ids": ["4475007", "20852921", "20852920", "37806828", "16481877"], "response": "Jacques Anquetil"}
+{"query_id": "478", "question": "who is the girl dancing on sia videos", "passage_ids": ["38383267", "7062933", "38383266", "31738651", "22588462"], "response": "Sia"}
+{"query_id": "479", "question": "who is the head of the veterans administration", "passage_ids": ["39529864", "23621114", "3892279", "1125709", "36035529"], "response": "Eric Shinseki"}
+{"query_id": "480", "question": "who has won the most football world cups", "passage_ids": ["3265540", "27947406", "290605", "29237131", "15947188"], "response": "Germany"}
+{"query_id": "481", "question": "who won the first indy 500 race in 1911", "passage_ids": ["13055018", "13055019", "6380320", "2773759", "2773825"], "response": "Ray Harroun"}
+{"query_id": "482", "question": "when did the last boer war veteran died", "passage_ids": ["1061202", "1061195", "37448378", "19054283", "1061194"], "response": "1959"}
+{"query_id": "483", "question": "who introduced the system of local boards or local bodies in india", "passage_ids": ["37538928", "25695328", "25695329", "25695327", "25695337"], "response": "Chakravarti Rajagopalachari"}
+{"query_id": "484", "question": "who held the highest authority in the catholic church", "passage_ids": ["646270", "2746582", "646271", "22990629", "22990630"], "response": "Pope Innocent III"}
+{"query_id": "485", "question": "who plays princess unikitty in the lego movie", "passage_ids": ["41940526", "41893873", "40169501", "35649390", "35649389"], "response": "Alison Brie"}
+{"query_id": "486", "question": "who played jfk in the movie 13 days", "passage_ids": ["8021964", "8021971", "8021962", "39332593", "8021965"], "response": "Caspar Phillipson"}
+{"query_id": "487", "question": "who has the most control over the us defense spending", "passage_ids": ["9513697", "9513696", "39845424", "14088111", "15485574"], "response": "Barney Frank"}
+{"query_id": "488", "question": "what was the chief city of the aztec civilization", "passage_ids": ["28438764", "648735", "1276877", "648736", "818010"], "response": "Tenochtitlan"}
+{"query_id": "489", "question": "nfl record for most touchdowns in a career", "passage_ids": ["8444278", "8187992", "8444279", "5169486", "5161749"], "response": "LaDainian Tomlinson"}
+{"query_id": "490", "question": "where are the badlands located into the badlands", "passage_ids": ["3596448", "3596447", "3596443", "3596444", "3596451"], "response": "Badlands"}
+{"query_id": "491", "question": "who lost his head in the french revolution", "passage_ids": ["30148491", "11126215", "30148490", "9655020", "9590294"], "response": "Louis XVII"}
+{"query_id": "492", "question": "who plays derek's wife in grey's anatomy", "passage_ids": ["17990991", "20323041", "20323042", "14592470", "41896816"], "response": "Ellen Pompeo"}
+{"query_id": "493", "question": "who won the super bowl the falcons or the patriots", "passage_ids": ["33614667", "27254526", "19692773", "41695225", "41695226"], "response": "The Patriots"}
+{"query_id": "494", "question": "who won the nba all-star game in 2018", "passage_ids": ["29353859", "41943490", "591288", "22877076", "22877078"], "response": "Lebron James"}
+{"query_id": "495", "question": "who was fired in the saturday night massacre", "passage_ids": ["4431859", "4431856", "4431865", "30655088", "41893955"], "response": "Archibald Cox"}
+{"query_id": "496", "question": "who holds the record for winning the most academy awards", "passage_ids": ["4944950", "4944949", "421400", "3930910", "2717391"], "response": "Jack Lemmon"}
+{"query_id": "497", "question": "who was the jockey who rode american pharoah", "passage_ids": ["36957085", "36956977", "36956995", "36956998", "36957094"], "response": "Victor Espinoza"}
+{"query_id": "498", "question": "who plays arturo in the young and the restless", "passage_ids": ["32597897", "20712558", "32597896", "39748214", "32334864"], "response": "Arturo Rosales"}
+{"query_id": "499", "question": "who wrote the score for west side story", "passage_ids": ["14966453", "14966454", "21829363", "914725", "914785"], "response": "Leonard Bernstein"}
+{"query_id": "500", "question": "who has the most golden gloves in mlb history", "passage_ids": ["4073001", "10290876", "4710302", "10290875", "4073002"], "response": "Keith Hernandez"}
+{"query_id": "501", "question": "which comes first tom sawyer or huck finn", "passage_ids": ["6322510", "25878572", "37323244", "6322509", "17297504"], "response": "Tom and Huck"}
+{"query_id": "502", "question": "who did the warriors play last year in the finals", "passage_ids": ["6445192", "6445193", "15848736", "15848735", "3749848"], "response": "New Zealand Warriors"}
+{"query_id": "503", "question": "what does trd stand for on toyota trucks", "passage_ids": ["8535493", "8150193", "7997756", "8150192", "41895453"], "response": "TRD stands for Toyota Racing Development"}
+{"query_id": "504", "question": "in what state will you find kansas city and independence", "passage_ids": ["523498", "523497", "2659890", "1866068", "445863"], "response": "Kansas City"}
+{"query_id": "505", "question": "where does the last name marcano come from", "passage_ids": ["41894003", "5796877", "5796869", "5796868", "24931977"], "response": "Marcano"}
+{"query_id": "506", "question": "who is the author of the canterbury tales", "passage_ids": ["10792609", "4046151", "187785", "4046152", "187781"], "response": "Geoffrey Chaucer"}
+{"query_id": "507", "question": "which state is home to the arizona iced tea beverage company", "passage_ids": ["10910931", "10910922", "10910921", "41895464", "10910925"], "response": "Arizona"}
+{"query_id": "508", "question": "who wins season 2 of flavor of love", "passage_ids": ["13820695", "13820692", "13820696", "13820691", "13820671"], "response": "Flavor Flav"}
+{"query_id": "509", "question": "who was the leader of the texas rangers", "passage_ids": ["4716738", "4716800", "4716737", "4716798", "4716799"], "response": "Texas Rangers"}
+{"query_id": "510", "question": "who plays bryce mother in 13 reasons why", "passage_ids": ["41918789", "41894020", "41918790", "28010787", "41903417"], "response": "Bryce Walker"}
+{"query_id": "511", "question": "who plays katie in how i met your mother", "passage_ids": ["41894022", "27563582", "33861376", "41898879", "27563581"], "response": "Katie"}
+{"query_id": "512", "question": "what is the another name of sahara desert", "passage_ids": ["38468142", "24667136", "572518", "572517", "38468143"], "response": "Sahara Desert"}
+{"query_id": "513", "question": "who wrote the song born in the usa", "passage_ids": ["15266077", "15266078", "41954329", "16369470", "21114613"], "response": "Bruce Springsteen"}
+{"query_id": "514", "question": "who plays the little girl in charlotte's web", "passage_ids": ["38036304", "23989543", "8565275", "13883835", "41936037"], "response": "Charlotte King"}
+{"query_id": "515", "question": "is london or new york the financial capital of the world", "passage_ids": ["28671726", "18128554", "18128553", "4730387", "13988491"], "response": "London"}
+{"query_id": "516", "question": "who has played the most games for liverpool fc", "passage_ids": ["32380807", "5705839", "7596282", "32380808", "7596281"], "response": "Jamie Carragher"}
+{"query_id": "517", "question": "who provided the voice for the geico gecko in its debut", "passage_ids": ["41895466", "41899700", "41916875", "25911019", "25910965"], "response": "Kelsey Grammer"}
+{"query_id": "518", "question": "who is the actress that plays in the new wonder woman", "passage_ids": ["31901756", "8896709", "31901700", "21901737", "38188863"], "response": "Gal Gadot"}
+{"query_id": "519", "question": "who sings skinny little boy from cleveland ohio", "passage_ids": ["4127228", "4127224", "4127227", "18535228", "4127234"], "response": "John Bassette"}
+{"query_id": "520", "question": "who is the bass player for the eagles", "passage_ids": ["19171869", "28804793", "1812090", "4395058", "19171870"], "response": "Don Henley"}
+{"query_id": "521", "question": "who plays the mom in haters back off", "passage_ids": ["38427922", "38427915", "38427921", "38427882", "26954276"], "response": "Miranda Sings"}
+{"query_id": "522", "question": "who is the captain of kolkata knight riders", "passage_ids": ["27944560", "29905287", "23792313", "20528684", "23792312"], "response": "Debabrata Das"}
+{"query_id": "523", "question": "who does the voice of joe on family guy", "passage_ids": ["3126434", "41894191", "3126439", "9694607", "41958589"], "response": "Mila Kunis"}
+{"query_id": "524", "question": "scott joplin is best known as a composer of what kind of music", "passage_ids": ["20511988", "807605", "41895473", "41895472", "807608"], "response": "Ragtime"}
+{"query_id": "525", "question": "where is the great british baking show 2017 filmed", "passage_ids": ["33991564", "41955062", "41942204", "29801564", "41949779"], "response": "The Great British Bake Off"}
+{"query_id": "526", "question": "who did the dominican republic became independent from", "passage_ids": ["210605", "8565847", "34384218", "12066378", "210954"], "response": "Dominican Republic"}
+{"query_id": "527", "question": "who played slim robinson in tour de pharmacy", "passage_ids": ["39125026", "39125025", "41894140", "39125018", "39125016"], "response": "Danny Glover"}
+{"query_id": "528", "question": "what was the ancient name for modern-day iraq", "passage_ids": ["384485", "1687665", "17900738", "4357864", "384484"], "response": "Babylonia"}
+{"query_id": "529", "question": "who played mr big on sex and the city", "passage_ids": ["21593490", "1732671", "21593489", "21593488", "40443709"], "response": "Chris Noth"}
+{"query_id": "530", "question": "who sings the song welcome to my world", "passage_ids": ["1703310", "1703313", "15839585", "34214208", "31219718"], "response": "Jim Reeves"}
+{"query_id": "531", "question": "what states plan created the house of representatives", "passage_ids": ["854558", "3788092", "854806", "11985235", "854807"], "response": "The House of Representatives"}
+{"query_id": "532", "question": "where did the phrase i'll be a monkey's uncle come from", "passage_ids": ["41894165", "32137866", "32137869", "41894166", "32137870"], "response": "Darwin"}
+{"query_id": "533", "question": "who plays the voice of lois on family guy", "passage_ids": ["7227771", "41958590", "41894191", "41992163", "3126434"], "response": "Alex Borstein"}
+{"query_id": "534", "question": "who won the football world cup in 1998", "passage_ids": ["16436808", "16436805", "3265540", "16436809", "7654350"], "response": "France"}
+{"query_id": "535", "question": "who has won the fa cup the most amount of times", "passage_ids": ["22543418", "22543417", "22543449", "6206329", "22543420"], "response": "Manchester United"}
+{"query_id": "536", "question": "who do you play as in battlefront 2 campaign", "passage_ids": ["41895484", "26292827", "22130372", "22130371", "10420267"], "response": "Luke Skywalker"}
+{"query_id": "537", "question": "who won the most medals in commonwealth games 2018", "passage_ids": ["1015538", "1015539", "13437346", "1015537", "41135573"], "response": "Australia"}
+{"query_id": "538", "question": "who won the hot dog challenge on big brother", "passage_ids": ["27496462", "15923573", "27496463", "16123286", "16123285"], "response": "George Boswell"}
+{"query_id": "539", "question": "who plays munch on law and order svu", "passage_ids": ["37030935", "10253767", "10253706", "37030934", "10253707"], "response": "John Munch"}
+{"query_id": "540", "question": "who plays lily on once upon a time", "passage_ids": ["31941760", "31941761", "36530658", "34471019", "31941779"], "response": "Lily Brennan"}
+{"query_id": "541", "question": "who created the american image of santa claus", "passage_ids": ["155181", "18836153", "18836155", "850832", "155185"], "response": "Thomas Nast"}
+{"query_id": "542", "question": "where will the next summer olympic games be held", "passage_ids": ["25150817", "596649", "6558906", "10955583", "6558895"], "response": "London"}
+{"query_id": "543", "question": "who plays dr. riggs on grey's anatomy", "passage_ids": ["39023334", "41966298", "24954776", "9607187", "39023318"], "response": "Nathan Riggs"}
+{"query_id": "544", "question": "who wrote the screenplay for 50 shades of grey", "passage_ids": ["36155142", "34864560", "36155141", "34864459", "34864559"], "response": "Kelly Marcel"}
+{"query_id": "545", "question": "at the end of the hundred years war the english only held", "passage_ids": ["41894251", "24716825", "22384446", "1661107", "24716824"], "response": "Calais"}
+{"query_id": "546", "question": "who played jason dilaurentis in pretty little liars", "passage_ids": ["37184633", "37184634", "37184596", "40586460", "28323199"], "response": "Sasha Pieterse"}
+{"query_id": "547", "question": "who does the little girl voice in despicable me", "passage_ids": ["41905656", "41913777", "41911665", "41905657", "41992749"], "response": "Miranda Cosgrove"}
+{"query_id": "548", "question": "who plays the voice of the can in wet hot american summer", "passage_ids": ["41345292", "41345293", "40462023", "40462022", "5020379"], "response": "David Hyde Pierce"}
+{"query_id": "549", "question": "australia's next top model season 8 host", "passage_ids": ["34696489", "10310861", "34696488", "36574763", "36574757"], "response": "Jennifer Hawkins"}
+{"query_id": "550", "question": "who played stifler's mother in american pie", "passage_ids": ["41932596", "41912834", "11265543", "3624065", "11265560"], "response": "Jennifer Coolidge"}
+{"query_id": "551", "question": "who played george washington in the john adams series", "passage_ids": ["6262072", "6262071", "17296467", "23628546", "41894307"], "response": "David Morse"}
+{"query_id": "552", "question": "who played casper the boy in the movie", "passage_ids": ["38053409", "38053401", "25780425", "38053400", "37696698"], "response": "Casper the friendly ghost"}
+{"query_id": "553", "question": "what is the most popular religion in ukraine", "passage_ids": ["6395908", "6395909", "866832", "866831", "866767"], "response": "Christianity"}
+{"query_id": "554", "question": "where did the fast and the furious take place", "passage_ids": ["41899338", "41899337", "18409555", "41989349", "41904520"], "response": "United States"}
+{"query_id": "555", "question": "what is the dads name in the adams family", "passage_ids": ["23628548", "4709769", "32439409", "20167391", "2831519"], "response": "Henry Adams"}
+{"query_id": "556", "question": "who is the little girl that plays in jumanji", "passage_ids": ["41912594", "41912595", "41909563", "41912593", "13773527"], "response": "Bethany Walker"}
+{"query_id": "557", "question": "where is mac mcclung going to play college basketball", "passage_ids": ["41895523", "40928816", "40928807", "40928817", "40928811"], "response": "Georgetown University"}
+{"query_id": "558", "question": "who is the actor that plays taylor on billions", "passage_ids": ["9746499", "9746502", "9746503", "9746501", "9746500"], "response": "Eliza Taylor"}
+{"query_id": "559", "question": "who is the character edward scissorhands based on", "passage_ids": ["4097399", "4097398", "31341691", "31341693", "4097467"], "response": "Edward Scissorhands"}
+{"query_id": "560", "question": "where was an independent arab state created after world war i", "passage_ids": ["18038446", "7634433", "13223620", "13223622", "21993535"], "response": "None of the above"}
+{"query_id": "561", "question": "who made the first rocket in the world", "passage_ids": ["29045878", "142741", "772088", "36839517", "29045877"], "response": "Robert Hutchings Goddard"}
+{"query_id": "562", "question": "who tells harry about the chamber of secrets", "passage_ids": ["6311526", "41894382", "6311525", "41894383", "2824215"], "response": "Dumbledore"}
+{"query_id": "563", "question": "who played black panther in captain america civil war", "passage_ids": ["41894402", "41894399", "41894403", "41894400", "41946068"], "response": "Chadwick Boseman"}
+{"query_id": "564", "question": "who was president went the war ended in 1953", "passage_ids": ["9108346", "22920954", "3862923", "6383128", "17770185"], "response": "Dwight D. Eisenhower"}
+{"query_id": "565", "question": "who scored the most points in an nhl season", "passage_ids": ["41917581", "3648422", "8580935", "41985646", "41917580"], "response": "Phil Housley"}
+{"query_id": "566", "question": "who plays the mayor on hart of dixie", "passage_ids": ["31142811", "31142782", "31142810", "31142798", "31142783"], "response": "Scott Porter"}
+{"query_id": "567", "question": "who is the best player ever in the premier league", "passage_ids": ["5010617", "28041690", "5962757", "28041691", "5962758"], "response": "Paul Scholes"}
+{"query_id": "568", "question": "what was the golden state warriors first name", "passage_ids": ["1605880", "41954874", "41906622", "41943088", "36614472"], "response": "Golden State Warriors"}
+{"query_id": "569", "question": "who has won the most hell in a cell matches", "passage_ids": ["1479516", "6419261", "6419253", "6419276", "1479517"], "response": "The Undertaker"}
+{"query_id": "570", "question": "who played charlie chan's number one son", "passage_ids": ["10669668", "10669669", "7303347", "30337205", "8154242"], "response": "Benson Fong"}
+{"query_id": "571", "question": "who voices cecil in welcome to night vale", "passage_ids": ["41896126", "34752708", "34752707", "41920953", "34752740"], "response": "Cecil Baldwin"}
+{"query_id": "572", "question": "which alliance was formed as a reaction to the north atlantic treaty organization (nato)", "passage_ids": ["559096", "1149380", "41475248", "1921704", "559179"], "response": "NATO"}
+{"query_id": "573", "question": "what language do they speak in kabul afghanistan", "passage_ids": ["10327158", "4416", "1518138", "4417", "1518137"], "response": "Dari"}
+{"query_id": "574", "question": "who is singing in summer by calvin harris", "passage_ids": ["35713558", "19327063", "41907221", "19327038", "19327030"], "response": "Calvin Harris"}
+{"query_id": "575", "question": "who won the battle of bull run union or confederacy", "passage_ids": ["31394173", "3505957", "1308656", "2563327", "3505958"], "response": "Union"}
+{"query_id": "576", "question": "when did the first fleet arrive in tenerife", "passage_ids": ["37261306", "3863644", "3863643", "140476", "29091048"], "response": "1788"}
+{"query_id": "577", "question": "who plays the she elf in hobbit 2", "passage_ids": ["41895613", "11224182", "23953734", "23953735", "23953774"], "response": "Benedict Cumberbatch"}
+{"query_id": "578", "question": "who sings the song to orange is the new black", "passage_ids": ["41896680", "41901074", "41896681", "32219468", "41918112"], "response": "Piper Chapman"}
+{"query_id": "579", "question": "what is atticus profession in to kill a mockingbird", "passage_ids": ["1615713", "1615690", "1615663", "1615712", "14972761"], "response": "lawyer"}
+{"query_id": "580", "question": "who was the teenage girl in mad max beyond thunderdome", "passage_ids": ["41897772", "5963473", "37692383", "41897773", "13052194"], "response": "Aunty Entity"}
+{"query_id": "581", "question": "who composed the nutcracker suite for the christmas themed ballet the nutcracker", "passage_ids": ["29997219", "29997218", "21019910", "17912523", "11436672"], "response": "Pyotr Ilyich Tchaikovsky"}
+{"query_id": "582", "question": "what language do they speak in the maldives", "passage_ids": ["28182471", "28182470", "28182462", "28182496", "28182463"], "response": "Maldivian"}
+{"query_id": "583", "question": "who does the theme song for mr pickles", "passage_ids": ["36236914", "36236913", "36236895", "36236896", "3122550"], "response": "Randy Newman"}
+{"query_id": "584", "question": "what is the name of the san francisco baseball team", "passage_ids": ["1210797", "21185676", "771775", "21185674", "1210796"], "response": "San Francisco Giants"}
+{"query_id": "585", "question": "who plays moses wife in gods and kings", "passage_ids": ["41944371", "41944370", "1656872", "41944368", "41903103"], "response": "Yocheved"}
+{"query_id": "586", "question": "who is the head coach of the los angeles rams football team", "passage_ids": ["26813527", "26813528", "8642338", "8642339", "32324333"], "response": "Wade Phillips"}
+{"query_id": "587", "question": "drowned valley forming and inlet of the sea", "passage_ids": ["41899754", "41631732", "1266364", "1266363", "9087947"], "response": "drowned valley forming and inlet of the sea"}
+{"query_id": "588", "question": "who had the flag first texas or chile", "passage_ids": ["1697162", "1697161", "1697170", "1697164", "1697169"], "response": "Chile"}
+{"query_id": "589", "question": "what do you call a person from kuwait", "passage_ids": ["444982", "39806384", "16908593", "20168785", "23994598"], "response": "Kuwaiti"}
+{"query_id": "590", "question": "who got the most medals in the commonwealth games 2018", "passage_ids": ["1015538", "1015539", "29807842", "32885863", "32885862"], "response": "Hima Das"}
+{"query_id": "591", "question": "what is the first iron man movie called", "passage_ids": ["31716114", "40369182", "40369186", "15954082", "33204719"], "response": "Iron Man"}
+{"query_id": "592", "question": "what is the main religion in south korea", "passage_ids": ["719640", "16195139", "713576", "13404206", "719650"], "response": "Buddhism"}
+{"query_id": "593", "question": "what is the first star wars movie in the series", "passage_ids": ["41968871", "41903912", "15831226", "41936779", "41896370"], "response": "Star Wars"}
+{"query_id": "594", "question": "who plays elena gilbert in season 8 episode 16", "passage_ids": ["27540312", "27540311", "41912491", "39074149", "41906652"], "response": "Elena Gilbert"}
+{"query_id": "595", "question": "who is the actor that plays percy jackson", "passage_ids": ["33318770", "33914997", "25878903", "41934542", "25878904"], "response": "Logan Lerman"}
+{"query_id": "596", "question": "who is the chief minster of utter pradesh", "passage_ids": ["19934527", "19934526", "23304825", "39133270", "26058646"], "response": "Sampurnanand"}
+{"query_id": "597", "question": "why do i need a visa to travel to australia", "passage_ids": ["28392226", "14780797", "28392220", "14780815", "20401075"], "response": "Because you need a visa to travel to Australia"}
+{"query_id": "598", "question": "who did emily maynard choose in her season", "passage_ids": ["35748837", "35748836", "32386188", "32386110", "32386109"], "response": "Sean Lowe"}
+{"query_id": "599", "question": "where was the battle of mine creek fought", "passage_ids": ["26488921", "7687976", "7687977", "7687974", "7687975"], "response": "Mine Creek"}
+{"query_id": "600", "question": "what is the biggest ethnic group in uk", "passage_ids": ["1277358", "8457256", "857331", "21158165", "35622429"], "response": "Black British"}
+{"query_id": "601", "question": "what kind of dance did michael jackson do", "passage_ids": ["22692915", "22692914", "22849720", "1718361", "1718363"], "response": "Michael Jackson"}
+{"query_id": "602", "question": "who played bart miller in the movie i can only imagine", "passage_ids": ["40722228", "40722227", "40722219", "40722218", "40722217"], "response": "Bart Millard"}
+{"query_id": "603", "question": "who played wicked witch of the west in wizard of oz", "passage_ids": ["4753433", "4753434", "7316328", "35773122", "7316342"], "response": "Margaret Hamilton"}
+{"query_id": "604", "question": "where did the new england patriots originate from", "passage_ids": ["806877", "33115562", "8220391", "8220390", "8473592"], "response": "New England Patriots"}
+{"query_id": "605", "question": "who voices ralph in ed edd and eddy", "passage_ids": ["9867239", "4138241", "4138223", "28252826", "12531590"], "response": "Tony Sampson"}
+{"query_id": "606", "question": "what is the old name of burj khalifa", "passage_ids": ["6793271", "6793342", "6793343", "6793270", "6793279"], "response": "Burj Khalifa"}
+{"query_id": "607", "question": "who won the super bowl steelers or cardinals", "passage_ids": ["789133", "38568187", "23652726", "8478231", "23652727"], "response": "Steelers"}
+{"query_id": "608", "question": "who wrote the song changes by david bowie", "passage_ids": ["12350474", "5909211", "12350464", "12350473", "30456840"], "response": "David Bowie"}
+{"query_id": "609", "question": "who played willie lopez in the movie ghost", "passage_ids": ["21762602", "8469944", "26466791", "26466790", "38053409"], "response": "Rick Aviles"}
+{"query_id": "610", "question": "who sings the theme song for freaks and geeks", "passage_ids": ["7417665", "16465520", "21380410", "7417666", "7417648"], "response": "Nirvana"}
+{"query_id": "611", "question": "where is the majority of russia’s population found", "passage_ids": ["6524253", "28824393", "692903", "33003021", "692883"], "response": "Russia"}
+{"query_id": "612", "question": "who plays phyllis on young and the restless", "passage_ids": ["32648438", "16249239", "16249187", "41910185", "32316649"], "response": "Phyllis Summers"}
+{"query_id": "613", "question": "what do you call a person from barbados", "passage_ids": ["8924189", "78988", "8924190", "25369831", "10675431"], "response": "Barbadian"}
+{"query_id": "614", "question": "what is the new name of the czech republic", "passage_ids": ["13849586", "13849587", "16055236", "10839957", "13849573"], "response": "Czechia"}
+{"query_id": "615", "question": "who wrote the six and seven books of moses", "passage_ids": ["11507910", "21560485", "11507911", "20430987", "11507925"], "response": "Moses"}
+{"query_id": "616", "question": "what version of the ipad is the newest", "passage_ids": ["33618340", "33618370", "33621701", "33621700", "32596823"], "response": "IPad (4th generation)"}
+{"query_id": "617", "question": "who has the money in the big lebowski", "passage_ids": ["41973133", "803259", "803260", "803165", "41968802"], "response": "Jeffrey Lebowski"}
+{"query_id": "618", "question": "kenny chesney when the sun goes down album", "passage_ids": ["19387073", "19387074", "41895804", "41895805", "19387076"], "response": "Kenny Chesney"}
+{"query_id": "619", "question": "what is the name of madonna's first album", "passage_ids": ["33022036", "14474794", "19072813", "9711028", "33022035"], "response": "Nobody Knows Me"}
+{"query_id": "620", "question": "what was the original spider man's name", "passage_ids": ["28325174", "28325175", "39505665", "8782393", "8782375"], "response": "Peter Parker"}
+{"query_id": "621", "question": "who won the green bay packers chicago bears game", "passage_ids": ["13488255", "3872004", "4991479", "11225769", "325060"], "response": "Green Bay Packers"}
+{"query_id": "622", "question": "voice of toph in avatar the last airbender", "passage_ids": ["22497968", "22497969", "35543614", "35543613", "22799410"], "response": "Toph"}
+{"query_id": "623", "question": "who sings bridge over troubled water simon or garfunkel", "passage_ids": ["7055283", "29595892", "29595891", "29595919", "29595905"], "response": "Simon"}
+{"query_id": "624", "question": "who sings the song don't fear the reaper", "passage_ids": ["9173506", "9173529", "9173523", "9173535", "9173536"], "response": "Blue Oyster Cult"}
+{"query_id": "625", "question": "who composed the famous song 'sare jahan se achha'", "passage_ids": ["41895823", "41891910", "37263021", "41967869", "41900544"], "response": "Sare Jahan se Achha"}
+{"query_id": "626", "question": "what is the longest mountain range on earth", "passage_ids": ["16705615", "780227", "16705614", "38468143", "969706"], "response": "Himalayas"}
+{"query_id": "627", "question": "which country did the first nandos restaurant open in 1987", "passage_ids": ["3676223", "3676224", "41895832", "3676222", "3676220"], "response": "Portugal"}
+{"query_id": "628", "question": "who sang knockin on heaven's door originally", "passage_ids": ["8620473", "8620472", "8620474", "21480676", "8620475"], "response": "Bob Dylan"}
+{"query_id": "629", "question": "who has the record for most jeopardy wins", "passage_ids": ["41906498", "41973810", "41891526", "41895850", "21672243"], "response": "Ken Jennings"}
+{"query_id": "630", "question": "what was the doctor's name that created frankenstein", "passage_ids": ["15226913", "24434271", "33637510", "5203952", "5203958"], "response": "Victor Frankenstein"}
+{"query_id": "631", "question": "who plays the therapist in big little lies", "passage_ids": ["37418926", "37418915", "37418939", "37418916", "37418937"], "response": "Meryl Streep"}
+{"query_id": "632", "question": "first black chairman of joint chiefs of staff", "passage_ids": ["13446819", "3196886", "3196885", "13446786", "13446784"], "response": "General Colin L. Powell"}
+{"query_id": "633", "question": "2017 who has the most followers on instagram", "passage_ids": ["41934912", "41061292", "41971116", "41061293", "13827368"], "response": "Instagram"}
+{"query_id": "634", "question": "what does d.c stand for in washington dc", "passage_ids": ["37325229", "19506935", "19506934", "37325230", "19969276"], "response": "District of Columbia"}
+{"query_id": "635", "question": "who does elena end up with damon or stefan", "passage_ids": ["31036206", "27551256", "32846542", "27551306", "29602029"], "response": "Damon Salvatore"}
+{"query_id": "636", "question": "who plays the girl on choo choo soul", "passage_ids": ["15962790", "15962789", "15962786", "15962788", "15962787"], "response": "Genevieve Goings"}
+{"query_id": "637", "question": "where were the beach scenes filmed in dunkirk", "passage_ids": ["3612803", "38352284", "38352285", "3612802", "38352296"], "response": "Dunkirk"}
+{"query_id": "638", "question": "where was sex and the city filmed in new york", "passage_ids": ["30533714", "24809916", "21727089", "21727090", "41920277"], "response": "New York"}
+{"query_id": "639", "question": "who owned the farmhouse where the two commanders of the civil war met to end the war", "passage_ids": ["8946184", "24267185", "14395704", "39729763", "6121853"], "response": "Tree Hill farm"}
+{"query_id": "640", "question": "was dunkirk world war 1 or world war ii", "passage_ids": ["38352351", "3492882", "8342197", "4411130", "1629601"], "response": "World War II"}
+{"query_id": "641", "question": "who is hosting the world cup in 2018", "passage_ids": ["15137562", "34469641", "30514463", "15947188", "15137561"], "response": "Russia"}
+{"query_id": "642", "question": "who's the lead singer of drowning pool", "passage_ids": ["35846101", "35846102", "4968725", "4968726", "19586399"], "response": "Ryan McCombs"}
+{"query_id": "643", "question": "who does peter griffin voice on family guy", "passage_ids": ["3126434", "41894191", "3126435", "7174356", "41894897"], "response": "Peter Griffin"}
+{"query_id": "644", "question": "r kelly you remind me of something album", "passage_ids": ["11384896", "41914911", "31751730", "11384897", "17625015"], "response": "R. Kelly"}
+{"query_id": "645", "question": "what nfl team is called the dirty birds", "passage_ids": ["41915472", "8555276", "17372305", "17372304", "6743018"], "response": "Atlanta Falcons"}
+{"query_id": "646", "question": "who sings as steve smith in american dad", "passage_ids": ["41896903", "41895882", "41896902", "14289667", "41895881"], "response": "Scott Grimes"}
+{"query_id": "647", "question": "what is another name for the red sea", "passage_ids": ["19024523", "19024525", "708198", "708197", "31976001"], "response": "Red Sea"}
+{"query_id": "648", "question": "who is the girl that sings on choo choo soul", "passage_ids": ["15962790", "15962788", "15962789", "15962786", "15962784"], "response": "Genevieve Goings"}
+{"query_id": "649", "question": "what is the gmc version of the chevy colorado", "passage_ids": ["7346243", "7346242", "7020091", "7346240", "17775277"], "response": "GMC Canyon"}
+{"query_id": "650", "question": "what's the first book in game of thrones", "passage_ids": ["36158002", "38992006", "38992000", "31315705", "38991999"], "response": "A Song of Ice and Fire"}
+{"query_id": "651", "question": "where did the hottentots and khoi come from", "passage_ids": ["5200546", "4203704", "5200547", "4203703", "20205114"], "response": "Khoi"}
+{"query_id": "652", "question": "who has the most women's singles grand slam titles", "passage_ids": ["6733275", "2889723", "2860594", "2860592", "2860593"], "response": "Serena Williams"}
+{"query_id": "653", "question": "who played cheyenne on the tv show reba", "passage_ids": ["37890371", "37890369", "37890370", "37890368", "36115809"], "response": "Joanna Garcia"}
+{"query_id": "654", "question": "oscar de la hoya vs chavez who won", "passage_ids": ["37173081", "1738666", "1870530", "37173082", "1738665"], "response": "Oscar De La Hoya"}
+{"query_id": "655", "question": "which flag is canada's official royal flag", "passage_ids": ["5529108", "5529086", "5529092", "1910144", "1910093"], "response": "Canada"}
+{"query_id": "656", "question": "who wrote the lyrics to we shall overcome", "passage_ids": ["2544898", "4213269", "4213268", "4213273", "4213272"], "response": "Pete Seeger"}
+{"query_id": "657", "question": "where does the seine river start and end", "passage_ids": ["1292693", "1292694", "41918784", "1292697", "1292690"], "response": "Paris"}
+{"query_id": "658", "question": "who is the oldest of zeus poseidon and hades", "passage_ids": ["16480603", "16480602", "330090", "615103", "330089"], "response": "Zeus"}
+{"query_id": "659", "question": "what was the original name for the hawaiian islands", "passage_ids": ["5724193", "36270113", "36270114", "41918940", "372351"], "response": "Hawaii"}
+{"query_id": "660", "question": "where is 530 area code located in california", "passage_ids": ["14492152", "14492151", "14492150", "41919031", "14492149"], "response": "California"}
+{"query_id": "661", "question": "when does venus appear as a morning star", "passage_ids": ["7590845", "7262708", "12705787", "2556910", "41773168"], "response": "Venus appears as a morning star"}
+{"query_id": "662", "question": "who did drake feature in in my feelings", "passage_ids": ["28622809", "35132593", "28622810", "41986316", "25954198"], "response": "Drake"}
+{"query_id": "663", "question": "who was the first indian who win world junior badminton championship", "passage_ids": ["36149792", "26477624", "36149793", "26477623", "41895966"], "response": "Valiyaveetil Diju"}
+{"query_id": "664", "question": "who sung the theme song in the movie high noon", "passage_ids": ["41895968", "1622845", "41895969", "4973451", "1622846"], "response": "Frankie Laine"}
+{"query_id": "665", "question": "what is the name of the country where chileans live", "passage_ids": ["4761520", "35826436", "1532226", "26360621", "38251254"], "response": "Chile"}
+{"query_id": "666", "question": "what is the original name of puerto rico", "passage_ids": ["622079", "622080", "622078", "5604696", "30623886"], "response": "Puerto Rico"}
+{"query_id": "667", "question": "what is the name of modern day persia", "passage_ids": ["11277030", "37704690", "20445165", "5211323", "11277031"], "response": "Persia"}
+{"query_id": "668", "question": "west indies island off the coast of venezuela", "passage_ids": ["7295690", "21971992", "20206574", "34363288", "198494"], "response": "Venezuela"}
+{"query_id": "669", "question": "who has won the best actress award at international indian film academy awards 2017", "passage_ids": ["41685430", "24532502", "41685431", "35786788", "35786780"], "response": "Soundarya Sharma"}
+{"query_id": "670", "question": "who won the fight between pacquiao and delahoya", "passage_ids": ["37476419", "37476418", "40410637", "40410611", "40410673"], "response": "Manny Pacquiao"}
+{"query_id": "671", "question": "what is the official language spoken in thailand", "passage_ids": ["828162", "23079319", "23079331", "828166", "5466005"], "response": "Thai"}
+{"query_id": "672", "question": "what came first mary poppins or sound of music", "passage_ids": ["15239814", "1674311", "1674287", "7604305", "16301504"], "response": "Mary Poppins"}
+{"query_id": "673", "question": "the green in nigeria flag stand for what", "passage_ids": ["5224044", "7589927", "7589929", "39110067", "7589926"], "response": "Green"}
+{"query_id": "674", "question": "what is the parent company for all toyota divisions worldwide", "passage_ids": ["836587", "836590", "836577", "836591", "836579"], "response": "Toyota"}
+{"query_id": "675", "question": "what album is the dance by garth brooks on", "passage_ids": ["26383711", "26383710", "16647081", "16647080", "29588145"], "response": "Garth Brooks"}
+{"query_id": "676", "question": "who was crowned as the french emperor in 1804", "passage_ids": ["1561899", "4033476", "16384578", "27655900", "11968360"], "response": "Napoleon"}
+{"query_id": "677", "question": "who makes the kentucky derby garland of roses", "passage_ids": ["27219479", "27375689", "27219478", "27219482", "27219477"], "response": "Red Rose"}
+{"query_id": "678", "question": "who won odi series india vs england 2018", "passage_ids": ["4858814", "15476936", "15476937", "35245761", "4858813"], "response": "India"}
+{"query_id": "679", "question": "actor who plays joey on days of our lives", "passage_ids": ["4366325", "14905001", "13030918", "4366326", "37645255"], "response": "Joey Tribbiani"}
+{"query_id": "680", "question": "who sang nice one cyril nice one son", "passage_ids": ["40185194", "40185195", "40185188", "40185193", "40185190"], "response": "Cyril Knowles"}
+{"query_id": "681", "question": "what is the name of hagrid's spider", "passage_ids": ["41928886", "24588335", "24588334", "2824220", "24588282"], "response": "Aragog"}
+{"query_id": "682", "question": "which is big lok sabha or rajya sabha", "passage_ids": ["3544194", "13971422", "39136954", "3544195", "3544198"], "response": "Lok Sabha"}
+{"query_id": "683", "question": "who is our present election commissioner of india", "passage_ids": ["31842962", "37951181", "33476260", "11554927", "37951180"], "response": "Harishankar Brahma"}
+{"query_id": "684", "question": "who is the oldest of the braxton sisters", "passage_ids": ["9971949", "9971948", "41956554", "41956553", "9508626"], "response": "Toni Michelle Braxton"}
+{"query_id": "685", "question": "who plays the grandma in the nutty professor", "passage_ids": ["5901460", "5901461", "25326811", "25326813", "5901443"], "response": "Judi Denton"}
+{"query_id": "686", "question": "who has the tie breaking vote in senate", "passage_ids": ["4744444", "867294", "4744443", "3539919", "41896038"], "response": "Mike Pence"}
+{"query_id": "687", "question": "who plays marlene in the last of us", "passage_ids": ["41896051", "41896052", "41896053", "37394234", "35581331"], "response": "Marlene"}
+{"query_id": "688", "question": "who is the drummer for 3 doors down", "passage_ids": ["2729725", "2729724", "2729733", "2729749", "2729765"], "response": "Brad Arnold"}
+{"query_id": "689", "question": "largest province of nepal on the basis of population", "passage_ids": ["38681729", "38681673", "38681703", "38681699", "38681745"], "response": "Province No. 2"}
+{"query_id": "690", "question": "who plays the pe teacher on the goldbergs", "passage_ids": ["4779659", "41972577", "16061343", "41286885", "37976290"], "response": "Mr. Glascott"}
+{"query_id": "691", "question": "who is the founder of the apostolic faith", "passage_ids": ["13366076", "31063761", "56027", "55967", "31063762"], "response": "Carl George Klibbe"}
+{"query_id": "692", "question": "who has the right to apply for a canadian passport", "passage_ids": ["14358531", "14358543", "14358532", "6053222", "14358544"], "response": "Canadian citizen"}
+{"query_id": "693", "question": "largest of the jovian planets that shows a great red spot", "passage_ids": ["30616977", "30616976", "30616986", "30616982", "1523721"], "response": "Jupiter"}
+{"query_id": "694", "question": "who writes the songs for five finger death punch", "passage_ids": ["17800954", "17800955", "17801337", "41929467", "17800950"], "response": "Five Finger Death Punch"}
+{"query_id": "695", "question": "who plays joey on days of our lives", "passage_ids": ["13030918", "13030917", "14905001", "4366325", "37645250"], "response": "James Wells"}
+{"query_id": "696", "question": "what is the name of paul mccartney's first solo album", "passage_ids": ["41967540", "41962527", "8033305", "41967539", "2316234"], "response": "Paul McCartney"}
+{"query_id": "697", "question": "what is the official name of the country sometimes known as holland", "passage_ids": ["559720", "331801", "331803", "559724", "559721"], "response": "Netherlands"}
+{"query_id": "698", "question": "where is the isle of man tt held", "passage_ids": ["15676894", "18883795", "8658996", "15901683", "8658995"], "response": "Isle of Man"}
+{"query_id": "699", "question": "where is the biggest roller coaster in canada", "passage_ids": ["30215258", "30215257", "6425041", "10525669", "5427834"], "response": "Canada's Wonderland"}
+{"query_id": "700", "question": "who sang stay first black stone cherry or florida georgia line", "passage_ids": ["35142545", "35142546", "33190895", "33190896", "41988883"], "response": "Black Stone Cherry"}
+{"query_id": "701", "question": "what is the name of cincinnati baseball team", "passage_ids": ["24400899", "21185536", "21185483", "26355910", "24400900"], "response": "Cincinnati Reds"}
+{"query_id": "702", "question": "who has a better record michigan or michigan state", "passage_ids": ["25858340", "29684476", "33786427", "34312714", "9628088"], "response": "Michigan State"}
+{"query_id": "703", "question": "which is the richest country in middle east", "passage_ids": ["510638", "15564670", "510641", "15564620", "15564671"], "response": "Israel"}
+{"query_id": "704", "question": "who transformed himself into a golden deer to lure sita", "passage_ids": ["34535112", "989506", "989505", "34535111", "4626496"], "response": "Maya Sita"}
+{"query_id": "705", "question": "who brings gulliver back to the world of humans", "passage_ids": ["1063702", "1063701", "7447615", "13056230", "1063647"], "response": "Glumdalclitch"}
+{"query_id": "706", "question": "in geography the term mediterranean climate refers to", "passage_ids": ["4453759", "4453717", "4453716", "4453719", "41935151"], "response": "Mediterranean climate"}
+{"query_id": "707", "question": "what is another name for the dead sea", "passage_ids": ["214263", "214264", "24458404", "41935291", "214260"], "response": "Dead Sea"}
+{"query_id": "708", "question": "who wrote the tune for the star spangled banner", "passage_ids": ["41934997", "41954684", "41896121", "3559548", "41917893"], "response": "John Stafford Smith"}
+{"query_id": "709", "question": "when did st george last win the grand final", "passage_ids": ["14564190", "31115594", "6958655", "14564189", "31115593"], "response": "2000"}
+{"query_id": "710", "question": "who was boz and what did he write about", "passage_ids": ["36729726", "36729689", "36729729", "2745983", "36729728"], "response": "Lucian Boz"}
+{"query_id": "711", "question": "what does the d.c in washington d.c stand for", "passage_ids": ["19506934", "19506935", "37325229", "10456148", "18669604"], "response": "District of Columbia"}
+{"query_id": "712", "question": "what was the codename for the persian gulf war", "passage_ids": ["3060474", "4141830", "8243494", "5197917", "3060486"], "response": "Persian Gulf War"}
+{"query_id": "713", "question": "what was the bankers name on the beverly hillbillies", "passage_ids": ["69053", "69012", "69054", "69046", "30603752"], "response": "Jed Clampett"}
+{"query_id": "714", "question": "where is someone from if they are persian", "passage_ids": ["7369027", "2948078", "23488820", "7369028", "18204763"], "response": "Persia"}
+{"query_id": "715", "question": "idbi bank is public sector or private sector", "passage_ids": ["41896140", "13051950", "13051951", "41896139", "13051955"], "response": "Public Sector"}
+{"query_id": "716", "question": "who is the leader of the democratic party now", "passage_ids": ["37482670", "38651055", "38648220", "38648219", "14239251"], "response": "Nancy Pelosi"}
+{"query_id": "717", "question": "what infinity stone is in vision's head", "passage_ids": ["41966387", "41966388", "36617863", "36617862", "36617869"], "response": "Mind Stone"}
+{"query_id": "718", "question": "who invented the maharashtra state ceremony on 1st may 1960", "passage_ids": ["41892817", "15391700", "40723849", "35402998", "33076764"], "response": "Maharashtra"}
+{"query_id": "719", "question": "a highly politicised left his form of theatre which originated in 1920s europe", "passage_ids": ["32950459", "41896156", "2998384", "6963358", "32950458"], "response": "James Crawford"}
+{"query_id": "720", "question": "when did the song happy birthday come out", "passage_ids": ["26561431", "1773644", "41928220", "41890601", "1773643"], "response": "1935"}
+{"query_id": "721", "question": "who sings female vocals on gimme shelter", "passage_ids": ["16285892", "16285885", "16285886", "16285891", "31299760"], "response": "Lisa Fischer"}
+{"query_id": "722", "question": "what hawaiian island is known as the big island", "passage_ids": ["36270113", "36270114", "10222268", "33357181", "330801"], "response": "Hawaii"}
+{"query_id": "723", "question": "who did the vocals for pink floyd's great gig in the sky", "passage_ids": ["8384339", "5824832", "8384329", "31596309", "8384338"], "response": "Clare Torry"}
+{"query_id": "724", "question": "do nz citizens need a visa for hong kong", "passage_ids": ["41938833", "28357923", "32238187", "9600875", "28357924"], "response": "No visa needed"}
+{"query_id": "725", "question": "what was the original title of star wars a new hope", "passage_ids": ["41982505", "41968871", "7561943", "41982506", "7561942"], "response": "Star Wars"}
+{"query_id": "726", "question": "who played b'elanna torres on star trek voyager", "passage_ids": ["716358", "41915979", "716359", "716346", "716357"], "response": "B'Elanna Torres"}
+{"query_id": "727", "question": "who founded the hindu balika vidyalaya in calcutta", "passage_ids": ["17726893", "20130580", "16742268", "17726894", "18416759"], "response": "Abala Bose"}
+{"query_id": "728", "question": "how do you call a person from sweden", "passage_ids": ["23059828", "23059829", "14849363", "21474383", "12603577"], "response": "Person from Sweden"}
+{"query_id": "729", "question": "who is associated with the term loknayak in india", "passage_ids": ["41896210", "12434079", "23735728", "12434078", "38342633"], "response": "Jayaprakash Narayan"}
+{"query_id": "730", "question": "who is rag n bone man backing singer", "passage_ids": ["39130604", "39130603", "39130611", "39130600", "39390860"], "response": "Rag'n'Bone Man"}
+{"query_id": "731", "question": "what is the state nickname of new hampshire", "passage_ids": ["41970347", "6340924", "6340923", "559298", "559297"], "response": "New Hampshire"}
+{"query_id": "732", "question": "where was the cabin in the woods filmed", "passage_ids": ["21553561", "21553563", "21553552", "21553567", "238029"], "response": "The Cabin in the Woods"}
+{"query_id": "733", "question": "who is neil young dancing with in harvest moon", "passage_ids": ["5836399", "5836400", "1784831", "37440423", "37440417"], "response": "Neil Young"}
+{"query_id": "734", "question": "what movie is the song crazy train in", "passage_ids": ["11502593", "11502592", "15888124", "4562755", "5576894"], "response": "Crazy Train"}
+{"query_id": "735", "question": "who wrote the 21 letters in the new testament", "passage_ids": ["36702058", "603449", "249282", "654728", "16563812"], "response": "Paul"}
+{"query_id": "736", "question": "who played buford t justice in smokey and the bandit", "passage_ids": ["41896244", "9801319", "8668835", "8668836", "9801314"], "response": "Burt Reynolds"}
+{"query_id": "737", "question": "who played margaery tyrell in game of thrones", "passage_ids": ["10231035", "10231034", "10231002", "38992014", "38992015"], "response": "Natalie Dormer"}
+{"query_id": "738", "question": "where is the fa cup semi final being played", "passage_ids": ["19148125", "19148126", "19148118", "19148123", "19148128"], "response": "Wembley"}
+{"query_id": "739", "question": "where was the fifa world cup held in 2018", "passage_ids": ["23622183", "21777743", "23622184", "41956140", "36172523"], "response": "Russia"}
+{"query_id": "740", "question": "where is strait of magellan located on a map", "passage_ids": ["6277375", "129717", "6277374", "129716", "4067474"], "response": "Chile"}
+{"query_id": "741", "question": "which is bigger kansas city or st louis", "passage_ids": ["29627887", "523498", "523497", "1781773", "2258032"], "response": "St. Louis"}
+{"query_id": "742", "question": "what other continent does europe share landmass with", "passage_ids": ["222634", "222633", "41896366", "41953883", "25012375"], "response": "Europe"}
+{"query_id": "743", "question": "who was known as the father of geometry", "passage_ids": ["9641138", "377209", "16706946", "371677", "688503"], "response": "Euclid"}
+{"query_id": "744", "question": "who sings number 4 song on sesame street", "passage_ids": ["2979651", "2979650", "5061116", "41961743", "5061115"], "response": "Bert"}
+{"query_id": "745", "question": "what is the new name for mount mckinley", "passage_ids": ["925074", "29665398", "3319088", "29665395", "29665399"], "response": "Denali"}
+{"query_id": "746", "question": "who is the voice on how i met your mother", "passage_ids": ["41896387", "41900407", "12096059", "41984593", "41990011"], "response": "Bob Saget"}
+{"query_id": "747", "question": "nilgiri himalayan and arabic are type of what", "passage_ids": ["31075480", "31075479", "32686705", "28184885", "20863847"], "response": "Language"}
+{"query_id": "748", "question": "who is lead singer of greta van fleet", "passage_ids": ["41944095", "41788614", "41788612", "41788611", "40122966"], "response": "Josh Kiszka"}
+{"query_id": "749", "question": "who has the authority to set the salaries of members of congress", "passage_ids": ["854700", "867227", "6066032", "2933508", "2933507"], "response": "The Vice President"}
+{"query_id": "750", "question": "when does captain america die in the comic books", "passage_ids": ["19675913", "8095059", "21362615", "37773998", "19675904"], "response": "Captain America"}
+{"query_id": "751", "question": "rules of recruitment to all india services are determined by", "passage_ids": ["41945321", "10921445", "41945320", "10921443", "10921444"], "response": "All India Services Act , 1951 empowers the government"}
+{"query_id": "752", "question": "what do you call a person from switzerland", "passage_ids": ["7804524", "41112827", "742954", "18794290", "41112826"], "response": "Swiss"}
+{"query_id": "753", "question": "who played snoke in the new star wars", "passage_ids": ["38302538", "38302537", "41896392", "38302532", "38302545"], "response": "Andy Serkis"}
+{"query_id": "754", "question": "sameer of yeh un dinon ki baat hai real name", "passage_ids": ["40527355", "40527366", "40527363", "40527356", "40527364"], "response": "Sameer"}
+{"query_id": "755", "question": "who wrote the texts or libretti of richard wagner's music dramas", "passage_ids": ["1148459", "31584430", "685824", "41946387", "13866454"], "response": "Richard Wagner"}
+{"query_id": "756", "question": "who was the first emperor of mughal empire", "passage_ids": ["5549499", "5549500", "5055544", "27446727", "13975552"], "response": "Babur"}
+{"query_id": "757", "question": "what was the code name for the d day invasion", "passage_ids": ["24046598", "25064139", "25064140", "35923663", "24046623"], "response": "D Day"}
+{"query_id": "758", "question": "what is another name for the caribbean islands", "passage_ids": ["24671403", "3700272", "16057513", "16057514", "4052993"], "response": "Caribbean"}
+{"query_id": "759", "question": "who has won more titles federer or nadal", "passage_ids": ["23783822", "26674891", "40935328", "26674902", "23255663"], "response": "Federer"}
+{"query_id": "760", "question": "who played monique on fresh prince of bel air", "passage_ids": ["41945257", "41937295", "41989064", "41913748", "41983069"], "response": "Janet Hubert-Whitten"}
+{"query_id": "761", "question": "what is the main language in czech republic", "passage_ids": ["22146972", "2682836", "157694", "157642", "2682835"], "response": "Czech"}
+{"query_id": "762", "question": "who has been the longest reigning british monarch", "passage_ids": ["41896414", "1132374", "41961127", "20882989", "41940496"], "response": "Queen Elizabeth II"}
+{"query_id": "763", "question": "who played the record producer in pitch perfect 2", "passage_ids": ["35589353", "35589352", "41899243", "41899245", "41896418"], "response": "Adam Devine"}
+{"query_id": "764", "question": "who is the protagonist in how the grinch stole christmas", "passage_ids": ["41993646", "23350723", "41986656", "15382496", "15382497"], "response": "The Grinch"}
+{"query_id": "765", "question": "where did the thunder basketball team come from", "passage_ids": ["41904338", "41967868", "24256152", "35224154", "35224155"], "response": "Oklahoma City Thunder"}
+{"query_id": "766", "question": "black shield in nigeria coat of arm represent what", "passage_ids": ["12681987", "12681990", "41891873", "12681989", "41909140"], "response": "Nigeria"}
+{"query_id": "767", "question": "who's the announcer on the price is right", "passage_ids": ["13367997", "950248", "950254", "950256", "10465446"], "response": "Drew Carey"}
+{"query_id": "768", "question": "who played trillian in hitchhiker's guide to the galaxy", "passage_ids": ["10199525", "10158525", "10199539", "845570", "845585"], "response": "Samantha Janus"}
+{"query_id": "769", "question": "who did the music for nightmare before christmas", "passage_ids": ["29588204", "4830975", "4830976", "4830977", "30990393"], "response": "Danny Elfman"}
+{"query_id": "770", "question": "who is the ruler of great britain today", "passage_ids": ["12422911", "3687657", "14362610", "12422921", "14697395"], "response": "Queen Elizabeth II"}
+{"query_id": "771", "question": "what was the name of the large open space in the center of rome", "passage_ids": ["885979", "6153478", "686210", "41950470", "6153470"], "response": "St. Peter's Square"}
+{"query_id": "772", "question": "which is the largest borough in new york city", "passage_ids": ["6201368", "6201369", "21339664", "1120638", "15602047"], "response": "Manhattan"}
+{"query_id": "773", "question": "who is bone thugs n harmony signed to", "passage_ids": ["26454631", "26454632", "26454621", "26454633", "26454628"], "response": "Bone Thugs-n-harmony"}
+{"query_id": "774", "question": "who is the curatorial director of the rock and roll hall of fame museum", "passage_ids": ["39913997", "1389614", "1389660", "1389659", "1389637"], "response": "Jeff Gold"}
+{"query_id": "775", "question": "who is the real owner of chelsea football club", "passage_ids": ["9343732", "4505474", "9426400", "9343733", "9426399"], "response": "Roman Abramovich"}
+{"query_id": "776", "question": "what is the name of the asterism that is found in sagittarius", "passage_ids": ["741925", "11969683", "41949788", "896901", "10528886"], "response": "Vega"}
+{"query_id": "777", "question": "what is the official name of switzerland answers", "passage_ids": ["5368176", "5368175", "21720456", "721874", "18054498"], "response": "Switzerland"}
+{"query_id": "778", "question": "which branch of the service was once known as the revenue marine", "passage_ids": ["5009584", "5009540", "5009539", "880897", "5009574"], "response": "United States Coast Guard"}
+{"query_id": "779", "question": "who is the current vice president of liberia", "passage_ids": ["40974836", "40974842", "40974841", "7623858", "7623857"], "response": "Gbehzohngar Milton Findley"}
+{"query_id": "780", "question": "real name of tarak mehta ka oolta chasma character", "passage_ids": ["41896515", "26779521", "41914959", "26779522", "41896514"], "response": "Taarak Mehta"}
+{"query_id": "781", "question": "who has won more games cardinals or cubs", "passage_ids": ["11586307", "11586306", "11720422", "30308788", "11832341"], "response": "Cardinals"}
+{"query_id": "782", "question": "who was the first person rogue used her powers on", "passage_ids": ["13834213", "30831127", "30831129", "30831119", "30831126"], "response": "Anna Paquin"}
+{"query_id": "783", "question": "who plays the white walkers in game of thrones", "passage_ids": ["41896526", "41907941", "25534358", "41896527", "41914715"], "response": "The Night King"}
+{"query_id": "784", "question": "who wrote the book of love peter gabriel", "passage_ids": ["463160", "1323329", "1323301", "1323288", "118315"], "response": "Peter Gabriel"}
+{"query_id": "785", "question": "the failed 1961 us invasion of cuba us referred to as this", "passage_ids": ["3932678", "15636391", "3097625", "19843178", "15636390"], "response": "Bay of Pigs Invasion"}
+{"query_id": "786", "question": "what is the money used in hong kong", "passage_ids": ["27505885", "31940524", "15861886", "10910302", "4153007"], "response": "Hong Kong dollars"}
+{"query_id": "787", "question": "where did the titanic sink in the atlantic ocean", "passage_ids": ["41904292", "24845958", "41990959", "338877", "18198928"], "response": "Atlantic Ocean"}
+{"query_id": "788", "question": "what is the current name of the country of siam", "passage_ids": ["1181587", "828448", "1181586", "18412217", "2856869"], "response": "Thailand"}
+{"query_id": "789", "question": "who was the jamaican born dj who is credited as being one of the founders of hip hop", "passage_ids": ["3034020", "23560985", "3347512", "27268130", "24058940"], "response": "U-Roy"}
+{"query_id": "790", "question": "who carried out the first circumnavigation of the world", "passage_ids": ["36636969", "11451652", "11847919", "41937099", "9571961"], "response": "Ferdinand Magellan"}
+{"query_id": "791", "question": "who plays merlin in the new king arthur movie", "passage_ids": ["40589994", "24117752", "24117753", "17578083", "41932782"], "response": "Colin Morgan"}
+{"query_id": "792", "question": "what do the letters in nato stand for", "passage_ids": ["7752498", "7752517", "1381955", "1381943", "7752499"], "response": "Nato"}
+{"query_id": "793", "question": "which french city is world famous for the fashion industry", "passage_ids": ["20265909", "20265913", "20265908", "20265838", "20265907"], "response": "Paris"}
+{"query_id": "794", "question": "who is the current acting secretary of agriculture", "passage_ids": ["36155754", "39759936", "20505326", "1059569", "20505325"], "response": "Sam Clovis"}
+{"query_id": "795", "question": "who wrote the song perfect that ed sheeran sings", "passage_ids": ["41954310", "39755137", "41964367", "39755138", "39755136"], "response": "Ed Sheeran"}
+{"query_id": "796", "question": "what does the green in nigeria flag stand for", "passage_ids": ["5224044", "7589929", "7589927", "316179", "39110067"], "response": "Green"}
+{"query_id": "797", "question": "what is the name of tirupati railway station", "passage_ids": ["12409615", "34079481", "12409607", "12409597", "34741021"], "response": "Tirupati railway station"}
+{"query_id": "798", "question": "who played wonder woman in the last movie", "passage_ids": ["38188864", "36612645", "17311125", "24269433", "38188865"], "response": "Gal Gadot"}
+{"query_id": "799", "question": "what has been on longer wheel of fortune or jeopardy", "passage_ids": ["41954640", "28272579", "28272578", "28272585", "28272496"], "response": "Jeopardy!"}
+{"query_id": "800", "question": "where is the bar in it's always sunny in philadelphia", "passage_ids": ["41985203", "29927450", "11526413", "29927451", "29927378"], "response": "Paddy's Pub"}
+{"query_id": "801", "question": "if you are from costa rica what are you called", "passage_ids": ["13157632", "32899510", "130540", "13623733", "38049065"], "response": "Costa Rican"}
+{"query_id": "802", "question": "who votes for afl coach of the year", "passage_ids": ["38147565", "39412166", "39412165", "38147570", "38147564"], "response": "Luke Beveridge"}
+{"query_id": "803", "question": "name for venus when it rises before the sun", "passage_ids": ["41773164", "41773165", "12705795", "41773167", "7590845"], "response": "Morning Star"}
+{"query_id": "804", "question": "who did dos anjos beat for the title", "passage_ids": ["24349019", "24349016", "24349015", "24349038", "24349018"], "response": "Rafael dos Anjos"}
+{"query_id": "805", "question": "what is the branch name for bank of america", "passage_ids": ["41959486", "41962305", "4451632", "41959489", "8513133"], "response": "Bank of America"}
+{"query_id": "806", "question": "who sets the salaries of members in congress", "passage_ids": ["29765041", "24941465", "10352907", "854889", "10352906"], "response": "Congress"}
+{"query_id": "807", "question": "where is the beginning of the mississippi river located", "passage_ids": ["23622398", "5303362", "14614482", "6933188", "28154554"], "response": "Mississippi River"}
+{"query_id": "808", "question": "who played the assassin in attack of the clones", "passage_ids": ["41896587", "1334742", "41896359", "1224319", "41896588"], "response": "Boba Fett"}
+{"query_id": "809", "question": "name the sculptor who was in charge of creating the sculptures for the parthenon", "passage_ids": ["637752", "637850", "41094744", "41094751", "41977944"], "response": "Phidias"}
+{"query_id": "810", "question": "what was the name of the plane that dropped the bomb on hiroshima", "passage_ids": ["29968864", "6878142", "13984310", "6896017", "11451579"], "response": "Enola Gay"}
+{"query_id": "811", "question": "who did aaron judge play for last year", "passage_ids": ["34609139", "34609135", "34609147", "34609136", "34609144"], "response": "New York Yankees"}
+{"query_id": "812", "question": "what is another name for the tenth amendment", "passage_ids": ["30586152", "856077", "41978854", "30586153", "856076"], "response": "Tenth Amendment"}
+{"query_id": "813", "question": "the capital of the asante kingdom after unification in the late 17th century was this city", "passage_ids": ["27977193", "27977192", "9466278", "27977189", "4957957"], "response": "Kumasi"}
+{"query_id": "814", "question": "who plays eddie the eagle in the movie", "passage_ids": ["5555643", "37169866", "5555644", "3554300", "3897452"], "response": "Eddie the Eagle"}
+{"query_id": "815", "question": "who's the lead singer for greta van fleet", "passage_ids": ["41944095", "41957144", "41788612", "40122974", "41788611"], "response": "Josh Kiszka"}
+{"query_id": "816", "question": "what is the language of the czech republic", "passage_ids": ["22146972", "2682836", "2682835", "15020819", "16055246"], "response": "Czech"}
+{"query_id": "817", "question": "who is the lead singer of red sun rising", "passage_ids": ["37878675", "37878670", "37878674", "37878671", "37878672"], "response": "Mike Protich"}
+{"query_id": "818", "question": "what is the language in the czech republic", "passage_ids": ["2682836", "22146972", "2682835", "15020819", "16055246"], "response": "Czech"}
+{"query_id": "819", "question": "which of the guianas is not an independent country", "passage_ids": ["38017101", "728826", "400186", "38017100", "286993"], "response": "Suriname"}
+{"query_id": "820", "question": "what do you call a native of dundee", "passage_ids": ["1621126", "230213", "17288256", "1618644", "20405248"], "response": "Dundee"}
+{"query_id": "821", "question": "who won third fight between rocky and apollo", "passage_ids": ["14933755", "14933754", "15042084", "15042099", "2688160"], "response": "Apollo Creed"}
+{"query_id": "822", "question": "the near eastern area that was known in the ancient world as persia is today called", "passage_ids": ["6446539", "21677763", "27042004", "6446531", "14157489"], "response": "Persia"}
+{"query_id": "823", "question": "who did the yankees play in 2009 world series", "passage_ids": ["3373812", "6727420", "24741485", "83828", "3373811"], "response": "New York Yankees"}
+{"query_id": "824", "question": "who is the only surviving member of lynyrd skynyrd", "passage_ids": ["41968350", "514127", "31501022", "31501023", "41968349"], "response": "Ronnie Van Zant"}
+{"query_id": "825", "question": "what name was the city of st. petersburg renamed a second time", "passage_ids": ["27507700", "27507699", "8654489", "27507677", "21576723"], "response": "Saint Petersburg"}
+{"query_id": "826", "question": "who plays tyrion lannister on game of thrones", "passage_ids": ["8635723", "41904118", "4946138", "25534358", "34180265"], "response": "Peter Dinklage"}
+{"query_id": "827", "question": "who sang the song end of the world", "passage_ids": ["16988632", "16988637", "16988633", "16988636", "32637289"], "response": "Daft Punk"}
+{"query_id": "828", "question": "what is the main language spoken in laos", "passage_ids": ["2531816", "5465784", "467544", "10271673", "10271675"], "response": "Lao"}
+{"query_id": "829", "question": "what is the currency in hong kong china", "passage_ids": ["27505885", "4153044", "4153002", "4153043", "4153007"], "response": "Hong Kong dollars"}
+{"query_id": "830", "question": "what's the first book in the pretty little liars series", "passage_ids": ["41991094", "41957095", "31056175", "28323195", "41960248"], "response": "Pretty Little Liars"}
+{"query_id": "831", "question": "which is the biggest nuclear power plant in india", "passage_ids": ["8823279", "8823278", "38726546", "19026253", "13271752"], "response": "Kakrapar Atomic Power Station"}
+{"query_id": "832", "question": "who wrote the song why sung by annie lennox", "passage_ids": ["10973588", "10973587", "3630430", "10973580", "10973584"], "response": "Annie Lennox"}
+{"query_id": "833", "question": "what is the birthplace of an atlantic basin hurricane", "passage_ids": ["23527431", "12233907", "16518187", "32476883", "19745564"], "response": "Atlantic Basin"}
+{"query_id": "834", "question": "who played will turner in pirates of the caribbean", "passage_ids": ["6052177", "6052173", "6052131", "6052175", "41896734"], "response": "Orlando Bloom"}
+{"query_id": "835", "question": "who won the 2017 french open men's singles", "passage_ids": ["39417080", "31375891", "31375892", "24055605", "24055604"], "response": "Rafael Nadal"}
+{"query_id": "836", "question": "what was the original name of the cincinnati reds", "passage_ids": ["4985516", "172135", "20325522", "21185539", "17344500"], "response": "Cincinnati Reds"}
+{"query_id": "837", "question": "who sang feed the birds in mary poppins", "passage_ids": ["17866040", "17866046", "17866039", "17866045", "41961320"], "response": "Julie Andrews"}
+{"query_id": "838", "question": "where do the majority of canadian citizens live", "passage_ids": ["17357254", "6836247", "32721661", "17357253", "6836248"], "response": "Canada"}
+{"query_id": "839", "question": "who elected the deputy chairman of rajya sabha", "passage_ids": ["35774717", "38047487", "41962369", "34075051", "38047486"], "response": "Harivansh Narayan Singh"}
+{"query_id": "840", "question": "who played the youngest girl in the brady bunch", "passage_ids": ["41896748", "13669788", "13669787", "13669804", "41989976"], "response": "Susan Olsen"}
+{"query_id": "841", "question": "who wrote what i've done by linkin park", "passage_ids": ["19633386", "19633385", "19633358", "19633357", "41963020"], "response": "Chester Bennington"}
+{"query_id": "842", "question": "what's the name of alice cooper's band", "passage_ids": ["2507985", "2507986", "7910144", "41963177", "5609785"], "response": "Alice Cooper"}
+{"query_id": "843", "question": "who is the voice of brick in lego batman", "passage_ids": ["41906496", "41906493", "41906494", "41940526", "41872693"], "response": "Chris Pratt"}
+{"query_id": "844", "question": "where did most sumerians live after about 3000 bc", "passage_ids": ["361660", "537707", "1218253", "1503631", "15675154"], "response": "Sumer"}
+{"query_id": "845", "question": "who played the girl elf in lord of the rings", "passage_ids": ["41953641", "7667153", "32397729", "41895613", "7667152"], "response": "Evangeline Lilly"}
+{"query_id": "846", "question": "who won the first battle of bull run union or confederate", "passage_ids": ["1308656", "3505970", "41913904", "9630198", "41891703"], "response": "Union"}
+{"query_id": "847", "question": "who plays benny from my babysitter's a vampire", "passage_ids": ["29962613", "29962614", "41932505", "29962607", "41905525"], "response": "Matthew Knight"}
+{"query_id": "848", "question": "where is virgin islands located on the map", "passage_ids": ["41983396", "888158", "75089", "73973", "878999"], "response": "British Virgin Islands"}
+{"query_id": "849", "question": "what is the last province to join canada", "passage_ids": ["7128761", "25451693", "16625454", "3075078", "191284"], "response": "Nunavut"}
+{"query_id": "850", "question": "who has kicked the most goals in a game of afl", "passage_ids": ["13010251", "20280964", "20200153", "13144597", "13010252"], "response": "Sav Rocca"}
+{"query_id": "851", "question": "who played james turner in only fools and horses", "passage_ids": ["41991269", "17487421", "41977726", "3262376", "3262375"], "response": "James Turner"}
+{"query_id": "852", "question": "the cfpb was created as a result of", "passage_ids": ["41896835", "30545809", "30545875", "30545810", "30545818"], "response": "Dodd-Frank Wall Street Reform and Consumer Protection Act"}
+{"query_id": "853", "question": "who plays joe's voice in family guy", "passage_ids": ["41957102", "41894191", "41958590", "22556484", "3126434"], "response": "Mila Kunis"}
+{"query_id": "854", "question": "what was red hot chili peppers first album", "passage_ids": ["41932464", "5769041", "5769040", "38854109", "4194561"], "response": "Blood Sugar Sex Magik"}
+{"query_id": "855", "question": "the first movie of planet of the apes", "passage_ids": ["27551803", "2864807", "27551802", "41904060", "2864808"], "response": "Planet of the Apes"}
+{"query_id": "856", "question": "who wrote that's what i like bruno mars", "passage_ids": ["39560878", "39560879", "39560810", "39560844", "39560828"], "response": "Bruno Mars"}
+{"query_id": "857", "question": "who plays grace ho in youth and consequences", "passage_ids": ["41896840", "23196867", "7667324", "35970005", "35970004"], "response": "Piper Curda"}
+{"query_id": "858", "question": "what is the recording academy's full name", "passage_ids": ["1102021", "11575821", "18930380", "18930379", "11575822"], "response": "The Recording Academy"}
+{"query_id": "859", "question": "the green colour of the nigeria flag stands for", "passage_ids": ["5224044", "7589929", "41955267", "7589927", "5147780"], "response": "Green"}
+{"query_id": "860", "question": "what is another name for the cascade range", "passage_ids": ["18933435", "20021093", "1654421", "1654420", "25845068"], "response": "Cascade Range"}
+{"query_id": "861", "question": "who won the battle between hector and achilles", "passage_ids": ["38818510", "38818509", "328864", "30467", "602505"], "response": "Hector"}
+{"query_id": "862", "question": "where is the isle of man race held", "passage_ids": ["386417", "386418", "15901683", "23903352", "15901697"], "response": "Isle of Man"}
+{"query_id": "863", "question": "what is the name of the church of england", "passage_ids": ["13181478", "25786", "18434076", "37440397", "25810"], "response": "Anglicanism"}
+{"query_id": "864", "question": "where's the british open played this year", "passage_ids": ["5921587", "9206599", "5921586", "5921585", "9027446"], "response": "Royal Birkdale"}
+{"query_id": "865", "question": "who dies at the end of gossip girl", "passage_ids": ["31162877", "6827305", "26660422", "29032429", "27022919"], "response": "Blair Waldorf"}
+{"query_id": "866", "question": "what kind of money does new zealand use", "passage_ids": ["36607800", "5375302", "36607801", "35800238", "565434"], "response": "New Zealand Dollar"}
+{"query_id": "867", "question": "what is the currency in new zealand called", "passage_ids": ["41940881", "41969296", "32038645", "32038644", "2805664"], "response": "New Zealand dollar"}
+{"query_id": "868", "question": "what do you call someone from czech republic", "passage_ids": ["16055246", "16055236", "7804524", "122839", "16055261"], "response": "Czech"}
+{"query_id": "869", "question": "what was the original name of the first star wars movie", "passage_ids": ["20116117", "15349808", "15349807", "28095164", "15433266"], "response": "Star Wars"}
+{"query_id": "870", "question": "who has the rights to the fantastic four", "passage_ids": ["20850164", "34449527", "20850142", "13697973", "13697929"], "response": "20th Century Fox"}
+{"query_id": "871", "question": "who is considered the founder of the theroy of evolution", "passage_ids": ["28903662", "4776658", "34641228", "4776657", "28903663"], "response": "Charles Darwin"}
+{"query_id": "872", "question": "who wrote king arthur and the knights of the round table", "passage_ids": ["4488608", "40662110", "5075498", "734368", "449574"], "response": "King Arthur"}
+{"query_id": "873", "question": "what did the rhythm section in muscle shoals become known as", "passage_ids": ["17117679", "17117678", "17831774", "17831773", "17117691"], "response": "Muscle Shoals Rhythm Section"}
+{"query_id": "874", "question": "what part of mexico got the earthquake hit", "passage_ids": ["7134638", "7134637", "11515317", "32263641", "6691096"], "response": "Mexico City"}
+{"query_id": "875", "question": "where is the national emblem of india found", "passage_ids": ["2728461", "2728468", "29619690", "2728458", "2728462"], "response": "Ashoka Chakra"}
+{"query_id": "876", "question": "uefa men's player of the year 2016-17", "passage_ids": ["41896896", "6088817", "31448083", "41899874", "12723450"], "response": "Cristiano Ronaldo"}
+{"query_id": "877", "question": "who played dumbledore after the first one died", "passage_ids": ["41923652", "1113828", "1113827", "2739028", "1113810"], "response": "Albus Dumbledore"}
+{"query_id": "878", "question": "where are the kings and queens of france buried", "passage_ids": ["1517806", "20717989", "1517805", "1649242", "1649241"], "response": "Fontevraud Abbey"}
+{"query_id": "879", "question": "who plays the art teacher in ned's declassified", "passage_ids": ["41896919", "41904118", "11477017", "5433620", "21689863"], "response": "Sean Bean"}
+{"query_id": "880", "question": "which of the following was an item taxed by the townshend duties", "passage_ids": ["14966645", "14966646", "6087905", "41827962", "14966633"], "response": "Lead"}
+{"query_id": "881", "question": "when did the first lego movie come out", "passage_ids": ["41918763", "33807668", "33807733", "39460738", "39460737"], "response": "2014"}
+{"query_id": "882", "question": "who played the girl in the karate kid 2010", "passage_ids": ["27033642", "41956998", "41993796", "27033637", "27033638"], "response": "Zhenwei Wang"}
+{"query_id": "883", "question": "what is the nickname of the republican party", "passage_ids": ["6758958", "16839250", "6619923", "15355395", "16839249"], "response": "Republican Party"}
+{"query_id": "884", "question": "what is the name of the nfl football", "passage_ids": ["17732088", "8845621", "17732087", "23539644", "751196"], "response": "NFL"}
+{"query_id": "885", "question": "what film was rock around the clock in", "passage_ids": ["10776144", "1247864", "10776151", "10776143", "5462309"], "response": "Rock Around the Clock"}
+{"query_id": "886", "question": "what is the money called in puerto rico", "passage_ids": ["24825384", "24825385", "30623885", "17929049", "30623886"], "response": "Puerto Rican dollar"}
+{"query_id": "887", "question": "who sang living in a box in the 1980s", "passage_ids": ["34576982", "34576981", "16919368", "16919357", "32368250"], "response": "David Box"}
+{"query_id": "888", "question": "who plays steffy in the bold and the beautiful", "passage_ids": ["18860245", "23773584", "18860244", "18860315", "35166160"], "response": "Jacqueline MacInnes Wood"}
+{"query_id": "889", "question": "who played the butcher in gangs of new york", "passage_ids": ["9533560", "2928839", "3905587", "3135225", "3135224"], "response": "Daniel Day-Lewis"}
+{"query_id": "890", "question": "where does the name santo domingo come from", "passage_ids": ["41994089", "23859730", "41896942", "1362477", "23859731"], "response": "Santo Domingo"}
+{"query_id": "891", "question": "is it dia de los muertos or dia de muertos", "passage_ids": ["35145249", "1252973", "41935373", "35145248", "12702029"], "response": "Dia de los muertos"}
+{"query_id": "892", "question": "who is the owner of empire state building", "passage_ids": ["18111492", "41973668", "245156", "15252813", "245157"], "response": "Donald Trump"}
+{"query_id": "893", "question": "who presided over the congress at the signing of the declaration of independence", "passage_ids": ["39138747", "5672701", "41956387", "5672700", "13394880"], "response": "John Hancock"}
+{"query_id": "894", "question": "what does the d c in washington stand for", "passage_ids": ["19506934", "19506935", "37325229", "33919116", "19969276"], "response": "District of Columbia"}
+{"query_id": "895", "question": "what is the country of siam called today", "passage_ids": ["828448", "6089456", "2856869", "827974", "828447"], "response": "Thailand"}
+{"query_id": "896", "question": "who played lead guitar on who's that lady", "passage_ids": ["10484971", "10484972", "27405253", "19761159", "19761158"], "response": "Eric Clapton"}
+{"query_id": "897", "question": "who played the female lead in the 1933 film king kong", "passage_ids": ["9144990", "22664072", "19296551", "31075997", "458623"], "response": "Fay Wray"}
+{"query_id": "898", "question": "who sang the wreck of the edmund fitzgerald", "passage_ids": ["9923020", "4335130", "3420690", "4335124", "3420590"], "response": "Gordon Lightfoot"}
+{"query_id": "899", "question": "what became the unifying nationalist language of indonesia", "passage_ids": ["950687", "950688", "950684", "950690", "950685"], "response": "Indonesian"}
+{"query_id": "900", "question": "where does the s from superman come from", "passage_ids": ["770103", "24070307", "2752957", "17466403", "21219485"], "response": "Hope"}
+{"query_id": "901", "question": "who did the miami heat beat for their first championship", "passage_ids": ["25726998", "25726945", "25726939", "25727103", "32294743"], "response": "Miami Heat"}
+{"query_id": "902", "question": "who played freakshows wife in harold and kumar", "passage_ids": ["7053979", "41897015", "41897017", "41897016", "41928543"], "response": "Freakshow's Wife"}
+{"query_id": "903", "question": "who pays for the hollywood walk of fame stars", "passage_ids": ["41919147", "41984614", "2004716", "2004666", "2004715"], "response": "Hollywood Chamber of Commerce"}
+{"query_id": "904", "question": "who is mike looking for in desperate housewives", "passage_ids": ["13150417", "13150418", "23054014", "26325214", "23054013"], "response": "Susan"}
+{"query_id": "905", "question": "who wrote the songs for the bee gees", "passage_ids": ["2637885", "2637884", "2637820", "2637901", "2637896"], "response": "Barry Gibb"}
+{"query_id": "906", "question": "who won the presidential election in puerto rico", "passage_ids": ["10822810", "4065551", "8040697", "29418633", "30637130"], "response": "Pedro Albizu Campos"}
+{"query_id": "907", "question": "who owns the property the un sits on", "passage_ids": ["22443589", "41986359", "39843538", "35191120", "3142353"], "response": "UN"}
+{"query_id": "908", "question": "who was the actor that played little ricky", "passage_ids": ["2581390", "2581389", "14603983", "2956844", "4097039"], "response": "Richard Keith"}
+{"query_id": "909", "question": "who owns holiday world in santa claus indiana", "passage_ids": ["1814077", "1814076", "8894716", "2478956", "13497869"], "response": "Holiday World & Splashin' Safari"}
+{"query_id": "910", "question": "what is the other name of ganga river", "passage_ids": ["15819796", "15819798", "15819795", "15819808", "15819792"], "response": "Ganga"}
+{"query_id": "911", "question": "who has the most saves in nhl history", "passage_ids": ["4987567", "4987568", "4987483", "9700975", "4987482"], "response": "Dominik Hašek"}
+{"query_id": "912", "question": "where is the viper from game of thrones", "passage_ids": ["34180264", "34180263", "35841264", "35841265", "37158169"], "response": "The Mountain and the Viper"}
+{"query_id": "913", "question": "what movie is the song chaiyya chaiyya from", "passage_ids": ["14634343", "14634329", "14634342", "14634335", "9958658"], "response": "Dil Se.."}
+{"query_id": "914", "question": "what is ed sheeran's record label called", "passage_ids": ["30414967", "31410051", "31410050", "30414943", "30414968"], "response": "Gingerbread Man Records"}
+{"query_id": "915", "question": "who sang the theme song for living single", "passage_ids": ["41897068", "6371826", "6371809", "6371810", "6371808"], "response": "Queen Latifah"}
+{"query_id": "916", "question": "what do you call someone who practices jainism", "passage_ids": ["12624031", "36169213", "7464843", "25929685", "25929686"], "response": "Jain"}
+{"query_id": "917", "question": "which processor was released in the first ibm pc", "passage_ids": ["22161591", "4823968", "659052", "4458300", "3421872"], "response": "IBM Personal Computer/AT"}
+{"query_id": "918", "question": "who replaced cornelius fudge as minister of magic", "passage_ids": ["3946555", "3946554", "3946484", "3946556", "3946557"], "response": "Rufus Scrimgeour"}
+{"query_id": "919", "question": "who played krish in kabhi khushi kabhi gham", "passage_ids": ["5872569", "5872514", "5872515", "5872568", "5872490"], "response": "Shah Rukh Khan"}
+{"query_id": "920", "question": "child actor name in kabhi khushi kabhi gham", "passage_ids": ["5872569", "19898269", "24409319", "41978889", "41979067"], "response": "Akashdeep Saigal"}
+{"query_id": "921", "question": "who controls monetary policy in the united states", "passage_ids": ["34646273", "11830662", "11830663", "2841535", "29836367"], "response": "Federal Reserve"}
+{"query_id": "922", "question": "who plays agent romanoff in iron man 2", "passage_ids": ["16169847", "34435302", "41897085", "16169846", "41897083"], "response": "Robert Downey Jr."}
+{"query_id": "923", "question": "who won the new york times v united states", "passage_ids": ["13769603", "13769602", "13769600", "13769604", "29594408"], "response": "James Goodale"}
+{"query_id": "924", "question": "which hawaiian island shows the most volcanic activity", "passage_ids": ["6722700", "7717343", "6722701", "7717344", "10799495"], "response": "Hawaii"}
+{"query_id": "925", "question": "bikram sambat is national calendar of which country", "passage_ids": ["9645666", "2932074", "9645665", "5492845", "33586115"], "response": "Nepal"}
+{"query_id": "926", "question": "where do the real housewives of new york city live", "passage_ids": ["35937534", "35937652", "35937610", "35937613", "35937583"], "response": "New York City"}
+{"query_id": "927", "question": "where do the alaska the last frontier live", "passage_ids": ["35344308", "35344303", "41974151", "41897091", "35344304"], "response": "Alaska"}
+{"query_id": "928", "question": "what album is like a stone on for audioslave", "passage_ids": ["3371941", "3371942", "3371922", "3371921", "3197607"], "response": "Like a Stone"}
+{"query_id": "929", "question": "when will the next summer olympics be held", "passage_ids": ["596649", "25150822", "25150821", "25150817", "2922562"], "response": "2012"}
+{"query_id": "930", "question": "who was the character hannibal lecter based on", "passage_ids": ["2848354", "2848353", "34327084", "32813355", "32813360"], "response": "Hannibal Lecter"}
+{"query_id": "931", "question": "what is the new name for czech republic", "passage_ids": ["13849586", "13849587", "10839957", "16055236", "13849591"], "response": "Czech Republic"}
+{"query_id": "932", "question": "what do you call a follower of zoroastrianism", "passage_ids": ["1096417", "19178132", "9242704", "37604817", "37604816"], "response": "Zoroastrianism"}
+{"query_id": "933", "question": "who do bristol city share their ground with", "passage_ids": ["100240", "22392646", "100236", "100239", "100245"], "response": "Bristol Rovers"}
+{"query_id": "934", "question": "who won the rousey vs tate 2 fight", "passage_ids": ["34563318", "41982124", "34563296", "26422053", "34563299"], "response": "Ronda Rousey"}
+{"query_id": "935", "question": "who sings the thursday night football song on cbs", "passage_ids": ["23431516", "23431515", "13632792", "23431517", "13632795"], "response": "Carrie Underwood"}
+{"query_id": "936", "question": "who wrote back at one by brian mcknight", "passage_ids": ["11852859", "11852858", "14590216", "7255552", "7255534"], "response": "Brian McKnight"}
+{"query_id": "937", "question": "who is the current maintainer of the linux kernel ​", "passage_ids": ["22173203", "27136815", "16310198", "22173204", "33559225"], "response": "Greg Kroah-Hartman"}
+{"query_id": "938", "question": "who won the battle of charleston in 1780", "passage_ids": ["12748625", "3517204", "3319246", "23909307", "12748621"], "response": "Uriah Phillips Levy"}
+{"query_id": "939", "question": "what are the names of the x files movies", "passage_ids": ["18981602", "24524914", "41969908", "24524915", "25610766"], "response": "The X-Files"}
+{"query_id": "940", "question": "who's won the most oscars in history", "passage_ids": ["1087865", "1087866", "1460552", "37308201", "35133119"], "response": "Peter O'Toole"}
+{"query_id": "941", "question": "the european recovery program of 1947 is better known as", "passage_ids": ["530419", "36653518", "530420", "24272451", "36653517"], "response": "Marshall Plan"}
+{"query_id": "942", "question": "who played denny duquette in grey's anatomy", "passage_ids": ["14592476", "20323048", "23880205", "24954782", "9607269"], "response": "Jeffrey Dean Morgan"}
+{"query_id": "943", "question": "who was the mountain mount mckinley officially named for", "passage_ids": ["925074", "3319085", "3836471", "3319086", "3319073"], "response": "Denali"}
+{"query_id": "944", "question": "what country was divided by the iron curtain", "passage_ids": ["24669289", "24669390", "26266825", "3417389", "26202442"], "response": "USSR"}
+{"query_id": "945", "question": "who did the singing for bart in the movie i can only imagine", "passage_ids": ["40722227", "40722226", "40722218", "40722228", "40722217"], "response": "Bart Millard"}
+{"query_id": "946", "question": "who won the popular vote in the 2012 presidential election", "passage_ids": ["18965798", "25248398", "25248399", "25248403", "41897218"], "response": "Barack Obama"}
+{"query_id": "947", "question": "who played guitar for emerson lake and palmer", "passage_ids": ["5998760", "5999001", "5999002", "5998759", "1274473"], "response": "Greg Lake"}
+{"query_id": "948", "question": "who was the school shooter in sandy hook", "passage_ids": ["33844379", "33844242", "33844243", "33844378", "33844263"], "response": "Adam Lanza"}
+{"query_id": "949", "question": "who plays the bully in freaks and geeks", "passage_ids": ["9367874", "41970842", "21380410", "9367873", "14578786"], "response": "David Krumholtz"}
+{"query_id": "950", "question": "where are the washington nationals based out of", "passage_ids": ["24132414", "5391771", "10145239", "11113263", "11113227"], "response": "Washington Nationals"}
+{"query_id": "951", "question": "what is the mother tongue of andhra pradesh", "passage_ids": ["1016146", "9345305", "58395", "13565031", "1016150"], "response": "Telugu"}
+{"query_id": "952", "question": "where does it always sunny in philadelphia take place", "passage_ids": ["11526380", "41985202", "11526414", "29927606", "11526413"], "response": "Philadelphia"}
+{"query_id": "953", "question": "can't you see marshall tucker band album", "passage_ids": ["19132241", "20789990", "41917267", "30817583", "9381102"], "response": "The Marshall Tucker Band"}
+{"query_id": "954", "question": "who was the blonde in the thunderbird in american graffiti", "passage_ids": ["1543366", "1543377", "41897252", "1543367", "1543431"], "response": "Suzanne Somers"}
+{"query_id": "955", "question": "what does the nz national party stand for", "passage_ids": ["17011972", "4364645", "4342705", "33227911", "32056852"], "response": "National Party"}
+{"query_id": "956", "question": "who is the head of the federal bureau of prisons", "passage_ids": ["36112329", "36112328", "8510179", "8510178", "8600726"], "response": "Charles E. Samuels Jr."}
+{"query_id": "957", "question": "what beatles album is 8 days a week on", "passage_ids": ["20714055", "20714056", "41986080", "16737955", "20714070"], "response": "Eight Days a Week"}
+{"query_id": "958", "question": "where do the wookies live in star wars", "passage_ids": ["25472632", "25472631", "25472616", "25472640", "25472639"], "response": "Kashyyyk"}
+{"query_id": "959", "question": "what is the old name of axis bank", "passage_ids": ["21291052", "21291053", "21291071", "21291069", "21291068"], "response": "UCO Bank"}
+{"query_id": "960", "question": "where were the pilgrims originally bound a. pennsylvania b. massachusetts c. virginia d. new york", "passage_ids": ["1654062", "33389446", "3421124", "3420959", "36734366"], "response": "Massachusetts"}
+{"query_id": "961", "question": "what was the name of the frat in animal house", "passage_ids": ["1644342", "1644344", "1644341", "19990237", "1644298"], "response": "Animal House"}
+{"query_id": "962", "question": "who does jason sudeikis play on the cleveland show", "passage_ids": ["10485473", "10485474", "41898590", "10485486", "10485485"], "response": "Jason Sudeikis"}
+{"query_id": "963", "question": "what is the name of the tower big ben is in", "passage_ids": ["17722794", "17722853", "41963927", "17722793", "17722854"], "response": "Elizabeth Tower"}
+{"query_id": "964", "question": "who played the green lantern in the most recent movie", "passage_ids": ["31632157", "31632158", "6948857", "1805254", "22216559"], "response": "Mark Strong"}
+{"query_id": "965", "question": "who was saint patrick's day named after", "passage_ids": ["2917796", "2917841", "2917842", "2917772", "2917817"], "response": "Saint Patrick's Day"}
+{"query_id": "966", "question": "what is the language spoken in czech republic", "passage_ids": ["2682836", "2682835", "1622671", "22885816", "22146972"], "response": "Czech"}
+{"query_id": "967", "question": "pontiac trans am in smokey and the bandit", "passage_ids": ["6914100", "6914124", "6914099", "6914126", "6914102"], "response": "Pontiac Trans Am"}
+{"query_id": "968", "question": "where did the king live before buckingham palace", "passage_ids": ["6864326", "92749", "648844", "22656035", "648843"], "response": "Buckingham Palace"}
+{"query_id": "969", "question": "who is the present chief justice of guwahati high court", "passage_ids": ["6903027", "6903028", "33893509", "34255463", "34255464"], "response": "Amitava Roy"}
+{"query_id": "970", "question": "who makes ben and jerry's ice cream", "passage_ids": ["2933729", "2933795", "5806591", "2933742", "5806590"], "response": "Ben & Jerry's"}
+{"query_id": "971", "question": "where's the 2022 world cup being held", "passage_ids": ["36033688", "10857283", "10857275", "28985311", "28985305"], "response": "Qatar"}
+{"query_id": "972", "question": "where does isle of man tt take place", "passage_ids": ["18883795", "15676894", "2462068", "2462082", "2462067"], "response": "Isle of Man TT"}
+{"query_id": "973", "question": "close encounters of the third kind oscar nominations", "passage_ids": ["2594530", "2594426", "2594425", "2594519", "2594520"], "response": "Close Encounters of the Third Kind"}
+{"query_id": "974", "question": "war of planet of the apes series movies in order", "passage_ids": ["40471357", "36396409", "27551802", "27551803", "9238317"], "response": "Planet of the Apes"}
+{"query_id": "975", "question": "who played dr zeus in planet of the apes", "passage_ids": ["41955526", "41989226", "41955525", "41914272", "41981060"], "response": "Andy Serkis"}
+{"query_id": "976", "question": "which is the largest island of the caribbean", "passage_ids": ["20854383", "425335", "425336", "40650300", "20854384"], "response": "Dominica"}
+{"query_id": "977", "question": "where are you from if you are persian", "passage_ids": ["25220058", "23654061", "30631297", "14157524", "289105"], "response": "Persia"}
+{"query_id": "978", "question": "who scored the first ever goal at pride park", "passage_ids": ["26438371", "5652806", "5652821", "5652805", "5652846"], "response": "Dave Bassett"}
+{"query_id": "979", "question": "who was the first woman to be elected to parliament in australia", "passage_ids": ["19857248", "2985700", "2985701", "488713", "41897323"], "response": "Edith Cowan"}
+{"query_id": "980", "question": "what's the order of the annabelle movies", "passage_ids": ["38689682", "38689681", "38689668", "19497774", "39027212"], "response": "Annabelle: Creation"}
+{"query_id": "981", "question": "who put the last spike in the transcontinental railroad", "passage_ids": ["2927895", "940395", "940413", "41935782", "10497686"], "response": "Leland Stanford"}
+{"query_id": "982", "question": "who played the lady in choo choo soul", "passage_ids": ["15962790", "15962789", "15962788", "15962787", "15962781"], "response": "Genevieve Goings"}
+{"query_id": "983", "question": "who played joseph first phillip schofield or jason donovan", "passage_ids": ["8067770", "41991037", "4408469", "8067769", "3368532"], "response": "Phillip Schofield"}
+{"query_id": "984", "question": "who plays baby mateo on jane the virgin", "passage_ids": ["41919523", "41919525", "41919524", "40303640", "37907194"], "response": "Elias Janssen"}
+{"query_id": "985", "question": "who sang i was kaiser bill's batman", "passage_ids": ["28630770", "41897337", "41897338", "2576616", "28630771"], "response": "Whistling Jack Smith"}
+{"query_id": "986", "question": "what album is julia by the beatles on", "passage_ids": ["11183325", "18569830", "18569831", "41991326", "11183330"], "response": "Julia (Beatles song)"}
+{"query_id": "987", "question": "is an open source debian-based linux distribution sponsored by canonical ltd", "passage_ids": ["203273", "41897339", "33917057", "18905072", "18905071"], "response": "Ubuntu"}
+{"query_id": "988", "question": "what do you call a person from czech republic", "passage_ids": ["16055246", "16055236", "7804524", "37103554", "37103553"], "response": "Czech"}
+{"query_id": "989", "question": "what kind of degree does an md have", "passage_ids": ["5025095", "5025077", "5025169", "5025126", "231759"], "response": "MD"}
+{"query_id": "990", "question": "who sings faith of the heart on enterprise", "passage_ids": ["22525803", "22525801", "22525794", "22525802", "41897345"], "response": "Russell Watson"}
+{"query_id": "991", "question": "who finally determined the winner of the 2000 presidential election", "passage_ids": ["37730917", "37730916", "3095001", "874422", "271654"], "response": "George W. Bush"}
+{"query_id": "992", "question": "where was the first woman's rights convention held", "passage_ids": ["26341217", "755834", "13139249", "755833", "13139245"], "response": "Seneca Falls, New York"}
+{"query_id": "993", "question": "who did green bay beat in the first super bowl", "passage_ids": ["4991472", "11443662", "4991473", "786419", "11443661"], "response": "Green Bay"}
+{"query_id": "994", "question": "what is the name of the jewish religion", "passage_ids": ["7697528", "18852250", "18852248", "18852249", "18852247"], "response": "Judaism"}
+{"query_id": "995", "question": "what was the city of beijing previously known as", "passage_ids": ["41992340", "24447124", "7250286", "24447123", "17414690"], "response": "Beijing"}
+{"query_id": "996", "question": "who is the founder of el pollo loco", "passage_ids": ["4126928", "4126929", "4126919", "4126905", "41993276"], "response": "Juan Francisco Ochoa"}
+{"query_id": "997", "question": "ray charles hit the road jack album name", "passage_ids": ["2609032", "2609031", "8225014", "9147414", "41994102"], "response": "Modern Sounds in Country and Western Music"}
+{"query_id": "998", "question": "who wrote writing on the wall sam smith", "passage_ids": ["37902603", "37902606", "37902604", "37902608", "34277720"], "response": "Sam Smith"}
+{"query_id": "999", "question": "who does helen mccrory play in peaky blinders", "passage_ids": ["34059564", "35010612", "35010613", "34059562", "11988449"], "response": "Helen McCrory"}

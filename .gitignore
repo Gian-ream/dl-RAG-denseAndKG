@@ -1,8 +1,14 @@
 # Secrets
 .hf_token
 
-# Data files (too large for git)
-data/
+# Data files (too large for git). Directories are kept (via .gitkeep) so the
+# expected layout is visible; the only tracked files are the minimal inputs
+# needed to run notebook 09 standalone (gold answers + Llama-2 responses).
+data/**
+!data/**/
+!data/**/.gitkeep
+!data/NQ_answer/queries_curated.jsonl
+!data/NQ_answer/llm_eval/llm_responses_*.jsonl
 
 # Python
 .venv/
